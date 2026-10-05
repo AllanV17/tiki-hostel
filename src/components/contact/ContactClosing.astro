@@ -1,5 +1,13 @@
-<section class="contact-closing" aria-label="Cierre de contacto">
+---
+import type { SiteContent } from '../../i18n';
+interface Props {
+	content: SiteContent;
+}
+const { content } = Astro.props;
+---
+
+<section class="contact-closing" aria-label={content.contact.closing.label}>
 	<div class="contact-container">
-		<p>Una frase de cierre para esta página está pendiente de definir.</p>
+		<p>{content.contact.closing.text}</p>
 	</div>
 </section>

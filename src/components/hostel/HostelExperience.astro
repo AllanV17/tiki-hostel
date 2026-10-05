@@ -1,24 +1,38 @@
 ---
+import type { SiteContent } from '../../i18n';
+interface Props {
+	content: SiteContent;
+}
 import HostelImagePlaceholder from './HostelImagePlaceholder.astro';
+const { content } = Astro.props;
 ---
 
 <section class="hostel-experience" aria-labelledby="hostel-experience-title">
 	<div class="hostel-container">
 		<header class="hostel-section-head hostel-experience__heading">
 			<div>
-				<p class="hostel-eyebrow">La experiencia Tiki</p>
-				<h2 id="hostel-experience-title">Quedarse también es parte<br class="desktop-break" /> del viaje</h2>
+				<p class="hostel-eyebrow">{content.hostel.experience.eyebrow}</p>
+				<h2 id="hostel-experience-title">
+					{content.hostel.experience.title[0]}<br class="desktop-break" />{
+						content.hostel.experience.title[1]
+					}
+				</h2>
 			</div>
-			<p>Un relato íntimo sobre la vida cotidiana alrededor del hostal.</p>
+			<p>{content.hostel.experience.description}</p>
 		</header>
 		<div class="hostel-experience__composition">
-			<HostelImagePlaceholder label="Experiencia Tiki / momento protagonista" className="hostel-experience__image" variant="secondary" />
+			<HostelImagePlaceholder
+				content={content}
+				label={content.hostel.experience.image}
+				className="hostel-experience__image"
+				variant="secondary"
+			/>
 			<article class="hostel-experience__note">
-				<p class="hostel-eyebrow">Un momento en Tiki</p>
+				<p class="hostel-eyebrow">{content.hostel.experience.noteEyebrow}</p>
 				<div>
-					<h3>Madera, sombra y tiempo compartido</h3>
-					<p>Texto provisional para transmitir la sensación de llegar, descansar y encontrarse con la isla sin prisa.</p>
-					<blockquote>“Una nota emocional pendiente de la voz de Tiki.”</blockquote>
+					<h3>{content.hostel.experience.noteTitle}</h3>
+					<p>{content.hostel.experience.note}</p>
+					<blockquote>{content.hostel.experience.quote}</blockquote>
 				</div>
 			</article>
 		</div>

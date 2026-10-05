@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../SiteHeader.astro';
+import ActivitiesHero from '../activities/ActivitiesHero.astro';
+import ActivitiesRoutes from '../activities/ActivitiesRoutes.astro';
+import SleepoverExperience from '../activities/SleepoverExperience.astro';
+import ActivitiesRentals from '../activities/ActivitiesRentals.astro';
+import ActivitiesContact from '../activities/ActivitiesContact.astro';
+import SiteFooter from '../SiteFooter.astro';
+import { getContent, type Language } from '../../i18n';
+import '../../styles/activities.css';
+
+interface Props {
+	language: Language;
+}
+const { language } = Astro.props;
+const content = getContent(language);
+---
+
+<Layout
+	content={content}
+	language={language}
+	page="activities"
+	title={content.activities.meta.title}
+	description={content.activities.meta.description}
+>
+	<SiteHeader
+		content={content}
+		language={language}
+		variant="light"
+		activePage="activities"
+	/>
+	<!-- Activities content and imagery are pending client confirmation. -->
+	<main class="activities-page" data-content-status="provisional">
+		<ActivitiesHero content={content} />
+		<ActivitiesRoutes content={content} />
+		<SleepoverExperience content={content} />
+		<ActivitiesRentals content={content} />
+		<ActivitiesContact content={content} />
+	</main>
+	<SiteFooter content={content} language={language} activePage="activities" />
+</Layout>

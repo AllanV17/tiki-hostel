@@ -1,13 +1,32 @@
 ---
+import type { SiteContent } from '../../i18n';
+const { content } = Astro.props;
+interface Props {
+	content: SiteContent;
+}
 ---
 
-<section class="activities-contact" id="consulta-actividades" aria-labelledby="activities-contact-title">
+<section
+	class="activities-contact"
+	id="consulta-actividades"
+	aria-labelledby="activities-contact-title"
+>
 	<div class="activities-container">
-		<p class="activities-eyebrow">Planea con conocimiento local</p>
-		<h2 id="activities-contact-title">¿Listo para trazar una ruta por<br /> Ometepe?</h2>
-		<p>Consulta directamente los detalles actuales y la disponibilidad de las actividades.</p>
+		<p class="activities-eyebrow">{content.activities.contact.eyebrow}</p>
+		<h2 id="activities-contact-title">
+			{content.activities.contact.title[0]}<br />{
+				content.activities.contact.title[1]
+			}
+		</h2>
+		<p>{content.activities.contact.description}</p>
 		<div class="activities-contact__actions">
-			<a class="button" href="#consulta-actividades" data-link-placeholder aria-label="Consultar por WhatsApp; enlace pendiente de confirmar">Consultar por WhatsApp</a>
+			<a
+				class="button"
+				href="#consulta-actividades"
+				data-link-placeholder
+				aria-label={content.activities.contact.buttonLabel}
+				>{content.activities.contact.button}</a
+			>
 		</div>
 	</div>
 </section>

@@ -1,24 +1,37 @@
 ---
+import type { SiteContent } from '../i18n';
+interface Props {
+	content: SiteContent;
+}
 import MediaPlaceholder from './MediaPlaceholder.astro';
+const { content } = Astro.props;
 
-const moments = [
-	{ label: 'Vida compartida', variant: 'olive' },
-	{ label: 'Detalle del hostal', variant: 'clay' },
-	{ label: 'Paisaje de Ometepe', variant: 'stone' },
-	{ label: 'Encuentro al aire libre', variant: 'olive' },
-];
+const variants = ['olive', 'clay', 'stone', 'olive'] as const;
 ---
 
-<section class="gallery section-space" id="galeria" aria-labelledby="gallery-title">
+<section
+	class="gallery section-space"
+	id="galeria"
+	aria-labelledby="gallery-title"
+>
 	<div class="container">
 		<div class="gallery__heading">
-			<h2 class="section-title" id="gallery-title">Momentos de la Bitácora</h2>
-			<p class="eyebrow eyebrow--terracotta">#TikiHostelOmetepe</p>
+			<h2 class="section-title" id="gallery-title">
+				{content.home.gallery.title}
+			</h2>
+			<p class="eyebrow eyebrow--terracotta">{content.home.gallery.hashtag}</p>
 		</div>
-		<div class="gallery-grid" aria-label="Galería de fotografías">
-			{moments.map((moment) => (
-				<MediaPlaceholder label={moment.label} variant={moment.variant as 'olive' | 'clay' | 'stone'} className="gallery-grid__item" />
-			))}
+		<div class="gallery-grid" aria-label={content.home.gallery.label}>
+			{
+				content.home.gallery.moments.map((moment, index) => (
+					<MediaPlaceholder
+						content={content}
+						label={moment}
+						variant={variants[index]}
+						className="gallery-grid__item"
+					/>
+				))
+			}
 		</div>
 	</div>
 </section>

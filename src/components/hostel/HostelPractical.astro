@@ -1,33 +1,39 @@
 ---
-const facts = [
-	{ label: 'Check-in', note: 'Horario pendiente' },
-	{ label: 'Check-out', note: 'Horario pendiente' },
-	{ label: 'Ubicación', note: 'Indicaciones pendientes' },
-	{ label: 'Políticas', note: 'Contenido pendiente' },
-];
+import type { SiteContent } from '../../i18n';
+const { content } = Astro.props;
+interface Props {
+	content: SiteContent;
+}
+const facts = content.hostel.practical.facts;
 ---
 
 <section class="hostel-practical" aria-labelledby="hostel-practical-title">
 	<div class="hostel-container">
 		<header class="hostel-section-head hostel-practical__heading">
 			<div>
-				<p class="hostel-eyebrow">Información práctica</p>
-				<h2 id="hostel-practical-title">Todo lo necesario, en un<br class="desktop-break" /> solo lugar</h2>
+				<p class="hostel-eyebrow">{content.hostel.practical.eyebrow}</p>
+				<h2 id="hostel-practical-title">
+					{content.hostel.practical.title[0]}<br class="desktop-break" />{
+						content.hostel.practical.title[1]
+					}
+				</h2>
 			</div>
-			<p>La información se completará cuando el equipo confirme los datos.</p>
+			<p>{content.hostel.practical.description}</p>
 		</header>
 		<dl class="hostel-practical__facts">
-			{facts.map((fact) => (
-				<div>
-					<dt>{fact.label}</dt>
-					<dd>Por confirmar</dd>
-					<dd class="hostel-practical__note">{fact.note}</dd>
-				</div>
-			))}
+			{
+				facts.map((fact) => (
+					<div>
+						<dt>{fact.label}</dt>
+						<dd>{content.hostel.practical.confirm}</dd>
+						<dd class="hostel-practical__note">{fact.note}</dd>
+					</div>
+				))
+			}
 		</dl>
 		<div class="hostel-practical__closing">
-			<p>Esta sección está preparada para crecer sin perder claridad.</p>
-			<span>Datos por confirmar</span>
+			<p>{content.hostel.practical.closing}</p>
+			<span>{content.hostel.practical.pending}</span>
 		</div>
 	</div>
 </section>

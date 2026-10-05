@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../SiteHeader.astro';
+import HostelHero from '../hostel/HostelHero.astro';
+import HostelRooms from '../hostel/HostelRooms.astro';
+import HostelSpaces from '../hostel/HostelSpaces.astro';
+import HostelServices from '../hostel/HostelServices.astro';
+import HostelExperience from '../hostel/HostelExperience.astro';
+import HostelPractical from '../hostel/HostelPractical.astro';
+import HostelContact from '../hostel/HostelContact.astro';
+import SiteFooter from '../SiteFooter.astro';
+import { getContent, type Language } from '../../i18n';
+import '../../styles/hostel.css';
+
+interface Props {
+	language: Language;
+}
+const { language } = Astro.props;
+const content = getContent(language);
+---
+
+<Layout
+	content={content}
+	language={language}
+	page="hostel"
+	title={content.hostel.meta.title}
+	description={content.hostel.meta.description}
+>
+	<SiteHeader
+		content={content}
+		language={language}
+		variant="light"
+		activePage="hostel"
+	/>
+	<!-- Hostel copy and photography are pending client validation. -->
+	<main class="hostel-page" data-content-status="provisional">
+		<HostelHero content={content} />
+		<HostelRooms content={content} />
+		<HostelSpaces content={content} />
+		<HostelServices content={content} />
+		<HostelExperience content={content} />
+		<HostelPractical content={content} />
+		<HostelContact content={content} />
+	</main>
+	<SiteFooter content={content} language={language} activePage="hostel" />
+</Layout>

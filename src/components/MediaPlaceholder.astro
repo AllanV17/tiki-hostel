@@ -1,5 +1,8 @@
 ---
+import type { SiteContent } from '../i18n';
+const { content } = Astro.props;
 interface Props {
+	content: SiteContent;
 	label: string;
 	className?: string;
 	variant?: 'sand' | 'olive' | 'clay' | 'stone';
@@ -11,9 +14,11 @@ const { label, className = '', variant = 'sand' } = Astro.props;
 <div
 	class:list={['media-placeholder', `media-placeholder--${variant}`, className]}
 	role="img"
-	aria-label={`${label}. Fotografía pendiente de proporcionar.`}
+	aria-label={`${label}. ${content.shared.placeholder.photoProvided}`}
 >
 	<span class="media-placeholder__mark" aria-hidden="true">＋</span>
-	<span class="media-placeholder__caption" aria-hidden="true">Fotografía pendiente</span>
+	<span class="media-placeholder__caption" aria-hidden="true"
+		>{content.shared.placeholder.photoPending}</span
+	>
 	<span class="media-placeholder__label" aria-hidden="true">{label}</span>
 </div>

@@ -1,19 +1,41 @@
-<section class="contact-bookings contact-container" id="reservas" aria-labelledby="contact-bookings-title">
+---
+import type { SiteContent } from '../../i18n';
+interface Props {
+	content: SiteContent;
+}
+const { content } = Astro.props;
+---
+
+<section
+	class="contact-bookings contact-container"
+	id="reservas"
+	aria-labelledby="contact-bookings-title"
+>
 	<div class="contact-section-heading">
-		<p class="contact-eyebrow">Plataformas de reserva</p>
-		<h2 id="contact-bookings-title">Reserva tu estadía</h2>
-		<p>Estas plataformas son opciones externas para consultar una reserva. Sus enlaces están pendientes de confirmar.</p>
+		<p class="contact-eyebrow">{content.contact.bookings.eyebrow}</p>
+		<h2 id="contact-bookings-title">{content.contact.bookings.title}</h2>
+		<p>{content.contact.bookings.description}</p>
 	</div>
 	<div class="contact-bookings__list">
 		<div>
 			<h3>Booking.com</h3>
-			<!-- Enlace provisional: sustituir por la URL real de Booking.com. -->
-			<a href="#reservas" data-link-placeholder aria-label="Ir a Booking.com; enlace pendiente de confirmar">Ver en Booking.com <span aria-hidden="true">↗</span></a>
+			<!-- Booking.com URL is pending client confirmation. -->
+			<a
+				href="#reservas"
+				data-link-placeholder
+				aria-label={content.contact.bookings.bookingLabel}
+				>{content.contact.bookings.booking} <span aria-hidden="true">↗</span></a
+			>
 		</div>
 		<div>
 			<h3>Airbnb</h3>
-			<!-- Enlace provisional: sustituir por la URL real de Airbnb. -->
-			<a href="#reservas" data-link-placeholder aria-label="Ir a Airbnb; enlace pendiente de confirmar">Ver en Airbnb <span aria-hidden="true">↗</span></a>
+			<!-- Airbnb URL is pending client confirmation. -->
+			<a
+				href="#reservas"
+				data-link-placeholder
+				aria-label={content.contact.bookings.airbnbLabel}
+				>{content.contact.bookings.airbnb} <span aria-hidden="true">↗</span></a
+			>
 		</div>
 	</div>
 </section>

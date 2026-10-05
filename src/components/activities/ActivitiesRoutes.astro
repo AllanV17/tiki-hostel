@@ -1,55 +1,115 @@
 ---
+import type { SiteContent } from '../../i18n';
+interface Props {
+	content: SiteContent;
+}
 import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
+const { content } = Astro.props;
 ---
 
-<section class="activities-routes activities-container" aria-labelledby="activities-routes-title">
+<section
+	class="activities-routes activities-container"
+	aria-labelledby="activities-routes-title"
+>
 	<div class="activities-section-head activities-routes__heading">
 		<div>
-			<p class="activities-eyebrow">Formas de explorar</p>
-			<h2 id="activities-routes-title">Elige tu ritmo y sigue<br /> el paisaje</h2>
+			<p class="activities-eyebrow">{content.activities.routes.eyebrow}</p>
+			<h2 id="activities-routes-title">
+				{content.activities.routes.title[0]}<br />{
+					content.activities.routes.title[1]
+				}
+			</h2>
 		</div>
-		<p>Tres formas provisionales de vivir Ometepe desde Tiki.</p>
+		<p>{content.activities.routes.description}</p>
 	</div>
 
 	<article class="activity-route activity-route--kayak">
 		<div class="activity-route__top">
 			<div class="activity-route__copy">
-				<p class="activity-route__index"><span>01</span><i></i>Actividad en la isla</p>
-				<h3>Kayak</h3>
-				<p class="activity-route__description">Un recorrido tranquilo junto a la orilla del lago, al ritmo del viento y el agua.</p>
-				<p class="activity-route__note">Ruta, horarios y disponibilidad — por confirmar.</p>
+				<p class="activity-route__index">
+					<span>01</span><i></i>{content.activities.routes.indexLabel}
+				</p>
+				<h3>{content.activities.routes.kayak.title}</h3>
+				<p class="activity-route__description">
+					{content.activities.routes.kayak.description}
+				</p>
+				<p class="activity-route__note">
+					{content.activities.routes.kayak.note}
+				</p>
 			</div>
-			<p class="activity-route__aside">Una secuencia de momentos en la isla <span aria-hidden="true">→</span></p>
+			<p class="activity-route__aside">
+				{content.activities.routes.kayak.aside}
+				<span aria-hidden="true">→</span>
+			</p>
 		</div>
 		<div class="activity-route__images activity-route__images--wide">
-			<ActivityImagePlaceholder label="Kayak / paisaje principal" />
-			<ActivityImagePlaceholder label="Siguiente imagen" variant="dark" />
+			<ActivityImagePlaceholder
+				content={content}
+				label={content.activities.routes.kayak.image}
+			/>
+			<ActivityImagePlaceholder
+				content={content}
+				label={content.activities.routes.nextImage}
+				variant="dark"
+			/>
 		</div>
 	</article>
 
 	<article class="activity-route activity-route--split">
 		<div class="activity-route__images activity-route__images--split">
-			<ActivityImagePlaceholder label="Paseo a caballo / paisaje principal" />
-			<ActivityImagePlaceholder label="Siguiente imagen" variant="dark" />
+			<ActivityImagePlaceholder
+				content={content}
+				label={content.activities.routes.horse.image}
+			/>
+			<ActivityImagePlaceholder
+				content={content}
+				label={content.activities.routes.nextImage}
+				variant="dark"
+			/>
 		</div>
 		<div class="activity-route__copy">
-			<p class="activity-route__index"><span>02</span><i></i>Actividad en la isla</p>
-			<h3>Paseo a<br /> caballo</h3>
-			<p class="activity-route__description">Una forma más pausada de recorrer los caminos rurales y los espacios abiertos de la isla.</p>
-			<p class="activity-route__note">Detalles de la ruta local y del guía — por confirmar.</p>
+			<p class="activity-route__index">
+				<span>02</span><i></i>{content.activities.routes.indexLabel}
+			</p>
+			<h3>
+				{content.activities.routes.horse.title[0]}<br />{
+					content.activities.routes.horse.title[1]
+				}
+			</h3>
+			<p class="activity-route__description">
+				{content.activities.routes.horse.description}
+			</p>
+			<p class="activity-route__note">{content.activities.routes.horse.note}</p>
 		</div>
 	</article>
 
 	<article class="activity-route activity-route--split activity-route--reverse">
 		<div class="activity-route__copy">
-			<p class="activity-route__index"><span>03</span><i></i>Actividad en la isla</p>
-			<h3>Senderismo en el<br /> volcán</h3>
-			<p class="activity-route__description">Un encuentro con el terreno volcánico de Ometepe a través de sus senderos.</p>
-			<p class="activity-route__note">Nivel, duración y condiciones — por confirmar.</p>
+			<p class="activity-route__index">
+				<span>03</span><i></i>{content.activities.routes.indexLabel}
+			</p>
+			<h3>
+				{content.activities.routes.hiking.title[0]}<br />{
+					content.activities.routes.hiking.title[1]
+				}
+			</h3>
+			<p class="activity-route__description">
+				{content.activities.routes.hiking.description}
+			</p>
+			<p class="activity-route__note">
+				{content.activities.routes.hiking.note}
+			</p>
 		</div>
 		<div class="activity-route__images activity-route__images--split">
-			<ActivityImagePlaceholder label="Senderismo en el volcán / paisaje principal" />
-			<ActivityImagePlaceholder label="Siguiente imagen" variant="dark" />
+			<ActivityImagePlaceholder
+				content={content}
+				label={content.activities.routes.hiking.image}
+			/>
+			<ActivityImagePlaceholder
+				content={content}
+				label={content.activities.routes.nextImage}
+				variant="dark"
+			/>
 		</div>
 	</article>
 </section>

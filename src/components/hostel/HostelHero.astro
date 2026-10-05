@@ -1,23 +1,41 @@
 ---
+import type { SiteContent } from '../../i18n';
+interface Props {
+	content: SiteContent;
+}
 import HostelImagePlaceholder from './HostelImagePlaceholder.astro';
+const { content } = Astro.props;
 ---
 
 <section class="hostel-hero" aria-labelledby="hostel-title">
 	<div class="hostel-container">
 		<div class="hostel-hero__intro">
 			<div>
-				<p class="hostel-eyebrow hostel-eyebrow--green">Ometepe — una casa entre volcanes</p>
-				<h1 id="hostel-title">El hostal</h1>
+				<p class="hostel-eyebrow hostel-eyebrow--green">
+					{content.hostel.hero.eyebrow}
+				</p>
+				<h1 id="hostel-title">{content.hostel.hero.title}</h1>
 			</div>
-			<p>Un refugio de madera para bajar el ritmo y habitar la isla con calma.</p>
+			<p>{content.hostel.hero.description}</p>
 		</div>
 		<div class="hostel-hero__media">
-			<HostelImagePlaceholder label="Hostal / fotografía protagonista" className="hostel-hero__image" />
-			<aside class="hostel-hero__note" aria-label="Introducción al hostal">
+			<HostelImagePlaceholder
+				content={content}
+				label={content.hostel.hero.image}
+				className="hostel-hero__image"
+			/>
+			<aside
+				class="hostel-hero__note"
+				aria-label={content.hostel.hero.noteLabel}
+			>
 				<span class="hostel-hero__number">01</span>
 				<div>
-					<h2>Una estancia<br /> cerca de la isla</h2>
-					<p>Texto introductorio provisional para presentar el carácter del hostal.</p>
+					<h2>
+						{content.hostel.hero.noteTitle[0]}<br />{
+							content.hostel.hero.noteTitle[1]
+						}
+					</h2>
+					<p>{content.hostel.hero.note}</p>
 				</div>
 			</aside>
 		</div>

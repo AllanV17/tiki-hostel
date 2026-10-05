@@ -1,27 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import HeroSection from '../components/HeroSection.astro';
-import IdentityStrip from '../components/IdentityStrip.astro';
-import ArchitectureSection from '../components/ArchitectureSection.astro';
-import SpacesSection from '../components/SpacesSection.astro';
-import HumanExperienceSection from '../components/HumanExperienceSection.astro';
-import DocumentaryGallery from '../components/DocumentaryGallery.astro';
-import ContactCta from '../components/ContactCta.astro';
-import SiteFooter from '../components/SiteFooter.astro';
+import HomePage from '../components/pages/HomePage.astro';
+import { defaultLanguage } from '../i18n';
 ---
 
-<Layout>
-	<SiteHeader />
-	<!-- Los textos de Figma se mantienen como contenido provisional hasta validación comercial. -->
-	<main data-content-status="provisional">
-		<HeroSection />
-		<IdentityStrip />
-		<ArchitectureSection />
-		<SpacesSection />
-		<HumanExperienceSection />
-		<DocumentaryGallery />
-		<ContactCta />
-	</main>
-	<SiteFooter />
-</Layout>
+<HomePage language={defaultLanguage} />

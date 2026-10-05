@@ -1,47 +1,45 @@
 ---
+import type { SiteContent } from '../i18n';
+interface Props {
+	content: SiteContent;
+}
 import MediaPlaceholder from './MediaPlaceholder.astro';
+const { content } = Astro.props;
 
-// Textos tomados de Figma; confirmar antes de publicación.
-const spaces = [
-	{
-		title: 'Cabañas Privadas de Madera',
-		description: 'Habitaciones construidas artesanalmente para máxima privacidad y contacto directo con la naturaleza circundante.',
-		image: 'Cabañas de madera',
-		variant: 'olive',
-	},
-	{
-		title: 'Dormitorios Compartidos',
-		description: 'Literas sólidas de madera nativa con espacio personal y ventilación natural constante para viajeros con alma de bitácora.',
-		image: 'Dormitorio compartido',
-		variant: 'stone',
-	},
-	{
-		title: 'Cocina & Fogata Comunal',
-		description: 'Espacios abiertos donde convergen la preparación de comida local, el fuego nocturno y las conversaciones que trazan nuevas rutas.',
-		image: 'Espacio común',
-		variant: 'clay',
-	},
-];
+const variants = ['olive', 'stone', 'clay'] as const;
 ---
 
-<section class="spaces section-space" id="alojamientos" aria-labelledby="spaces-title">
+<section
+	class="spaces section-space"
+	id="alojamientos"
+	aria-labelledby="spaces-title"
+>
 	<div class="container">
 		<div class="spaces__heading">
 			<div class="section-heading">
-				<p class="eyebrow eyebrow--blue">Alojamientos y Espacios</p>
-				<h2 class="section-title" id="spaces-title">Espacios pensados para el encuentro y el descanso</h2>
+				<p class="eyebrow eyebrow--blue">{content.home.spaces.eyebrow}</p>
+				<h2 class="section-title" id="spaces-title">
+					{content.home.spaces.title}
+				</h2>
 			</div>
 		</div>
 		<div class="spaces-grid">
-			{spaces.map((space) => (
-				<article class="space-card provisional-copy">
-					<MediaPlaceholder label={space.image} variant={space.variant as 'olive' | 'stone' | 'clay'} className="space-card__photo" />
-					<div class="space-card__body">
-						<h3>{space.title}</h3>
-						<p>{space.description}</p>
-					</div>
-				</article>
-			))}
+			{
+				content.home.spaces.cards.map((space, index) => (
+					<article class="space-card provisional-copy">
+						<MediaPlaceholder
+							content={content}
+							label={space.image}
+							variant={variants[index]}
+							className="space-card__photo"
+						/>
+						<div class="space-card__body">
+							<h3>{space.title}</h3>
+							<p>{space.description}</p>
+						</div>
+					</article>
+				))
+			}
 		</div>
 	</div>
 </section>

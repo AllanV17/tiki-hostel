@@ -1,31 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import HostelHero from '../components/hostel/HostelHero.astro';
-import HostelRooms from '../components/hostel/HostelRooms.astro';
-import HostelSpaces from '../components/hostel/HostelSpaces.astro';
-import HostelServices from '../components/hostel/HostelServices.astro';
-import HostelExperience from '../components/hostel/HostelExperience.astro';
-import HostelPractical from '../components/hostel/HostelPractical.astro';
-import HostelContact from '../components/hostel/HostelContact.astro';
-import HostelFooter from '../components/hostel/HostelFooter.astro';
-import '../styles/hostel.css';
+import HostelPage from '../components/pages/HostelPage.astro';
+import { defaultLanguage } from '../i18n';
 ---
 
-<Layout
-	title="Hostal | Tiki Hostel Ometepe"
-	description="Conoce la propuesta provisional de alojamientos, espacios e información práctica de Tiki Hostel Ometepe."
->
-	<SiteHeader variant="light" activePage="hostel" />
-	<!-- El copy y todas las fotografías de esta página siguen pendientes de validación. -->
-	<main class="hostel-page" data-content-status="provisional">
-		<HostelHero />
-		<HostelRooms />
-		<HostelSpaces />
-		<HostelServices />
-		<HostelExperience />
-		<HostelPractical />
-		<HostelContact />
-	</main>
-	<HostelFooter />
-</Layout>
+<HostelPage language={defaultLanguage} />

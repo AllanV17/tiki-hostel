@@ -1,34 +1,228 @@
 ---
-import { withBase } from '../utils/withBase';
+import type { Language, SiteContent } from '../i18n';
+import { Image } from 'astro:assets';
+import logo from '../assets/tiki-hostel-logo-blanco.png';
+import { getLocalizedHref, type Page } from '../i18n/routes';
+
+interface Props {
+	content: SiteContent;
+	language: Language;
+	activePage: Page;
+}
+
+const { content, language, activePage } = Astro.props;
+const { footer, nav } = content.shared;
+
+// Unconfirmed booking, social, WhatsApp and email destinations stay non-navigable until approved.
+const reservationUrls: Record<
+	'directBooking' | 'airbnb' | 'booking',
+	string | null
+> = {
+	directBooking: null,
+	airbnb: null,
+	booking: null,
+};
+
+const reservationMethods = [
+	{
+		key: 'directBooking',
+		label: footer.directBooking,
+		url: reservationUrls.directBooking,
+	},
+	{ key: 'airbnb', label: footer.airbnb, url: reservationUrls.airbnb },
+	{ key: 'booking', label: footer.booking, url: reservationUrls.booking },
+] as const;
+
+const contactUrls: Record<
+	'whatsapp' | 'instagram' | 'facebook' | 'tiktok' | 'email',
+	string | null
+> = {
+	whatsapp: null,
+	instagram: null,
+	facebook: null,
+	tiktok: null,
+	email: null,
+};
+
+const contactMethods = [
+	{ key: 'whatsapp', label: footer.whatsapp, url: contactUrls.whatsapp },
+	{ key: 'instagram', label: footer.instagram, url: contactUrls.instagram },
+	{ key: 'facebook', label: footer.facebook, url: contactUrls.facebook },
+	{ key: 'tiktok', label: footer.tiktok, url: contactUrls.tiktok },
+	{ key: 'email', label: footer.email, url: contactUrls.email },
+] as const;
 ---
 
 <footer class="site-footer">
 	<div class="container">
 		<div class="site-footer__main">
 			<div class="site-footer__brand">
-				<a class="brand brand--footer" href="#inicio">
-					<span class="brand__name">Tiki Hostel</span>
+				<a
+					class="brand brand--footer"
+					href={getLocalizedHref('home', language)}
+				>
+					<span class="site-footer__logo-frame">
+						<Image
+							src={logo}
+							alt={footer.brand}
+							class="site-footer__logo"
+							loading="lazy"
+						/>
+					</span>
 				</a>
-				<p class="provisional-copy">Tu refugio de madera y contemplación en la Isla de Ometepe, Rivas, Nicaragua.</p>
+				<p>{content.home.footer.description}</p>
+				<p class="site-footer__location">{footer.location}</p>
 			</div>
-			<div class="site-footer__links">
-				<div class="footer-group">
-					<h2>Secciones</h2>
-					<a href={withBase('/hostal/')}>Hostal</a>
-					<a href={withBase('/actividades/')}>Actividades</a>
-					<a href="#experiencia">Entorno</a>
-				</div>
-				<div class="footer-group">
-					<h2>Contacto y Reserva</h2>
-					<h2>Booking</h2>
-					<h2>Airbnb</h2>
-					<a href="#contacto" data-link-placeholder aria-label="Consulta directa, enlace pendiente de configurar">Consulta Directa</a>
-					
+
+			<nav class="footer-group" aria-label={footer.sectionsLabel}>
+				<h2>{footer.navigation}</h2>
+				<a
+					href={getLocalizedHref('home', language)}
+					aria-current={activePage === 'home' ? 'page' : undefined}
+					>{nav.home}</a
+				>
+				<a
+					href={getLocalizedHref('hostel', language)}
+					aria-current={activePage === 'hostel' ? 'page' : undefined}
+					>{nav.hostel}</a
+				>
+				<a
+					href={getLocalizedHref('activities', language)}
+					aria-current={activePage === 'activities' ? 'page' : undefined}
+					>{nav.activities}</a
+				>
+				<a
+					href={getLocalizedHref('contact', language)}
+					aria-current={activePage === 'contact' ? 'page' : undefined}
+					>{nav.contact}</a
+				>
+			</nav>
+
+			<div class="footer-group">
+				<h2>{footer.reservations}</h2>
+				{
+					reservationMethods.map(({ label, url }) => {
+						const Tag = url ? 'a' : 'span';
+						return (
+							<Tag
+								class="footer-group__placeholder"
+								href={url ?? undefined}
+								data-link-placeholder={url ? undefined : ''}
+							>
+								{label}
+							</Tag>
+						);
+					})
+				}
+			</div>
+
+			<div class="footer-group site-footer__contact">
+				<h2>{footer.contact}</h2>
+				<div class="site-footer__contact-links">
+					{
+						contactMethods.map(({ key, label, url }) => {
+							const Tag = url ? 'a' : 'button';
+							return (
+								<Tag
+									class={`site-footer__contact-button site-footer__contact-button--${key}`}
+									href={url ?? undefined}
+									type={url ? undefined : 'button'}
+									aria-label={label}
+									aria-disabled={url ? undefined : 'true'}
+									data-link-placeholder={url ? undefined : ''}
+								>
+									<span class="site-footer__contact-content">
+										{key === 'whatsapp' && (
+											<svg
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.7"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												aria-hidden="true"
+												focusable="false"
+											>
+												<path d="M20.5 11.8a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.3-4.2a8.5 8.5 0 1 1 15.7-4.5Z" />
+												<path d="M8.2 8.2c.5 3.3 3.2 6.2 6.5 7.1l1.5-1.3 1.7.8-.4 1.5c-.3.9-1.3 1.2-2.2 1A11 11 0 0 1 7 9.5c-.2-.9.2-1.8 1.1-2.1l1.4-.4.9 1.8-1.2 1.3" />
+											</svg>
+										)}
+										{key === 'instagram' && (
+											<svg
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.8"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												aria-hidden="true"
+												focusable="false"
+											>
+												<rect x="2.5" y="2.5" width="19" height="19" rx="5" />
+												<circle cx="12" cy="12" r="4" />
+												<circle
+													cx="17.7"
+													cy="6.3"
+													r="1"
+													fill="currentColor"
+													stroke="none"
+												/>
+											</svg>
+										)}
+										{key === 'facebook' && (
+											<svg
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												aria-hidden="true"
+												focusable="false"
+											>
+												<path d="M14.1 21v-8.1h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2H8v3.1h2.7V21h3.4Z" />
+											</svg>
+										)}
+										{key === 'tiktok' && (
+											<svg
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												aria-hidden="true"
+												focusable="false"
+											>
+												<path d="M15.5 3c.2 2.2 1.5 3.6 4.1 3.8v3.1c-1.5 0-2.9-.4-4.1-1.2v6.4c0 3.2-2.4 5.4-5.5 5.4a5.1 5.1 0 0 1 0-10.2c.4 0 .8 0 1.2.1v3.3a2 2 0 1 0-1.2 3.7c1.4 0 2.2-1 2.2-2.4V3h3.3Z" />
+											</svg>
+										)}
+										{key === 'email' && (
+											<svg
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="1.8"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												aria-hidden="true"
+												focusable="false"
+											>
+												<rect x="2.5" y="5" width="19" height="14" rx="2.5" />
+												<path d="m3.5 7 8.5 6 8.5-6" />
+											</svg>
+										)}
+										<span class="site-footer__contact-label">{label}</span>
+									</span>
+								</Tag>
+							);
+						})
+					}
 				</div>
 			</div>
 		</div>
 		<div class="site-footer__bottom">
-			<p>© 2026 Tiki Hostel Ometepe. Rivas, Nicaragua.</p>
+			<p>{footer.copyright}</p>
+			<div
+				class="site-footer__legal"
+				role="group"
+				aria-label={footer.legalLabel}
+			>
+				<span data-link-placeholder>{footer.privacyPolicy}</span>
+				<span data-link-placeholder>{footer.cookies}</span>
+			</div>
 		</div>
 	</div>
 </footer>

@@ -1,13 +1,42 @@
-<section class="contact-location contact-container" id="ubicacion" aria-labelledby="contact-location-title">
+---
+import type { SiteContent } from '../../i18n';
+interface Props {
+	content: SiteContent;
+}
+const { content } = Astro.props;
+---
+
+<section
+	class="contact-location contact-container"
+	id="ubicacion"
+	aria-labelledby="contact-location-title"
+>
 	<div class="contact-section-heading">
-		<p class="contact-eyebrow">Ubicación</p>
-		<h2 id="contact-location-title">Encuéntranos</h2>
+		<p class="contact-eyebrow">{content.contact.location.eyebrow}</p>
+		<h2 id="contact-location-title">{content.contact.location.title}</h2>
 	</div>
 	<div class="contact-location__details">
-		<div><h3>Ubicación general</h3><p>Playa Santa Cruz, Isla de Ometepe, Nicaragua.</p></div>
-		<div><h3>Dirección</h3><p>Dirección exacta pendiente de confirmar.</p></div>
-		<div><h3>Cómo llegar</h3><p>Indicaciones de llegada pendientes de confirmar.</p></div>
-		<!-- Enlace provisional: sustituir por la URL real de Google Maps cuando se confirme. -->
-		<a href="#ubicacion" data-link-placeholder aria-label="Ver en Google Maps; enlace pendiente de confirmar">Ver en Google Maps <span aria-hidden="true">↗</span></a>
+		<div>
+			<h3>{content.contact.location.generalLabel}</h3><p>
+				{content.contact.location.general}
+			</p>
+		</div>
+		<div>
+			<h3>{content.contact.location.addressLabel}</h3><p>
+				{content.contact.location.address}
+			</p>
+		</div>
+		<div>
+			<h3>{content.contact.location.arrivalLabel}</h3><p>
+				{content.contact.location.arrival}
+			</p>
+		</div>
+		<!-- Map URL is pending client confirmation. -->
+		<a
+			href="#ubicacion"
+			data-link-placeholder
+			aria-label={content.contact.location.mapLabel}
+			>{content.contact.location.map} <span aria-hidden="true">↗</span></a
+		>
 	</div>
 </section>

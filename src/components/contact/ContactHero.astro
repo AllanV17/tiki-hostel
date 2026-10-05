@@ -1,7 +1,15 @@
+---
+import type { SiteContent } from '../../i18n';
+interface Props {
+	content: SiteContent;
+}
+const { content } = Astro.props;
+---
+
 <section class="contact-hero contact-container" aria-labelledby="contact-title">
-	<p class="contact-eyebrow">Playa Santa Cruz · Isla de Ometepe</p>
+	<p class="contact-eyebrow">{content.contact.hero.eyebrow}</p>
 	<div class="contact-hero__intro">
-		<h1 id="contact-title">Hablemos</h1>
-		<p>Un espacio para encontrar la forma de contactar con Tiki, ubicarnos y consultar las plataformas de reserva. Información en preparación.</p>
+		<h1 id="contact-title">{content.contact.hero.title}</h1>
+		<p>{content.contact.hero.description}</p>
 	</div>
 </section>

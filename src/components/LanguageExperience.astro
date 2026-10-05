@@ -1,0 +1,232 @@
+---
+import { getContent, type Language, type SiteContent } from '../i18n';
+
+interface Props {
+	content: SiteContent;
+	language: Language;
+	esHref: string;
+	enHref: string;
+}
+
+const { content, language, esHref, enHref } = Astro.props;
+// The browser-language prompt is intentionally English, even on the Spanish page.
+const prompt = getContent('en').shared.language;
+---
+
+<div
+	class="language-experience"
+	data-language-experience
+	data-language={language}
+	data-es-href={esHref}
+	data-en-href={enHref}
+>
+	<dialog
+		class="language-dialog"
+		aria-labelledby="language-dialog-title"
+		aria-describedby="language-dialog-description"
+		data-language-dialog
+	>
+		<p class="language-dialog__eyebrow">Tiki Hostel Ometepe</p>
+		<h2 id="language-dialog-title">{prompt.dialogTitle}</h2>
+		<p id="language-dialog-description">{prompt.dialogMessage}</p>
+		<div class="language-dialog__actions">
+			<a
+				class="language-dialog__primary"
+				href={enHref}
+				lang="en"
+				data-language-choice="en"
+				data-language-prompt>{prompt.english}</a
+			>
+			<a
+				class="language-dialog__secondary"
+				href={esHref}
+				lang="es"
+				data-language-choice="es"
+				data-language-prompt>{prompt.continueSpanish}</a
+			>
+		</div>
+	</dialog>
+	<div
+		class="language-toast"
+		role="status"
+		aria-live="polite"
+		aria-atomic="true"
+		data-language-toast
+		data-message={content.shared.language.toast}
+		hidden
+	>
+	</div>
+</div>
+
+<script>
+	const root = document.querySelector<HTMLElement>(
+		'[data-language-experience]',
+	);
+	const dialog = root?.querySelector<HTMLDialogElement>(
+		'[data-language-dialog]',
+	);
+	const toast = root?.querySelector<HTMLElement>('[data-language-toast]');
+	const switcher = document.querySelector<HTMLElement>(
+		'[data-language-switcher]',
+	);
+	const trigger = switcher?.querySelector<HTMLButtonElement>(
+		'[data-language-trigger]',
+	);
+	const menu = switcher?.querySelector<HTMLElement>('[data-language-menu]');
+	const currentLanguage = root?.dataset.language;
+	const preferenceKey = 'tiki-hostel:language-preference';
+	const toastKey = 'tiki-hostel:language-toast-pending';
+
+	// Storage may be blocked, so language links must remain usable without it.
+	function readStored(key: string, session = false): string | null {
+		try {
+			return (session ? sessionStorage : localStorage).getItem(key);
+		} catch {
+			return null;
+		}
+	}
+
+	function writeStored(key: string, value: string, session = false): boolean {
+		try {
+			(session ? sessionStorage : localStorage).setItem(key, value);
+			return true;
+		} catch {
+			return false;
+		}
+	}
+
+	function takeStored(key: string, session = false): string | null {
+		try {
+			const storage = session ? sessionStorage : localStorage;
+			const value = storage.getItem(key);
+			storage.removeItem(key);
+			return value;
+		} catch {
+			return null;
+		}
+	}
+
+	function preference(): 'es' | 'en' | null {
+		// A persistent choice takes priority; session storage is the fallback.
+		const saved = readStored(preferenceKey) ?? readStored(preferenceKey, true);
+		return saved === 'es' || saved === 'en' ? saved : null;
+	}
+
+	function targetHref(language: 'es' | 'en'): string | undefined {
+		return language === 'es' ? root?.dataset.esHref : root?.dataset.enHref;
+	}
+
+	function closeMenu(returnFocus = false) {
+		if (!menu || !trigger) return;
+		menu.hidden = true;
+		trigger.setAttribute('aria-expanded', 'false');
+		if (returnFocus) trigger.focus();
+	}
+
+	function showToast() {
+		if (!toast) return;
+		toast.hidden = false;
+		toast.textContent = toast.dataset.message ?? '';
+		window.setTimeout(() => {
+			toast.hidden = true;
+			toast.textContent = '';
+		}, 5000);
+	}
+
+	function focusAfterDialog() {
+		const focusTarget = window.matchMedia('(max-width: 820px)').matches
+			? document.querySelector<HTMLElement>('[data-mobile-nav-trigger]')
+			: trigger;
+		focusTarget?.focus();
+	}
+
+	trigger?.addEventListener('click', () => {
+		if (!menu) return;
+		const opening = menu.hidden;
+		menu.hidden = !opening;
+		trigger.setAttribute('aria-expanded', String(opening));
+		if (opening) menu.querySelector<HTMLAnchorElement>('a')?.focus();
+	});
+
+	// Dismiss the desktop picker without trapping pointer or keyboard focus.
+	document.addEventListener('pointerdown', (event) => {
+		if (switcher && !switcher.contains(event.target as Node)) closeMenu();
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape' && menu && !menu.hidden && !dialog?.open) {
+			event.preventDefault();
+			closeMenu(true);
+		}
+	});
+
+	switcher?.addEventListener('focusout', () => {
+		window.requestAnimationFrame(() => {
+			if (switcher && !switcher.contains(document.activeElement)) closeMenu();
+		});
+	});
+
+	dialog?.addEventListener('cancel', (event) => event.preventDefault());
+	dialog?.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape') {
+			event.preventDefault();
+			event.stopPropagation();
+		}
+	});
+
+	document
+		.querySelectorAll<HTMLAnchorElement>('[data-language-choice]')
+		.forEach((link) => {
+			link.addEventListener('click', (event) => {
+				const chosen = link.dataset.languageChoice;
+				if (chosen !== 'es' && chosen !== 'en') return;
+				if (!writeStored(preferenceKey, chosen))
+					writeStored(preferenceKey, chosen, true);
+				const fromDialog = link.hasAttribute('data-language-prompt');
+				if (fromDialog) {
+					// Carry the confirmation toast to the destination language page.
+					if (!writeStored(toastKey, '1', true)) writeStored(toastKey, '1');
+					dialog?.close();
+				}
+				closeMenu();
+				if (chosen === currentLanguage) {
+					event.preventDefault();
+					if (fromDialog) {
+						takeStored(toastKey, true);
+						takeStored(toastKey);
+						focusAfterDialog();
+						showToast();
+					} else if (link.closest('[data-language-switcher]')) {
+						trigger?.focus();
+					}
+				}
+			});
+		});
+
+	function initializeLanguageExperience() {
+		// Explicit choice wins; browser language only prompts first-time English visitors.
+		const saved = preference();
+		if (saved && saved !== currentLanguage) {
+			const href = targetHref(saved);
+			if (href) window.location.replace(href + window.location.hash);
+			return;
+		}
+		const pendingSessionToast = takeStored(toastKey, true);
+		const pendingLocalToast = takeStored(toastKey);
+		if (pendingSessionToast === '1' || pendingLocalToast === '1') showToast();
+		if (saved || !dialog) return;
+		const primary = navigator.languages?.[0] || navigator.language || '';
+		if (!dialog.open && /^en(?:-|$)/i.test(primary)) {
+			dialog.showModal();
+			dialog
+				.querySelector<HTMLAnchorElement>('[data-language-choice="en"]')
+				?.focus();
+		}
+	}
+
+	initializeLanguageExperience();
+	// Back/forward cache restores a page without rerunning its scripts.
+	window.addEventListener('pageshow', (event) => {
+		if (event.persisted) initializeLanguageExperience();
+	});
+</script>

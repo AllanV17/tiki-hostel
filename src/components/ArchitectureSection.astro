@@ -1,36 +1,77 @@
 ---
+import type { SiteContent } from '../i18n';
+interface Props {
+	content: SiteContent;
+}
 import { Image } from 'astro:assets';
 import MediaPlaceholder from './MediaPlaceholder.astro';
 import madera from '../assets/madera.png';
 import treePineIcon from '../assets/icons/tree-pine.svg?url';
 import houseIcon from '../assets/icons/house.svg?url';
+const { content } = Astro.props;
 ---
 
-<section class="architecture section-space" id="arquitectura" aria-labelledby="architecture-title">
+<section
+	class="architecture section-space"
+	id="arquitectura"
+	aria-labelledby="architecture-title"
+>
 	<div class="architecture__inner container">
 		<div class="architecture__copy">
 			<div class="section-heading">
-				<p class="eyebrow eyebrow--terracotta">Arquitectura de Madera y Silencio</p>
-				<h2 class="section-title" id="architecture-title">Un refugio artesanal integrado en el entorno rural</h2>
+				<p class="eyebrow eyebrow--terracotta">
+					{content.home.architecture.eyebrow}
+				</p>
+				<h2 class="section-title" id="architecture-title">
+					{content.home.architecture.title}
+				</h2>
 			</div>
 			<div class="provisional-copy architecture__body">
-				<p>En Tiki, creemos que el verdadero lujo es el descanso, la conexion con la naturaleza y la cercania con otros. Nuestra estructura está diseñada para respirar de forma natural con la brisa del lago Cocibolca.</p>
-				<p>Aquí, la naturaleza dicta el ritmo. Despierta con el sonido de las aves, comparte comida e historias y descubre la vida rural de la isla.</p>
+				<p>{content.home.architecture.paragraphs[0]}</p>
+				<p>{content.home.architecture.paragraphs[1]}</p>
 			</div>
-			<ul class="architecture__features provisional-copy" aria-label="Características mencionadas en el diseño">
-				<li><img class="feature-icon" src={treePineIcon} width="20" height="20" alt="" />Entorno Rural y Conservación Activa</li>
-				<li><img class="feature-icon" src={houseIcon} width="20" height="20" alt="" />Arquitectura de Madera Abierta a la Brisa</li>
+			<ul
+				class="architecture__features provisional-copy"
+				aria-label={content.home.architecture.featuresLabel}
+			>
+				<li>
+					<img
+						class="feature-icon"
+						src={treePineIcon}
+						width="20"
+						height="20"
+						alt=""
+					/>{content.home.architecture.features[0]}
+				</li>
+				<li>
+					<img
+						class="feature-icon"
+						src={houseIcon}
+						width="20"
+						height="20"
+						alt=""
+					/>{content.home.architecture.features[1]}
+				</li>
 			</ul>
 		</div>
 
 		<div class="architecture__visual">
-			<MediaPlaceholder label="Arquitectura del hostal" variant="olive" className="architecture__photo" />
+			<MediaPlaceholder
+				content={content}
+				label={content.home.architecture.image}
+				variant="olive"
+				className="architecture__photo"
+			/>
 			<div class="architecture__caption">
 				<blockquote class="provisional-copy">
-					<p>“La madera cruje suavemente por la noche, recordándonos que estamos vivos en medio de la isla.”</p>
-					
+					<p>{content.home.architecture.quote}</p>
 				</blockquote>
-				<Image src={madera} alt="Detalle de una estructura de madera" class="architecture__detail" loading="lazy" />
+				<Image
+					src={madera}
+					alt={content.home.architecture.detailAlt}
+					class="architecture__detail"
+					loading="lazy"
+				/>
 			</div>
 		</div>
 	</div>

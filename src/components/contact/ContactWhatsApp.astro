@@ -1,11 +1,29 @@
-<section class="contact-whatsapp" id="whatsapp" aria-labelledby="contact-whatsapp-title">
+---
+import type { SiteContent } from '../../i18n';
+interface Props {
+	content: SiteContent;
+}
+const { content } = Astro.props;
+---
+
+<section
+	class="contact-whatsapp"
+	id="whatsapp"
+	aria-labelledby="contact-whatsapp-title"
+>
 	<div class="contact-container contact-whatsapp__inner">
 		<div>
-			<p class="contact-eyebrow">Contacto directo</p>
-			<h2 id="contact-whatsapp-title">Escríbenos por WhatsApp</h2>
-			<p>Podrás consultar directamente al equipo de Tiki. El número y el enlace están pendientes de confirmar.</p>
+			<p class="contact-eyebrow">{content.contact.whatsapp.eyebrow}</p>
+			<h2 id="contact-whatsapp-title">{content.contact.whatsapp.title}</h2>
+			<p>{content.contact.whatsapp.description}</p>
 		</div>
-		<!-- Enlace provisional: sustituir por la URL real de WhatsApp cuando se confirme. -->
-		<a class="button" href="#whatsapp" data-link-placeholder aria-label="Hablar por WhatsApp; enlace pendiente de confirmar">Hablar por WhatsApp</a>
+		<!-- WhatsApp URL is pending client confirmation. -->
+		<a
+			class="button"
+			href="#whatsapp"
+			data-link-placeholder
+			aria-label={content.contact.whatsapp.buttonLabel}
+			>{content.contact.whatsapp.button}</a
+		>
 	</div>
 </section>

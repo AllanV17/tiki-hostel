@@ -1,36 +1,70 @@
 ---
+import type { SiteContent } from '../../i18n';
+interface Props {
+	content: SiteContent;
+}
 import HostelImagePlaceholder from './HostelImagePlaceholder.astro';
+const { content } = Astro.props;
 ---
 
 <section class="hostel-spaces" aria-labelledby="hostel-spaces-title">
 	<div class="hostel-container">
 		<header class="hostel-section-head hostel-spaces__heading">
 			<div>
-				<p class="hostel-eyebrow">Espacios del hostal</p>
-				<h2 id="hostel-spaces-title">Lugares para compartir y hacer<br class="desktop-break" /> una pausa</h2>
+				<p class="hostel-eyebrow">{content.hostel.spaces.eyebrow}</p>
+				<h2 id="hostel-spaces-title">
+					{content.hostel.spaces.title[0]}<br class="desktop-break" />{
+						content.hostel.spaces.title[1]
+					}
+				</h2>
 			</div>
-			<p>Áreas comunes e instalaciones se organizarán aquí con una narrativa visual más abierta.</p>
+			<p>{content.hostel.spaces.description}</p>
 		</header>
 		<div class="hostel-spaces__grid">
-			<article class="hostel-space hostel-space--primary" aria-labelledby="hostel-space-first-title">
-				<HostelImagePlaceholder label="Espacio común / vista protagonista" className="hostel-space__main-image" />
+			<article
+				class="hostel-space hostel-space--primary"
+				aria-labelledby="hostel-space-first-title"
+			>
+				<HostelImagePlaceholder
+					content={content}
+					label={content.hostel.spaces.firstImage}
+					className="hostel-space__main-image"
+				/>
 				<div class="hostel-space__caption">
 					<div>
-						<p class="hostel-space__index"><span>01</span><span>Área común provisional</span></p>
-						<h3 id="hostel-space-first-title">Un lugar para encontrarse</h3>
+						<p class="hostel-space__index">
+							<span>01</span><span>{content.hostel.spaces.firstIndex}</span>
+						</p>
+						<h3 id="hostel-space-first-title">
+							{content.hostel.spaces.firstTitle}
+						</h3>
 					</div>
-					<p>Descripción breve — por confirmar.</p>
+					<p>{content.hostel.spaces.firstDescription}</p>
 				</div>
 			</article>
-			<article class="hostel-space hostel-space--secondary" aria-labelledby="hostel-space-second-title">
-				<!-- Previews estáticas que podrán formar una galería más adelante. -->
+			<article
+				class="hostel-space hostel-space--secondary"
+				aria-labelledby="hostel-space-second-title"
+			>
 				<div class="hostel-space__previews">
-					<HostelImagePlaceholder label="Espacio / ambiente" variant="secondary" />
-					<HostelImagePlaceholder label="Detalle" variant="detail" />
+					<HostelImagePlaceholder
+						content={content}
+						label={content.hostel.spaces.secondImages[0]}
+						variant="secondary"
+					/>
+					<HostelImagePlaceholder
+						content={content}
+						label={content.hostel.spaces.secondImages[1]}
+						variant="detail"
+					/>
 				</div>
-				<p class="hostel-space__index"><span>02</span><span>Otra área provisional</span></p>
-				<h3 id="hostel-space-second-title">Rincones entre interior y paisaje</h3>
-				<p>Texto breve para presentar el uso y la atmósfera del espacio.</p>
+				<p class="hostel-space__index">
+					<span>02</span><span>{content.hostel.spaces.secondIndex}</span>
+				</p>
+				<h3 id="hostel-space-second-title">
+					{content.hostel.spaces.secondTitle}
+				</h3>
+				<p>{content.hostel.spaces.secondDescription}</p>
 			</article>
 		</div>
 	</div>

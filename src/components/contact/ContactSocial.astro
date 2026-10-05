@@ -1,25 +1,43 @@
 ---
-const networks = [
-	{ name: 'Instagram', note: 'Perfil y enlace pendientes de confirmar.' },
-	{ name: 'Facebook', note: 'Página y enlace pendientes de confirmar.' },
-	{ name: 'TikTok', note: 'Perfil y enlace pendientes de confirmar.' },
-];
+import type { SiteContent } from '../../i18n';
+const { content } = Astro.props;
+interface Props {
+	content: SiteContent;
+}
+const networks = content.contact.social.networks;
 ---
 
-<section class="contact-social" id="redes" aria-labelledby="contact-social-title">
+<section
+	class="contact-social"
+	id="redes"
+	aria-labelledby="contact-social-title"
+>
 	<div class="contact-container">
 		<div class="contact-section-heading">
-			<p class="contact-eyebrow">Redes sociales</p>
-			<h2 id="contact-social-title">Síguenos</h2>
+			<p class="contact-eyebrow">{content.contact.social.eyebrow}</p>
+			<h2 id="contact-social-title">{content.contact.social.title}</h2>
 		</div>
 		<ul class="contact-social__list">
-			{networks.map((network) => (
-				<li>
-					<div><h3>{network.name}</h3><p>{network.note}</p></div>
-					<!-- Enlace provisional: sustituir por la URL externa confirmada de cada red. -->
-					<a href="#redes" data-link-placeholder aria-label={`${network.name}; enlace pendiente de confirmar`}>Visitar perfil <span aria-hidden="true">↗</span></a>
-				</li>
-			))}
+			<!-- Each social profile needs its confirmed external URL. -->
+			{
+				networks.map((network) => (
+					<li>
+						<div>
+							<>
+								<h3>{network.name}</h3>
+								<p>{network.note}</p>
+							</>
+						</div>
+						<a
+							href="#redes"
+							data-link-placeholder
+							aria-label={`${network.name}; ${content.contact.social.profilePending}`}
+						>
+							{content.contact.social.visit} <span aria-hidden="true">↗</span>
+						</a>
+					</li>
+				))
+			}
 		</ul>
 	</div>
 </section>

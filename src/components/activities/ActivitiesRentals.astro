@@ -1,34 +1,46 @@
 ---
+import type { SiteContent } from '../../i18n';
+interface Props {
+	content: SiteContent;
+}
 import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
+const { content } = Astro.props;
 
-const rentals = [
-	{ name: 'Scooter', number: '01', image: 'Alquiler de scooter' },
-	{ name: 'Cuatrimoto', number: '02', image: 'Alquiler de cuatrimoto' },
-	{ name: 'Bicicleta', number: '03', image: 'Alquiler de bicicleta' },
-];
+const rentals = content.activities.rentals.items;
 ---
 
-<section class="activities-rentals activities-container" aria-labelledby="rentals-title">
+<section
+	class="activities-rentals activities-container"
+	aria-labelledby="rentals-title"
+>
 	<div class="activities-section-head">
 		<div>
-			<p class="activities-eyebrow">Explora a tu ritmo</p>
-			<h2 id="rentals-title">Recorre los caminos a tu<br /> ritmo</h2>
+			<p class="activities-eyebrow">{content.activities.rentals.eyebrow}</p>
+			<h2 id="rentals-title">
+				{content.activities.rentals.title[0]}<br />{
+					content.activities.rentals.title[1]
+				}
+			</h2>
 		</div>
-		<p>Alquileres sencillos para recorrer la isla por tu cuenta.</p>
+		<p>{content.activities.rentals.description}</p>
 	</div>
 	<div class="activities-rentals__grid">
-		{rentals.map((rental) => (
-			<article class="rental-card">
-				<div class="rental-card__heading">
-					<h3>{rental.name}</h3>
-					<span>{rental.number}</span>
-				</div>
-				<ActivityImagePlaceholder label={rental.image} />
-				<div class="rental-card__bottom">
-					<p>Detalles del alquiler — por confirmar</p>
-					<a href="#consulta-actividades">Consulta a Tiki <span aria-hidden="true">→</span></a>
-				</div>
-			</article>
-		))}
+		{
+			rentals.map((rental, index) => (
+				<article class="rental-card">
+					<div class="rental-card__heading">
+						<h3>{rental.name}</h3>
+						<span>{String(index + 1).padStart(2, '0')}</span>
+					</div>
+					<ActivityImagePlaceholder content={content} label={rental.image} />
+					<div class="rental-card__bottom">
+						<p>{content.activities.rentals.pending}</p>
+						<a href="#consulta-actividades">
+							{content.activities.rentals.ask} <span aria-hidden="true">→</span>
+						</a>
+					</div>
+				</article>
+			))
+		}
 	</div>
 </section>

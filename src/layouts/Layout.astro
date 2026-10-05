@@ -1,20 +1,35 @@
 ---
 import '../styles/global.css';
 import { withBase } from '../utils/withBase';
+import type { Language, SiteContent } from '../i18n';
+import { getLocalizedHref, type Page } from '../i18n/routes';
 
 interface Props {
+	content: SiteContent;
+	language: Language;
+	page: Page;
 	title?: string;
 	description?: string;
 }
 
 const {
-	title = 'Tiki Hostel Ometepe',
-	description = 'Información sobre Tiki Hostel Ometepe, en Playa Santa Cruz, Isla de Ometepe, Nicaragua.',
+	content,
+	language,
+	page,
+	title = content.layout.title,
+	description = content.layout.description,
 } = Astro.props;
+const site = Astro.site ?? Astro.url;
+// Canonical and hreflang URLs must remain absolute across both language routes and the site base.
+const absoluteHref = (targetLanguage: Language) =>
+	new URL(getLocalizedHref(page, targetLanguage), site).href;
+const esHref = absoluteHref('es');
+const enHref = absoluteHref('en');
+const canonicalHref = language === 'es' ? esHref : enHref;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={language}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,9 +38,16 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<meta name="theme-color" content="#faf6f0" />
+		<link rel="canonical" href={canonicalHref} />
+		<link rel="alternate" hreflang="es" href={esHref} />
+		<link rel="alternate" hreflang="en" href={enHref} />
+		<link rel="alternate" hreflang="x-default" href={esHref} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
 		<title>{title}</title>
 	</head>
 	<body>

@@ -1,11 +1,26 @@
 ---
+import type { SiteContent } from '../../i18n';
+const { content } = Astro.props;
+interface Props {
+	content: SiteContent;
+}
 ---
 
-<section class="hostel-contact" id="consulta-hostal" aria-labelledby="hostel-contact-title">
+<section
+	class="hostel-contact"
+	id="consulta-hostal"
+	aria-labelledby="hostel-contact-title"
+>
 	<div class="hostel-container">
-		<p class="hostel-eyebrow">Consulta y reserva</p>
-		<h2 id="hostel-contact-title">¿Quieres quedarte en Tiki?</h2>
-		<p>Contacta al equipo para consultar detalles y continuar con una reserva externa.</p>
-		<a class="button" href="#consulta-hostal" data-link-placeholder aria-label="Consultar por WhatsApp; enlace pendiente de configurar">Consultar por WhatsApp</a>
+		<p class="hostel-eyebrow">{content.hostel.contact.eyebrow}</p>
+		<h2 id="hostel-contact-title">{content.hostel.contact.title}</h2>
+		<p>{content.hostel.contact.description}</p>
+		<a
+			class="button"
+			href="#consulta-hostal"
+			data-link-placeholder
+			aria-label={content.hostel.contact.buttonLabel}
+			>{content.hostel.contact.button}</a
+		>
 	</div>
 </section>

@@ -1,5 +1,10 @@
 ---
+import type { SiteContent } from '../../i18n';
+interface Props {
+	content: SiteContent;
+}
 import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
+const { content } = Astro.props;
 ---
 
 <section class="sleepover" aria-labelledby="sleepover-title">
@@ -7,12 +12,19 @@ import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
 		<div class="activities-container">
 			<div class="activities-section-head sleepover__feature-heading">
 				<div>
-					<p class="activities-eyebrow">Experiencia destacada</p>
-					<h2 id="sleepover-title">Noche en el volcán Maderas</h2>
+					<p class="activities-eyebrow">
+						{content.activities.sleepover.eyebrow}
+					</p>
+					<h2 id="sleepover-title">{content.activities.sleepover.title}</h2>
 				</div>
-				<p>Una propuesta inmersiva para pasar la noche. Los detalles completos de la experiencia están pendientes.</p>
+				<p>{content.activities.sleepover.description}</p>
 			</div>
-			<ActivityImagePlaceholder label="Noche en Maderas / imagen destacada" variant="dark" className="sleepover__feature-image" />
+			<ActivityImagePlaceholder
+				content={content}
+				label={content.activities.sleepover.image}
+				variant="dark"
+				className="sleepover__feature-image"
+			/>
 		</div>
 	</div>
 
@@ -20,66 +32,112 @@ import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
 		<div class="activities-container">
 			<div class="sleepover__story-grid">
 				<div class="sleepover__story">
-					<p class="activities-eyebrow">La historia</p>
-					<h3>Volcán arriba, hacia la<br /> noche</h3>
-					<p>El texto provisional describirá la ruta, el ambiente nocturno y el regreso a Tiki.</p>
-					<blockquote>“Espacio reservado para un relato de primera mano desde la montaña.”</blockquote>
+					<p class="activities-eyebrow">
+						{content.activities.sleepover.storyEyebrow}
+					</p>
+					<h3>
+						{content.activities.sleepover.storyTitle[0]}<br />{
+							content.activities.sleepover.storyTitle[1]
+						}
+					</h3>
+					<p>{content.activities.sleepover.story}</p>
+					<blockquote>{content.activities.sleepover.quote}</blockquote>
 				</div>
 				<div class="sleepover__included">
-					<h3>Qué incluye</h3>
-					<p>Aún no se ha proporcionado la lista definitiva de lo que incluye.</p>
+					<h3>{content.activities.sleepover.includedTitle}</h3>
+					<p>{content.activities.sleepover.included}</p>
 					<ul>
-						<li>Detalles del guía — por confirmar</li>
-						<li>Preparativos para dormir — por confirmar</li>
-						<li>Comida y agua — por confirmar</li>
-						<li>Transporte — por confirmar</li>
+						<li>{content.activities.sleepover.includedItems[0]}</li>
+						<li>{content.activities.sleepover.includedItems[1]}</li>
+						<li>{content.activities.sleepover.includedItems[2]}</li>
+						<li>{content.activities.sleepover.includedItems[3]}</li>
 					</ul>
 				</div>
 			</div>
 
 			<div class="sleepover__gallery" aria-labelledby="sleepover-gallery-title">
 				<div class="sleepover__gallery-heading">
-					<h3 id="sleepover-gallery-title">La ruta en imágenes</h3>
-					<span class="activities-eyebrow">Galería horizontal</span>
+					<h3 id="sleepover-gallery-title">
+						{content.activities.sleepover.galleryTitle}
+					</h3>
+					<span class="activities-eyebrow"
+						>{content.activities.sleepover.galleryEyebrow}</span
+					>
 				</div>
 				<div class="sleepover__gallery-track">
-					<ActivityImagePlaceholder label="Galería de la noche / llegada" />
-					<ActivityImagePlaceholder label="Galería de la noche / sendero" variant="dark" />
-					<ActivityImagePlaceholder label="Siguiente imagen" />
+					<ActivityImagePlaceholder
+						content={content}
+						label={content.activities.sleepover.galleryImages[0]}
+					/>
+					<ActivityImagePlaceholder
+						content={content}
+						label={content.activities.sleepover.galleryImages[1]}
+						variant="dark"
+					/>
+					<ActivityImagePlaceholder
+						content={content}
+						label={content.activities.sleepover.galleryImages[2]}
+					/>
 				</div>
 			</div>
 
 			<div class="sleepover__extension">
 				<div>
-					<p class="activities-eyebrow">Añade otra aventura</p>
-					<h3>Prolonga la ruta</h3>
-					<p>Espacio para una experiencia complementaria opcional. Detalles por confirmar.</p>
+					<p class="activities-eyebrow">
+						{content.activities.sleepover.extensionEyebrow}
+					</p>
+					<h3>{content.activities.sleepover.extensionTitle}</h3>
+					<p>{content.activities.sleepover.extension}</p>
 				</div>
-				<ActivityImagePlaceholder label="Aventura adicional" variant="dark" />
+				<ActivityImagePlaceholder
+					content={content}
+					label={content.activities.sleepover.extensionImage}
+					variant="dark"
+				/>
 			</div>
 
 			<div class="sleepover__practical">
 				<div class="activities-section-head">
 					<div>
-						<p class="activities-eyebrow">Información práctica</p>
-						<h3>Antes de salir</h3>
+						<p class="activities-eyebrow">
+							{content.activities.sleepover.practicalEyebrow}
+						</p>
+						<h3>{content.activities.sleepover.practicalTitle}</h3>
 					</div>
-					<p>Todos los detalles prácticos siguen siendo provisionales hasta su confirmación.</p>
+					<p>{content.activities.sleepover.practical}</p>
 				</div>
 				<dl>
-					<div><dt>Duración</dt><dd>Por confirmar</dd></div>
-					<div><dt>Dificultad</dt><dd>Por confirmar</dd></div>
-					<div><dt>Punto de encuentro</dt><dd>Por confirmar</dd></div>
-					<div><dt>Qué llevar</dt><dd>Lista pendiente</dd></div>
+					<div>
+						<dt>{content.activities.sleepover.facts[0].label}</dt><dd>
+							{content.activities.sleepover.facts[0].value}
+						</dd>
+					</div>
+					<div>
+						<dt>{content.activities.sleepover.facts[1].label}</dt><dd>
+							{content.activities.sleepover.facts[1].value}
+						</dd>
+					</div>
+					<div>
+						<dt>{content.activities.sleepover.facts[2].label}</dt><dd>
+							{content.activities.sleepover.facts[2].value}
+						</dd>
+					</div>
+					<div>
+						<dt>{content.activities.sleepover.facts[3].label}</dt><dd>
+							{content.activities.sleepover.facts[3].value}
+						</dd>
+					</div>
 				</dl>
 			</div>
 
 			<div class="sleepover__enquiry">
 				<div>
-					<h3>¿Te interesa pasar la noche en el volcán?</h3>
-					<p>Consulta al equipo de Tiki los detalles actuales y la disponibilidad.</p>
+					<h3>{content.activities.sleepover.enquiryTitle}</h3>
+					<p>{content.activities.sleepover.enquiry}</p>
 				</div>
-				<a class="button button--small" href="#consulta-actividades">Consulta Directa</a>
+				<a class="button button--small" href="#consulta-actividades"
+					>{content.shared.nav.direct}</a
+				>
 			</div>
 		</div>
 	</div>

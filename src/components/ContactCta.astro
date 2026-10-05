@@ -1,12 +1,29 @@
 ---
+import type { SiteContent } from '../i18n';
+const { content } = Astro.props;
+interface Props {
+	content: SiteContent;
+}
 ---
 
-<section class="contact-cta section-space" id="contacto" aria-labelledby="contact-title">
+<section
+	class="contact-cta section-space"
+	id="contacto"
+	aria-labelledby="contact-title"
+>
 	<div class="contact-cta__inner container provisional-copy">
-		<h2 class="section-title" id="contact-title">¿Quieres trazar tu próxima ruta con nosotros?</h2>
-		<p>Por favor, envíanos tu consulta de forma directa. No gestionamos reservas automáticas para asegurar que la disponibilidad esté sincronizada y respetemos la capacidad de carga del hostal.</p>
+		<h2 class="section-title" id="contact-title">
+			{content.home.contact.title}
+		</h2>
+		<p>{content.home.contact.description}</p>
 		<div class="contact-cta__actions">
-			<a class="button" href="#contacto" data-link-placeholder aria-label="Consultar por WhatsApp, enlace pendiente de configurar">Consultar por WhatsApp</a>
+			<a
+				class="button"
+				href="#contacto"
+				data-link-placeholder
+				aria-label={content.home.contact.buttonLabel}
+				>{content.home.contact.button}</a
+			>
 		</div>
 	</div>
 </section>

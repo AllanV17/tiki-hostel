@@ -1,50 +1,319 @@
 ---
+import type { Language, SiteContent } from '../i18n';
 import { Image } from 'astro:assets';
 import logo from '../assets/tiki-hostel-logo-blanco.png';
-import { withBase } from '../utils/withBase';
+import LanguageExperience from './LanguageExperience.astro';
+import { getEquivalentHref, getLocalizedHref, type Page } from '../i18n/routes';
+import '../styles/language.css';
+const { content } = Astro.props;
 
 interface Props {
+	content: SiteContent;
+	language: Language;
 	variant?: 'overlay' | 'light';
-	activePage?: 'home' | 'hostel' | 'activities' | 'contact';
+	activePage?: Page;
 }
 
-const { variant = 'overlay', activePage = 'home' } = Astro.props;
+const { language, variant = 'overlay', activePage = 'home' } = Astro.props;
 const isHome = activePage === 'home';
 const isHostel = activePage === 'hostel';
 const isActivities = activePage === 'activities';
 const isContact = activePage === 'contact';
-const homeHref = isHome ? '#inicio' : withBase('/');
-const hostelHref = withBase('/hostal/');
-const contactHref = isActivities ? '#consulta-actividades' : isHostel ? '#consulta-hostal' : isContact ? '#whatsapp' : '#contacto';
-const activitiesHref = withBase('/actividades/');
-const contactPageHref = withBase('/contacto/');
+const homeHref = getLocalizedHref('home', language);
+const hostelHref = getLocalizedHref('hostel', language);
+// Until direct contact URLs are confirmed, the CTA targets the relevant page section.
+const contactHref = isActivities
+	? '#consulta-actividades'
+	: isHostel
+		? '#consulta-hostal'
+		: isContact
+			? '#whatsapp'
+			: '#contacto';
+const activitiesHref = getLocalizedHref('activities', language);
+const contactPageHref = getLocalizedHref('contact', language);
+// Both language controls keep visitors on the equivalent page.
+const currentHref = getLocalizedHref(activePage, language);
+const equivalentHref = getEquivalentHref(activePage, language);
+const esHref = language === 'es' ? currentHref : equivalentHref;
+const enHref = language === 'en' ? currentHref : equivalentHref;
 ---
 
-<header class:list={['site-header', variant === 'light' && 'site-header--light']}>
+<header
+	class:list={['site-header', variant === 'light' && 'site-header--light']}
+>
 	<div class="site-header__inner container">
-		<a class="brand" href={homeHref} aria-label="Tiki Hostel Ometepe. Ir al inicio">
+		<a class="brand" href={homeHref} aria-label={content.shared.nav.brandLabel}>
 			<span class="brand__logo-frame">
 				<Image src={logo} alt="" class="brand__logo" loading="eager" />
 			</span>
 		</a>
 
-		<nav class="desktop-nav" aria-label="Navegación principal">
-			<a href={homeHref} aria-current={isHome ? 'page' : undefined}>Inicio</a>
-			<a href={hostelHref} aria-current={isHostel ? 'page' : undefined}>Hostal</a>
-			<a href={activitiesHref} aria-current={isActivities ? 'page' : undefined}>Actividades</a>
-			<a href={contactPageHref} aria-current={isContact ? 'page' : undefined}>Contacto</a>
-			<a class="button button--small" href={contactHref} data-link-placeholder={!isActivities ? '' : undefined} aria-label={!isActivities ? 'Consulta directa, enlace pendiente de configurar' : undefined}>Consulta Directa</a>
+		<nav class="desktop-nav" aria-label={content.shared.nav.desktopLabel}>
+			<a href={homeHref} aria-current={isHome ? 'page' : undefined}
+				>{content.shared.nav.home}</a
+			>
+			<a href={hostelHref} aria-current={isHostel ? 'page' : undefined}
+				>{content.shared.nav.hostel}</a
+			>
+			<a href={activitiesHref} aria-current={isActivities ? 'page' : undefined}
+				>{content.shared.nav.activities}</a
+			>
+			<a href={contactPageHref} aria-current={isContact ? 'page' : undefined}
+				>{content.shared.nav.contact}</a
+			>
+			<a
+				class="button button--small"
+				href={contactHref}
+				data-link-placeholder={!isActivities ? '' : undefined}
+				aria-label={!isActivities
+					? content.shared.nav.directPending
+					: undefined}>{content.shared.nav.direct}</a
+			>
+			<div class="language-switcher" data-language-switcher>
+				<button
+					class="language-switcher__trigger"
+					type="button"
+					aria-label={content.shared.language.switchLabel}
+					aria-expanded="false"
+					aria-controls="language-menu"
+					data-language-trigger
+				>
+					<svg
+						viewBox="0 0 24 24"
+						width="20"
+						height="20"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="1.7"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"
+						focusable="false"
+					>
+						<circle cx="12" cy="12" r="9"></circle>
+						<path
+							d="M3 12h18M12 3c2.7 2.4 4.1 5.4 4.1 9s-1.4 6.6-4.1 9c-2.7-2.4-4.1-5.4-4.1-9S9.3 5.4 12 3Z"
+						></path>
+					</svg>
+				</button>
+				<div
+					class="language-switcher__menu"
+					id="language-menu"
+					role="group"
+					aria-label={content.shared.language.groupLabel}
+					data-language-menu
+					hidden
+				>
+					<a
+						href={esHref}
+						lang="es"
+						aria-current={language === 'es' ? 'true' : undefined}
+						data-language-choice="es">{content.shared.language.spanish}</a
+					>
+					<a
+						href={enHref}
+						lang="en"
+						aria-current={language === 'en' ? 'true' : undefined}
+						data-language-choice="en">{content.shared.language.english}</a
+					>
+				</div>
+			</div>
 		</nav>
 
-		<details class="mobile-nav">
-			<summary>Menú</summary>
-			<nav class="mobile-nav__links" aria-label="Navegación móvil">
-				<a href={homeHref} aria-current={isHome ? 'page' : undefined}>Inicio</a>
-				<a href={hostelHref} aria-current={isHostel ? 'page' : undefined}>Hostal</a>
-				<a href={activitiesHref} aria-current={isActivities ? 'page' : undefined}>Actividades</a>
-				<a href={contactPageHref} aria-current={isContact ? 'page' : undefined}>Contacto</a>
-				<a class="button button--small" href={contactHref} data-link-placeholder={!isActivities ? '' : undefined} aria-label={!isActivities ? 'Consulta directa, enlace pendiente de configurar' : undefined}>Consulta Directa</a>
-			</nav>
-		</details>
+		<div class="mobile-nav">
+			<button
+				class="mobile-nav__trigger"
+				type="button"
+				aria-label={language === 'es'
+					? 'Abrir menú de navegación'
+					: 'Open navigation menu'}
+				aria-expanded="false"
+				aria-controls="mobile-nav-drawer"
+				data-mobile-nav-trigger
+			>
+				<svg
+					viewBox="0 0 24 24"
+					width="24"
+					height="24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.8"
+					stroke-linecap="round"
+					aria-hidden="true"
+					focusable="false"
+				>
+					<path d="M4 7h16M4 12h16M4 17h16"></path>
+				</svg>
+			</button>
+			<dialog
+				class="mobile-nav__drawer"
+				id="mobile-nav-drawer"
+				aria-label={content.shared.nav.mobileLabel}
+				data-mobile-nav-drawer
+			>
+				<div class="mobile-nav__top">
+					<button
+						class="mobile-nav__close"
+						type="button"
+						aria-label={language === 'es'
+							? 'Cerrar menú de navegación'
+							: 'Close navigation menu'}
+						data-mobile-nav-close
+					>
+						<svg
+							viewBox="0 0 24 24"
+							width="24"
+							height="24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
+							aria-hidden="true"
+							focusable="false"
+						>
+							<path d="M5 5l14 14M19 5 5 19"></path>
+						</svg>
+					</button>
+				</div>
+				<nav
+					class="mobile-nav__links"
+					aria-label={content.shared.nav.mobileLabel}
+				>
+					<a href={homeHref} aria-current={isHome ? 'page' : undefined}
+						>{content.shared.nav.home}</a
+					>
+					<a href={hostelHref} aria-current={isHostel ? 'page' : undefined}
+						>{content.shared.nav.hostel}</a
+					>
+					<a
+						href={activitiesHref}
+						aria-current={isActivities ? 'page' : undefined}
+						>{content.shared.nav.activities}</a
+					>
+					<a
+						href={contactPageHref}
+						aria-current={isContact ? 'page' : undefined}
+						>{content.shared.nav.contact}</a
+					>
+					<a
+						class="button button--small"
+						href={contactHref}
+						data-link-placeholder={!isActivities ? '' : undefined}
+						aria-label={!isActivities
+							? content.shared.nav.directPending
+							: undefined}>{content.shared.nav.direct}</a
+					>
+					<div
+						class="mobile-nav__languages"
+						role="group"
+						aria-label={content.shared.language.groupLabel}
+					>
+						<span class="mobile-nav__language-label"
+							>{content.shared.language.groupLabel}</span
+						>
+						<div class="mobile-nav__language-options">
+							<a
+								href={esHref}
+								lang="es"
+								aria-current={language === 'es' ? 'true' : undefined}
+								data-language-choice="es">{content.shared.language.spanish}</a
+							>
+							<a
+								href={enHref}
+								lang="en"
+								aria-current={language === 'en' ? 'true' : undefined}
+								data-language-choice="en">{content.shared.language.english}</a
+							>
+						</div>
+					</div>
+				</nav>
+			</dialog>
+		</div>
 	</div>
 </header>
+
+<LanguageExperience
+	content={content}
+	language={language}
+	esHref={esHref}
+	enHref={enHref}
+/>
+
+<script>
+	const mobileTrigger = document.querySelector<HTMLButtonElement>(
+		'[data-mobile-nav-trigger]',
+	);
+	const mobileDrawer = document.querySelector<HTMLDialogElement>(
+		'[data-mobile-nav-drawer]',
+	);
+	const mobileClose = mobileDrawer?.querySelector<HTMLButtonElement>(
+		'[data-mobile-nav-close]',
+	);
+	let closeTimer: number | undefined;
+	// Restore the page's previous scroll state after the modal drawer closes.
+	let previousBodyOverflow = '';
+	let previousHtmlOverflow = '';
+
+	function finishClose() {
+		if (!mobileDrawer?.open) return;
+		mobileDrawer.close();
+		mobileDrawer.classList.remove('mobile-nav__drawer--closing');
+		document.body.style.overflow = previousBodyOverflow;
+		document.documentElement.style.overflow = previousHtmlOverflow;
+		mobileTrigger?.setAttribute('aria-expanded', 'false');
+		mobileTrigger?.focus();
+	}
+
+	// Wait for the exit animation, except when reduced motion is requested.
+	function closeMobileDrawer(immediate = false) {
+		if (!mobileDrawer?.open) return;
+		window.clearTimeout(closeTimer);
+		if (
+			immediate ||
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches
+		) {
+			finishClose();
+			return;
+		}
+		mobileDrawer.classList.add('mobile-nav__drawer--closing');
+		closeTimer = window.setTimeout(finishClose, 220);
+	}
+
+	mobileTrigger?.addEventListener('click', () => {
+		if (!mobileDrawer || mobileDrawer.open) return;
+		previousBodyOverflow = document.body.style.overflow;
+		previousHtmlOverflow = document.documentElement.style.overflow;
+		document.body.style.overflow = 'hidden';
+		document.documentElement.style.overflow = 'hidden';
+		mobileDrawer.showModal();
+		mobileTrigger.setAttribute('aria-expanded', 'true');
+		mobileClose?.focus();
+	});
+
+	mobileClose?.addEventListener('click', () => closeMobileDrawer());
+	mobileDrawer?.addEventListener('cancel', (event) => {
+		event.preventDefault();
+		closeMobileDrawer();
+	});
+	// Backdrop clicks target the dialog; bounds separate them from clicks in the panel.
+	mobileDrawer?.addEventListener('click', (event) => {
+		if (event.target !== mobileDrawer) return;
+		const bounds = mobileDrawer.getBoundingClientRect();
+		if (
+			event.clientX < bounds.left ||
+			event.clientX > bounds.right ||
+			event.clientY < bounds.top ||
+			event.clientY > bounds.bottom
+		)
+			closeMobileDrawer();
+	});
+	mobileDrawer?.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => {
+		link.addEventListener('click', () => closeMobileDrawer(true));
+	});
+	// A modal left open after resizing would block the desktop navigation.
+	window
+		.matchMedia('(min-width: 821px)')
+		.addEventListener('change', (event) => {
+			if (event.matches) closeMobileDrawer(true);
+		});
+</script>

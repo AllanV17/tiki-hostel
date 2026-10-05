@@ -1,5 +1,8 @@
 ---
+import type { SiteContent } from '../../i18n';
+const { content } = Astro.props;
 interface Props {
+	content: SiteContent;
 	label: string;
 	variant?: 'light' | 'dark';
 	className?: string;
@@ -9,10 +12,18 @@ const { label, variant = 'light', className = '' } = Astro.props;
 ---
 
 <div
-	class:list={['activity-image-placeholder', `activity-image-placeholder--${variant}`, className]}
+	class:list={[
+		'activity-image-placeholder',
+		`activity-image-placeholder--${variant}`,
+		className,
+	]}
 	role="img"
-	aria-label={`${label}. Imagen pendiente de seleccionar.`}
+	aria-label={`${label}. ${content.shared.placeholder.imageSelect}`}
 >
-	<span class="activity-image-placeholder__label" aria-hidden="true">{label}</span>
-	<span class="activity-image-placeholder__pending" aria-hidden="true">Imagen pendiente de seleccionar</span>
+	<span class="activity-image-placeholder__label" aria-hidden="true"
+		>{label}</span
+	>
+	<span class="activity-image-placeholder__pending" aria-hidden="true"
+		>{content.shared.placeholder.imageToSelect}</span
+	>
 </div>

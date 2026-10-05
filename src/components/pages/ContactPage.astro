@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../SiteHeader.astro';
+import SiteFooter from '../SiteFooter.astro';
+import ContactHero from '../contact/ContactHero.astro';
+import ContactWhatsApp from '../contact/ContactWhatsApp.astro';
+import ContactLocation from '../contact/ContactLocation.astro';
+import ContactSocial from '../contact/ContactSocial.astro';
+import ContactBookings from '../contact/ContactBookings.astro';
+import ContactClosing from '../contact/ContactClosing.astro';
+import { getContent, type Language } from '../../i18n';
+import '../../styles/hostel.css';
+import '../../styles/contact.css';
+
+interface Props {
+	language: Language;
+}
+const { language } = Astro.props;
+const content = getContent(language);
+---
+
+<Layout
+	content={content}
+	language={language}
+	page="contact"
+	title={content.contact.meta.title}
+	description={content.contact.meta.description}
+>
+	<SiteHeader
+		content={content}
+		language={language}
+		variant="light"
+		activePage="contact"
+	/>
+	<!-- Contact details and external destinations are pending client confirmation. -->
+	<main class="contact-page" data-content-status="provisional">
+		<ContactHero content={content} />
+		<ContactWhatsApp content={content} />
+		<ContactLocation content={content} />
+		<ContactSocial content={content} />
+		<ContactBookings content={content} />
+		<ContactClosing content={content} />
+	</main>
+	<SiteFooter content={content} language={language} activePage="contact" />
+</Layout>

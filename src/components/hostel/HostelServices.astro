@@ -1,29 +1,37 @@
 ---
-const modules = [
-	{ number: '01', title: 'Servicio por definir' },
-	{ number: '02', title: 'Comodidad por definir' },
-	{ number: '03', title: 'Servicio por definir' },
-	{ number: '04', title: 'Comodidad por definir' },
-];
+import type { SiteContent } from '../../i18n';
+const { content } = Astro.props;
+interface Props {
+	content: SiteContent;
+}
+const modules = content.hostel.services.modules;
 ---
 
 <section class="hostel-services" aria-labelledby="hostel-services-title">
 	<div class="hostel-container">
 		<header class="hostel-section-head hostel-services__heading">
 			<div>
-				<p class="hostel-eyebrow">Servicios y comodidades</p>
-				<h2 id="hostel-services-title">Una base modular para<br class="desktop-break" /> completar después</h2>
+				<p class="hostel-eyebrow">{content.hostel.services.eyebrow}</p>
+				<h2 id="hostel-services-title">
+					{content.hostel.services.title[0]}<br class="desktop-break" />{
+						content.hostel.services.title[1]
+					}
+				</h2>
 			</div>
-			<p class="hostel-services__status">Contenido provisional</p>
+			<p class="hostel-services__status">{content.hostel.services.status}</p>
 		</header>
 		<div class="hostel-services__grid">
-			{modules.map((module) => (
-				<article class="hostel-service">
-					<span class="hostel-service__number">{module.number}</span>
-					<h3>{module.title}</h3>
-					<p>Contenido provisional — por confirmar</p>
-				</article>
-			))}
+			{
+				modules.map((title, index) => (
+					<article class="hostel-service">
+						<span class="hostel-service__number">
+							{String(index + 1).padStart(2, '0')}
+						</span>
+						<h3>{title}</h3>
+						<p>{content.hostel.services.pending}</p>
+					</article>
+				))
+			}
 		</div>
 	</div>
 </section>

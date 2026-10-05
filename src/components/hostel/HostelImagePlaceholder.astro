@@ -1,5 +1,8 @@
 ---
+import type { SiteContent } from '../../i18n';
+const { content } = Astro.props;
 interface Props {
+	content: SiteContent;
 	label: string;
 	className?: string;
 	variant?: 'main' | 'secondary' | 'detail';
@@ -11,8 +14,10 @@ const { label, className = '', variant = 'main' } = Astro.props;
 <div
 	class:list={['hostel-image', `hostel-image--${variant}`, className]}
 	role="img"
-	aria-label={`${label}. Fotografía pendiente de seleccionar.`}
+	aria-label={`${label}. ${content.shared.placeholder.photoSelect}`}
 >
 	<span class="hostel-image__label" aria-hidden="true">{label}</span>
-	<span class="hostel-image__pending" aria-hidden="true">Fotografía por seleccionar</span>
+	<span class="hostel-image__pending" aria-hidden="true"
+		>{content.shared.placeholder.photoToSelect}</span
+	>
 </div>

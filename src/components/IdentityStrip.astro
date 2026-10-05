@@ -1,17 +1,50 @@
 ---
+import type { SiteContent } from '../i18n';
+const { content } = Astro.props;
+interface Props {
+	content: SiteContent;
+}
 ---
 
-<aside class="identity-strip" aria-label="Identidad visual">
+<aside class="identity-strip" aria-label={content.home.identity.label}>
 	<div class="identity-strip__inner container">
 		<div class="identity-strip__copy">
-			<span class="identity-badge">Exploración Conceptual</span>
-			<p>La dualidad volcánica alineada con el horizonte del agua.</p>
+			<span class="identity-badge">{content.home.identity.badge}</span>
+			<p>{content.home.identity.description}</p>
 		</div>
-		<div class="identity-mark" role="img" aria-label="Símbolo de montañas, horizonte y agua">
-			<svg width="136" height="24" viewBox="0 0 136 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-				<path class="identity-mark__mountains" d="M6.89837 15.0801C11.2654 13.5101 15.6324 13.6501 19.9994 15.5001C24.5664 17.4401 29.1501 17.5001 33.7172 15.6901M13.3328 3L20 11L28.334 6L36.668 21H3.332L13.3328 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-				<line class="identity-mark__horizon" x1="56" y1="11.5" x2="96" y2="11.5" stroke="currentColor" />
-				<path class="identity-mark__water" d="M113.999 5.99931C114.599 6.49937 115.199 6.99943 116.499 6.99943C119 6.99943 119 4.9992 121.5 4.9992C124.1 4.9992 123.9 6.99943 126.5 6.99943C129 6.99943 129 4.9992 131.501 4.9992C132.801 4.9992 133.401 5.49926 134.001 5.99931M113.999 12C114.599 12.5001 115.199 13.0001 116.499 13.0001C119 13.0001 119 10.9999 121.5 10.9999C124.1 10.9999 123.9 13.0001 126.5 13.0001C129 13.0001 129 10.9999 131.501 10.9999C132.801 10.9999 133.401 11.4999 134.001 12M113.999 18.0007C114.599 18.5007 115.199 19.0008 116.499 19.0008C119 19.0008 119 17.0006 121.5 17.0006C124.1 17.0006 123.9 19.0008 126.5 19.0008C129 19.0008 129 17.0006 131.501 17.0006C132.801 17.0006 133.401 17.5006 134.001 18.0007" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+		<div
+			class="identity-mark"
+			role="img"
+			aria-label={content.home.identity.symbolLabel}
+		>
+			<svg
+				width="136"
+				height="24"
+				viewBox="0 0 136 24"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				aria-hidden="true"
+				focusable="false"
+			>
+				<path
+					class="identity-mark__mountains"
+					d="M6.89837 15.0801C11.2654 13.5101 15.6324 13.6501 19.9994 15.5001C24.5664 17.4401 29.1501 17.5001 33.7172 15.6901M13.3328 3L20 11L28.334 6L36.668 21H3.332L13.3328 3Z"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"></path>
+				<line
+					class="identity-mark__horizon"
+					x1="56"
+					y1="11.5"
+					x2="96"
+					y2="11.5"
+					stroke="currentColor"></line>
+				<path
+					class="identity-mark__water"
+					d="M113.999 5.99931C114.599 6.49937 115.199 6.99943 116.499 6.99943C119 6.99943 119 4.9992 121.5 4.9992C124.1 4.9992 123.9 6.99943 126.5 6.99943C129 6.99943 129 4.9992 131.501 4.9992C132.801 4.9992 133.401 5.49926 134.001 5.99931M113.999 12C114.599 12.5001 115.199 13.0001 116.499 13.0001C119 13.0001 119 10.9999 121.5 10.9999C124.1 10.9999 123.9 13.0001 126.5 13.0001C129 13.0001 129 10.9999 131.501 10.9999C132.801 10.9999 133.401 11.4999 134.001 12M113.999 18.0007C114.599 18.5007 115.199 19.0008 116.499 19.0008C119 19.0008 119 17.0006 121.5 17.0006C124.1 17.0006 123.9 19.0008 126.5 19.0008C129 19.0008 129 17.0006 131.501 17.0006C132.801 17.0006 133.401 17.5006 134.001 18.0007"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"></path>
 			</svg>
 		</div>
 	</div>

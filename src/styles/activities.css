@@ -25,11 +25,12 @@
 
 .activities-page h1,
 .activities-page h2,
-.activities-page h3,
-.activities-footer__brand > a {
+.activities-page h3 {
 	font-family: var(--font-display);
 	font-weight: 400;
-	font-variation-settings: 'SOFT' 0, 'WONK' 1;
+	font-variation-settings:
+		'SOFT' 0,
+		'WONK' 1;
 }
 
 .activities-section-head {
@@ -609,78 +610,6 @@
 	padding-inline: 28px;
 }
 
-.activities-footer {
-	--activities-clay: #d67a45;
-	padding-block: 78px 42px;
-	background: #222321;
-	color: #fff;
-}
-
-.activities-footer__main {
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) 140px 200px;
-	gap: 38px;
-	padding-bottom: 76px;
-}
-
-.activities-footer__brand > a {
-	font-size: 31px;
-	font-weight: 900;
-	text-decoration: none;
-}
-
-.activities-footer__brand p {
-	margin-top: 18px;
-	color: #a3a3a0;
-	font-size: 14px;
-}
-
-.activities-footer__links,
-.activities-footer__contact {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 16px;
-}
-
-.activities-footer h2 {
-	margin-bottom: 4px;
-	color: #999a97;
-	font-family: var(--font-body);
-	font-size: 11px;
-	font-weight: 600;
-	text-transform: uppercase;
-}
-
-.activities-footer__links a,
-.activities-footer__contact a {
-	color: #dededb;
-	font-size: 14px;
-	text-decoration: none;
-}
-
-.activities-footer__links a:hover,
-.activities-footer__contact a:hover {
-	text-decoration: underline;
-}
-
-.activities-footer__links a[aria-current='page'],
-.activities-footer__contact p {
-	color: var(--activities-clay);
-	font-size: 14px;
-	font-weight: 700;
-}
-
-.activities-footer__bottom {
-	display: flex;
-	justify-content: space-between;
-	gap: 24px;
-	padding-top: 52px;
-	border-top: 1px solid #42433f;
-	color: #777874;
-	font-size: 12px;
-}
-
 @media (max-width: 1100px) {
 	.activities-container {
 		width: calc(100% - 96px);
@@ -1055,25 +984,5 @@
 
 	.activities-contact__actions .button {
 		width: 100%;
-	}
-
-	.activities-footer {
-		padding-block: 64px 30px;
-	}
-
-	.activities-footer__main {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 42px 24px;
-		padding-bottom: 48px;
-	}
-
-	.activities-footer__brand {
-		grid-column: 1 / -1;
-	}
-
-	.activities-footer__bottom {
-		flex-direction: column;
-		gap: 10px;
-		padding-top: 28px;
 	}
 }

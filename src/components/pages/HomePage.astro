@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteHeader from '../SiteHeader.astro';
+import HeroSection from '../HeroSection.astro';
+import IdentityStrip from '../IdentityStrip.astro';
+import ArchitectureSection from '../ArchitectureSection.astro';
+import SpacesSection from '../SpacesSection.astro';
+import HumanExperienceSection from '../HumanExperienceSection.astro';
+import DocumentaryGallery from '../DocumentaryGallery.astro';
+import ContactCta from '../ContactCta.astro';
+import SiteFooter from '../SiteFooter.astro';
+import { getContent, type Language } from '../../i18n';
+
+interface Props {
+	language: Language;
+}
+const { language } = Astro.props;
+const content = getContent(language);
+---
+
+<Layout content={content} language={language} page="home">
+	<SiteHeader content={content} language={language} />
+	<!-- Figma copy remains provisional until the client validates commercial claims. -->
+	<main data-content-status="provisional">
+		<HeroSection content={content} />
+		<IdentityStrip content={content} />
+		<ArchitectureSection content={content} />
+		<SpacesSection content={content} />
+		<HumanExperienceSection content={content} />
+		<DocumentaryGallery content={content} />
+		<ContactCta content={content} />
+	</main>
+	<SiteFooter content={content} language={language} activePage="home" />
+</Layout>

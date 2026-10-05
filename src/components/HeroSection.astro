@@ -1,7 +1,12 @@
 ---
+import type { SiteContent } from '../i18n';
+interface Props {
+	content: SiteContent;
+}
 import { Image } from 'astro:assets';
-// Asset provisional: sustituir este import cuando se confirme la fotografía definitiva.
+// Replace this provisional image only after the final hero photography is approved.
 import heroImage from '../assets/hero/hero-provisional.png';
+const { content } = Astro.props;
 ---
 
 <section class="hero" id="inicio" aria-labelledby="hero-title">
@@ -20,10 +25,17 @@ import heroImage from '../assets/hero/hero-provisional.png';
 	<div class="hero__content container">
 		<div class="hero__intro">
 			<div class="hero__heading">
-				<p class="eyebrow">Ometepe - Rivas, Nicaragua.</p>
-				<h1 class="display-title" id="hero-title">Un refugio de madera entre dos volcanes y horizontes infinitos</h1>
+				<p class="eyebrow">{content.home.hero.eyebrow}</p>
+				<h1 class="display-title" id="hero-title">{content.home.hero.title}</h1>
 			</div>
-			<p class="hero__description">Tiki es un espacio vivo en el corazón rural de Ometepe, donde la arquitectura natural hecha de madera y el ritmo pausado del lago te devuelven a lo esencial.</p>
+			<p class="hero__description">{content.home.hero.description}</p>
+			<a
+				class="button hero__cta"
+				href="#contacto"
+				data-link-placeholder
+				aria-label={content.shared.nav.directPending}
+				>{content.shared.nav.direct}</a
+			>
 		</div>
 	</div>
 </section>

@@ -1,26 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import HostelFooter from '../components/hostel/HostelFooter.astro';
-import ContactHero from '../components/contact/ContactHero.astro';
-import ContactWhatsApp from '../components/contact/ContactWhatsApp.astro';
-import ContactLocation from '../components/contact/ContactLocation.astro';
-import ContactSocial from '../components/contact/ContactSocial.astro';
-import ContactBookings from '../components/contact/ContactBookings.astro';
-import ContactClosing from '../components/contact/ContactClosing.astro';
-import '../styles/hostel.css';
-import '../styles/contact.css';
+import ContactPage from '../components/pages/ContactPage.astro';
+import { defaultLanguage } from '../i18n';
 ---
 
-<Layout title="Contacto | Tiki Hostel Ometepe" description="Información provisional para contactar con Tiki Hostel Ometepe, encontrarlo y consultar sus plataformas de reserva.">
-	<SiteHeader variant="light" activePage="contact" />
-	<main class="contact-page" data-content-status="provisional">
-		<ContactHero />
-		<ContactWhatsApp />
-		<ContactLocation />
-		<ContactSocial />
-		<ContactBookings />
-		<ContactClosing />
-	</main>
-	<HostelFooter activePage="contact" />
-</Layout>
+<ContactPage language={defaultLanguage} />

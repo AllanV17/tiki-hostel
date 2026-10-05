@@ -1,27 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import ActivitiesHero from '../components/activities/ActivitiesHero.astro';
-import ActivitiesRoutes from '../components/activities/ActivitiesRoutes.astro';
-import SleepoverExperience from '../components/activities/SleepoverExperience.astro';
-import ActivitiesRentals from '../components/activities/ActivitiesRentals.astro';
-import ActivitiesContact from '../components/activities/ActivitiesContact.astro';
-import ActivitiesFooter from '../components/activities/ActivitiesFooter.astro';
-import '../styles/activities.css';
+import ActivitiesPage from '../components/pages/ActivitiesPage.astro';
+import { defaultLanguage } from '../i18n';
 ---
 
-<Layout
-	title="Actividades | Tiki Hostel Ometepe"
-	description="Explora las actividades propuestas en Ometepe desde Tiki Hostel. Rutas, condiciones y disponibilidad pendientes de confirmación."
->
-	<SiteHeader variant="light" activePage="activities" />
-	<!-- El texto y los espacios para imágenes reproducen el PDF y siguen pendientes de confirmación. -->
-	<main class="activities-page" data-content-status="provisional">
-		<ActivitiesHero />
-		<ActivitiesRoutes />
-		<SleepoverExperience />
-		<ActivitiesRentals />
-		<ActivitiesContact />
-	</main>
-	<ActivitiesFooter />
-</Layout>
+<ActivitiesPage language={defaultLanguage} />
