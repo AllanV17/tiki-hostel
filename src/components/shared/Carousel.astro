@@ -1,0 +1,58 @@
+---
+import '../../styles/carousel.css';
+
+export interface CarouselImage {
+	src?: string;
+	alt: string;
+	placeholderLabel: string;
+}
+
+interface Props {
+	images: CarouselImage[];
+	label: string;
+	variant: 'wide' | 'split';
+	labels: {
+		previous: string;
+		next: string;
+		position: string;
+		of: string;
+		placeholderSelect: string;
+		placeholderPending: string;
+	};
+}
+
+const { images, label, variant, labels } = Astro.props;
+const total = String(images.length).padStart(2, '0');
+---
+
+<div class:list={['carousel', `carousel--${variant}`]} role="region" aria-roledescription="carousel" aria-label={label} data-carousel>
+	<div class="carousel__track" tabindex="0" data-carousel-track>
+		{images.map((image, index) => (
+			<div class:list={['carousel__slide', { 'is-active': index === 0 }]} data-carousel-slide>
+				{image.src ? (
+					<img class="carousel__image" src={image.src} alt={image.alt} loading="lazy" />
+				) : (
+					<div class="activity-image-placeholder" role="img" aria-label={`${image.placeholderLabel}. ${labels.placeholderSelect}`}>
+						<span class="activity-image-placeholder__label" aria-hidden="true">{image.placeholderLabel}</span>
+						<span class="activity-image-placeholder__pending" aria-hidden="true">{labels.placeholderPending}</span>
+					</div>
+				)}
+			</div>
+		))}
+	</div>
+	<div class="carousel__controls">
+		<div class="carousel__progress">
+			<span class="carousel__count" aria-label={`${labels.position} 1 ${labels.of} ${images.length}`} data-carousel-count data-position={labels.position} data-of={labels.of}>01 / {total}</span>
+			<span class="carousel__steps" aria-hidden="true">
+				{images.map((_, index) => <span class:list={['carousel__step', { 'is-active': index === 0 }]} data-carousel-step />)}
+			</span>
+		</div>
+		<button class="carousel__button" type="button" aria-label={labels.previous} data-carousel-previous disabled><span aria-hidden="true">←</span></button>
+		<button class="carousel__button" type="button" aria-label={labels.next} data-carousel-next disabled={images.length < 2}><span aria-hidden="true">→</span></button>
+	</div>
+</div>
+
+<script>
+	import { initCarousels } from '../../scripts/carousel';
+	initCarousels();
+</script>

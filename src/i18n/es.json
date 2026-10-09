@@ -259,7 +259,15 @@
         "description": "Un recorrido tranquilo junto a la orilla del lago, al ritmo del viento y el agua.",
         "note": "Ruta, horarios y disponibilidad — por confirmar.",
         "aside": "Una secuencia de momentos en la isla",
-        "image": "Kayak / paisaje principal"
+        "image": "Kayak / paisaje principal",
+        "carousel": {
+          "label": "Galería de kayak",
+          "previous": "Imagen anterior",
+          "next": "Imagen siguiente",
+          "position": "Imagen",
+          "of": "de",
+          "image": "Kayak / imagen provisional"
+        }
       },
       "horse": {
         "title": ["Paseo a", " caballo"],

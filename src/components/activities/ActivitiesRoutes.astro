@@ -4,7 +4,14 @@ interface Props {
 	content: SiteContent;
 }
 import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
+import Carousel from '../shared/Carousel.astro';
 const { content } = Astro.props;
+const kayakImages = Array.from({ length: 6 }, (_, index) => ({
+	alt: '',
+	placeholderLabel: index === 0
+		? content.activities.routes.kayak.image
+		: `${content.activities.routes.kayak.carousel.image} ${index + 1}`,
+}));
 ---
 
 <section
@@ -42,17 +49,19 @@ const { content } = Astro.props;
 				<span aria-hidden="true">→</span>
 			</p>
 		</div>
-		<div class="activity-route__images activity-route__images--wide">
-			<ActivityImagePlaceholder
-				content={content}
-				label={content.activities.routes.kayak.image}
-			/>
-			<ActivityImagePlaceholder
-				content={content}
-				label={content.activities.routes.nextImage}
-				variant="dark"
-			/>
-		</div>
+		<Carousel
+			images={kayakImages}
+			label={content.activities.routes.kayak.carousel.label}
+			variant="wide"
+			labels={{
+				previous: content.activities.routes.kayak.carousel.previous,
+				next: content.activities.routes.kayak.carousel.next,
+				position: content.activities.routes.kayak.carousel.position,
+				of: content.activities.routes.kayak.carousel.of,
+				placeholderSelect: content.shared.placeholder.imageSelect,
+				placeholderPending: content.shared.placeholder.imageToSelect,
+			}}
+		/>
 	</article>
 
 	<article class="activity-route activity-route--split">

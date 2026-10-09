@@ -1,0 +1,147 @@
+.carousel {
+	--carousel-gap: 24px;
+	--carousel-main: calc((100% - var(--carousel-gap)) * 3.5 / 4.5);
+	min-width: 0;
+}
+
+.carousel--split {
+	--carousel-main: calc((100% - var(--carousel-gap)) * 2.8 / 3.8);
+}
+
+.carousel__track {
+	position: relative;
+	display: flex;
+	gap: var(--carousel-gap);
+	overflow-x: auto;
+	scroll-behavior: smooth;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+	overscroll-behavior-inline: contain;
+}
+
+.carousel__track::-webkit-scrollbar {
+	display: none;
+}
+
+.carousel__slide {
+	min-width: 0;
+	flex: 0 0 var(--carousel-main);
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+}
+
+.carousel__slide:last-child {
+	flex-basis: 100%;
+}
+
+.carousel__image,
+.carousel__slide .activity-image-placeholder {
+	display: block;
+	width: 100%;
+	height: 455px;
+	border-radius: 16px;
+}
+
+.carousel__image {
+	object-fit: cover;
+}
+
+.carousel--split .carousel__image,
+.carousel--split .activity-image-placeholder {
+	height: 470px;
+}
+
+.carousel__slide:not(.is-active) .activity-image-placeholder {
+	background: #b8aea2;
+	color: #746e66;
+}
+
+.carousel__controls,
+.carousel__progress,
+.carousel__steps {
+	display: flex;
+	align-items: center;
+}
+
+.carousel__controls {
+	justify-content: flex-end;
+	gap: 10px;
+	margin-top: 14px;
+}
+
+.carousel__progress {
+	gap: 14px;
+	margin-right: 10px;
+	color: var(--color-forest);
+	font-size: 11px;
+	font-weight: 700;
+}
+
+.carousel__steps {
+	gap: 4px;
+}
+
+.carousel__step {
+	width: 17px;
+	height: 2px;
+	background: #d4cdc3;
+}
+
+.carousel__step.is-active {
+	background: var(--activities-clay, #d67a45);
+}
+
+.carousel__button {
+	width: 44px;
+	height: 44px;
+	border: 1px solid #e2dcd3;
+	border-radius: 50%;
+	background: transparent;
+	color: var(--color-forest);
+	font-size: 19px;
+	cursor: pointer;
+}
+
+.carousel__button:hover:not(:disabled) {
+	background: #f3ece2;
+}
+
+.carousel__button:disabled {
+	color: #a9a39b;
+	cursor: default;
+}
+
+.carousel__button:focus-visible,
+.carousel__track:focus-visible {
+	outline: 3px solid var(--color-terracotta);
+	outline-offset: 3px;
+}
+
+@media (max-width: 560px) {
+	.carousel {
+		--carousel-gap: 12px;
+		--carousel-main: calc((100% - var(--carousel-gap)) * 2 / 3);
+	}
+
+	.carousel__image,
+	.carousel__slide .activity-image-placeholder,
+	.carousel--split .carousel__image,
+	.carousel--split .activity-image-placeholder {
+		height: 270px;
+	}
+
+	.carousel__progress {
+		gap: 8px;
+		margin-right: auto;
+	}
+
+	.carousel__step {
+		width: 12px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.carousel__track {
+		scroll-behavior: auto;
+	}
+}
