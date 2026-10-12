@@ -1,43 +1,43 @@
 {
   "layout": {
     "title": "Tiki Hostel Ometepe",
-    "description": "Information about Tiki Hostel Ometepe in Playa Santa Cruz, Ometepe Island, Nicaragua."
+    "description": "Discover Tiki Hostel Ometepe in Playa Santa Cruz on Ometepe Island, Nicaragua."
   },
   "shared": {
     "nav": {
-      "brandLabel": "Tiki Hostel Ometepe. Go to home",
+      "brandLabel": "Tiki Hostel Ometepe. Go to homepage",
       "desktopLabel": "Main navigation",
       "mobileLabel": "Mobile navigation",
       "home": "Home",
-      "hostel": "Hostel",
-      "activities": "Activities",
+      "hostel": "The Hostel",
+      "activities": "Things to Do",
       "contact": "Contact",
-      "direct": "Contact Us",
-      "directPending": "Contact us directly, link pending setup",
+      "direct": "Get in Touch",
+      "directPending": "Get in touch; contact link coming soon",
       "menu": "Menu"
     },
     "placeholder": {
       "photoPending": "Photo pending",
-      "photoProvided": "Photo pending submission.",
-      "photoSelect": "Photo pending selection.",
-      "photoToSelect": "Photo to be selected",
-      "imageSelect": "Image pending selection.",
-      "imageToSelect": "Image pending selection"
+      "photoProvided": "Photo coming soon.",
+      "photoSelect": "Photo coming soon.",
+      "photoToSelect": "Photo coming soon",
+      "imageSelect": "Image coming soon.",
+      "imageToSelect": "Image coming soon"
     },
     "footer": {
       "brand": "Tiki Hostel",
       "location": "Ometepe Island, Rivas, Nicaragua",
       "sectionsLabel": "Site sections",
       "navigation": "Navigation",
-      "reservations": "Reservations",
-      "directBooking": "Direct booking",
-      "contact": "Contact",
+      "reservations": "Book Your Stay",
+      "directBooking": "Book Direct",
+      "contact": "Get in Touch",
       "socialLabel": "Social media",
       "legalLabel": "Provisional legal information",
       "booking": "Booking",
       "airbnb": "Airbnb",
       "whatsapp": "WhatsApp",
-      "email": "Email",
+      "email": "Send Us an Email",
       "instagram": "Instagram",
       "facebook": "Facebook",
       "tiktok": "TikTok",
@@ -46,11 +46,11 @@
       "homeSections": "Sections",
       "explore": "Explore",
       "environment": "Surroundings",
-      "contactReservation": "Contact and Booking",
-      "contactReservationLower": "Contact and booking",
-      "directLower": "Contact us directly",
-      "directPending": "Contact us directly, link pending setup",
-      "emailPending": "Contact email pending",
+      "contactReservation": "Contact & Booking",
+      "contactReservationLower": "Contact & booking",
+      "directLower": "Get in touch",
+      "directPending": "Get in touch; contact link coming soon",
+      "emailPending": "Email address coming soon",
       "betweenVolcanoes": "Between two volcanoes",
       "copyright": "© 2026 Tiki Hostel Ometepe. Rivas, Nicaragua."
     },
@@ -60,176 +60,188 @@
       "spanish": "Español",
       "english": "English",
       "dialogTitle": "Choose your language",
-      "dialogMessage": "Your browser is set to English. Would you like to view Tiki Hostel in English or continue in Español?",
+      "dialogMessage": "Your browser is set to English. Would you like to explore Tiki Hostel in English or continue in Español?",
       "continueSpanish": "Continue in Español",
-      "toast": "You can change the language anytime using the icon in the navigation bar."
+      "toast": "You can change the language anytime from the menu at the top of the page."
     }
   },
   "home": {
     "hero": {
       "eyebrow": "Ometepe - Rivas, Nicaragua.",
-      "title": "A wooden retreat between two volcanoes and endless horizons",
-      "description": "Tiki is a living space in the rural heart of Ometepe, where natural wood architecture and the lake's gentle pace bring you back to what matters."
+      "title": "Your Island Escape, Between Two Volcanoes",
+      "description": "Slow down and settle into Ometepe's rural heart, where wooden architecture and the lake's easy rhythm invite you to reconnect."
     },
     "identity": {
       "label": "Visual identity",
-      "badge": "Conceptual Exploration",
-      "description": "The volcanic duality aligned with the water's horizon.",
-      "symbolLabel": "Symbol of mountains, horizon and water"
+      "badge": "Design Concept",
+      "description": "Two volcanoes meet the lake's horizon.",
+      "symbolLabel": "Symbol of two volcanoes, the horizon, and water"
     },
     "architecture": {
-      "eyebrow": "Wooden Architecture and Silence",
-      "title": "A handcrafted retreat at home in its rural surroundings",
+      "eyebrow": "Wood, Breeze & Quiet",
+      "title": "A handcrafted retreat in Ometepe's countryside",
       "paragraphs": [
-        "At Tiki, we believe true luxury is rest, connection with nature and closeness to others. Our structure is designed to breathe naturally with the breeze from Lake Cocibolca.",
-        "Here, nature sets the pace. Wake to birdsong, share food and stories, and discover the island's rural life."
+        "At Tiki, we believe the real luxury is rest, time in nature, and connection with others. The wooden structure is designed to let the breeze from Lake Cocibolca flow through.",
+        "Here, nature sets the pace. Wake up to birdsong, share meals and stories, and get to know the island's rural rhythms."
       ],
-      "featuresLabel": "Features mentioned in the design",
+      "featuresLabel": "Features in the Tiki design concept",
       "features": [
-        "Rural Setting and Active Conservation",
-        "Wooden Architecture Open to the Breeze"
+        "Rural Setting & Active Conservation",
+        "Wooden Spaces Open to the Breeze"
       ],
       "image": "Hostel architecture",
-      "quote": "“The wood creaks softly at night, reminding us that we are alive in the middle of the island.”",
+      "quote": "“The wood creaks softly at night, reminding us that we're alive here in the heart of the island.”",
       "detailAlt": "Detail of a wooden structure"
     },
     "spaces": {
-      "eyebrow": "Accommodation and Spaces",
-      "title": "Spaces designed for connection and rest",
+      "eyebrow": "Places to Stay & Gather",
+      "title": "Spaces made for connection and rest",
       "cards": [
         {
           "title": "Private Wooden Cabins",
-          "description": "Handcrafted rooms for maximum privacy and direct contact with the surrounding nature.",
+          "description": "Handcrafted rooms with plenty of privacy and a close connection to the surrounding landscape.",
           "image": "Wooden cabins"
         },
         {
-          "title": "Shared Dormitories",
-          "description": "Solid native wood bunk beds with personal space and constant natural ventilation for travelers with a story to tell.",
-          "image": "Shared dormitory"
+          "title": "Shared Dorm Rooms",
+          "description": "Sturdy native-wood bunk beds, personal space, and a steady flow of fresh air for travelers with stories to share.",
+          "image": "Shared dorm room"
         },
         {
-          "title": "Communal Kitchen & Fire Pit",
-          "description": "Open spaces where preparing local food, evening fires and conversations that inspire new journeys come together.",
+          "title": "Shared Kitchen & Fire Pit",
+          "description": "Open spaces to prepare local food, gather around the fire at night, and swap stories about where to go next.",
           "image": "Common space"
         }
       ]
     },
     "experience": {
       "image": "Moment of hospitality",
-      "eyebrow": "The Human Experience",
-      "title": "Our essence lies in the hands that welcome you",
+      "eyebrow": "The People Behind Tiki",
+      "title": "The people who welcome you make Tiki what it is",
       "paragraphs": [
-        "Tiki is more than a point on the map; it is a temporary home run by people who love the island. We believe in warm, open and genuine hospitality.",
-        "Here you will not find plastic wristbands or corporate formalities. You will find freshly brewed coffee in the mornings, honest advice on exploring the local volcanic trails and deep respect for the calm of the surroundings."
+        "Tiki is more than a stop on the map. It's a home away from home, cared for by people who love the island. We believe in warm, open, down-to-earth hospitality.",
+        "Here, you won't find plastic wristbands or corporate formalities. You'll find freshly brewed coffee in the morning, honest tips for exploring local volcanic trails, and plenty of respect for the quiet around us."
       ]
     },
     "gallery": {
-      "title": "Moments from the Journal",
+      "title": "Moments from Our Journal",
       "hashtag": "#TikiHostelOmetepe",
       "label": "Photo gallery",
       "moments": [
-        "Shared life",
+        "Shared moments",
         "Hostel detail",
         "Ometepe landscape",
-        "Outdoor gathering"
+        "Gathering outdoors"
       ]
     },
     "contact": {
-      "title": "Want to map out your next journey with us?",
-      "description": "Please send us your enquiry directly. We do not manage automatic bookings so availability stays in sync and we respect the hostel's capacity.",
-      "buttonLabel": "Ask via WhatsApp, link pending setup",
-      "button": "WhatsApp"
+      "title": "Ready to plan your Ometepe stay?",
+      "description": "Message us directly with your plans. We don't offer instant bookings on this site, so we can confirm current availability and respect the hostel's capacity.",
+      "buttonLabel": "Chat on WhatsApp; link coming soon",
+      "button": "Chat on WhatsApp"
     },
     "footer": {
-      "description": "Your wooden retreat for contemplation on Ometepe Island, Rivas, Nicaragua.",
-      "directPending": "Direct enquiry, link pending setup"
+      "description": "Your wooden retreat for slow days on Ometepe Island, Rivas, Nicaragua.",
+      "directPending": "Get in touch; contact link coming soon"
     }
   },
   "hostel": {
     "meta": {
-      "title": "Hostel | Tiki Hostel Ometepe",
-      "description": "Discover Tiki Hostel Ometepe's provisional accommodation, spaces and practical information."
+      "title": "The Hostel | Tiki Hostel Ometepe",
+      "description": "Explore Tiki Hostel Ometepe's accommodations, shared spaces, and practical details. Some information is still being confirmed."
     },
     "hero": {
       "eyebrow": "Ometepe — a home between volcanoes",
-      "title": "The hostel",
-      "description": "A wooden retreat to slow down and experience the island at an easy pace.",
-      "image": "Hostel / main photograph",
-      "noteLabel": "Introduction to the hostel",
-      "noteTitle": ["A stay", " close to the island"],
-      "note": "Provisional introductory text presenting the character of the hostel."
+      "title": "The Hostel",
+      "description": "A cozy wooden retreat to slow down and enjoy island life at your own pace.",
+      "image": "The Hostel / main photo"
     },
     "rooms": {
-      "eyebrow": "Rooms and accommodation",
-      "title": "Where can we welcome you?",
-      "firstTitle": "Room to be defined",
-      "firstDescription": "A space to rest, presented here with a short text and a flexible photo sequence.",
-      "direction": "Main image and upcoming views →",
+      "eyebrow": "Rooms & Places to Stay",
+      "title": "Find Your Place to Unwind",
+      "firstTitle": "Your Space to Recharge",
+      "firstDescription": "After a day exploring Ometepe, come back, slow down, and enjoy a peaceful moment surrounded by nature.",
+      "firstNote": "A simple retreat, close to nature.",
       "firstImages": [
-        "Accommodation / main view",
-        "Secondary view",
-        "Next view"
+        "Room / main view",
+        "Room / second view",
+        "Room / third view",
+        "Room / photo pending 4",
+        "Room / photo pending 5",
+        "Room / photo pending 6"
       ],
-      "secondImages": ["Accommodation / atmosphere", "Detail"],
-      "secondTitle": "Another way to stay",
-      "secondDescription": "A second type of accommodation to show its atmosphere, materials and connection with the surroundings.",
-      "pending": "Name, features and details — to be confirmed."
+      "firstCarousel": {
+        "label": "Room photo gallery",
+        "previous": "Previous image",
+        "next": "Next image",
+        "position": "Image",
+        "of": "of"
+      }
     },
     "spaces": {
-      "eyebrow": "Hostel spaces",
-      "title": ["Places to come together and take", " a break"],
-      "description": "Common areas and facilities will be presented here through a more open visual story.",
-      "firstImage": "Common space / main view",
-      "firstIndex": "Provisional common area",
-      "firstTitle": "A place to meet",
-      "firstDescription": "Short description — to be confirmed.",
-      "secondImages": ["Space / atmosphere", "Detail"],
-      "secondIndex": "Another provisional area",
-      "secondTitle": "Corners between indoors and landscape",
-      "secondDescription": "Short text presenting the use and atmosphere of the space."
+      "eyebrow": "Shared Spaces",
+      "title": ["Spaces to Gather", " & Unwind"],
+      "description": "Shared spaces to slow down, connect with fellow travelers, and enjoy the island atmosphere.",
+      "images": [
+        "Shared spaces / photo pending 1",
+        "Shared spaces / photo pending 2",
+        "Shared spaces / photo pending 3",
+        "Shared spaces / photo pending 4",
+        "Shared spaces / photo pending 5",
+        "Shared spaces / photo pending 6",
+        "Shared spaces / photo pending 7",
+        "Shared spaces / photo pending 8"
+      ],
+      "carousel": {
+        "label": "Shared spaces photo gallery",
+        "previous": "Previous image",
+        "next": "Next image",
+        "position": "Visible image",
+        "of": "of"
+      }
     },
     "services": {
-      "eyebrow": "Services and amenities",
-      "title": ["A modular base to", " complete later"],
-      "status": "Provisional content",
+      "eyebrow": "Services & Amenities",
+      "title": ["The Details Are Still", " Taking Shape"],
+      "status": "Details pending",
       "modules": [
-        "Service to be defined",
-        "Amenity to be defined",
-        "Service to be defined",
-        "Amenity to be defined"
+        "Service details pending",
+        "Amenity details pending",
+        "Service details pending",
+        "Amenity details pending"
       ],
-      "pending": "Provisional content — to be confirmed"
+      "pending": "Details to be confirmed"
     },
     "experience": {
-      "eyebrow": "The Tiki experience",
-      "title": ["Staying is also part", " of the journey"],
-      "description": "An intimate story about daily life around the hostel.",
-      "image": "Tiki experience / featured moment",
+      "eyebrow": "The Tiki Experience",
+      "title": ["The Stay Is Part", " of the Journey"],
+      "description": "A glimpse of everyday life at Tiki.",
+      "image": "The Tiki experience / featured moment",
       "noteEyebrow": "A moment at Tiki",
-      "noteTitle": "Wood, shade and time together",
-      "note": "Provisional text conveying the feeling of arriving, resting and getting to know the island without rushing.",
-      "quote": "“An emotional note awaiting Tiki's own voice.”"
+      "noteTitle": "Wood, shade, and time together",
+      "note": "This story of arriving, resting, and getting to know the island is still being written.",
+      "quote": "“A personal note from Tiki is still to come.”"
     },
     "practical": {
-      "eyebrow": "Practical information",
-      "title": ["Everything you need, in", " one place"],
-      "description": "The information will be completed once the team confirms the details.",
+      "eyebrow": "Good to Know",
+      "title": ["The Essentials,", " All in One Place"],
+      "description": "We'll add the practical details as soon as the team confirms them.",
       "facts": [
-        { "label": "Check-in", "note": "Hours pending" },
-        { "label": "Check-out", "note": "Hours pending" },
-        { "label": "Location", "note": "Directions pending" },
-        { "label": "Policies", "note": "Content pending" }
+        { "label": "Check-in", "note": "Hours to be confirmed" },
+        { "label": "Check-out", "note": "Hours to be confirmed" },
+        { "label": "Location", "note": "Directions to be confirmed" },
+        { "label": "Policies", "note": "Details to be confirmed" }
       ],
       "confirm": "To be confirmed",
-      "closing": "This section is ready to grow while staying clear.",
+      "closing": "We'll share more as the details are confirmed.",
       "pending": "Details to be confirmed"
     },
     "contact": {
-      "eyebrow": "Enquiries and bookings",
-      "title": "Want to stay at Tiki?",
-      "description": "Contact the team to ask about the details and continue with an external booking.",
-      "buttonLabel": "Ask via WhatsApp; link pending setup",
-      "button": "WhatsApp"
+      "eyebrow": "Questions & Bookings",
+      "title": "Thinking about staying at Tiki?",
+      "description": "Reach out to the team for the latest details and help with booking through an external platform.",
+      "buttonLabel": "Chat on WhatsApp; link coming soon",
+      "button": "Chat on WhatsApp"
     },
     "footer": {
       "description": "A wooden retreat on Ometepe Island, Rivas, Nicaragua."
@@ -237,171 +249,199 @@
   },
   "activities": {
     "meta": {
-      "title": "Activities | Tiki Hostel Ometepe",
-      "description": "Explore the proposed activities in Ometepe from Tiki Hostel. Routes, conditions and availability pending confirmation."
+      "title": "Things to Do | Tiki Hostel Ometepe",
+      "description": "Explore ways to experience Ometepe from Tiki Hostel. Routes, conditions, and availability are still being confirmed."
     },
     "hero": {
-      "eyebrow": "Ometepe — move to the island's rhythm",
-      "title": ["Days shaped by water,", " earth and fire"],
-      "description": "A provisional introduction to unhurried adventures in Ometepe.",
-      "image": "Activities cover / wide landscape",
-      "asideLabel": "Ways to explore the landscape",
-      "asideTitle": "Ways to explore the landscape",
-      "aside": "Water, trails and horseback rides — details pending."
+      "eyebrow": "Ometepe — explore at the island's pace",
+      "title": ["Days Shaped by Water,", " Earth & Fire"],
+      "description": "A first look at unhurried ways to explore Ometepe. Details are still being confirmed.",
+      "image": "Things to Do / wide island view",
+      "asideLabel": "Ways to Explore Ometepe",
+      "asideTitle": "Ways to Explore Ometepe",
+      "aside": "Water, trails, and horseback riding — details to come."
     },
     "routes": {
-      "eyebrow": "Ways to explore",
-      "title": ["Choose your pace and follow", " the landscape"],
-      "description": "Three provisional ways to experience Ometepe from Tiki.",
-      "indexLabel": "Activity on the island",
+      "eyebrow": "Explore Your Way",
+      "title": ["Find Your Pace", " on Ometepe"],
+      "description": "Three ways to explore Ometepe from Tiki. Route details are still being confirmed.",
+      "indexLabel": "Island activity",
       "kayak": {
-        "title": "Kayak",
-        "description": "A peaceful journey along the lakeshore, at the pace of the wind and water.",
-        "note": "Route, hours and availability — to be confirmed.",
-        "aside": "A sequence of moments on the island",
-        "image": "Kayak / main landscape",
+        "title": "Kayaking",
+        "description": "Paddle along the lakeshore, take in the views, and enjoy the peaceful rhythm of the water.",
+        "note": "Route, schedule, and availability — to be confirmed.",
+        "aside": "Moments along the island's shore",
+        "image": "Kayaking / main lake view",
         "carousel": {
-          "label": "Kayak gallery",
+          "label": "Kayaking photo gallery",
           "previous": "Previous image",
           "next": "Next image",
           "position": "Image",
           "of": "of",
-          "image": "Kayak / temporary image"
+          "image": "Kayaking / photo pending"
         }
       },
       "horse": {
-        "title": ["Horseback", " ride"],
-        "description": "A slower way to explore the island's rural roads and open spaces.",
+        "title": ["Horseback", " Riding"],
+        "description": "Take the scenic route on horseback and discover Ometepe's countryside at a slower pace.",
         "note": "Local route and guide details — to be confirmed.",
-        "image": "Horseback ride / main landscape"
+        "image": "Horseback riding / main view",
+        "carousel": {
+          "label": "Horseback riding photo gallery",
+          "previous": "Previous image",
+          "next": "Next image",
+          "position": "Image",
+          "of": "of",
+          "image": "Horseback riding / photo pending"
+        }
       },
       "hiking": {
-        "title": ["Hiking on the", " volcano"],
-        "description": "An encounter with Ometepe's volcanic terrain through its trails.",
-        "note": "Level, duration and conditions — to be confirmed.",
-        "image": "Volcano hike / main landscape"
+        "title": ["Volcano", " Hiking"],
+        "description": "Follow the trails and get to know Ometepe's volcanic landscape up close.",
+        "note": "Difficulty, duration, and trail conditions — to be confirmed.",
+        "image": "Volcano hiking / main view",
+        "carousel": {
+          "label": "Volcano hiking photo gallery",
+          "previous": "Previous image",
+          "next": "Next image",
+          "position": "Image",
+          "of": "of",
+          "image": "Volcano hiking / photo pending"
+        }
       },
       "nextImage": "Next image"
     },
     "sleepover": {
-      "eyebrow": "Featured experience",
-      "title": "A night on Maderas volcano",
-      "description": "An immersive proposal for an overnight stay. Full experience details are pending.",
-      "image": "Night on Maderas / featured image",
+      "eyebrow": "Featured Experience",
+      "title": "Maderas Volcano Overnight Adventure",
+      "description": "A proposed overnight experience on Maderas. Full details are still being confirmed.",
+      "image": "Maderas overnight adventure / featured image",
       "storyEyebrow": "The story",
-      "storyTitle": ["Up the volcano, into", " the night"],
-      "story": "Provisional text will describe the route, the night atmosphere and the return to Tiki.",
-      "quote": "“Space reserved for a first-hand account from the mountain.”",
+      "storyTitle": ["Up the Volcano,", " Into the Night"],
+      "story": "We're still gathering the details of the route, the nighttime atmosphere, and the return to Tiki.",
+      "quote": "“A firsthand story from the mountain will go here.”",
       "includedTitle": "What's included",
-      "included": "The definitive list of what is included has not yet been provided.",
+      "included": "We'll share the full list once it's confirmed.",
       "includedItems": [
         "Guide details — to be confirmed",
-        "Sleeping preparations — to be confirmed",
+        "Sleeping arrangements — to be confirmed",
         "Food and water — to be confirmed",
         "Transport — to be confirmed"
       ],
-      "galleryTitle": "The route in pictures",
-      "galleryEyebrow": "Horizontal gallery",
+      "galleryTitle": "Moments Along the Way",
+      "galleryEyebrow": "Photo Gallery",
       "galleryImages": [
-        "Night gallery / arrival",
-        "Night gallery / trail",
-        "Next image"
+        "Maderas gallery / arrival",
+        "Maderas gallery / trail",
+        "Maderas gallery / next view",
+        "Maderas gallery / photo pending 4",
+        "Maderas gallery / photo pending 5",
+        "Maderas gallery / photo pending 6",
+        "Maderas gallery / photo pending 7",
+        "Maderas gallery / photo pending 8"
       ],
-      "extensionEyebrow": "Add another adventure",
-      "extensionTitle": "Extend the route",
-      "extension": "Space for an optional complementary experience. Details to be confirmed.",
-      "extensionImage": "Additional adventure",
-      "practicalEyebrow": "Practical information",
-      "practicalTitle": "Before you set off",
-      "practical": "All practical details remain provisional until confirmed.",
+      "galleryCarousel": {
+        "label": "Moments Along the Way photo gallery",
+        "previous": "Previous image",
+        "next": "Next image",
+        "position": "Image",
+        "of": "of"
+      },
+      "extensionEyebrow": "Keep Exploring",
+      "extensionTitle": "Make More of the Journey",
+      "extension": "An optional add-on experience is being considered. Details are still being confirmed.",
+      "extensionImage": "Additional adventure / photo pending",
+      "practicalEyebrow": "Good to Know",
+      "practicalTitle": "Before You Go",
+      "practical": "We'll share the practical details once they're confirmed.",
       "facts": [
         { "label": "Duration", "value": "To be confirmed" },
         { "label": "Difficulty", "value": "To be confirmed" },
         { "label": "Meeting point", "value": "To be confirmed" },
-        { "label": "What to bring", "value": "List pending" }
+        { "label": "What to bring", "value": "List to be confirmed" }
       ],
-      "enquiryTitle": "Interested in spending the night on the volcano?",
-      "enquiry": "Ask the Tiki team for current details and availability."
+      "enquiryTitle": "Thinking about a night on Maderas?",
+      "enquiry": "Ask the Tiki team for the latest details and availability."
     },
     "rentals": {
-      "eyebrow": "Explore at your own pace",
-      "title": ["Travel the roads at your", " own pace"],
-      "description": "Simple rentals to explore the island on your own.",
+      "eyebrow": "Explore at Your Own Pace",
+      "title": ["See the Island", " Your Way"],
+      "description": "Scooter, ATV, and bicycle rentals for exploring Ometepe on your own. Details are still being confirmed.",
       "items": [
         { "name": "Scooter", "image": "Scooter rental" },
         { "name": "ATV", "image": "ATV rental" },
         { "name": "Bicycle", "image": "Bicycle rental" }
       ],
       "pending": "Rental details — to be confirmed",
-      "ask": "Ask Tiki"
+      "ask": "Ask the Tiki Team"
     },
     "contact": {
-      "eyebrow": "Plan with local knowledge",
-      "title": ["Ready to map out a route through", " Ometepe?"],
-      "description": "Ask directly about current details and availability for the activities.",
-      "buttonLabel": "Ask via WhatsApp; link pending confirmation",
-      "button": "WhatsApp"
+      "eyebrow": "Plan with Local Insight",
+      "title": ["Ready to Explore", " Ometepe?"],
+      "description": "Ask the team about current activity details and availability.",
+      "buttonLabel": "Ask about availability on WhatsApp; link coming soon",
+      "button": "Ask About Availability"
     },
     "footer": {
       "description": "A wooden retreat on Ometepe Island, Rivas, Nicaragua.",
-      "availability": "Availability: To Be Confirmed"
+      "availability": "Availability to be confirmed"
     }
   },
   "contact": {
     "meta": {
       "title": "Contact | Tiki Hostel Ometepe",
-      "description": "Provisional information for contacting Tiki Hostel Ometepe, finding us and checking external booking platforms."
+      "description": "Find ways to contact Tiki Hostel Ometepe, get to Playa Santa Cruz, and explore external booking options. Some links are still being confirmed."
     },
     "hero": {
       "eyebrow": "Ometepe Island",
-      "title": "Let's talk",
-      "description": "A place to find ways to contact Tiki, locate us and check booking platforms. Information is being prepared."
+      "title": "Get in Touch",
+      "description": "Have a question? Planning a stay? We'd love to hear from you. Contact details and booking links are still being confirmed."
     },
     "whatsapp": {
-      "eyebrow": "Direct contact",
-      "title": "Write to us on WhatsApp",
-      "description": "You will be able to ask the Tiki team directly. The number and link are pending confirmation.",
-      "buttonLabel": "Talk on WhatsApp; link pending confirmation",
-      "button": "Talk on WhatsApp"
+      "eyebrow": "Say Hello",
+      "title": "Chat with Us on WhatsApp",
+      "description": "Reach the Tiki team directly once the WhatsApp number and link are confirmed.",
+      "buttonLabel": "Chat on WhatsApp; link coming soon",
+      "button": "Chat on WhatsApp"
     },
     "location": {
-      "eyebrow": "Location",
-      "title": "Find us",
-      "generalLabel": "General location",
+      "eyebrow": "On Ometepe",
+      "title": "Find Us",
+      "generalLabel": "Where we are",
       "general": "Playa Santa Cruz, Ometepe Island, Nicaragua.",
       "addressLabel": "Address",
-      "address": "Exact address pending confirmation.",
-      "arrivalLabel": "How to get here",
-      "arrival": "Arrival directions pending confirmation.",
-      "mapLabel": "View on Google Maps; link pending confirmation",
+      "address": "Exact address to be confirmed.",
+      "arrivalLabel": "Getting Here",
+      "arrival": "Directions are still being confirmed.",
+      "mapLabel": "View on Google Maps; link coming soon",
       "map": "View on Google Maps"
     },
     "social": {
-      "eyebrow": "Social media",
-      "title": "Follow us",
+      "eyebrow": "Social Media",
+      "title": "Follow Along",
       "networks": [
         {
           "name": "Instagram",
-          "note": "Profile and link pending confirmation."
+          "note": "Profile and link to be confirmed."
         },
-        { "name": "Facebook", "note": "Page and link pending confirmation." },
-        { "name": "TikTok", "note": "Profile and link pending confirmation." }
+        { "name": "Facebook", "note": "Page and link to be confirmed." },
+        { "name": "TikTok", "note": "Profile and link to be confirmed." }
       ],
-      "profilePending": "link pending confirmation",
-      "visit": "Visit profile"
+      "profilePending": "link to be confirmed",
+      "visit": "View Profile"
     },
     "bookings": {
-      "eyebrow": "Booking platforms",
-      "title": "Book your stay",
-      "description": "These external platforms are options for checking a booking. Their links are pending confirmation.",
-      "bookingLabel": "Go to Booking.com; link pending confirmation",
+      "eyebrow": "Booking Options",
+      "title": "Book Your Stay",
+      "description": "Booking.com and Airbnb are external options for booking a stay. Their links are still being confirmed.",
+      "bookingLabel": "View Tiki on Booking.com; link coming soon",
       "booking": "View on Booking.com",
-      "airbnbLabel": "Go to Airbnb; link pending confirmation",
+      "airbnbLabel": "View Tiki on Airbnb; link coming soon",
       "airbnb": "View on Airbnb"
     },
     "closing": {
-      "label": "Contact closing",
-      "text": "A closing sentence for this page is still to be defined."
+      "label": "Closing note",
+      "text": "A final note from Tiki will go here once it's ready."
     }
   }
 }

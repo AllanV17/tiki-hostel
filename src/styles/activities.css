@@ -409,17 +409,6 @@
 	line-height: 1.2;
 }
 
-.sleepover__gallery-track {
-	display: grid;
-	grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 0.35fr);
-	gap: 24px;
-	overflow: hidden;
-}
-
-.sleepover__gallery-track .activity-image-placeholder {
-	height: 340px;
-}
-
 .sleepover__extension {
 	display: grid;
 	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
@@ -897,18 +886,6 @@
 
 	.sleepover__gallery-heading h3 {
 		font-size: 30px;
-	}
-
-	.sleepover__gallery-track {
-		grid-template-columns: repeat(3, minmax(245px, 72vw));
-		gap: 12px;
-		overflow-x: auto;
-		scroll-snap-type: x mandatory;
-	}
-
-	.sleepover__gallery-track .activity-image-placeholder {
-		height: 290px;
-		scroll-snap-align: start;
 	}
 
 	.sleepover__extension {

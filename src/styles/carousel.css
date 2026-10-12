@@ -8,6 +8,39 @@
 	--carousel-main: calc((100% - var(--carousel-gap)) * 2.8 / 3.8);
 }
 
+.carousel--rooms-first {
+	container-type: inline-size;
+	--rooms-side: max(42px, 13.5cqw);
+}
+
+.carousel--spaces {
+	container-type: inline-size;
+}
+
+.carousel--gallery .carousel__slide {
+	flex-basis: 100%;
+}
+
+.carousel__gallery-panels {
+	display: grid;
+	grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 0.35fr);
+	gap: var(--carousel-gap);
+	min-width: 0;
+	overflow: hidden;
+}
+
+.carousel__gallery-panels--2 {
+	grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+}
+
+.carousel__gallery-panels--1 {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+.carousel__gallery-panel {
+	min-width: 0;
+}
+
 .carousel__track {
 	position: relative;
 	display: flex;
@@ -23,6 +56,15 @@
 	display: none;
 }
 
+.carousel--rooms-first .carousel__track {
+	padding-inline: var(--rooms-side);
+}
+
+.carousel--spaces .carousel__track {
+	--carousel-main: calc((100cqw - 2 * var(--carousel-gap)) * 0.45);
+	padding-inline-end: calc(100cqw - 2 * var(--carousel-main) - var(--carousel-gap));
+}
+
 .carousel__slide {
 	min-width: 0;
 	flex: 0 0 var(--carousel-main);
@@ -32,6 +74,26 @@
 
 .carousel__slide:last-child {
 	flex-basis: 100%;
+}
+
+.carousel--rooms-first .carousel__slide,
+.carousel--rooms-first .carousel__slide:last-child {
+	flex-basis: calc(100cqw - 2 * var(--rooms-side));
+	scroll-snap-align: center;
+}
+
+.carousel--spaces .carousel__slide:last-child {
+	flex-basis: var(--carousel-main);
+}
+
+.carousel--rooms-first .carousel__slide > :is(.hostel-image, .carousel__image) {
+	width: 100%;
+	height: clamp(380px, 50vh, 430px);
+}
+
+.carousel--spaces .carousel__slide > :is(.hostel-image, .carousel__image) {
+	width: 100%;
+	height: 470px;
 }
 
 .carousel__image,
@@ -51,13 +113,27 @@
 	height: 470px;
 }
 
+.carousel--gallery .carousel__image,
+.carousel--gallery .activity-image-placeholder {
+	height: 340px;
+}
+
 .carousel__slide:not(.is-active) .activity-image-placeholder {
 	background: #b8aea2;
 	color: #746e66;
 }
 
+.carousel--gallery .carousel__slide:not(.is-active) .activity-image-placeholder {
+	background: #d8d1c7;
+	color: #858078;
+}
+
+.carousel--gallery .carousel__gallery-panel:nth-child(2) .activity-image-placeholder {
+	background: #b8aea2;
+	color: #746e66;
+}
+
 .carousel__controls,
-.carousel__progress,
 .carousel__steps {
 	display: flex;
 	align-items: center;
@@ -69,16 +145,38 @@
 	margin-top: 14px;
 }
 
-.carousel__progress {
-	gap: 14px;
-	margin-right: 10px;
-	color: var(--color-forest);
-	font-size: 11px;
-	font-weight: 700;
-}
-
 .carousel__steps {
 	gap: 4px;
+	margin-right: 10px;
+}
+
+.carousel--controls-reversed .carousel__controls {
+	justify-content: flex-start;
+}
+
+.carousel--controls-reversed .carousel__steps {
+	order: 1;
+	margin-right: 0;
+	margin-left: 10px;
+}
+
+.carousel--controls-stacked-center .carousel__controls {
+	display: grid;
+	grid-template-columns: repeat(2, 44px);
+	justify-content: center;
+	row-gap: 12px;
+}
+
+.carousel--rooms-first .carousel__controls {
+	margin-top: 10px;
+	row-gap: 8px;
+}
+
+.carousel--controls-stacked-center .carousel__steps {
+	grid-column: 1 / -1;
+	grid-row: 2;
+	justify-self: center;
+	margin: 0;
 }
 
 .carousel__step {
@@ -117,7 +215,41 @@
 	outline-offset: 3px;
 }
 
+@media (max-width: 1100px) {
+	.carousel--spaces .carousel__track {
+		--carousel-main: calc((100cqw - var(--carousel-gap)) * 0.78);
+		padding-inline-end: calc(100cqw - var(--carousel-main));
+	}
+
+	.carousel--spaces .carousel__slide > :is(.hostel-image, .carousel__image) {
+		height: 420px;
+	}
+}
+
+@media (max-width: 820px) {
+	.carousel--rooms-first .carousel__slide > :is(.hostel-image, .carousel__image) {
+		height: 420px;
+	}
+
+	.carousel--split .carousel__image,
+	.carousel--split .activity-image-placeholder {
+		height: 390px;
+	}
+}
+
 @media (max-width: 560px) {
+	.carousel--spaces .carousel__track {
+		--carousel-main: calc((100cqw - var(--carousel-gap)) * 0.84);
+	}
+
+	.carousel--spaces .carousel__slide > :is(.hostel-image, .carousel__image) {
+		height: clamp(280px, 75vw, 320px);
+	}
+
+	.carousel--rooms-first .carousel__slide > :is(.hostel-image, .carousel__image) {
+		height: calc(100cqw / 1.12);
+	}
+
 	.carousel {
 		--carousel-gap: 12px;
 		--carousel-main: calc((100% - var(--carousel-gap)) * 2 / 3);
@@ -130,13 +262,26 @@
 		height: 270px;
 	}
 
-	.carousel__progress {
-		gap: 8px;
+	.carousel__steps {
 		margin-right: auto;
 	}
 
 	.carousel__step {
 		width: 12px;
+	}
+
+	.carousel--gallery .carousel__gallery-panels,
+	.carousel--gallery .carousel__gallery-panels--2 {
+		grid-template-columns: repeat(3, minmax(245px, 72vw));
+	}
+
+	.carousel--gallery .carousel__gallery-panels--1 {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.carousel--gallery .carousel__image,
+	.carousel--gallery .activity-image-placeholder {
+		height: 290px;
 	}
 }
 

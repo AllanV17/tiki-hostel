@@ -3,7 +3,6 @@ import type { SiteContent } from '../../i18n';
 interface Props {
 	content: SiteContent;
 }
-import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
 import Carousel from '../shared/Carousel.astro';
 const { content } = Astro.props;
 const kayakImages = Array.from({ length: 6 }, (_, index) => ({
@@ -11,6 +10,18 @@ const kayakImages = Array.from({ length: 6 }, (_, index) => ({
 	placeholderLabel: index === 0
 		? content.activities.routes.kayak.image
 		: `${content.activities.routes.kayak.carousel.image} ${index + 1}`,
+}));
+const horseImages = Array.from({ length: 6 }, (_, index) => ({
+	alt: '',
+	placeholderLabel: index === 0
+		? content.activities.routes.horse.image
+		: `${content.activities.routes.horse.carousel.image} ${index + 1}`,
+}));
+const hikingImages = Array.from({ length: 6 }, (_, index) => ({
+	alt: '',
+	placeholderLabel: index === 0
+		? content.activities.routes.hiking.image
+		: `${content.activities.routes.hiking.carousel.image} ${index + 1}`,
 }));
 ---
 
@@ -65,17 +76,20 @@ const kayakImages = Array.from({ length: 6 }, (_, index) => ({
 	</article>
 
 	<article class="activity-route activity-route--split">
-		<div class="activity-route__images activity-route__images--split">
-			<ActivityImagePlaceholder
-				content={content}
-				label={content.activities.routes.horse.image}
-			/>
-			<ActivityImagePlaceholder
-				content={content}
-				label={content.activities.routes.nextImage}
-				variant="dark"
-			/>
-		</div>
+		<Carousel
+			images={horseImages}
+			label={content.activities.routes.horse.carousel.label}
+			variant="split"
+			controlsLayout="reversed"
+			labels={{
+				previous: content.activities.routes.horse.carousel.previous,
+				next: content.activities.routes.horse.carousel.next,
+				position: content.activities.routes.horse.carousel.position,
+				of: content.activities.routes.horse.carousel.of,
+				placeholderSelect: content.shared.placeholder.imageSelect,
+				placeholderPending: content.shared.placeholder.imageToSelect,
+			}}
+		/>
 		<div class="activity-route__copy">
 			<p class="activity-route__index">
 				<span>02</span><i></i>{content.activities.routes.indexLabel}
@@ -109,16 +123,18 @@ const kayakImages = Array.from({ length: 6 }, (_, index) => ({
 				{content.activities.routes.hiking.note}
 			</p>
 		</div>
-		<div class="activity-route__images activity-route__images--split">
-			<ActivityImagePlaceholder
-				content={content}
-				label={content.activities.routes.hiking.image}
-			/>
-			<ActivityImagePlaceholder
-				content={content}
-				label={content.activities.routes.nextImage}
-				variant="dark"
-			/>
-		</div>
+		<Carousel
+			images={hikingImages}
+			label={content.activities.routes.hiking.carousel.label}
+			variant="split"
+			labels={{
+				previous: content.activities.routes.hiking.carousel.previous,
+				next: content.activities.routes.hiking.carousel.next,
+				position: content.activities.routes.hiking.carousel.position,
+				of: content.activities.routes.hiking.carousel.of,
+				placeholderSelect: content.shared.placeholder.imageSelect,
+				placeholderPending: content.shared.placeholder.imageToSelect,
+			}}
+		/>
 	</article>
 </section>

@@ -4,7 +4,19 @@ interface Props {
 	content: SiteContent;
 }
 import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
+import Carousel from '../shared/Carousel.astro';
 const { content } = Astro.props;
+const galleryLabels = content.activities.sleepover.galleryImages;
+const galleryImages = [
+	{ alt: '', placeholderLabel: galleryLabels[0] },
+	{ alt: '', placeholderLabel: galleryLabels[1] },
+	{ alt: '', placeholderLabel: galleryLabels[2] },
+	{ alt: '', placeholderLabel: galleryLabels[3] },
+	{ alt: '', placeholderLabel: galleryLabels[4] },
+	{ alt: '', placeholderLabel: galleryLabels[5] },
+	{ alt: '', placeholderLabel: galleryLabels[6] },
+	{ alt: '', placeholderLabel: galleryLabels[7] },
+];
 ---
 
 <section class="sleepover" aria-labelledby="sleepover-title">
@@ -64,21 +76,20 @@ const { content } = Astro.props;
 						>{content.activities.sleepover.galleryEyebrow}</span
 					>
 				</div>
-				<div class="sleepover__gallery-track">
-					<ActivityImagePlaceholder
-						content={content}
-						label={content.activities.sleepover.galleryImages[0]}
-					/>
-					<ActivityImagePlaceholder
-						content={content}
-						label={content.activities.sleepover.galleryImages[1]}
-						variant="dark"
-					/>
-					<ActivityImagePlaceholder
-						content={content}
-						label={content.activities.sleepover.galleryImages[2]}
-					/>
-				</div>
+				<Carousel
+					images={galleryImages}
+					label={content.activities.sleepover.galleryCarousel.label}
+					variant="gallery"
+					controlsLayout="stacked-center"
+					labels={{
+						previous: content.activities.sleepover.galleryCarousel.previous,
+						next: content.activities.sleepover.galleryCarousel.next,
+						position: content.activities.sleepover.galleryCarousel.position,
+						of: content.activities.sleepover.galleryCarousel.of,
+						placeholderSelect: content.shared.placeholder.imageSelect,
+						placeholderPending: content.shared.placeholder.imageToSelect,
+					}}
+				/>
 			</div>
 
 			<div class="sleepover__extension">

@@ -10,7 +10,8 @@ export interface CarouselImage {
 interface Props {
 	images: CarouselImage[];
 	label: string;
-	variant: 'wide' | 'split';
+	variant: 'wide' | 'split' | 'gallery' | 'rooms-first' | 'spaces';
+	controlsLayout?: 'reversed' | 'stacked-center';
 	labels: {
 		previous: string;
 		next: string;
@@ -21,15 +22,38 @@ interface Props {
 	};
 }
 
-const { images, label, variant, labels } = Astro.props;
-const total = String(images.length).padStart(2, '0');
+const { images, label, variant, controlsLayout, labels } = Astro.props;
 ---
 
-<div class:list={['carousel', `carousel--${variant}`]} role="region" aria-roledescription="carousel" aria-label={label} data-carousel>
+<div class:list={['carousel', `carousel--${variant}`, { 'carousel--controls-reversed': controlsLayout === 'reversed', 'carousel--controls-stacked-center': controlsLayout === 'stacked-center' }]} role="region" aria-roledescription="carousel" aria-label={label} data-carousel>
 	<div class="carousel__track" tabindex="0" data-carousel-track>
 		{images.map((image, index) => (
 			<div class:list={['carousel__slide', { 'is-active': index === 0 }]} data-carousel-slide>
-				{image.src ? (
+				{variant === 'rooms-first' || variant === 'spaces' ? (
+					image.src ? (
+						<img class="carousel__image" src={image.src} alt={image.alt} loading="lazy" />
+					) : (
+						<div class:list={['hostel-image', { 'hostel-image--secondary': index % 3 === 1, 'hostel-image--detail': index % 3 === 2 }]} role="img" aria-label={`${image.placeholderLabel}. ${labels.placeholderSelect}`}>
+							<span class="hostel-image__label" aria-hidden="true">{image.placeholderLabel}</span>
+							<span class="hostel-image__pending" aria-hidden="true">{labels.placeholderPending}</span>
+						</div>
+					)
+				) : variant === 'gallery' ? (
+					<div class:list={['carousel__gallery-panels', `carousel__gallery-panels--${Math.min(3, images.length - index)}`]}>
+						{images.slice(index, index + 3).map((panel, panelIndex) => (
+							<div class="carousel__gallery-panel" aria-hidden={panelIndex > 0 ? 'true' : undefined}>
+								{panel.src ? (
+									<img class="carousel__image" src={panel.src} alt={panelIndex === 0 ? panel.alt : ''} loading="lazy" />
+								) : (
+									<div class:list={['activity-image-placeholder', { 'activity-image-placeholder--dark': panelIndex === 1 }]} role="img" aria-label={`${panel.placeholderLabel}. ${labels.placeholderSelect}`}>
+										<span class="activity-image-placeholder__label" aria-hidden="true">{panel.placeholderLabel}</span>
+										<span class="activity-image-placeholder__pending" aria-hidden="true">{labels.placeholderPending}</span>
+									</div>
+								)}
+							</div>
+						))}
+					</div>
+				) : image.src ? (
 					<img class="carousel__image" src={image.src} alt={image.alt} loading="lazy" />
 				) : (
 					<div class="activity-image-placeholder" role="img" aria-label={`${image.placeholderLabel}. ${labels.placeholderSelect}`}>
@@ -41,12 +65,9 @@ const total = String(images.length).padStart(2, '0');
 		))}
 	</div>
 	<div class="carousel__controls">
-		<div class="carousel__progress">
-			<span class="carousel__count" aria-label={`${labels.position} 1 ${labels.of} ${images.length}`} data-carousel-count data-position={labels.position} data-of={labels.of}>01 / {total}</span>
-			<span class="carousel__steps" aria-hidden="true">
-				{images.map((_, index) => <span class:list={['carousel__step', { 'is-active': index === 0 }]} data-carousel-step />)}
-			</span>
-		</div>
+		<span class="carousel__steps" role="img" aria-label={`${labels.position} 1 ${labels.of} ${images.length}`} data-carousel-steps data-position={labels.position} data-of={labels.of}>
+			{images.map((_, index) => <span class:list={['carousel__step', { 'is-active': index === 0 }]} data-carousel-step aria-hidden="true" />)}
+		</span>
 		<button class="carousel__button" type="button" aria-label={labels.previous} data-carousel-previous disabled><span aria-hidden="true">←</span></button>
 		<button class="carousel__button" type="button" aria-label={labels.next} data-carousel-next disabled={images.length < 2}><span aria-hidden="true">→</span></button>
 	</div>

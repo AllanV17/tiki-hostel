@@ -154,39 +154,51 @@
       "eyebrow": "Ometepe — una casa entre volcanes",
       "title": "El hostal",
       "description": "Un refugio de madera para bajar el ritmo y habitar la isla con calma.",
-      "image": "Hostal / fotografía protagonista",
-      "noteLabel": "Introducción al hostal",
-      "noteTitle": ["Una estancia", " cerca de la isla"],
-      "note": "Texto introductorio provisional para presentar el carácter del hostal."
+      "image": "Hostal / fotografía protagonista"
     },
     "rooms": {
       "eyebrow": "Habitaciones y alojamientos",
       "title": "¿Dónde podemos recibirte?",
-      "firstTitle": "Habitación por definir",
-      "firstDescription": "Un espacio para descansar, presentado aquí con texto breve y una secuencia fotográfica flexible.",
-      "direction": "Imagen principal y próximas vistas →",
+      "firstTitle": "Tu espacio para descansar",
+      "firstDescription": "Después de un día explorando Ometepe, encuentra un lugar para bajar el ritmo, descansar y disfrutar de la tranquilidad de la isla.",
+      "firstNote": "Un refugio sencillo, rodeado de naturaleza.",
       "firstImages": [
         "Alojamiento / vista principal",
         "Vista secundaria",
-        "Siguiente vista"
+        "Siguiente vista",
+        "Alojamiento / imagen provisional 4",
+        "Alojamiento / imagen provisional 5",
+        "Alojamiento / imagen provisional 6"
       ],
-      "secondImages": ["Alojamiento / ambiente", "Detalle"],
-      "secondTitle": "Otra forma de alojarse",
-      "secondDescription": "Una segunda tipología para mostrar atmósfera, materialidad y relación con el entorno.",
-      "pending": "Nombre, características y detalles — por confirmar."
+      "firstCarousel": {
+        "label": "Galería de la primera habitación",
+        "previous": "Imagen anterior",
+        "next": "Imagen siguiente",
+        "position": "Imagen",
+        "of": "de"
+      }
     },
     "spaces": {
       "eyebrow": "Espacios del hostal",
       "title": ["Lugares para compartir y hacer", " una pausa"],
       "description": "Áreas comunes e instalaciones se organizarán aquí con una narrativa visual más abierta.",
-      "firstImage": "Espacio común / vista protagonista",
-      "firstIndex": "Área común provisional",
-      "firstTitle": "Un lugar para encontrarse",
-      "firstDescription": "Descripción breve — por confirmar.",
-      "secondImages": ["Espacio / ambiente", "Detalle"],
-      "secondIndex": "Otra área provisional",
-      "secondTitle": "Rincones entre interior y paisaje",
-      "secondDescription": "Texto breve para presentar el uso y la atmósfera del espacio."
+      "images": [
+        "Espacios / imagen provisional 1",
+        "Espacios / imagen provisional 2",
+        "Espacios / imagen provisional 3",
+        "Espacios / imagen provisional 4",
+        "Espacios / imagen provisional 5",
+        "Espacios / imagen provisional 6",
+        "Espacios / imagen provisional 7",
+        "Espacios / imagen provisional 8"
+      ],
+      "carousel": {
+        "label": "Galería de espacios comunes",
+        "previous": "Imagen anterior",
+        "next": "Imagen siguiente",
+        "position": "Imagen visible",
+        "of": "de"
+      }
     },
     "services": {
       "eyebrow": "Servicios y comodidades",
@@ -273,13 +285,29 @@
         "title": ["Paseo a", " caballo"],
         "description": "Una forma más pausada de recorrer los caminos rurales y los espacios abiertos de la isla.",
         "note": "Detalles de la ruta local y del guía — por confirmar.",
-        "image": "Paseo a caballo / paisaje principal"
+        "image": "Paseo a caballo / paisaje principal",
+        "carousel": {
+          "label": "Galería de paseo a caballo",
+          "previous": "Imagen anterior",
+          "next": "Imagen siguiente",
+          "position": "Imagen",
+          "of": "de",
+          "image": "Paseo a caballo / imagen provisional"
+        }
       },
       "hiking": {
         "title": ["Senderismo en el", " volcán"],
         "description": "Un encuentro con el terreno volcánico de Ometepe a través de sus senderos.",
         "note": "Nivel, duración y condiciones — por confirmar.",
-        "image": "Senderismo en el volcán / paisaje principal"
+        "image": "Senderismo en el volcán / paisaje principal",
+        "carousel": {
+          "label": "Galería de senderismo en el volcán",
+          "previous": "Imagen anterior",
+          "next": "Imagen siguiente",
+          "position": "Imagen",
+          "of": "de",
+          "image": "Senderismo en el volcán / imagen provisional"
+        }
       },
       "nextImage": "Siguiente imagen"
     },
@@ -305,8 +333,20 @@
       "galleryImages": [
         "Galería de la noche / llegada",
         "Galería de la noche / sendero",
-        "Siguiente imagen"
+        "Siguiente imagen",
+        "Galería de la noche / imagen provisional 4",
+        "Galería de la noche / imagen provisional 5",
+        "Galería de la noche / imagen provisional 6",
+        "Galería de la noche / imagen provisional 7",
+        "Galería de la noche / imagen provisional 8"
       ],
+      "galleryCarousel": {
+        "label": "Galería de la ruta en imágenes",
+        "previous": "Imagen anterior",
+        "next": "Imagen siguiente",
+        "position": "Imagen",
+        "of": "de"
+      },
       "extensionEyebrow": "Añade otra aventura",
       "extensionTitle": "Prolonga la ruta",
       "extension": "Espacio para una experiencia complementaria opcional. Detalles por confirmar.",

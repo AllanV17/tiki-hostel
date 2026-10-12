@@ -18,26 +18,10 @@ const { content } = Astro.props;
 			</div>
 			<p>{content.hostel.hero.description}</p>
 		</div>
-		<div class="hostel-hero__media">
-			<HostelImagePlaceholder
-				content={content}
-				label={content.hostel.hero.image}
-				className="hostel-hero__image"
-			/>
-			<aside
-				class="hostel-hero__note"
-				aria-label={content.hostel.hero.noteLabel}
-			>
-				<span class="hostel-hero__number">01</span>
-				<div>
-					<h2>
-						{content.hostel.hero.noteTitle[0]}<br />{
-							content.hostel.hero.noteTitle[1]
-						}
-					</h2>
-					<p>{content.hostel.hero.note}</p>
-				</div>
-			</aside>
-		</div>
+		<HostelImagePlaceholder
+			content={content}
+			label={content.hostel.hero.image}
+			className="hostel-hero__image"
+		/>
 	</div>
 </section>
