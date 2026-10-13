@@ -90,6 +90,7 @@
         "Arquitectura de Madera Abierta a la Brisa"
       ],
       "image": "Arquitectura del hostal",
+      "imageAlt": "Fachada de madera y techo de palma del hostal Tiki entre árboles",
       "quote": "“La madera cruje suavemente por la noche, recordándonos que estamos vivos en medio de la isla.”",
       "detailAlt": "Detalle de una estructura de madera"
     },
@@ -100,22 +101,26 @@
         {
           "title": "Cabañas Privadas de Madera",
           "description": "Habitaciones construidas artesanalmente para máxima privacidad y contacto directo con la naturaleza circundante.",
-          "image": "Cabañas de madera"
+          "image": "Cabañas de madera",
+          "imageAlt": "Exterior de una cabaña privada de madera con balcón"
         },
         {
           "title": "Dormitorios Compartidos",
           "description": "Literas sólidas de madera nativa con espacio personal y ventilación natural constante para viajeros con alma de bitácora.",
-          "image": "Dormitorio compartido"
+          "image": "Dormitorio compartido",
+          "imageAlt": "Habitación de madera con camas y mosquiteros"
         },
         {
           "title": "Cocina & Fogata Comunal",
           "description": "Espacios abiertos donde convergen la preparación de comida local, el fuego nocturno y las conversaciones que trazan nuevas rutas.",
-          "image": "Espacio común"
+          "image": "Espacio común",
+          "imageAlt": "Persona con platos de comida en un comedor al aire libre"
         }
       ]
     },
     "experience": {
       "image": "Momento de hospitalidad",
+      "imageAlt": "Tres personas frente a la entrada verde de Tiki Hostel",
       "eyebrow": "La Experiencia Humana",
       "title": "Nuestra esencia está en las manos que te reciben",
       "paragraphs": [
@@ -132,6 +137,12 @@
         "Detalle del hostal",
         "Paisaje de Ometepe",
         "Encuentro al aire libre"
+      ],
+      "imageAlts": [
+        "Cuatro personas junto a un lago y montañas verdes",
+        "Hamaca y sillas de madera en un espacio del hostal",
+        "Silueta de un volcán de Ometepe al atardecer",
+        "Sendero rodeado de bosque tropical"
       ]
     },
     "contact": {
@@ -217,10 +228,12 @@
       "title": ["Quedarse también es parte", " del viaje"],
       "description": "Un relato íntimo sobre la vida cotidiana alrededor del hostal.",
       "image": "Experiencia Tiki / momento protagonista",
-      "noteEyebrow": "Un momento en Tiki",
-      "noteTitle": "Madera, sombra y tiempo compartido",
-      "note": "Texto provisional para transmitir la sensación de llegar, descansar y encontrarse con la isla sin prisa.",
-      "quote": "“Una nota emocional pendiente de la voz de Tiki.”"
+      "editorialEyebrow": "LA EXPERIENCIA TIKI",
+      "editorialTitle": "Hay momentos que no necesitan planes.",
+      "editorialParagraphs": [
+        "Una tarde frente al lago, una conversación que se alarga, el silencio de la isla al caer el sol.",
+        "En Tiki, también se viene a disfrutar de las cosas sencillas."
+      ]
     },
     "practical": {
       "eyebrow": "Información práctica",

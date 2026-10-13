@@ -90,6 +90,7 @@
         "Wooden Spaces Open to the Breeze"
       ],
       "image": "Hostel architecture",
+      "imageAlt": "Tiki Hostel's wooden facade and palm roof among trees",
       "quote": "“The wood creaks softly at night, reminding us that we're alive here in the heart of the island.”",
       "detailAlt": "Detail of a wooden structure"
     },
@@ -100,22 +101,26 @@
         {
           "title": "Private Wooden Cabins",
           "description": "Handcrafted rooms with plenty of privacy and a close connection to the surrounding landscape.",
-          "image": "Wooden cabins"
+          "image": "Wooden cabins",
+          "imageAlt": "Exterior of a private wooden cabin with a balcony"
         },
         {
           "title": "Shared Dorm Rooms",
           "description": "Sturdy native-wood bunk beds, personal space, and a steady flow of fresh air for travelers with stories to share.",
-          "image": "Shared dorm room"
+          "image": "Shared dorm room",
+          "imageAlt": "Wooden room with beds and mosquito nets"
         },
         {
           "title": "Shared Kitchen & Fire Pit",
           "description": "Open spaces to prepare local food, gather around the fire at night, and swap stories about where to go next.",
-          "image": "Common space"
+          "image": "Common space",
+          "imageAlt": "Person holding plates of food in an outdoor dining area"
         }
       ]
     },
     "experience": {
       "image": "Moment of hospitality",
+      "imageAlt": "Three people outside the green entrance to Tiki Hostel",
       "eyebrow": "The People Behind Tiki",
       "title": "The people who welcome you make Tiki what it is",
       "paragraphs": [
@@ -132,6 +137,12 @@
         "Hostel detail",
         "Ometepe landscape",
         "Gathering outdoors"
+      ],
+      "imageAlts": [
+        "Four people beside a lake and green mountains",
+        "Hammock and wooden chairs in a hostel space",
+        "Silhouette of an Ometepe volcano at sunset",
+        "Path through tropical forest"
       ]
     },
     "contact": {
@@ -217,10 +228,12 @@
       "title": ["The Stay Is Part", " of the Journey"],
       "description": "A glimpse of everyday life at Tiki.",
       "image": "The Tiki experience / featured moment",
-      "noteEyebrow": "A moment at Tiki",
-      "noteTitle": "Wood, shade, and time together",
-      "note": "This story of arriving, resting, and getting to know the island is still being written.",
-      "quote": "“A personal note from Tiki is still to come.”"
+      "editorialEyebrow": "THE TIKI EXPERIENCE",
+      "editorialTitle": "Some moments don't need a plan.",
+      "editorialParagraphs": [
+        "An afternoon by the lake, a conversation that goes on a little longer, the quiet of the island as the sun sets.",
+        "At Tiki, the simplest moments are part of the experience."
+      ]
     },
     "practical": {
       "eyebrow": "Good to Know",

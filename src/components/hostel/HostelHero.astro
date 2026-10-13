@@ -1,10 +1,13 @@
 ---
-import type { SiteContent } from '../../i18n';
+import { Image } from 'astro:assets';
+import heroPhoto from '../../assets/hostel/hero-hostal.png';
+import mobileHeroPhoto from '../../assets/hostel/hostal-hero-mobile.webp';
+import type { Language, SiteContent } from '../../i18n';
 interface Props {
 	content: SiteContent;
+	language: Language;
 }
-import HostelImagePlaceholder from './HostelImagePlaceholder.astro';
-const { content } = Astro.props;
+const { content, language } = Astro.props;
 ---
 
 <section class="hostel-hero" aria-labelledby="hostel-title">
@@ -18,10 +21,17 @@ const { content } = Astro.props;
 			</div>
 			<p>{content.hostel.hero.description}</p>
 		</div>
-		<HostelImagePlaceholder
-			content={content}
-			label={content.hostel.hero.image}
-			className="hostel-hero__image"
-		/>
+		<picture class="hostel-hero__picture">
+			<source media="(max-width: 1100px)" srcset={encodeURI(mobileHeroPhoto.src)} type="image/webp" />
+			<Image
+				src={heroPhoto}
+				alt={language === 'es' ? 'Huésped leyendo mientras descansa en una hamaca en Tiki Hostel' : 'Guest reading while relaxing in a hammock at Tiki Hostel'}
+				class="hostel-hero__image"
+				format="png"
+				width={1600}
+				loading="eager"
+				fetchpriority="high"
+			/>
+		</picture>
 	</div>
 </section>

@@ -3,10 +3,13 @@ import type { SiteContent } from '../i18n';
 interface Props {
 	content: SiteContent;
 }
-import MediaPlaceholder from './MediaPlaceholder.astro';
+import { Image } from 'astro:assets';
+import cabinImage from '../assets/home/cabana-privada.webp';
+import dormImage from '../assets/home/dormitorio-compartido.jpg';
+import kitchenImage from '../assets/home/cocina-compartida.jpg';
 const { content } = Astro.props;
 
-const variants = ['olive', 'stone', 'clay'] as const;
+const images = [cabinImage, dormImage, kitchenImage];
 ---
 
 <section
@@ -27,11 +30,14 @@ const variants = ['olive', 'stone', 'clay'] as const;
 			{
 				content.home.spaces.cards.map((space, index) => (
 					<article class="space-card provisional-copy" data-reveal="up">
-						<MediaPlaceholder
-							content={content}
-							label={space.image}
-							variant={variants[index]}
-							className="space-card__photo"
+						<Image
+							src={images[index]}
+							format={images[index].format}
+							widths={[320, 640, 960]}
+							sizes="(max-width: 560px) 100vw, (max-width: 820px) 50vw, 33vw"
+							alt={space.imageAlt}
+							class="home-photo space-card__photo"
+							loading="lazy"
 						/>
 						<div class="space-card__body">
 							<h3>{space.title}</h3>

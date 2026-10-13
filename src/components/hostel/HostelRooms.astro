@@ -1,11 +1,31 @@
 ---
-import type { SiteContent } from '../../i18n';
+import { getImage } from 'astro:assets';
+import signPhoto from '../../assets/hostel/habitaciones-letrero-tiki.jpg';
+import hammockPhoto from '../../assets/home/detalle-hostal.webp';
+import pinkBedPhoto from '../../assets/hostel/habitaciones-cama-mosquitero-rosa.jpg';
+import bunkPhoto from '../../assets/hostel/habitaciones-litera.jpg';
+import purpleBedPhoto from '../../assets/hostel/habitaciones-cama-mosquitero-morado.jpg';
+import sunsetPhoto from '../../assets/hostel/hamaca-palmeras-atardecer.webp';
+import type { Language, SiteContent } from '../../i18n';
 interface Props {
 	content: SiteContent;
+	language: Language;
 }
 import Carousel from '../shared/Carousel.astro';
-const { content } = Astro.props;
-const firstImages = content.hostel.rooms.firstImages.map((placeholderLabel) => ({ alt: '', placeholderLabel }));
+const { content, language } = Astro.props;
+const photos = [
+	[signPhoto, 'Autobús amarillo junto al letrero de Tiki Hostel', 'Yellow bus beside the Tiki Hostel sign'],
+	[hammockPhoto, 'Hamaca y asientos en un espacio común del hostal', 'Hammock and chairs in a hostel common area'],
+	[pinkBedPhoto, 'Cama doble con mosquitero rosa en una habitación', 'Double bed with a pink mosquito net in a room'],
+	[bunkPhoto, 'Litera de madera en una habitación del hostal', 'Wooden bunk bed in a hostel room'],
+	[purpleBedPhoto, 'Cama doble con mosquitero morado en una habitación', 'Double bed with a purple mosquito net in a room'],
+	[sunsetPhoto, 'Hamaca bajo las palmeras con luz de atardecer', 'Hammock beneath palm trees in the evening light'],
+] as const;
+const firstImages = await Promise.all(photos.map(async ([photo, altEs, altEn], index) => ({
+	src: (await getImage({ src: photo, width: Math.min(photo.width, 1200), format: photo.format })).src,
+	alt: language === 'es' ? altEs : altEn,
+	placeholderLabel: content.hostel.rooms.firstImages[index],
+})));
 ---
 
 <section class="hostel-rooms" aria-labelledby="hostel-rooms-title">

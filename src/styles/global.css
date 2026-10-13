@@ -370,6 +370,24 @@ summary:focus-visible {
 	--hero-image-position: center 50%;
 }
 
+.home-photo {
+	display: block;
+	width: 100%;
+	object-fit: cover;
+}
+
+.space-card:nth-child(3) .home-photo {
+	object-position: center 32%;
+}
+
+.gallery-grid__item:first-child {
+	object-position: center 72%;
+}
+
+.gallery-grid__item:nth-child(3) {
+	object-position: 60% center;
+}
+
 .hero::before,
 .hero::after {
 	z-index: 1;
@@ -956,7 +974,7 @@ summary:focus-visible {
 	--contact-ink: #241810;
 }
 
-.site-footer__contact a.site-footer__contact-button:is(:hover, :focus-visible) {
+.site-footer__contact .site-footer__contact-button:is(:hover, :focus-visible, :active) {
 	border-color: var(--contact-fill);
 	background-color: var(--contact-fill);
 	color: var(--contact-ink);
@@ -975,7 +993,7 @@ summary:focus-visible {
 	opacity: 0.78;
 }
 
-.site-footer__contact a.site-footer__contact-button:active {
+.site-footer__contact .site-footer__contact-button:active {
 	opacity: 0.75;
 }
 
@@ -1084,10 +1102,10 @@ summary:focus-visible {
 		transition: background-color 160ms ease;
 	}
 	.site-footer__contact
-		a.site-footer__contact-button:is(:hover, :focus-visible) {
+		.site-footer__contact-button:is(:hover, :focus-visible, :active) {
 		background-color: transparent;
 	}
-	a.site-footer__contact-button:is(:hover, :focus-visible)
+	.site-footer__contact-button:is(:hover, :focus-visible, :active)
 		.site-footer__contact-content::before {
 		background-color: var(--contact-fill);
 	}

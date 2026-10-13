@@ -1,10 +1,12 @@
 ---
-import type { SiteContent } from '../../i18n';
+import { Image } from 'astro:assets';
+import experiencePhoto from '../../assets/hostel/experiencia-grupo-laguna.jpg';
+import type { Language, SiteContent } from '../../i18n';
 interface Props {
 	content: SiteContent;
+	language: Language;
 }
-import HostelImagePlaceholder from './HostelImagePlaceholder.astro';
-const { content } = Astro.props;
+const { content, language } = Astro.props;
 ---
 
 <section class="hostel-experience" aria-labelledby="hostel-experience-title">
@@ -21,21 +23,19 @@ const { content } = Astro.props;
 			<p>{content.hostel.experience.description}</p>
 		</header>
 		<div class="hostel-experience__composition">
-			<HostelImagePlaceholder
-				reveal="in"
-				content={content}
-				label={content.hostel.experience.image}
-				className="hostel-experience__image"
-				variant="secondary"
+			<Image
+				src={experiencePhoto}
+				alt={language === 'es' ? 'Grupo de viajeros reunido junto al agua al atardecer' : 'Group of travelers gathered by the water at sunset'}
+				class="hostel-experience__image"
+				format="jpeg"
+				loading="lazy"
+				data-reveal="in"
 			/>
-			<article class="hostel-experience__note" data-reveal="up">
-				<p class="hostel-eyebrow">{content.hostel.experience.noteEyebrow}</p>
-				<div>
-					<h3>{content.hostel.experience.noteTitle}</h3>
-					<p>{content.hostel.experience.note}</p>
-					<blockquote>{content.hostel.experience.quote}</blockquote>
-				</div>
-			</article>
+			<div class="hostel-experience__editorial" data-reveal="up">
+				<p class="hostel-eyebrow">{content.hostel.experience.editorialEyebrow}</p>
+				<h3>{content.hostel.experience.editorialTitle}</h3>
+				{content.hostel.experience.editorialParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+			</div>
 		</div>
 	</div>
 </section>

@@ -1,11 +1,35 @@
 ---
-import type { SiteContent } from '../../i18n';
+import { getImage } from 'astro:assets';
+import lagoonPhoto from '../../assets/hostel/espacios-orilla-laguna.webp';
+import ranchoPhoto from '../../assets/hostel/espacios-rancho-mesas.webp';
+import catPhoto from '../../assets/hostel/espacios-gato-mesa.jpg';
+import cafePhoto from '../../assets/hostel/espacios-letrero-cafe.webp';
+import sunsetPhoto from '../../assets/hostel/hamaca-palmeras-atardecer.webp';
+import guestsPhoto from '../../assets/hostel/espacios-comensales-rancho.jpg';
+import dessertPhoto from '../../assets/hostel/espacios-postre-fresa.jpg';
+import chillPhoto from '../../assets/hostel/espacios-zona-descanso.jpg';
+import type { Language, SiteContent } from '../../i18n';
 interface Props {
 	content: SiteContent;
+	language: Language;
 }
 import Carousel from '../shared/Carousel.astro';
-const { content } = Astro.props;
-const images = content.hostel.spaces.images.map((placeholderLabel) => ({ alt: '', placeholderLabel }));
+const { content, language } = Astro.props;
+const photos = [
+	[lagoonPhoto, 'Viajeros junto a la laguna entre árboles y mesas', 'Travelers beside the lagoon among trees and tables'],
+	[ranchoPhoto, 'Mesas de madera bajo el rancho de techo de palma', 'Wooden tables beneath the palm-roofed rancho'],
+	[catPhoto, 'Gato atigrado sobre una mesa del hostal', 'Tabby cat on a hostel table'],
+	[cafePhoto, 'Letrero de café iluminado entre plantas', 'Cafe sign lit by sunlight among plants'],
+	[sunsetPhoto, 'Hamaca bajo las palmeras con luz de atardecer', 'Hammock beneath palm trees in the evening light'],
+	[guestsPhoto, 'Huéspedes cenando juntos bajo el rancho', 'Guests dining together beneath the rancho'],
+	[dessertPhoto, 'Postre de fresas servido en un plato', 'Strawberry dessert served on a plate'],
+	[chillPhoto, 'Huéspedes sentados en la zona de descanso', 'Guests seated in the chill area'],
+] as const;
+const images = await Promise.all(photos.map(async ([photo, altEs, altEn], index) => ({
+	src: (await getImage({ src: photo, width: Math.min(photo.width, 1200), format: photo.format })).src,
+	alt: language === 'es' ? altEs : altEn,
+	placeholderLabel: content.hostel.spaces.images[index],
+})));
 ---
 
 <section class="hostel-spaces" aria-labelledby="hostel-spaces-title">

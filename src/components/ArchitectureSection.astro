@@ -4,7 +4,7 @@ interface Props {
 	content: SiteContent;
 }
 import { Image } from 'astro:assets';
-import MediaPlaceholder from './MediaPlaceholder.astro';
+import architectureImage from '../assets/home/arquitectura-hostal.jpg';
 import madera from '../assets/madera.png';
 import treePineIcon from '../assets/icons/tree-pine.svg?url';
 import houseIcon from '../assets/icons/house.svg?url';
@@ -56,12 +56,15 @@ const { content } = Astro.props;
 		</div>
 
 		<div class="architecture__visual">
-			<MediaPlaceholder
-				content={content}
-				label={content.home.architecture.image}
-				variant="olive"
-				className="architecture__photo"
-				reveal="in"
+			<Image
+				src={architectureImage}
+				format={architectureImage.format}
+				widths={[480, 768, 1024]}
+				sizes="(max-width: 820px) 100vw, 50vw"
+				alt={content.home.architecture.imageAlt}
+				class="home-photo architecture__photo"
+				loading="lazy"
+				data-reveal="in"
 			/>
 			<div class="architecture__caption" data-reveal="up">
 				<blockquote class="provisional-copy">

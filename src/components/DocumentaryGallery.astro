@@ -3,10 +3,14 @@ import type { SiteContent } from '../i18n';
 interface Props {
 	content: SiteContent;
 }
-import MediaPlaceholder from './MediaPlaceholder.astro';
+import { Image } from 'astro:assets';
+import sharedLifeImage from '../assets/home/vida-compartida.jpg';
+import hostelDetailImage from '../assets/home/detalle-hostal.webp';
+import landscapeImage from '../assets/home/paisaje-ometepe.jpg';
+import forestImage from '../assets/home/bosque-al-aire-libre.jpg';
 const { content } = Astro.props;
 
-const variants = ['olive', 'clay', 'stone', 'olive'] as const;
+const images = [sharedLifeImage, hostelDetailImage, landscapeImage, forestImage];
 ---
 
 <section
@@ -23,12 +27,16 @@ const variants = ['olive', 'clay', 'stone', 'olive'] as const;
 		</div>
 		<div class="gallery-grid" aria-label={content.home.gallery.label} data-reveal="in">
 			{
-				content.home.gallery.moments.map((moment, index) => (
-					<MediaPlaceholder
-						content={content}
-						label={moment}
-						variant={variants[index]}
-						className="gallery-grid__item"
+				images.map((image, index) => (
+					<Image
+						src={image}
+						format={image.format}
+						width={640}
+						widths={[320, 640]}
+						sizes="(max-width: 820px) 50vw, 25vw"
+						alt={content.home.gallery.imageAlts[index]}
+						class="home-photo gallery-grid__item"
+						loading="lazy"
 					/>
 				))
 			}

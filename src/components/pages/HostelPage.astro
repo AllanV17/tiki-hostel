@@ -35,11 +35,11 @@ const content = getContent(language);
 	/>
 	<!-- Hostel copy and photography are pending client validation. -->
 	<main class="hostel-page" data-content-status="provisional">
-		<HostelHero content={content} />
-		<HostelRooms content={content} />
-		<HostelSpaces content={content} />
+		<HostelHero content={content} language={language} />
+		<HostelRooms content={content} language={language} />
+		<HostelSpaces content={content} language={language} />
 		<HostelServices content={content} />
-		<HostelExperience content={content} />
+		<HostelExperience content={content} language={language} />
 		<HostelPractical content={content} />
 		<HostelContact content={content} />
 	</main>
