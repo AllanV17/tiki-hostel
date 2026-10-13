@@ -10,7 +10,7 @@ const images = content.hostel.spaces.images.map((placeholderLabel) => ({ alt: ''
 
 <section class="hostel-spaces" aria-labelledby="hostel-spaces-title">
 	<div class="hostel-container">
-		<header class="hostel-section-head hostel-spaces__heading">
+		<header class="hostel-section-head hostel-spaces__heading" data-reveal="up">
 			<div>
 				<p class="hostel-eyebrow">{content.hostel.spaces.eyebrow}</p>
 				<h2 id="hostel-spaces-title">
@@ -22,6 +22,7 @@ const images = content.hostel.spaces.images.map((placeholderLabel) => ({ alt: ''
 			<p>{content.hostel.spaces.description}</p>
 		</header>
 		<Carousel
+			reveal="in"
 			images={images}
 			label={content.hostel.spaces.carousel.label}
 			variant="spaces"

@@ -13,15 +13,15 @@ const networks = content.contact.social.networks;
 	aria-labelledby="contact-social-title"
 >
 	<div class="contact-container">
-		<div class="contact-section-heading">
+		<div class="contact-section-heading" data-reveal="up">
 			<p class="contact-eyebrow">{content.contact.social.eyebrow}</p>
 			<h2 id="contact-social-title">{content.contact.social.title}</h2>
 		</div>
-		<ul class="contact-social__list">
+		<ul class="contact-social__list" data-reveal-stagger>
 			<!-- Each social profile needs its confirmed external URL. -->
 			{
 				networks.map((network) => (
-					<li>
+					<li data-reveal="up">
 						<div>
 							<>
 								<h3>{network.name}</h3>

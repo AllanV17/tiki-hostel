@@ -57,9 +57,14 @@ const prompt = getContent('en').shared.language;
 </div>
 
 <script>
-	const root = document.querySelector<HTMLElement>(
-		'[data-language-experience]',
-	);
+let languageListeners: AbortController | undefined;
+let initializedRoot: Element | null | undefined;
+function initializeLanguagePage() {
+	const root = document.querySelector<HTMLElement>('[data-language-experience]');
+	if (root === initializedRoot) return;
+	initializedRoot = root;
+	languageListeners?.abort();
+	const signal = (languageListeners = new AbortController()).signal;
 	const dialog = root?.querySelector<HTMLDialogElement>(
 		'[data-language-dialog]',
 	);
@@ -140,33 +145,33 @@ const prompt = getContent('en').shared.language;
 		menu.hidden = !opening;
 		trigger.setAttribute('aria-expanded', String(opening));
 		if (opening) menu.querySelector<HTMLAnchorElement>('a')?.focus();
-	});
+	}, { signal });
 
 	// Dismiss the desktop picker without trapping pointer or keyboard focus.
 	document.addEventListener('pointerdown', (event) => {
 		if (switcher && !switcher.contains(event.target as Node)) closeMenu();
-	});
+	}, { signal });
 
 	document.addEventListener('keydown', (event) => {
 		if (event.key === 'Escape' && menu && !menu.hidden && !dialog?.open) {
 			event.preventDefault();
 			closeMenu(true);
 		}
-	});
+	}, { signal });
 
 	switcher?.addEventListener('focusout', () => {
 		window.requestAnimationFrame(() => {
 			if (switcher && !switcher.contains(document.activeElement)) closeMenu();
 		});
-	});
+	}, { signal });
 
-	dialog?.addEventListener('cancel', (event) => event.preventDefault());
+	dialog?.addEventListener('cancel', (event) => event.preventDefault(), { signal });
 	dialog?.addEventListener('keydown', (event) => {
 		if (event.key === 'Escape') {
 			event.preventDefault();
 			event.stopPropagation();
 		}
-	});
+	}, { signal });
 
 	document
 		.querySelectorAll<HTMLAnchorElement>('[data-language-choice]')
@@ -194,7 +199,7 @@ const prompt = getContent('en').shared.language;
 						trigger?.focus();
 					}
 				}
-			});
+			}, { signal });
 		});
 
 	function initializeLanguageExperience() {
@@ -217,5 +222,8 @@ const prompt = getContent('en').shared.language;
 	// Back/forward cache restores a page without rerunning its scripts.
 	window.addEventListener('pageshow', (event) => {
 		if (event.persisted) initializeLanguageExperience();
-	});
+	}, { signal });
+}
+document.addEventListener('astro:page-load', initializeLanguagePage);
+initializeLanguagePage();
 </script>

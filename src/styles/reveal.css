@@ -20,4 +20,8 @@
 	[data-reveal-stagger] > [data-reveal]:nth-child(3) {
 		--reveal-delay: 180ms;
 	}
+
+	[data-reveal-stagger] > [data-reveal]:nth-child(4) {
+		--reveal-delay: 270ms;
+	}
 }

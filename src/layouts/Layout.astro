@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { withBase } from '../utils/withBase';
 import type { Language, SiteContent } from '../i18n';
 import { getLocalizedHref, type Page } from '../i18n/routes';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	content: SiteContent;
@@ -49,8 +50,23 @@ const canonicalHref = language === 'es' ? esHref : enHref;
 			rel="stylesheet"
 		/>
 		<title>{title}</title>
+		<ClientRouter fallback="swap" />
 	</head>
 	<body>
 		<slot />
+		<script>
+			import { initScrollReveals } from '../scripts/reveal';
+			let revealedPage: Element | null = null;
+			let stopReveals: (() => void) | undefined;
+			function revealPage() {
+				const main = document.querySelector('main');
+				if (!main || main === revealedPage) return;
+				stopReveals?.();
+				revealedPage = main;
+				stopReveals = initScrollReveals();
+			}
+			document.addEventListener('astro:page-load', revealPage);
+			revealPage();
+		</script>
 	</body>
 </html>

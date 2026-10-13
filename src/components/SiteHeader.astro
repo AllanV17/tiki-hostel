@@ -240,6 +240,14 @@ const enHref = language === 'en' ? currentHref : equivalentHref;
 />
 
 <script>
+let headerListeners: AbortController | undefined;
+let initializedHeader: Element | null | undefined;
+function initializeHeader() {
+	const header = document.querySelector('.site-header');
+	if (header === initializedHeader) return;
+	initializedHeader = header;
+	headerListeners?.abort();
+	const signal = (headerListeners = new AbortController()).signal;
 	const mobileTrigger = document.querySelector<HTMLButtonElement>(
 		'[data-mobile-nav-trigger]',
 	);
@@ -288,13 +296,13 @@ const enHref = language === 'en' ? currentHref : equivalentHref;
 		mobileDrawer.showModal();
 		mobileTrigger.setAttribute('aria-expanded', 'true');
 		mobileClose?.focus();
-	});
+	}, { signal });
 
-	mobileClose?.addEventListener('click', () => closeMobileDrawer());
+	mobileClose?.addEventListener('click', () => closeMobileDrawer(), { signal });
 	mobileDrawer?.addEventListener('cancel', (event) => {
 		event.preventDefault();
 		closeMobileDrawer();
-	});
+	}, { signal });
 	// Backdrop clicks target the dialog; bounds separate them from clicks in the panel.
 	mobileDrawer?.addEventListener('click', (event) => {
 		if (event.target !== mobileDrawer) return;
@@ -306,14 +314,19 @@ const enHref = language === 'en' ? currentHref : equivalentHref;
 			event.clientY > bounds.bottom
 		)
 			closeMobileDrawer();
-	});
+	}, { signal });
 	mobileDrawer?.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => {
-		link.addEventListener('click', () => closeMobileDrawer(true));
+		link.addEventListener('click', () => closeMobileDrawer(true), { signal });
 	});
+	document.addEventListener('astro:before-swap', () => closeMobileDrawer(true), { signal });
+	signal.addEventListener('abort', () => window.clearTimeout(closeTimer), { once: true });
 	// A modal left open after resizing would block the desktop navigation.
 	window
 		.matchMedia('(min-width: 821px)')
 		.addEventListener('change', (event) => {
 			if (event.matches) closeMobileDrawer(true);
-		});
+		}, { signal });
+}
+document.addEventListener('astro:page-load', initializeHeader);
+initializeHeader();
 </script>

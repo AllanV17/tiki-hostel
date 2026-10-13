@@ -28,4 +28,5 @@ export function initScrollReveals(root: ParentNode = document) {
 		observer?.disconnect();
 		elements.forEach((element) => element.classList.remove('is-reveal-pending'));
 	}
+	return () => observer?.disconnect();
 }

@@ -199,6 +199,7 @@
 	color: var(--color-forest);
 	font-size: 19px;
 	cursor: pointer;
+	transition: background-color 180ms ease, opacity 180ms ease, transform 180ms ease;
 }
 
 .carousel__button:hover:not(:disabled) {
@@ -208,6 +209,19 @@
 .carousel__button:disabled {
 	color: #a9a39b;
 	cursor: default;
+	opacity: 0.55;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+	.carousel__button:hover:not(:disabled) {
+		transform: translateY(-1px);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.carousel__button:active:not(:disabled) {
+		transform: translateY(1px);
+	}
 }
 
 .carousel__button:focus-visible,

@@ -11,13 +11,13 @@ const { content } = Astro.props;
 	id="reservas"
 	aria-labelledby="contact-bookings-title"
 >
-	<div class="contact-section-heading">
+	<div class="contact-section-heading" data-reveal="up">
 		<p class="contact-eyebrow">{content.contact.bookings.eyebrow}</p>
 		<h2 id="contact-bookings-title">{content.contact.bookings.title}</h2>
 		<p>{content.contact.bookings.description}</p>
 	</div>
-	<div class="contact-bookings__list">
-		<div>
+	<div class="contact-bookings__list" data-reveal-stagger>
+		<div data-reveal="up">
 			<h3>Booking.com</h3>
 			<!-- Booking.com URL is pending client confirmation. -->
 			<a
@@ -27,7 +27,7 @@ const { content } = Astro.props;
 				>{content.contact.bookings.booking} <span aria-hidden="true">↗</span></a
 			>
 		</div>
-		<div>
+		<div data-reveal="up">
 			<h3>Airbnb</h3>
 			<!-- Airbnb URL is pending client confirmation. -->
 			<a

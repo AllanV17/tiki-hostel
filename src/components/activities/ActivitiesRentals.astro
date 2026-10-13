@@ -13,7 +13,7 @@ const rentals = content.activities.rentals.items;
 	class="activities-rentals activities-container"
 	aria-labelledby="rentals-title"
 >
-	<div class="activities-section-head">
+	<div class="activities-section-head" data-reveal="up">
 		<div>
 			<p class="activities-eyebrow">{content.activities.rentals.eyebrow}</p>
 			<h2 id="rentals-title">
@@ -24,10 +24,10 @@ const rentals = content.activities.rentals.items;
 		</div>
 		<p>{content.activities.rentals.description}</p>
 	</div>
-	<div class="activities-rentals__grid">
+	<div class="activities-rentals__grid" data-reveal-stagger>
 		{
 			rentals.map((rental, index) => (
-				<article class="rental-card">
+				<article class="rental-card" data-reveal="up">
 					<div class="rental-card__heading">
 						<h3>{rental.name}</h3>
 						<span>{String(index + 1).padStart(2, '0')}</span>

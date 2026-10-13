@@ -187,7 +187,8 @@ summary:focus-visible {
 	transition:
 		background-color 160ms ease,
 		color 160ms ease,
-		border-color 160ms ease;
+		border-color 160ms ease,
+		transform 180ms ease;
 }
 
 .button:hover {
@@ -283,7 +284,24 @@ summary:focus-visible {
 	font-size: 16px;
 	font-weight: 500;
 	text-decoration: none;
-	transition: color 160ms ease;
+	transition: color 160ms ease, opacity 160ms ease;
+}
+
+.desktop-nav > a:not(.button):active,
+.mobile-nav__links > a:not(.button):active {
+	opacity: 0.72;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+	.button:hover {
+		transform: translateY(-2px);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.button:active {
+		transform: translateY(1px);
+	}
 }
 
 .desktop-nav > a:not(.button):hover,
@@ -848,6 +866,14 @@ summary:focus-visible {
 	text-decoration: none;
 }
 
+.footer-group a {
+	transition: color 180ms ease, opacity 180ms ease;
+}
+
+.footer-group a:active {
+	opacity: 0.72;
+}
+
 .footer-group a:hover,
 .footer-group a[aria-current='page'] {
 	color: #fff;
@@ -930,7 +956,7 @@ summary:focus-visible {
 	--contact-ink: #241810;
 }
 
-.site-footer__contact .site-footer__contact-button:is(:hover, :focus-visible) {
+.site-footer__contact a.site-footer__contact-button:is(:hover, :focus-visible) {
 	border-color: var(--contact-fill);
 	background-color: var(--contact-fill);
 	color: var(--contact-ink);
@@ -939,6 +965,18 @@ summary:focus-visible {
 .site-footer__contact .site-footer__contact-button:focus-visible {
 	outline: 2px solid #fff;
 	outline-offset: 3px;
+}
+
+.site-footer__brand .brand {
+	transition: opacity 180ms ease;
+}
+
+.site-footer__brand .brand:is(:hover, :active) {
+	opacity: 0.78;
+}
+
+.site-footer__contact a.site-footer__contact-button:active {
+	opacity: 0.75;
 }
 
 .site-footer__bottom {
@@ -1046,10 +1084,10 @@ summary:focus-visible {
 		transition: background-color 160ms ease;
 	}
 	.site-footer__contact
-		.site-footer__contact-button:is(:hover, :focus-visible) {
+		a.site-footer__contact-button:is(:hover, :focus-visible) {
 		background-color: transparent;
 	}
-	.site-footer__contact-button:is(:hover, :focus-visible)
+	a.site-footer__contact-button:is(:hover, :focus-visible)
 		.site-footer__contact-content::before {
 		background-color: var(--contact-fill);
 	}
@@ -1091,6 +1129,7 @@ summary:focus-visible {
 		background: rgb(255 255 255 / 8%);
 		color: #fff;
 		cursor: pointer;
+		transition: background-color 180ms ease, transform 180ms ease;
 	}
 	.mobile-nav__trigger:hover,
 	.mobile-nav__trigger[aria-expanded='true'],
@@ -1227,6 +1266,13 @@ summary:focus-visible {
 	}
 	.site-footer__brand {
 		grid-column: 1 / -1;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mobile-nav__trigger:active,
+	.mobile-nav__close:active {
+		transform: translateY(1px);
 	}
 }
 

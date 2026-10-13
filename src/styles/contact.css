@@ -133,13 +133,22 @@
 	color: var(--color-forest);
 	font-size: 13px;
 	font-weight: 700;
-	text-decoration: none;
+	text-decoration: underline;
+	text-decoration-color: transparent;
+	text-underline-offset: 3px;
+	transition: text-decoration-color 180ms ease, opacity 180ms ease;
 }
 
 .contact-location__details a:hover,
 .contact-social__list a:hover,
 .contact-bookings__list a:hover {
-	text-decoration: underline;
+	text-decoration-color: currentColor;
+}
+
+.contact-location__details a:active,
+.contact-social__list a:active,
+.contact-bookings__list a:active {
+	opacity: 0.72;
 }
 
 .contact-location__details a {

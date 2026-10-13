@@ -22,7 +22,7 @@ const galleryImages = [
 <section class="sleepover" aria-labelledby="sleepover-title">
 	<div class="sleepover__feature">
 		<div class="activities-container">
-			<div class="activities-section-head sleepover__feature-heading">
+			<div class="activities-section-head sleepover__feature-heading" data-reveal="up">
 				<div>
 					<p class="activities-eyebrow">
 						{content.activities.sleepover.eyebrow}
@@ -32,6 +32,7 @@ const galleryImages = [
 				<p>{content.activities.sleepover.description}</p>
 			</div>
 			<ActivityImagePlaceholder
+				reveal="in"
 				content={content}
 				label={content.activities.sleepover.image}
 				variant="dark"
@@ -43,7 +44,7 @@ const galleryImages = [
 	<div class="sleepover__details">
 		<div class="activities-container">
 			<div class="sleepover__story-grid">
-				<div class="sleepover__story">
+				<div class="sleepover__story" data-reveal="up">
 					<p class="activities-eyebrow">
 						{content.activities.sleepover.storyEyebrow}
 					</p>
@@ -55,7 +56,7 @@ const galleryImages = [
 					<p>{content.activities.sleepover.story}</p>
 					<blockquote>{content.activities.sleepover.quote}</blockquote>
 				</div>
-				<div class="sleepover__included">
+				<div class="sleepover__included" data-reveal="up">
 					<h3>{content.activities.sleepover.includedTitle}</h3>
 					<p>{content.activities.sleepover.included}</p>
 					<ul>
@@ -68,7 +69,7 @@ const galleryImages = [
 			</div>
 
 			<div class="sleepover__gallery" aria-labelledby="sleepover-gallery-title">
-				<div class="sleepover__gallery-heading">
+				<div class="sleepover__gallery-heading" data-reveal="up">
 					<h3 id="sleepover-gallery-title">
 						{content.activities.sleepover.galleryTitle}
 					</h3>
@@ -77,6 +78,7 @@ const galleryImages = [
 					>
 				</div>
 				<Carousel
+					reveal="in"
 					images={galleryImages}
 					label={content.activities.sleepover.galleryCarousel.label}
 					variant="gallery"
@@ -93,7 +95,7 @@ const galleryImages = [
 			</div>
 
 			<div class="sleepover__extension">
-				<div>
+				<div data-reveal="up">
 					<p class="activities-eyebrow">
 						{content.activities.sleepover.extensionEyebrow}
 					</p>
@@ -101,13 +103,14 @@ const galleryImages = [
 					<p>{content.activities.sleepover.extension}</p>
 				</div>
 				<ActivityImagePlaceholder
+					reveal="in"
 					content={content}
 					label={content.activities.sleepover.extensionImage}
 					variant="dark"
 				/>
 			</div>
 
-			<div class="sleepover__practical">
+			<div class="sleepover__practical" data-reveal="up">
 				<div class="activities-section-head">
 					<div>
 						<p class="activities-eyebrow">
@@ -141,7 +144,7 @@ const galleryImages = [
 				</dl>
 			</div>
 
-			<div class="sleepover__enquiry">
+			<div class="sleepover__enquiry" data-reveal="up">
 				<div>
 					<h3>{content.activities.sleepover.enquiryTitle}</h3>
 					<p>{content.activities.sleepover.enquiry}</p>

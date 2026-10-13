@@ -1,3 +1,10 @@
+const resizeObservers = new Set<ResizeObserver>();
+
+export function cleanupCarousels() {
+	resizeObservers.forEach((observer) => observer.disconnect());
+	resizeObservers.clear();
+}
+
 export function initCarousels() {
 	document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((root) => {
 		if (root.dataset.carouselInitialized) return;
@@ -78,7 +85,7 @@ export function initCarousels() {
 				else goTo(requestedIndex);
 			}
 		});
-		new ResizeObserver(() => {
+		const resizeObserver = new ResizeObserver(() => {
 			if (spaces && track.clientWidth !== trackWidth) {
 				if (!aligning) resizeIndex = requestedIndex ?? activeIndex;
 				aligning = true;
@@ -97,7 +104,9 @@ export function initCarousels() {
 			track.scrollTo({ left: scrollLeftFor(slides[index]), behavior: 'instant' });
 			setActive(index);
 			requestedIndex = null;
-		}).observe(track);
+		});
+		resizeObserver.observe(track);
+		resizeObservers.add(resizeObserver);
 		setActive(0);
 	});
 }

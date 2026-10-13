@@ -535,6 +535,11 @@
 	font-weight: 700;
 	text-decoration: none;
 	text-transform: uppercase;
+	transition: opacity 180ms ease;
+}
+
+.rental-card__bottom a:active {
+	opacity: 0.72;
 }
 
 .rental-card__bottom a:hover {

@@ -17,7 +17,14 @@
 	transition:
 		background-color 160ms ease,
 		border-color 160ms ease,
-		color 160ms ease;
+		color 160ms ease,
+		transform 180ms ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.language-switcher__trigger:active {
+		transform: translateY(1px);
+	}
 }
 
 .language-switcher__trigger:hover,
@@ -63,6 +70,11 @@
 	color: #fff;
 	font-size: 14px;
 	text-decoration: none;
+	transition: background-color 160ms ease, opacity 160ms ease;
+}
+
+.language-switcher__menu a:active {
+	opacity: 0.72;
 }
 
 .language-switcher__menu a:hover,
@@ -147,6 +159,11 @@
 	color: #fff;
 	font-size: 13px;
 	text-decoration: none;
+	transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, opacity 160ms ease;
+}
+
+.mobile-nav__language-options a:active {
+	opacity: 0.72;
 }
 
 .mobile-nav__language-options a:hover,
@@ -235,6 +252,11 @@
 	font-size: 13px;
 	font-weight: 700;
 	text-decoration: none;
+	transition: background-color 160ms ease, opacity 160ms ease;
+}
+
+.language-dialog__actions a:active {
+	opacity: 0.72;
 }
 
 .language-dialog__primary {

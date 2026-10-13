@@ -9,7 +9,7 @@ const facts = content.hostel.practical.facts;
 
 <section class="hostel-practical" aria-labelledby="hostel-practical-title">
 	<div class="hostel-container">
-		<header class="hostel-section-head hostel-practical__heading">
+		<header class="hostel-section-head hostel-practical__heading" data-reveal="up">
 			<div>
 				<p class="hostel-eyebrow">{content.hostel.practical.eyebrow}</p>
 				<h2 id="hostel-practical-title">
@@ -20,7 +20,7 @@ const facts = content.hostel.practical.facts;
 			</div>
 			<p>{content.hostel.practical.description}</p>
 		</header>
-		<dl class="hostel-practical__facts">
+		<dl class="hostel-practical__facts" data-reveal="up">
 			{
 				facts.map((fact) => (
 					<div>
@@ -31,7 +31,7 @@ const facts = content.hostel.practical.facts;
 				))
 			}
 		</dl>
-		<div class="hostel-practical__closing">
+		<div class="hostel-practical__closing" data-reveal="up">
 			<p>{content.hostel.practical.closing}</p>
 			<span>{content.hostel.practical.pending}</span>
 		</div>

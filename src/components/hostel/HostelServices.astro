@@ -9,7 +9,7 @@ const modules = content.hostel.services.modules;
 
 <section class="hostel-services" aria-labelledby="hostel-services-title">
 	<div class="hostel-container">
-		<header class="hostel-section-head hostel-services__heading">
+		<header class="hostel-section-head hostel-services__heading" data-reveal="up">
 			<div>
 				<p class="hostel-eyebrow">{content.hostel.services.eyebrow}</p>
 				<h2 id="hostel-services-title">
@@ -20,10 +20,10 @@ const modules = content.hostel.services.modules;
 			</div>
 			<p class="hostel-services__status">{content.hostel.services.status}</p>
 		</header>
-		<div class="hostel-services__grid">
+		<div class="hostel-services__grid" data-reveal-stagger>
 			{
 				modules.map((title, index) => (
-					<article class="hostel-service">
+					<article class="hostel-service" data-reveal="up">
 						<span class="hostel-service__number">
 							{String(index + 1).padStart(2, '0')}
 						</span>

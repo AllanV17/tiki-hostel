@@ -12,6 +12,7 @@ interface Props {
 	label: string;
 	variant: 'wide' | 'split' | 'gallery' | 'rooms-first' | 'spaces';
 	controlsLayout?: 'reversed' | 'stacked-center';
+	reveal?: 'in';
 	labels: {
 		previous: string;
 		next: string;
@@ -22,10 +23,10 @@ interface Props {
 	};
 }
 
-const { images, label, variant, controlsLayout, labels } = Astro.props;
+const { images, label, variant, controlsLayout, reveal, labels } = Astro.props;
 ---
 
-<div class:list={['carousel', `carousel--${variant}`, { 'carousel--controls-reversed': controlsLayout === 'reversed', 'carousel--controls-stacked-center': controlsLayout === 'stacked-center' }]} role="region" aria-roledescription="carousel" aria-label={label} data-carousel>
+<div class:list={['carousel', `carousel--${variant}`, { 'carousel--controls-reversed': controlsLayout === 'reversed', 'carousel--controls-stacked-center': controlsLayout === 'stacked-center' }]} role="region" aria-roledescription="carousel" aria-label={label} data-carousel data-reveal={reveal}>
 	<div class="carousel__track" tabindex="0" data-carousel-track>
 		{images.map((image, index) => (
 			<div class:list={['carousel__slide', { 'is-active': index === 0 }]} data-carousel-slide>
@@ -74,6 +75,8 @@ const { images, label, variant, controlsLayout, labels } = Astro.props;
 </div>
 
 <script>
-	import { initCarousels } from '../../scripts/carousel';
+	import { cleanupCarousels, initCarousels } from '../../scripts/carousel';
+	document.addEventListener('astro:before-swap', cleanupCarousels);
+	document.addEventListener('astro:page-load', initCarousels);
 	initCarousels();
 </script>

@@ -29,7 +29,7 @@ const hikingImages = Array.from({ length: 6 }, (_, index) => ({
 	class="activities-routes activities-container"
 	aria-labelledby="activities-routes-title"
 >
-	<div class="activities-section-head activities-routes__heading">
+	<div class="activities-section-head activities-routes__heading" data-reveal="up">
 		<div>
 			<p class="activities-eyebrow">{content.activities.routes.eyebrow}</p>
 			<h2 id="activities-routes-title">
@@ -43,7 +43,7 @@ const hikingImages = Array.from({ length: 6 }, (_, index) => ({
 
 	<article class="activity-route activity-route--kayak">
 		<div class="activity-route__top">
-			<div class="activity-route__copy">
+			<div class="activity-route__copy" data-reveal="up">
 				<p class="activity-route__index">
 					<span>01</span><i></i>{content.activities.routes.indexLabel}
 				</p>
@@ -61,6 +61,7 @@ const hikingImages = Array.from({ length: 6 }, (_, index) => ({
 			</p>
 		</div>
 		<Carousel
+			reveal="in"
 			images={kayakImages}
 			label={content.activities.routes.kayak.carousel.label}
 			variant="wide"
@@ -76,7 +77,7 @@ const hikingImages = Array.from({ length: 6 }, (_, index) => ({
 	</article>
 
 	<article class="activity-route activity-route--split">
-		<div class="activity-route__copy">
+		<div class="activity-route__copy" data-reveal="up">
 			<p class="activity-route__index">
 				<span>02</span><i></i>{content.activities.routes.indexLabel}
 			</p>
@@ -91,6 +92,7 @@ const hikingImages = Array.from({ length: 6 }, (_, index) => ({
 			<p class="activity-route__note">{content.activities.routes.horse.note}</p>
 		</div>
 		<Carousel
+			reveal="in"
 			images={horseImages}
 			label={content.activities.routes.horse.carousel.label}
 			variant="split"
@@ -107,7 +109,7 @@ const hikingImages = Array.from({ length: 6 }, (_, index) => ({
 	</article>
 
 	<article class="activity-route activity-route--split activity-route--reverse">
-		<div class="activity-route__copy">
+		<div class="activity-route__copy" data-reveal="up">
 			<p class="activity-route__index">
 				<span>03</span><i></i>{content.activities.routes.indexLabel}
 			</p>
@@ -124,6 +126,7 @@ const hikingImages = Array.from({ length: 6 }, (_, index) => ({
 			</p>
 		</div>
 		<Carousel
+			reveal="in"
 			images={hikingImages}
 			label={content.activities.routes.hiking.carousel.label}
 			variant="split"

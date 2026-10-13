@@ -6,15 +6,17 @@ interface Props {
 	label: string;
 	className?: string;
 	variant?: 'main' | 'secondary' | 'detail';
+	reveal?: 'in';
 }
 
-const { label, className = '', variant = 'main' } = Astro.props;
+const { label, className = '', variant = 'main', reveal } = Astro.props;
 ---
 
 <div
 	class:list={['hostel-image', `hostel-image--${variant}`, className]}
 	role="img"
 	aria-label={`${label}. ${content.shared.placeholder.photoSelect}`}
+	data-reveal={reveal}
 >
 	<span class="hostel-image__label" aria-hidden="true">{label}</span>
 	<span class="hostel-image__pending" aria-hidden="true"

@@ -11,22 +11,22 @@ const { content } = Astro.props;
 	id="ubicacion"
 	aria-labelledby="contact-location-title"
 >
-	<div class="contact-section-heading">
+	<div class="contact-section-heading" data-reveal="up">
 		<p class="contact-eyebrow">{content.contact.location.eyebrow}</p>
 		<h2 id="contact-location-title">{content.contact.location.title}</h2>
 	</div>
-	<div class="contact-location__details">
-		<div>
+	<div class="contact-location__details" data-reveal-stagger>
+		<div data-reveal="up">
 			<h3>{content.contact.location.generalLabel}</h3><p>
 				{content.contact.location.general}
 			</p>
 		</div>
-		<div>
+		<div data-reveal="up">
 			<h3>{content.contact.location.addressLabel}</h3><p>
 				{content.contact.location.address}
 			</p>
 		</div>
-		<div>
+		<div data-reveal="up">
 			<h3>{content.contact.location.arrivalLabel}</h3><p>
 				{content.contact.location.arrival}
 			</p>

@@ -6,9 +6,10 @@ interface Props {
 	label: string;
 	variant?: 'light' | 'dark';
 	className?: string;
+	reveal?: 'in';
 }
 
-const { label, variant = 'light', className = '' } = Astro.props;
+const { label, variant = 'light', className = '', reveal } = Astro.props;
 ---
 
 <div
@@ -19,6 +20,7 @@ const { label, variant = 'light', className = '' } = Astro.props;
 	]}
 	role="img"
 	aria-label={`${label}. ${content.shared.placeholder.imageSelect}`}
+	data-reveal={reveal}
 >
 	<span class="activity-image-placeholder__label" aria-hidden="true"
 		>{label}</span

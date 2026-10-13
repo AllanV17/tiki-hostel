@@ -9,7 +9,7 @@ const { content } = Astro.props;
 
 <section class="hostel-experience" aria-labelledby="hostel-experience-title">
 	<div class="hostel-container">
-		<header class="hostel-section-head hostel-experience__heading">
+		<header class="hostel-section-head hostel-experience__heading" data-reveal="up">
 			<div>
 				<p class="hostel-eyebrow">{content.hostel.experience.eyebrow}</p>
 				<h2 id="hostel-experience-title">
@@ -22,12 +22,13 @@ const { content } = Astro.props;
 		</header>
 		<div class="hostel-experience__composition">
 			<HostelImagePlaceholder
+				reveal="in"
 				content={content}
 				label={content.hostel.experience.image}
 				className="hostel-experience__image"
 				variant="secondary"
 			/>
-			<article class="hostel-experience__note">
+			<article class="hostel-experience__note" data-reveal="up">
 				<p class="hostel-eyebrow">{content.hostel.experience.noteEyebrow}</p>
 				<div>
 					<h3>{content.hostel.experience.noteTitle}</h3>
