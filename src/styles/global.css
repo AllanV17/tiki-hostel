@@ -1454,6 +1454,14 @@ summary:focus-visible {
 		gap: 36px 20px;
 		padding-bottom: 40px;
 	}
+	.site-footer__logo-frame {
+		width: 112px;
+		height: 91px;
+	}
+	.site-footer__logo {
+		width: 144px;
+		transform: translate(-15px, -11px);
+	}
 	.site-footer__contact {
 		grid-column: 1 / -1;
 		flex-direction: row;

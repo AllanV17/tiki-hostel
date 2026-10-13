@@ -17,8 +17,6 @@ const prompt = getContent('en').shared.language;
 	class="language-experience"
 	data-language-experience
 	data-language={language}
-	data-es-href={esHref}
-	data-en-href={enHref}
 >
 	<dialog
 		class="language-dialog"
@@ -112,10 +110,6 @@ const prompt = getContent('en').shared.language;
 		return saved === 'es' || saved === 'en' ? saved : null;
 	}
 
-	function targetHref(language: 'es' | 'en'): string | undefined {
-		return language === 'es' ? root?.dataset.esHref : root?.dataset.enHref;
-	}
-
 	function closeMenu(returnFocus = false) {
 		if (!menu || !trigger) return;
 		menu.hidden = true;
@@ -204,13 +198,8 @@ const prompt = getContent('en').shared.language;
 		});
 
 	function initializeLanguageExperience() {
-		// Explicit choice wins; browser language only prompts first-time English visitors.
+		// A saved choice suppresses the prompt without overriding an explicit URL.
 		const saved = preference();
-		if (saved && saved !== currentLanguage) {
-			const href = targetHref(saved);
-			if (href) window.location.replace(href + window.location.hash);
-			return;
-		}
 		const pendingSessionToast = takeStored(toastKey, true);
 		const pendingLocalToast = takeStored(toastKey);
 		if (pendingSessionToast === '1' || pendingLocalToast === '1') showToast();

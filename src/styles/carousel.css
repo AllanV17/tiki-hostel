@@ -227,6 +227,16 @@
 }
 
 @media (max-width: 820px) {
+	.carousel--controls-reversed .carousel__controls {
+		justify-content: flex-end;
+	}
+
+	.carousel--controls-reversed .carousel__steps {
+		order: 0;
+		margin-right: 10px;
+		margin-left: 0;
+	}
+
 	.carousel--rooms-first .carousel__slide > :is(.hostel-image, .carousel__image) {
 		height: 420px;
 	}
@@ -238,31 +248,46 @@
 }
 
 @media (max-width: 560px) {
+	.carousel {
+		--carousel-gap: 12px;
+		--carousel-main: calc(100% - 32px);
+	}
+
+	.carousel--split {
+		--carousel-main: calc(100% - 42px);
+	}
+
+	.carousel--rooms-first {
+		--rooms-side: clamp(16px, 6cqw, 28px);
+	}
+
 	.carousel--spaces .carousel__track {
-		--carousel-main: calc((100cqw - var(--carousel-gap)) * 0.84);
+		--carousel-main: calc(100cqw - 40px);
 	}
 
 	.carousel--spaces .carousel__slide > :is(.hostel-image, .carousel__image) {
-		height: clamp(280px, 75vw, 320px);
+		height: clamp(270px, 82cqw, 340px);
 	}
 
 	.carousel--rooms-first .carousel__slide > :is(.hostel-image, .carousel__image) {
-		height: calc(100cqw / 1.12);
-	}
-
-	.carousel {
-		--carousel-gap: 12px;
-		--carousel-main: calc((100% - var(--carousel-gap)) * 2 / 3);
+		height: clamp(270px, 92cqw, 350px);
 	}
 
 	.carousel__image,
-	.carousel__slide .activity-image-placeholder,
+	.carousel__slide .activity-image-placeholder {
+		height: clamp(280px, 84vw, 350px);
+	}
+
 	.carousel--split .carousel__image,
 	.carousel--split .activity-image-placeholder {
-		height: 270px;
+		height: clamp(280px, 80vw, 340px);
 	}
 
 	.carousel__steps {
+		margin-right: auto;
+	}
+
+	.carousel--controls-reversed .carousel__steps {
 		margin-right: auto;
 	}
 
@@ -270,18 +295,60 @@
 		width: 12px;
 	}
 
-	.carousel--gallery .carousel__gallery-panels,
-	.carousel--gallery .carousel__gallery-panels--2 {
-		grid-template-columns: repeat(3, minmax(245px, 72vw));
+	.carousel--gallery .carousel__gallery-panels {
+		grid-template-columns: minmax(0, 1fr);
 	}
 
-	.carousel--gallery .carousel__gallery-panels--1 {
-		grid-template-columns: minmax(0, 1fr);
+	.carousel--gallery .carousel__gallery-panel:not(:first-child) {
+		display: none;
 	}
 
 	.carousel--gallery .carousel__image,
 	.carousel--gallery .activity-image-placeholder {
-		height: 290px;
+		height: clamp(280px, 80vw, 340px);
+	}
+
+	.carousel__button {
+		display: grid;
+		width: 44px;
+		height: 44px;
+		flex: 0 0 44px;
+		place-items: center;
+		padding: 0;
+	}
+
+	.carousel__button span {
+		position: relative;
+		display: block;
+		width: 20px;
+		height: 20px;
+		font-size: 0;
+	}
+
+	.carousel__button span::before {
+		position: absolute;
+		top: 9px;
+		left: 3px;
+		width: 14px;
+		height: 2px;
+		background: currentColor;
+		content: '';
+	}
+
+	.carousel__button span::after {
+		position: absolute;
+		top: 5px;
+		right: 3px;
+		width: 8px;
+		height: 8px;
+		border-top: 2px solid currentColor;
+		border-right: 2px solid currentColor;
+		content: '';
+		transform: rotate(45deg);
+	}
+
+	.carousel__button[data-carousel-previous] span {
+		transform: rotate(180deg);
 	}
 }
 

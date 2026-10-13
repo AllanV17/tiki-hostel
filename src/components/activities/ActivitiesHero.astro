@@ -26,21 +26,9 @@ const { content } = Astro.props;
 			{content.activities.hero.description}
 		</p>
 	</div>
-	<div class="activities-hero__visuals">
-		<ActivityImagePlaceholder
-			content={content}
-			label={content.activities.hero.image}
-			className="activities-hero__image"
-		/>
-		<aside
-			class="activities-hero__aside"
-			aria-label={content.activities.hero.asideLabel}
-		>
-			<span class="activities-hero__number">03</span>
-			<div>
-				<h2>{content.activities.hero.asideLabel}</h2>
-				<p>{content.activities.hero.aside}</p>
-			</div>
-		</aside>
-	</div>
+	<ActivityImagePlaceholder
+		content={content}
+		label={content.activities.hero.image}
+		className="activities-hero__image"
+	/>
 </section>

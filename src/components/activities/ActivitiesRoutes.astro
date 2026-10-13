@@ -76,20 +76,6 @@ const hikingImages = Array.from({ length: 6 }, (_, index) => ({
 	</article>
 
 	<article class="activity-route activity-route--split">
-		<Carousel
-			images={horseImages}
-			label={content.activities.routes.horse.carousel.label}
-			variant="split"
-			controlsLayout="reversed"
-			labels={{
-				previous: content.activities.routes.horse.carousel.previous,
-				next: content.activities.routes.horse.carousel.next,
-				position: content.activities.routes.horse.carousel.position,
-				of: content.activities.routes.horse.carousel.of,
-				placeholderSelect: content.shared.placeholder.imageSelect,
-				placeholderPending: content.shared.placeholder.imageToSelect,
-			}}
-		/>
 		<div class="activity-route__copy">
 			<p class="activity-route__index">
 				<span>02</span><i></i>{content.activities.routes.indexLabel}
@@ -104,6 +90,20 @@ const hikingImages = Array.from({ length: 6 }, (_, index) => ({
 			</p>
 			<p class="activity-route__note">{content.activities.routes.horse.note}</p>
 		</div>
+		<Carousel
+			images={horseImages}
+			label={content.activities.routes.horse.carousel.label}
+			variant="split"
+			controlsLayout="reversed"
+			labels={{
+				previous: content.activities.routes.horse.carousel.previous,
+				next: content.activities.routes.horse.carousel.next,
+				position: content.activities.routes.horse.carousel.position,
+				of: content.activities.routes.horse.carousel.of,
+				placeholderSelect: content.shared.placeholder.imageSelect,
+				placeholderPending: content.shared.placeholder.imageToSelect,
+			}}
+		/>
 	</article>
 
 	<article class="activity-route activity-route--split activity-route--reverse">
