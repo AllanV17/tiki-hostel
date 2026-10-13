@@ -6,13 +6,15 @@ interface Props {
 	label: string;
 	className?: string;
 	variant?: 'sand' | 'olive' | 'clay' | 'stone';
+	reveal?: 'up' | 'in';
 }
 
-const { label, className = '', variant = 'sand' } = Astro.props;
+const { label, className = '', variant = 'sand', reveal } = Astro.props;
 ---
 
 <div
 	class:list={['media-placeholder', `media-placeholder--${variant}`, className]}
+	data-reveal={reveal}
 	role="img"
 	aria-label={`${label}. ${content.shared.placeholder.photoProvided}`}
 >

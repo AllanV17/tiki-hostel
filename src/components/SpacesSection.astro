@@ -16,17 +16,17 @@ const variants = ['olive', 'stone', 'clay'] as const;
 >
 	<div class="container">
 		<div class="spaces__heading">
-			<div class="section-heading">
+			<div class="section-heading" data-reveal="up">
 				<p class="eyebrow eyebrow--blue">{content.home.spaces.eyebrow}</p>
 				<h2 class="section-title" id="spaces-title">
 					{content.home.spaces.title}
 				</h2>
 			</div>
 		</div>
-		<div class="spaces-grid">
+		<div class="spaces-grid" data-reveal-stagger>
 			{
 				content.home.spaces.cards.map((space, index) => (
-					<article class="space-card provisional-copy">
+					<article class="space-card provisional-copy" data-reveal="up">
 						<MediaPlaceholder
 							content={content}
 							label={space.image}

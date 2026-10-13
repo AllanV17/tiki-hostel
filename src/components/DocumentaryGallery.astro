@@ -15,13 +15,13 @@ const variants = ['olive', 'clay', 'stone', 'olive'] as const;
 	aria-labelledby="gallery-title"
 >
 	<div class="container">
-		<div class="gallery__heading">
+		<div class="gallery__heading" data-reveal="up">
 			<h2 class="section-title" id="gallery-title">
 				{content.home.gallery.title}
 			</h2>
 			<p class="eyebrow eyebrow--terracotta">{content.home.gallery.hashtag}</p>
 		</div>
-		<div class="gallery-grid" aria-label={content.home.gallery.label}>
+		<div class="gallery-grid" aria-label={content.home.gallery.label} data-reveal="in">
 			{
 				content.home.gallery.moments.map((moment, index) => (
 					<MediaPlaceholder

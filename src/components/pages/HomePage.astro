@@ -10,6 +10,7 @@ import DocumentaryGallery from '../DocumentaryGallery.astro';
 import ContactCta from '../ContactCta.astro';
 import SiteFooter from '../SiteFooter.astro';
 import { getContent, type Language } from '../../i18n';
+import '../../styles/reveal.css';
 
 interface Props {
 	language: Language;
@@ -31,4 +32,8 @@ const content = getContent(language);
 		<ContactCta content={content} />
 	</main>
 	<SiteFooter content={content} language={language} activePage="home" />
+	<script>
+		import { initScrollReveals } from '../../scripts/reveal';
+		initScrollReveals();
+	</script>
 </Layout>

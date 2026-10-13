@@ -18,7 +18,7 @@ const { content } = Astro.props;
 >
 	<div class="architecture__inner container">
 		<div class="architecture__copy">
-			<div class="section-heading">
+			<div class="section-heading" data-reveal="up">
 				<p class="eyebrow eyebrow--terracotta">
 					{content.home.architecture.eyebrow}
 				</p>
@@ -26,7 +26,7 @@ const { content } = Astro.props;
 					{content.home.architecture.title}
 				</h2>
 			</div>
-			<div class="provisional-copy architecture__body">
+			<div class="provisional-copy architecture__body" data-reveal="up">
 				<p>{content.home.architecture.paragraphs[0]}</p>
 				<p>{content.home.architecture.paragraphs[1]}</p>
 			</div>
@@ -61,8 +61,9 @@ const { content } = Astro.props;
 				label={content.home.architecture.image}
 				variant="olive"
 				className="architecture__photo"
+				reveal="in"
 			/>
-			<div class="architecture__caption">
+			<div class="architecture__caption" data-reveal="up">
 				<blockquote class="provisional-copy">
 					<p>{content.home.architecture.quote}</p>
 				</blockquote>

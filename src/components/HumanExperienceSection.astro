@@ -18,9 +18,10 @@ const { content } = Astro.props;
 			label={content.home.experience.image}
 			variant="clay"
 			className="human-experience__photo"
+			reveal="in"
 		/>
 		<div class="human-experience__copy provisional-copy">
-			<div class="section-heading">
+			<div class="section-heading" data-reveal="up">
 				<p class="eyebrow eyebrow--terracotta">
 					{content.home.experience.eyebrow}
 				</p>
@@ -28,7 +29,7 @@ const { content } = Astro.props;
 					{content.home.experience.title}
 				</h2>
 			</div>
-			<div class="human-experience__body">
+			<div class="human-experience__body" data-reveal="up">
 				<p>{content.home.experience.paragraphs[0]}</p>
 				<p>{content.home.experience.paragraphs[1]}</p>
 			</div>
