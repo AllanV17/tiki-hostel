@@ -1,5 +1,6 @@
 export function initCarousels() {
 	document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((root) => {
+		if (root.dataset.carouselInitialized) return;
 		const track = root.querySelector<HTMLElement>('[data-carousel-track]');
 		const slides = [...root.querySelectorAll<HTMLElement>('[data-carousel-slide]')];
 		const steps = [...root.querySelectorAll<HTMLElement>('[data-carousel-step]')];
@@ -7,8 +8,10 @@ export function initCarousels() {
 		const next = root.querySelector<HTMLButtonElement>('[data-carousel-next]');
 		const progress = root.querySelector<HTMLElement>('[data-carousel-steps]');
 		if (!track || !slides.length || !previous || !next || !progress) return;
+		root.dataset.carouselInitialized = 'true';
 
 		let activeIndex = 0;
+		let requestedIndex: number | null = null;
 		let frame = 0;
 		let trackWidth = track.clientWidth;
 		let aligning = false;
@@ -40,41 +43,60 @@ export function initCarousels() {
 			const index = slides.reduce((closest, slide, i) =>
 				Math.abs(slideLeft(slide) - left) <
 				Math.abs(slideLeft(slides[closest]) - left) ? i : closest, 0);
-			setActive(index);
+			if (index !== activeIndex) setActive(index);
 		}
 
 		function goTo(index: number) {
 			const target = Math.max(0, Math.min(index, lastIndex()));
+			requestedIndex = target;
 			track!.scrollTo({ left: scrollLeftFor(slides[target]), behavior: reducedMotion.matches ? 'instant' : 'smooth' });
 		}
 
-		previous.addEventListener('click', () => goTo(activeIndex - 1));
-		next.addEventListener('click', () => goTo(activeIndex + 1));
+		previous.addEventListener('click', () => goTo((requestedIndex ?? activeIndex) - 1));
+		next.addEventListener('click', () => goTo((requestedIndex ?? activeIndex) + 1));
 		root.addEventListener('keydown', (event) => {
 			if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
 			event.preventDefault();
-			goTo(activeIndex + (event.key === 'ArrowRight' ? 1 : -1));
+			goTo((requestedIndex ?? activeIndex) + (event.key === 'ArrowRight' ? 1 : -1));
 		});
+		track.addEventListener('pointerdown', () => {
+			requestedIndex = null;
+		});
+		track.addEventListener('wheel', () => {
+			requestedIndex = null;
+		}, { passive: true });
 		track.addEventListener('scroll', () => {
 			cancelAnimationFrame(frame);
 			frame = requestAnimationFrame(syncFromScroll);
 		}, { passive: true });
-		track.addEventListener('scrollend', syncFromScroll);
+		track.addEventListener('scrollend', () => {
+			if (spaces && (track.clientWidth !== trackWidth || aligning)) return;
+			syncFromScroll();
+			if (requestedIndex !== null) {
+				// A snap stop can end a long smooth scroll before its requested slide.
+				if (activeIndex === requestedIndex) requestedIndex = null;
+				else goTo(requestedIndex);
+			}
+		});
 		new ResizeObserver(() => {
 			if (spaces && track.clientWidth !== trackWidth) {
-				if (!aligning) resizeIndex = activeIndex;
+				if (!aligning) resizeIndex = requestedIndex ?? activeIndex;
 				aligning = true;
 				clearTimeout(resizeTimer);
 				// Responsive widths can pass through intermediate layouts before settling.
 				resizeTimer = window.setTimeout(() => {
 					setActive(resizeIndex);
 					track.scrollTo({ left: scrollLeftFor(slides[activeIndex]), behavior: 'instant' });
+					requestedIndex = null;
 					trackWidth = track.clientWidth;
 					aligning = false;
 				}, 80);
 				return;
 			}
-			track.scrollTo({ left: scrollLeftFor(slides[activeIndex]), behavior: 'instant' });
+			const index = requestedIndex ?? activeIndex;
+			track.scrollTo({ left: scrollLeftFor(slides[index]), behavior: 'instant' });
+			setActive(index);
+			requestedIndex = null;
 		}).observe(track);
 		setActive(0);
 	});

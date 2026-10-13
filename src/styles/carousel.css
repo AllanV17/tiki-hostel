@@ -183,6 +183,7 @@
 	width: 17px;
 	height: 2px;
 	background: #d4cdc3;
+	transition: background-color 180ms ease;
 }
 
 .carousel__step.is-active {
@@ -355,5 +356,9 @@
 @media (prefers-reduced-motion: reduce) {
 	.carousel__track {
 		scroll-behavior: auto;
+	}
+
+	.carousel__step {
+		transition: none;
 	}
 }
