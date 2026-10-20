@@ -32,6 +32,19 @@ function build(value) {
 	for (const [index, html] of pages.entries()) {
 		const route = routes[index];
 		const english = route.startsWith('/en/');
+		const location = english ? 'Ometepe Island, Rivas, Nicaragua' : 'Isla de Ometepe, Rivas, Nicaragua';
+		assert.equal(html.match(/<p class="site-footer__location">([^<]+)<\/p>/)[1], location, route);
+		if (route === '/' || route === '/en/') {
+			assert.equal(html.match(/<p class="eyebrow">([^<]+)<\/p>/)[1], `${location}.`, route);
+			assert.ok(html.match(/<meta name="description" content="([^"]*)"/)[1].includes(location), route);
+			assert.doesNotMatch(html.match(/<meta name="description" content="([^"]*)"/)[1], /santa\s+cruz/i);
+		}
+		if (route === '/contacto/' || route === '/en/contacto/') {
+			const section = html.match(/<section\b[^>]*id="ubicacion"[^>]*>([\s\S]*?)<\/section>/)[1];
+			assert.ok(section.includes(`${location}.`), route);
+			assert.doesNotMatch(section, /santa\s+cruz/i);
+			assert.doesNotMatch(html.match(/<meta name="description" content="([^"]*)"/)[1], /santa\s+cruz/i);
+		}
 		const social = [...html.matchAll(/<meta\b[^>]*property="(og:[^"]+)"[^>]*content="([^"]*)"[^>]*>/g)];
 		assert.equal(social.length, 7, route);
 		assert.deepEqual(Object.fromEntries(social.map(match => [match[1], match[2]])), {

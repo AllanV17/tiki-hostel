@@ -1,6 +1,6 @@
 ## Proyecto
 
-Tiki Hostel Ometepe es un sitio web informativo y promocional para un hostal ubicado en Playa Santa Cruz, Isla de Ometepe, Nicaragua. Presenta el hostal, sus alojamientos, espacios, servicios, actividades, fotografías e información útil.
+Tiki Hostel Ometepe es un sitio web informativo y promocional para un hostal ubicado en la Isla de Ometepe, Rivas, Nicaragua. Presenta el hostal, sus alojamientos, espacios, servicios, actividades, fotografías e información útil.
 
 Los enlaces de contacto y reserva dirigirán a WhatsApp, redes sociales, Booking y Airbnb según corresponda, una vez confirmados sus destinos.
 

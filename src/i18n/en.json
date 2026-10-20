@@ -1,7 +1,7 @@
 {
   "layout": {
     "title": "Tiki Hostel Ometepe",
-    "description": "Discover Tiki Hostel Ometepe in Playa Santa Cruz on Ometepe Island, Nicaragua."
+    "description": "Discover Tiki Hostel Ometepe on Ometepe Island, Rivas, Nicaragua."
   },
   "shared": {
     "nav": {
@@ -68,7 +68,7 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Ometepe - Rivas, Nicaragua.",
+      "eyebrow": "Ometepe Island, Rivas, Nicaragua.",
       "title": "Your Island Escape, Between Two Volcanoes",
       "description": "Slow down and settle into Ometepe's rural heart, where wooden architecture and the lake's easy rhythm invite you to reconnect."
     },
@@ -401,7 +401,7 @@
   "contact": {
     "meta": {
       "title": "Contact | Tiki Hostel Ometepe",
-      "description": "Find ways to contact Tiki Hostel Ometepe, get to Playa Santa Cruz, and explore external booking options. Some links are still being confirmed."
+      "description": "Find ways to contact Tiki Hostel Ometepe, get to Ometepe Island, Rivas, Nicaragua, and explore external booking options. Some links are still being confirmed."
     },
     "hero": {
       "eyebrow": "Ometepe Island",
@@ -419,7 +419,7 @@
       "eyebrow": "On Ometepe",
       "title": "Find Us",
       "generalLabel": "Where we are",
-      "general": "Playa Santa Cruz, Ometepe Island, Nicaragua.",
+      "general": "Ometepe Island, Rivas, Nicaragua.",
       "addressLabel": "Address",
       "address": "Exact address to be confirmed.",
       "arrivalLabel": "Getting Here",
