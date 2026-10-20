@@ -22,7 +22,7 @@ const content = getContent(language);
 <Layout content={content} language={language} page="home">
 	<SiteHeader content={content} language={language} />
 	<!-- Figma copy remains provisional until the client validates commercial claims. -->
-	<main data-content-status="provisional">
+	<main id="main-content" tabindex="-1" data-content-status="provisional">
 		<HeroSection content={content} />
 		<IdentityStrip content={content} />
 		<ArchitectureSection content={content} />

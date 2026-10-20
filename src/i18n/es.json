@@ -5,6 +5,7 @@
   },
   "shared": {
     "nav": {
+      "skipToContent": "Saltar al contenido",
       "brandLabel": "Tiki Hostel Ometepe. Ir al inicio",
       "desktopLabel": "Navegación principal",
       "mobileLabel": "Navegación móvil",
@@ -447,9 +448,9 @@
       "eyebrow": "Plataformas de reserva",
       "title": "Reserva tu estadía",
       "description": "Estas plataformas son opciones externas para consultar una reserva. Sus enlaces están pendientes de confirmar.",
-      "bookingLabel": "Ir a Booking.com; enlace pendiente de confirmar",
+      "bookingLabel": "Ver en Booking.com; enlace pendiente de confirmar",
       "booking": "Ver en Booking.com",
-      "airbnbLabel": "Ir a Airbnb; enlace pendiente de confirmar",
+      "airbnbLabel": "Ver en Airbnb; enlace pendiente de confirmar",
       "airbnb": "Ver en Airbnb"
     },
     "closing": {

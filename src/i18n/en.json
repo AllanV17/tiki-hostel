@@ -5,6 +5,7 @@
   },
   "shared": {
     "nav": {
+      "skipToContent": "Skip to main content",
       "brandLabel": "Tiki Hostel Ometepe. Go to homepage",
       "desktopLabel": "Main navigation",
       "mobileLabel": "Mobile navigation",
@@ -444,9 +445,9 @@
       "eyebrow": "Booking Options",
       "title": "Book Your Stay",
       "description": "Booking.com and Airbnb are external options for booking a stay. Their links are still being confirmed.",
-      "bookingLabel": "View Tiki on Booking.com; link coming soon",
+      "bookingLabel": "View on Booking.com; link to be confirmed",
       "booking": "View on Booking.com",
-      "airbnbLabel": "View Tiki on Airbnb; link coming soon",
+      "airbnbLabel": "View on Airbnb; link to be confirmed",
       "airbnb": "View on Airbnb"
     },
     "closing": {

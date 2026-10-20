@@ -32,7 +32,7 @@ const content = getContent(language);
 		activePage="activities"
 	/>
 	<!-- Activities content and imagery are pending client confirmation. -->
-	<main class="activities-page" data-content-status="provisional">
+	<main id="main-content" tabindex="-1" class="activities-page" data-content-status="provisional">
 		<ActivitiesHero content={content} />
 		<ActivitiesRoutes content={content} />
 		<SleepoverExperience content={content} />

@@ -17,8 +17,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Install, build, and upload
+      - name: Install, check, build, and upload
         uses: withastro/action@v5
+        with:
+          build-cmd: npm run check && npm run build
 
   deploy:
     needs: build

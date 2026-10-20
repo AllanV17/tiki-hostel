@@ -9,7 +9,6 @@ import ContactSocial from '../contact/ContactSocial.astro';
 import ContactBookings from '../contact/ContactBookings.astro';
 import ContactClosing from '../contact/ContactClosing.astro';
 import { getContent, type Language } from '../../i18n';
-import '../../styles/hostel.css';
 import '../../styles/contact.css';
 import '../../styles/reveal.css';
 
@@ -34,7 +33,7 @@ const content = getContent(language);
 		activePage="contact"
 	/>
 	<!-- Contact details and external destinations are pending client confirmation. -->
-	<main class="contact-page" data-content-status="provisional">
+	<main id="main-content" tabindex="-1" class="contact-page" data-content-status="provisional">
 		<ContactHero content={content} />
 		<ContactWhatsApp content={content} />
 		<ContactLocation content={content} />

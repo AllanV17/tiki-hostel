@@ -187,7 +187,7 @@
 }
 
 .carousel__step.is-active {
-	background: var(--activities-clay, #d67a45);
+	background: var(--color-terracotta-text);
 }
 
 .carousel__button {
@@ -226,7 +226,7 @@
 
 .carousel__button:focus-visible,
 .carousel__track:focus-visible {
-	outline: 3px solid var(--color-terracotta);
+	outline: 3px solid var(--color-terracotta-text);
 	outline-offset: 3px;
 }
 

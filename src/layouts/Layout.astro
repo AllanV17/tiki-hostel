@@ -53,6 +53,7 @@ const canonicalHref = language === 'es' ? esHref : enHref;
 		<ClientRouter fallback="swap" />
 	</head>
 	<body>
+		<a class="skip-link" href="#main-content">{content.shared.nav.skipToContent}</a>
 		<slot />
 		<script>
 			import { initScrollReveals } from '../scripts/reveal';

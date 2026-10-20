@@ -1,8 +1,8 @@
-const resizeObservers = new Set<ResizeObserver>();
+const carouselCleanups = new Set<() => void>();
 
 export function cleanupCarousels() {
-	resizeObservers.forEach((observer) => observer.disconnect());
-	resizeObservers.clear();
+	carouselCleanups.forEach((cleanup) => cleanup());
+	carouselCleanups.clear();
 }
 
 export function initCarousels() {
@@ -16,6 +16,8 @@ export function initCarousels() {
 		const progress = root.querySelector<HTMLElement>('[data-carousel-steps]');
 		if (!track || !slides.length || !previous || !next || !progress) return;
 		root.dataset.carouselInitialized = 'true';
+		const listeners = new AbortController();
+		const { signal } = listeners;
 
 		let activeIndex = 0;
 		let requestedIndex: number | null = null;
@@ -44,6 +46,7 @@ export function initCarousels() {
 		}
 
 		function syncFromScroll() {
+			if (signal.aborted || !root.isConnected) return;
 			if (spaces && (track!.clientWidth !== trackWidth || aligning)) return;
 			const left = track!.getBoundingClientRect().left + (centered ? track!.clientWidth / 2 : 0);
 			const slideLeft = (slide: HTMLElement) => slide.getBoundingClientRect().left + (centered ? slide.clientWidth / 2 : 0);
@@ -59,23 +62,23 @@ export function initCarousels() {
 			track!.scrollTo({ left: scrollLeftFor(slides[target]), behavior: reducedMotion.matches ? 'instant' : 'smooth' });
 		}
 
-		previous.addEventListener('click', () => goTo((requestedIndex ?? activeIndex) - 1));
-		next.addEventListener('click', () => goTo((requestedIndex ?? activeIndex) + 1));
+		previous.addEventListener('click', () => goTo((requestedIndex ?? activeIndex) - 1), { signal });
+		next.addEventListener('click', () => goTo((requestedIndex ?? activeIndex) + 1), { signal });
 		root.addEventListener('keydown', (event) => {
 			if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
 			event.preventDefault();
 			goTo((requestedIndex ?? activeIndex) + (event.key === 'ArrowRight' ? 1 : -1));
-		});
+		}, { signal });
 		track.addEventListener('pointerdown', () => {
 			requestedIndex = null;
-		});
+		}, { signal });
 		track.addEventListener('wheel', () => {
 			requestedIndex = null;
-		}, { passive: true });
+		}, { passive: true, signal });
 		track.addEventListener('scroll', () => {
 			cancelAnimationFrame(frame);
 			frame = requestAnimationFrame(syncFromScroll);
-		}, { passive: true });
+		}, { passive: true, signal });
 		track.addEventListener('scrollend', () => {
 			if (spaces && (track.clientWidth !== trackWidth || aligning)) return;
 			syncFromScroll();
@@ -84,14 +87,16 @@ export function initCarousels() {
 				if (activeIndex === requestedIndex) requestedIndex = null;
 				else goTo(requestedIndex);
 			}
-		});
+		}, { signal });
 		const resizeObserver = new ResizeObserver(() => {
+			if (signal.aborted || !root.isConnected) return;
 			if (spaces && track.clientWidth !== trackWidth) {
 				if (!aligning) resizeIndex = requestedIndex ?? activeIndex;
 				aligning = true;
 				clearTimeout(resizeTimer);
 				// Responsive widths can pass through intermediate layouts before settling.
 				resizeTimer = window.setTimeout(() => {
+					if (signal.aborted || !root.isConnected) return;
 					setActive(resizeIndex);
 					track.scrollTo({ left: scrollLeftFor(slides[activeIndex]), behavior: 'instant' });
 					requestedIndex = null;
@@ -106,7 +111,13 @@ export function initCarousels() {
 			requestedIndex = null;
 		});
 		resizeObserver.observe(track);
-		resizeObservers.add(resizeObserver);
+		carouselCleanups.add(() => {
+			listeners.abort();
+			resizeObserver.disconnect();
+			clearTimeout(resizeTimer);
+			cancelAnimationFrame(frame);
+			delete root.dataset.carouselInitialized;
+		});
 		setActive(0);
 	});
 }

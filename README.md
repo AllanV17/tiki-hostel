@@ -10,7 +10,7 @@ Sitio informativo y promocional de Tiki Hostel Ometepe. Presenta el alojamiento,
 - CSS propio y JavaScript/TypeScript para interacciones como carruseles y aparición de contenido al desplazarse.
 - `ClientRouter` de Astro para la navegación con transiciones; `astro:assets` para imágenes locales.
 
-`package.json` declara Astro como única dependencia de la aplicación. No hay un framework de componentes ni una librería de animación instalada.
+`package.json` declara Astro como única dependencia de la aplicación; TypeScript y `@astrojs/check` son dependencias de desarrollo para comprobar los tipos. No hay un framework de componentes ni una librería de animación instalada.
 
 ## Arquitectura
 
@@ -42,13 +42,13 @@ npm ci
 npm run dev -- --background
 ```
 
-El servidor en segundo plano se gestiona con `npm run astro -- dev status`, `npm run astro -- dev logs` y `npm run astro -- dev stop`. Los demás scripts disponibles en `package.json` son `npm run build` (compilación de producción), `npm run preview` (vista previa de la compilación) y `npm run astro -- <comando>` (CLI de Astro).
+El servidor en segundo plano se gestiona con `npm run astro -- dev status`, `npm run astro -- dev logs` y `npm run astro -- dev stop`. Los demás scripts disponibles en `package.json` son `npm run check` (comprobación de tipos de Astro y TypeScript), `npm run build` (compilación de producción), `npm run preview` (vista previa de la compilación) y `npm run astro -- <comando>` (CLI de Astro).
 
 ## Compilación y despliegue
 
 `npm run build` genera el sitio estático en `dist/`. `astro.config.mjs` establece `site: 'https://allanv17.github.io'` y `base: '/tiki-hostel'` para GitHub Pages. Los enlaces internos deben pasar por las funciones de rutas localizadas o por `withBase` para conservar ese prefijo; el layout lo considera también al generar URLs canónicas y `hreflang`.
 
-El flujo `.github/workflows/deploy.yml` compila y publica en GitHub Pages al recibir cambios en `main` o al ejecutarse manualmente.
+El flujo `.github/workflows/deploy.yml` ejecuta `npm run check` antes de `npm run build` y publica en GitHub Pages al recibir cambios en `main` o al ejecutarse manualmente. Si falla la comprobación de tipos, la compilación y el despliegue no continúan.
 
 ## Estado y pendientes
 

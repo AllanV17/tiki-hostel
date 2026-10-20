@@ -54,7 +54,7 @@
 .contact-hero__intro p,
 .contact-whatsapp__inner p:not(.contact-eyebrow),
 .contact-section-heading > p:not(.contact-eyebrow) {
-	color: #797976;
+	color: #6a6a67;
 	font-size: 16px;
 	line-height: 1.7;
 }
@@ -122,7 +122,7 @@
 .contact-location__details p,
 .contact-social__list p {
 	margin-top: 12px;
-	color: #797976;
+	color: #6a6a67;
 	font-size: 14px;
 	line-height: 1.65;
 }

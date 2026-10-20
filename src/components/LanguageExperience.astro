@@ -20,6 +20,7 @@ const prompt = getContent('en').shared.language;
 >
 	<dialog
 		class="language-dialog"
+		lang="en"
 		aria-labelledby="language-dialog-title"
 		aria-describedby="language-dialog-description"
 		data-language-dialog
@@ -38,7 +39,6 @@ const prompt = getContent('en').shared.language;
 			<a
 				class="language-dialog__secondary"
 				href={esHref}
-				lang="es"
 				data-language-choice="es"
 				data-language-prompt>{prompt.continueSpanish}</a
 			>
@@ -59,6 +59,8 @@ const prompt = getContent('en').shared.language;
 <script>
 let languageListeners: AbortController | undefined;
 let initializedRoot: Element | null | undefined;
+// Dismissing the prompt is not a language choice; keep it only for this document.
+let languagePromptDismissed = false;
 function initializeLanguagePage() {
 	const root = document.querySelector<HTMLElement>('[data-language-experience]');
 	if (root === initializedRoot) return;
@@ -165,12 +167,11 @@ function initializeLanguagePage() {
 		});
 	}, { signal });
 
-	dialog?.addEventListener('cancel', (event) => event.preventDefault(), { signal });
-	dialog?.addEventListener('keydown', (event) => {
-		if (event.key === 'Escape') {
-			event.preventDefault();
-			event.stopPropagation();
-		}
+	dialog?.addEventListener('cancel', (event) => {
+		event.preventDefault();
+		languagePromptDismissed = true;
+		dialog.close();
+		focusAfterDialog();
 	}, { signal });
 
 	document
@@ -208,7 +209,7 @@ function initializeLanguagePage() {
 		const pendingSessionToast = takeStored(toastKey, true);
 		const pendingLocalToast = takeStored(toastKey);
 		if (pendingSessionToast === '1' || pendingLocalToast === '1') showToast();
-		if (saved || !dialog) return;
+		if (saved || languagePromptDismissed || !dialog) return;
 		const primary = navigator.languages?.[0] || navigator.language || '';
 		if (!dialog.open && /^en(?:-|$)/i.test(primary)) {
 			dialog.showModal();

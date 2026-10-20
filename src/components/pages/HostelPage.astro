@@ -34,7 +34,7 @@ const content = getContent(language);
 		activePage="hostel"
 	/>
 	<!-- Hostel copy and photography are pending client validation. -->
-	<main class="hostel-page" data-content-status="provisional">
+	<main id="main-content" tabindex="-1" class="hostel-page" data-content-status="provisional">
 		<HostelHero content={content} language={language} />
 		<HostelRooms content={content} language={language} />
 		<HostelSpaces content={content} language={language} />

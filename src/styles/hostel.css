@@ -1,7 +1,7 @@
 .hostel-page {
 	--hostel-paper: #faf7f2;
 	--hostel-sand: #f3ece2;
-	--hostel-muted: #797976;
+	--hostel-muted: #6a6a67;
 	--hostel-clay: #d67a45;
 	background: var(--hostel-paper);
 }
@@ -22,7 +22,7 @@
 }
 
 .hostel-eyebrow {
-	color: var(--hostel-clay);
+	color: var(--color-terracotta-text);
 	font-size: 12px;
 	font-weight: 700;
 	line-height: 1.4;
@@ -183,7 +183,7 @@
 
 .hostel-room__intro .hostel-room__note {
 	margin-top: 14px;
-	color: #99958e;
+	color: var(--hostel-muted);
 	font-family: var(--font-display);
 	font-size: 17px;
 	font-style: italic;
@@ -241,7 +241,7 @@
 	align-items: center;
 	justify-content: space-between;
 	margin-bottom: auto;
-	color: var(--hostel-clay);
+	color: var(--color-terracotta-text);
 	font-size: 11px;
 	font-weight: 700;
 }
@@ -261,7 +261,7 @@
 
 .hostel-service p {
 	margin-top: 8px;
-	color: #a29d95;
+	color: var(--hostel-muted);
 	font-size: 13px;
 }
 
@@ -299,6 +299,7 @@
 	max-width: 560px;
 }
 
+.hostel-experience__heading .hostel-eyebrow,
 .hostel-experience__editorial .hostel-eyebrow {
 	color: color-mix(in srgb, var(--hostel-clay) 70%, var(--color-paper));
 }
@@ -344,7 +345,7 @@
 }
 
 .hostel-practical dt {
-	color: #8d8982;
+	color: var(--hostel-muted);
 	font-size: 11px;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -359,7 +360,7 @@
 
 .hostel-practical .hostel-practical__note {
 	margin-top: 10px;
-	color: #a29d95;
+	color: var(--hostel-muted);
 	font-family: var(--font-body);
 	font-size: 13px;
 }
@@ -382,7 +383,7 @@
 }
 
 .hostel-practical__closing span {
-	color: var(--hostel-clay);
+	color: var(--color-terracotta-text);
 	font-size: 11px;
 	font-weight: 700;
 	text-transform: uppercase;
