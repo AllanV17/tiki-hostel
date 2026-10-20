@@ -10,7 +10,7 @@ Sitio informativo y promocional de Tiki Hostel Ometepe. Presenta el alojamiento,
 - CSS propio y JavaScript/TypeScript para interacciones como carruseles y aparición de contenido al desplazarse.
 - `ClientRouter` de Astro para la navegación con transiciones; `astro:assets` para imágenes locales.
 
-`package.json` declara Astro como única dependencia de la aplicación; TypeScript y `@astrojs/check` son dependencias de desarrollo para comprobar los tipos. No hay un framework de componentes ni una librería de animación instalada.
+`package.json` declara Astro y su integración oficial `@astrojs/sitemap` como dependencias de la aplicación; TypeScript y `@astrojs/check` son dependencias de desarrollo para comprobar los tipos. No hay un framework de componentes ni una librería de animación instalada.
 
 ## Arquitectura
 
@@ -49,6 +49,35 @@ El servidor en segundo plano se gestiona con `npm run astro -- dev status`, `npm
 `npm run build` genera el sitio estático en `dist/`. `astro.config.mjs` establece `site: 'https://allanv17.github.io'` y `base: '/tiki-hostel'` para GitHub Pages. Los enlaces internos deben pasar por las funciones de rutas localizadas o por `withBase` para conservar ese prefijo; el layout lo considera también al generar URLs canónicas y `hreflang`.
 
 El flujo `.github/workflows/deploy.yml` ejecuta `npm run check` antes de `npm run build` y publica en GitHub Pages al recibir cambios en `main` o al ejecutarse manualmente. Si falla la comprobación de tipos, la compilación y el despliegue no continúan.
+
+## Sitemap
+
+La integración oficial `@astrojs/sitemap` genera `dist/sitemap-index.xml` y `dist/sitemap-0.xml` durante `npm run build`, a partir de las páginas estáticas y de `site` y `base`. Actualmente el índice corresponde a `https://allanv17.github.io/tiki-hostel/sitemap-index.xml` y el segundo archivo contiene las ocho URLs ES/EN. No se añaden fechas de modificación, prioridades ni frecuencias de cambio.
+
+El sitemap se genera tanto con `noindex` como en modo indexable; no modifica la protección `PUBLIC_ALLOW_INDEXING` ni bloquea el rastreo. Las relaciones multilingües se mantienen únicamente en los `hreflang` del HTML, ya completos y recíprocos, para evitar mantener la misma información en dos lugares. No se crea `robots.txt`.
+
+Al migrar al dominio definitivo, actualizar `site` y `base`, reconstruir y comprobar las ocho URLs del sitemap y sus canonical. Habilitar indexación seguirá requiriendo la aprobación y configuración explícitas descritas a continuación.
+
+## Metadatos sociales
+
+El layout genera Open Graph para las ocho rutas: `og:type=website`, título y descripción reutilizados de los metadatos SEO, `og:url` igual al canonical y `og:site_name` reutilizado del nombre del sitio en `content.layout.title`. Los locales son `es_NI` y `en_US`, con el otro como `og:locale:alternate`; `en_US` es la convención regional para la versión inglesa genérica, no una restricción de audiencia. ClientRouter intercambia las etiquetas del head al navegar; estos metadatos no se persisten entre páginas.
+
+No se declaran imágenes ni tarjetas Twitter/X mientras no haya fotografía social aprobada. Por ahora tampoco se duplican título y descripción en etiquetas `twitter:*`; se evaluarán al completar la tarjeta. Para añadir `og:image` se necesita una imagen aprobada con derechos de uso, accesible mediante URL HTTPS absoluta, sus dimensiones y tipo MIME reales, y un texto `og:image:alt` descriptivo en ES/EN. Entonces se podrá elegir y verificar la tarjeta de Twitter/X correspondiente. Las previsualizaciones actuales dependen de cada plataforma y aún no incluyen una imagen social declarada.
+
+## Control temporal de indexación
+
+El layout añade una única etiqueta `<meta name="robots" content="noindex, follow">` a las ocho rutas salvo que `PUBLIC_ALLOW_INDEXING` tenga exactamente el valor `true`. La variable se evalúa durante la generación estática: cambiarla requiere reconstruir y desplegar. Ausente, vacía o con cualquier otro valor mantiene la protección; cambiar de dominio no la desactiva. No se bloquea el rastreo ni se crea `robots.txt`.
+
+En GitHub Actions, el workflow toma la variable de repositorio `PUBLIC_ALLOW_INDEXING` y usa `false` si no existe. Tras la aprobación del propietario:
+
+1. Revisar el dominio definitivo, `site`, `base`, canonical, `hreflang`, sitemap y configuración de rastreo antes de habilitar la indexación.
+2. En GitHub, abrir **Settings → Secrets and variables → Actions → Variables**, crear o actualizar la variable de repositorio `PUBLIC_ALLOW_INDEXING` con el valor `true` y ejecutar nuevamente **Deploy to GitHub Pages** desde **Actions → Run workflow** sobre `main`. El workflow reconstruye y despliega; cambiar solo la variable no actualiza el sitio publicado.
+3. Si se utiliza otro hosting, establecer `PUBLIC_ALLOW_INDEXING=true` en su entorno de build, ejecutar `npm run check` y `npm run build`, y publicar el nuevo `dist/`. Para una compilación local en PowerShell: `$env:PUBLIC_ALLOW_INDEXING = 'true'; npm run build`. Al terminar, retirar esa variable de la sesión con `Remove-Item Env:PUBLIC_ALLOW_INDEXING`.
+4. Inspeccionar el código fuente HTML de las ocho URLs publicadas: no debe aparecer `noindex`; revisar también que el hosting no envíe una cabecera `X-Robots-Tag` restrictiva y que canonical y alternancias utilicen las URLs finales. La ausencia de la etiqueta permite indexación sin necesitar `index, follow` explícito.
+
+Para volver al modo provisional, eliminar la variable o establecerla en `false` y reconstruir y desplegar. Solicitar `noindex` no retira inmediatamente páginas ya indexadas: el buscador necesita volver a rastrearlas.
+
+Las pruebas se ejecutan con `node --test tests/*.test.mjs`. La prueba de indexación compila con `true` y después sin la variable, comprueba las ocho rutas y las URLs del sitemap en ambos modos y deja `dist/` protegido. Esa compilación final es de prueba; para publicar un sitio indexable hay que reconstruir después con el valor aprobado.
 
 ## Estado y pendientes
 

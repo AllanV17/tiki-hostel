@@ -38,6 +38,14 @@ const canonicalHref = language === 'es' ? esHref : enHref;
 		<link rel="icon" href={withBase('/favicon.ico')} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalHref} />
+		<meta property="og:locale" content={language === 'es' ? 'es_NI' : 'en_US'} />
+		<meta property="og:locale:alternate" content={language === 'es' ? 'en_US' : 'es_NI'} />
+		<meta property="og:site_name" content={content.layout.title} />
+		{import.meta.env.PUBLIC_ALLOW_INDEXING !== 'true' && <meta name="robots" content="noindex, follow" />}
 		<meta name="theme-color" content="#faf6f0" />
 		<link rel="canonical" href={canonicalHref} />
 		<link rel="alternate" hreflang="es" href={esHref} />

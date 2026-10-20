@@ -13,6 +13,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PUBLIC_ALLOW_INDEXING: ${{ vars.PUBLIC_ALLOW_INDEXING || 'false' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
