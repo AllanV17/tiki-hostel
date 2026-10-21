@@ -11,7 +11,7 @@ interface Props {
 	content: SiteContent;
 	language: Language;
 	variant?: 'overlay' | 'light';
-	activePage?: Page;
+	activePage?: Page | null;
 }
 
 const { language, variant = 'overlay', activePage = 'home' } = Astro.props;
@@ -22,7 +22,9 @@ const isContact = activePage === 'contact';
 const homeHref = getLocalizedHref('home', language);
 const hostelHref = getLocalizedHref('hostel', language);
 // Until direct contact URLs are confirmed, the CTA targets the relevant page section.
-const contactHref = isActivities
+const contactHref = activePage === null
+	? getLocalizedHref('contact', language) + '#whatsapp'
+	: isActivities
 	? '#consulta-actividades'
 	: isHostel
 		? '#consulta-hostal'
@@ -32,8 +34,8 @@ const contactHref = isActivities
 const activitiesHref = getLocalizedHref('activities', language);
 const contactPageHref = getLocalizedHref('contact', language);
 // Both language controls keep visitors on the equivalent page.
-const currentHref = getLocalizedHref(activePage, language);
-const equivalentHref = getEquivalentHref(activePage, language);
+const currentHref = getLocalizedHref(activePage ?? 'home', language);
+const equivalentHref = getEquivalentHref(activePage ?? 'home', language);
 const esHref = language === 'es' ? currentHref : equivalentHref;
 const enHref = language === 'en' ? currentHref : equivalentHref;
 ---
@@ -64,8 +66,8 @@ const enHref = language === 'en' ? currentHref : equivalentHref;
 			<a
 				class="button button--small"
 				href={contactHref}
-				data-link-placeholder={!isActivities ? '' : undefined}
-				aria-label={!isActivities
+				data-link-placeholder={!isActivities && activePage !== null ? '' : undefined}
+				aria-label={!isActivities && activePage !== null
 					? content.shared.nav.directPending
 					: undefined}>{content.shared.nav.direct}</a
 			>
@@ -198,8 +200,8 @@ const enHref = language === 'en' ? currentHref : equivalentHref;
 					<a
 						class="button button--small"
 						href={contactHref}
-						data-link-placeholder={!isActivities ? '' : undefined}
-						aria-label={!isActivities
+							data-link-placeholder={!isActivities && activePage !== null ? '' : undefined}
+							aria-label={!isActivities && activePage !== null
 							? content.shared.nav.directPending
 							: undefined}>{content.shared.nav.direct}</a
 					>
@@ -237,6 +239,7 @@ const enHref = language === 'en' ? currentHref : equivalentHref;
 	language={language}
 	esHref={esHref}
 	enHref={enHref}
+	suggestLanguage={activePage !== null}
 />
 
 <script>

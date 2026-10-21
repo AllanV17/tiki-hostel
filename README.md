@@ -10,6 +10,8 @@ Sitio informativo y promocional de Tiki Hostel Ometepe. Presenta el alojamiento,
 - CSS propio y JavaScript/TypeScript para interacciones como carruseles y aparición de contenido al desplazarse.
 - `ClientRouter` de Astro para la navegación con transiciones; `astro:assets` para imágenes locales.
 
+Fraunces y Manrope se sirven localmente desde `public/fonts/fonts.css`, enlazada por el layout mediante `withBase`. Sus URLs relativas conservan el prefijo de despliegue. Se incluyen tres WOFF2 latinos originales de Google Fonts (Fraunces v38 normal con ejes `wght`/`opsz`, cursiva 400 con eje `opsz`, y Manrope v20 normal con eje `wght`), sin conversiones ni modificaciones. Las declaraciones permiten Fraunces normal 400–900, cursiva 400 y Manrope normal 400–700, con `font-display: swap`. Ambas familias comparten los mismos recursos en ES/EN; no se cargan fuentes desde servidores externos. Los avisos de copyright y las licencias SIL OFL 1.1 se conservan en `public/fonts/fraunces/OFL.txt` y `public/fonts/manrope/OFL.txt`.
+
 `package.json` declara Astro y su integración oficial `@astrojs/sitemap` como dependencias de la aplicación; TypeScript y `@astrojs/check` son dependencias de desarrollo para comprobar los tipos. No hay un framework de componentes ni una librería de animación instalada.
 
 ## Arquitectura
@@ -49,6 +51,14 @@ El servidor en segundo plano se gestiona con `npm run astro -- dev status`, `npm
 `npm run build` genera el sitio estático en `dist/`. `astro.config.mjs` establece `site: 'https://allanv17.github.io'` y `base: '/tiki-hostel'` para GitHub Pages. Los enlaces internos deben pasar por las funciones de rutas localizadas o por `withBase` para conservar ese prefijo; el layout lo considera también al generar URLs canónicas y `hreflang`.
 
 El flujo `.github/workflows/deploy.yml` ejecuta `npm run check` antes de `npm run build` y publica en GitHub Pages al recibir cambios en `main` o al ejecutarse manualmente. Si falla la comprobación de tipos, la compilación y el despliegue no continúan.
+
+## Página 404
+
+`src/pages/404.astro` genera `dist/404.html`, que GitHub Pages sirve para rutas inexistentes bajo el proyecto. Reutiliza el layout, header y footer; ninguna sección de navegación queda activa y el CTA del header apunta a Contacto en el idioma correspondiente.
+
+El HTML contiene español visible y una plantilla inglesa inerte. `src/scripts/not-found.ts` selecciona inglés si la ruta solicitada, tras retirar `base`, comienza por el segmento `/en`; las demás rutas muestran español. La selección se realiza en la carga inicial y antes del intercambio de documento de `ClientRouter`. Los controles ES/EN enlazan a la ruta fallida equivalente, conservando búsqueda y fragmento, sin redirigir automáticamente al inicio. Las preferencias guardadas no sustituyen el idioma de la URL ni abren la sugerencia de idioma en esta página.
+
+Sin JavaScript se muestra español y un enlace visible «Back to home» al inicio inglés. La 404 mantiene `noindex, follow` en ambos modos de indexación, omite canonical, `hreflang` y `og:url`, y queda fuera del sitemap. Tras desplegar, comprobar rutas inexistentes ES/EN profundas, recursos bajo `base` y estado HTTP 404: abrir directamente `/404.html` no verifica el estado de error del hosting.
 
 ## Sitemap
 

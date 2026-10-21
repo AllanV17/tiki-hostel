@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import NotFoundPage from '../components/pages/NotFoundPage.astro';
+import { getContent } from '../i18n';
+const content = getContent('es');
+---
+
+<Layout content={content} language="es" page={null}
+	title={content.notFound.meta.title} description={content.notFound.meta.description}>
+	<div data-not-found>
+		<NotFoundPage language="es" />
+		<template data-not-found-english><NotFoundPage language="en" /></template>
+	</div>
+</Layout>

@@ -9,7 +9,7 @@ const script = ts.transpileModule(source.match(/<script>([\s\S]*?)<\/script>/)[1
 	compilerOptions: { target: ts.ScriptTarget.ES2022 },
 }).outputText;
 
-function setup({ mobile = false, primary = 'en-US', localChoice, sessionChoice, blockLocal = false } = {}) {
+function setup({ mobile = false, primary = 'en-US', localChoice, sessionChoice, blockLocal = false, suggestLanguage = true } = {}) {
 	const writes = [];
 	const preferenceKey = 'tiki-hostel:language-preference';
 	const document = new EventTarget();
@@ -49,7 +49,7 @@ function setup({ mobile = false, primary = 'en-US', localChoice, sessionChoice, 
 		const menu = element({ hidden: true });
 		const switcher = element({ querySelector: (selector) => selector === '[data-language-trigger]' ? trigger : menu });
 		const root = element({
-			dataset: { language },
+			dataset: { language, suggestLanguage: suggestLanguage ? undefined : 'false' },
 			querySelector: (selector) => selector === '[data-language-dialog]' ? dialog : toast,
 		});
 		return { root, dialog, toast, trigger, mobileTrigger, switcher, english, spanish };
@@ -97,6 +97,13 @@ test('existing language conditions and saved preferences still suppress the prom
 	assert.equal(setup({ localChoice: 'es' }).page.dialog.open, false);
 	assert.equal(setup({ localChoice: 'en' }).page.dialog.open, false);
 	assert.equal(setup({ blockLocal: true, sessionChoice: 'es' }).page.dialog.open, false);
+});
+
+test('404 pages keep the language picker without opening the browser-language prompt', () => {
+	const app = setup({ suggestLanguage: false });
+	assert.equal(app.page.dialog.open, false);
+	app.page.english.dispatchEvent(new Event('click', { cancelable: true }));
+	assert.equal(app.localStorage.getItem('tiki-hostel:language-preference'), 'en');
 });
 
 for (const choice of ['es', 'en']) {

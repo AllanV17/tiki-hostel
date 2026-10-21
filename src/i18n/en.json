@@ -1,4 +1,15 @@
 {
+  "notFound": {
+    "meta": {
+      "title": "404 · Page not found | Tiki Hostel Ometepe",
+      "description": "The page you are looking for does not exist or has moved. Return to the Tiki Hostel Ometepe homepage."
+    },
+    "eyebrow": "Page not found",
+    "heading": "This trail doesn’t lead to a page",
+    "description": "The page you are looking for does not exist or has moved.",
+    "reassurance": "Let’s go back to the start and find our way.",
+    "home": "Back to home"
+  },
   "layout": {
     "title": "Tiki Hostel Ometepe",
     "description": "Discover Tiki Hostel Ometepe on Ometepe Island, Rivas, Nicaragua."

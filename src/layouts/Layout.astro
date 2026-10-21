@@ -8,7 +8,7 @@ import { ClientRouter } from 'astro:transitions';
 interface Props {
 	content: SiteContent;
 	language: Language;
-	page: Page;
+	page: Page | null;
 	title?: string;
 	description?: string;
 }
@@ -23,7 +23,7 @@ const {
 const site = Astro.site ?? Astro.url;
 // Canonical and hreflang URLs must remain absolute across both language routes and the site base.
 const absoluteHref = (targetLanguage: Language) =>
-	new URL(getLocalizedHref(page, targetLanguage), site).href;
+	page === null ? undefined : new URL(getLocalizedHref(page, targetLanguage), site).href;
 const esHref = absoluteHref('es');
 const enHref = absoluteHref('en');
 const canonicalHref = language === 'es' ? esHref : enHref;
@@ -41,22 +41,19 @@ const canonicalHref = language === 'es' ? esHref : enHref;
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:url" content={canonicalHref} />
+		{page !== null && <meta property="og:url" content={canonicalHref} />}
 		<meta property="og:locale" content={language === 'es' ? 'es_NI' : 'en_US'} />
 		<meta property="og:locale:alternate" content={language === 'es' ? 'en_US' : 'es_NI'} />
 		<meta property="og:site_name" content={content.layout.title} />
-		{import.meta.env.PUBLIC_ALLOW_INDEXING !== 'true' && <meta name="robots" content="noindex, follow" />}
+		{(page === null || import.meta.env.PUBLIC_ALLOW_INDEXING !== 'true') && <meta name="robots" content="noindex, follow" />}
 		<meta name="theme-color" content="#faf6f0" />
-		<link rel="canonical" href={canonicalHref} />
-		<link rel="alternate" hreflang="es" href={esHref} />
-		<link rel="alternate" hreflang="en" href={enHref} />
-		<link rel="alternate" hreflang="x-default" href={esHref} />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap"
-			rel="stylesheet"
-		/>
+		{page !== null && <>
+			<link rel="canonical" href={canonicalHref} />
+			<link rel="alternate" hreflang="es" href={esHref} />
+			<link rel="alternate" hreflang="en" href={enHref} />
+			<link rel="alternate" hreflang="x-default" href={esHref} />
+		</>}
+		<link rel="stylesheet" href={withBase('/fonts/fonts.css')} />
 		<title>{title}</title>
 		<ClientRouter fallback="swap" />
 	</head>
@@ -64,6 +61,7 @@ const canonicalHref = language === 'es' ? esHref : enHref;
 		<a class="skip-link" href="#main-content">{content.shared.nav.skipToContent}</a>
 		<slot />
 		<script>
+			import '../scripts/not-found';
 			import { initScrollReveals } from '../scripts/reveal';
 			let revealedPage: Element | null = null;
 			let stopReveals: (() => void) | undefined;

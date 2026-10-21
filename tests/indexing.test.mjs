@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import test from 'node:test';
 import config from '../astro.config.mjs';
 
@@ -18,6 +18,33 @@ function build(value) {
 	});
 	assert.equal(result.status, 0, result.error?.message ?? result.stdout + result.stderr);
 	const pages = routes.map(route => readFileSync(new URL(`dist${route}index.html`, root), 'utf8'));
+	const notFound = readFileSync(new URL('dist/404.html', root), 'utf8');
+	assert.deepEqual([...notFound.matchAll(robots)].map(match => match[0]), ['<meta name="robots" content="noindex, follow">']);
+	assert.doesNotMatch(notFound, /<link\b[^>]*(?:rel="canonical"|hreflang=)/);
+	assert.doesNotMatch(notFound, /<meta\b[^>]*property="og:url"/);
+	assert.match(notFound, /<template\b[^>]*data-not-found-english/);
+	assert.ok(notFound.includes('Este sendero no lleva a ninguna página'));
+	assert.ok(notFound.includes('This trail doesn’t lead to a page'));
+	assert.ok(notFound.includes(`href="${config.base}/en/"`));
+	assert.match(notFound, /<noscript>[\s\S]*?<a\b[^>]*href="\/tiki-hostel\/en\/"[^>]*lang="en"[^>]*>Back to home<\/a>[\s\S]*?<\/noscript>/);
+	assert.doesNotMatch(notFound, /aria-current="page"|href="#contacto"/);
+	for (const file of readdirSync(new URL('dist/', root), { recursive: true })) {
+		if (!/\.(?:html|css|js)$/.test(file)) continue;
+		assert.doesNotMatch(readFileSync(new URL(`dist/${file.replaceAll('\\', '/')}`, root), 'utf8'), /fonts\.(?:googleapis|gstatic)\.com/i, file);
+	}
+	const fontCssPath = `${config.base.replace(/\/$/, '')}/fonts/fonts.css`;
+	const fontCss = readFileSync(new URL('dist/fonts/fonts.css', root), 'utf8');
+	assert.equal([...fontCss.matchAll(/@font-face\b/g)].length, 3);
+	assert.equal([...fontCss.matchAll(/font-display:\s*swap/g)].length, 3);
+	const fontUrls = [...fontCss.matchAll(/url\('([^']+\.woff2)'\) format\('woff2'\)/g)];
+	assert.equal(fontUrls.length, 3);
+	for (const [, fontUrl] of fontUrls) {
+		const file = readFileSync(new URL(fontUrl, new URL('dist/fonts/fonts.css', root)));
+		assert.equal(file.toString('ascii', 0, 4), 'wOF2', fontUrl);
+	}
+	for (const family of ['fraunces', 'manrope']) {
+		assert.match(readFileSync(new URL(`dist/fonts/${family}/OFL.txt`, root), 'utf8'), /SIL OPEN FONT LICENSE Version 1\.1/);
+	}
 	const absolute = path => new URL(config.base.replace(/\/$/, '') + path, config.site).href;
 	const locations = xml => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
 	const index = readFileSync(new URL('dist/sitemap-index.xml', root), 'utf8');
@@ -31,6 +58,7 @@ function build(value) {
 	assert.doesNotMatch(sitemap, /<(?:lastmod|priority|changefreq)\b/);
 	for (const [index, html] of pages.entries()) {
 		const route = routes[index];
+		assert.ok(html.includes(`<link rel="stylesheet" href="${fontCssPath}">`), route);
 		const english = route.startsWith('/en/');
 		const location = english ? 'Ometepe Island, Rivas, Nicaragua' : 'Isla de Ometepe, Rivas, Nicaragua';
 		assert.equal(html.match(/<p class="site-footer__location">([^<]+)<\/p>/)[1], location, route);

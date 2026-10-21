@@ -6,9 +6,10 @@ interface Props {
 	language: Language;
 	esHref: string;
 	enHref: string;
+	suggestLanguage?: boolean;
 }
 
-const { content, language, esHref, enHref } = Astro.props;
+const { content, language, esHref, enHref, suggestLanguage = true } = Astro.props;
 // The browser-language prompt is intentionally English, even on the Spanish page.
 const prompt = getContent('en').shared.language;
 ---
@@ -17,6 +18,7 @@ const prompt = getContent('en').shared.language;
 	class="language-experience"
 	data-language-experience
 	data-language={language}
+	data-suggest-language={suggestLanguage ? undefined : 'false'}
 >
 	<dialog
 		class="language-dialog"
@@ -209,7 +211,7 @@ function initializeLanguagePage() {
 		const pendingSessionToast = takeStored(toastKey, true);
 		const pendingLocalToast = takeStored(toastKey);
 		if (pendingSessionToast === '1' || pendingLocalToast === '1') showToast();
-		if (saved || languagePromptDismissed || !dialog) return;
+		if (saved || languagePromptDismissed || !dialog || root?.dataset.suggestLanguage === 'false') return;
 		const primary = navigator.languages?.[0] || navigator.language || '';
 		if (!dialog.open && /^en(?:-|$)/i.test(primary)) {
 			dialog.showModal();
