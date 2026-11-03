@@ -187,7 +187,7 @@ function initializeLanguagePage() {
 				const fromDialog = link.hasAttribute('data-language-prompt');
 				if (fromDialog) {
 					// Carry the confirmation toast to the destination language page.
-					if (!writeStored(toastKey, '1', true)) writeStored(toastKey, '1');
+					writeStored(toastKey, '1', true);
 					dialog?.close();
 				}
 				closeMenu();
@@ -195,7 +195,6 @@ function initializeLanguagePage() {
 					event.preventDefault();
 					if (fromDialog) {
 						takeStored(toastKey, true);
-						takeStored(toastKey);
 						focusAfterDialog();
 						showToast();
 					} else if (link.closest('[data-language-switcher]')) {
@@ -209,8 +208,9 @@ function initializeLanguagePage() {
 		// A saved choice suppresses the prompt without overriding an explicit URL.
 		const saved = preference();
 		const pendingSessionToast = takeStored(toastKey, true);
-		const pendingLocalToast = takeStored(toastKey);
-		if (pendingSessionToast === '1' || pendingLocalToast === '1') showToast();
+		// Discard persistent toast flags left by older versions.
+		takeStored(toastKey);
+		if (pendingSessionToast === '1') showToast();
 		if (saved || languagePromptDismissed || !dialog || root?.dataset.suggestLanguage === 'false') return;
 		const primary = navigator.languages?.[0] || navigator.language || '';
 		if (!dialog.open && /^en(?:-|$)/i.test(primary)) {

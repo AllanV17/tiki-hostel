@@ -5,30 +5,35 @@ interface Props {
 	content: SiteContent;
 }
 const modules = content.hostel.services.modules;
+const icons = [
+	['M14 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z', 'M3 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2', 'M17 4a4 4 0 0 1 0 8M21 21v-2a5 5 0 0 0-3-4.6'],
+	['M5 10h14v8a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-8Z', 'M3 10h18M2 13h3m14 0h3M8 6V3m4 3V2m4 4V3'],
+	['M6 11V6a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v5', 'M6 14v-3a2 2 0 0 0-4 0v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6a2 2 0 0 0-4 0v3H6Z', 'M5 19v2m14-2v2'],
+	['M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z', 'm16 8-2.5 5.5L8 16l2.5-5.5L16 8Z'],
+];
 ---
 
+<!-- Service copy remains pending owner validation; no provisional notices are shown to visitors. -->
 <section class="hostel-services" aria-labelledby="hostel-services-title">
 	<div class="hostel-container">
 		<header class="hostel-section-head hostel-services__heading" data-reveal="up">
 			<div>
 				<p class="hostel-eyebrow">{content.hostel.services.eyebrow}</p>
 				<h2 id="hostel-services-title">
-					{content.hostel.services.title[0]}<br class="desktop-break" />{
-						content.hostel.services.title[1]
-					}
+					{content.hostel.services.title}
 				</h2>
 			</div>
-			<p class="hostel-services__status">{content.hostel.services.status}</p>
+			<p>{content.hostel.services.description}</p>
 		</header>
 		<div class="hostel-services__grid" data-reveal-stagger>
 			{
-				modules.map((title, index) => (
+				modules.map((service, index) => (
 					<article class="hostel-service" data-reveal="up">
-						<span class="hostel-service__number">
-							{String(index + 1).padStart(2, '0')}
-						</span>
-						<h3>{title}</h3>
-						<p>{content.hostel.services.pending}</p>
+						<svg class="hostel-service__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+							{icons[index].map((d) => <path d={d} />)}
+						</svg>
+						<h3>{service.title}</h3>
+						<p>{service.description}</p>
 					</article>
 				))
 			}

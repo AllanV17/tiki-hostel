@@ -35,6 +35,8 @@ El español es el idioma predeterminado. Las páginas equivalentes en inglés es
 
 `src/i18n/routes.ts` genera los enlaces localizados y permite cambiar de idioma conservando la página equivalente. Las rutas de la tabla son relativas al `base` de Astro; en el despliegue actual llevan el prefijo `/tiki-hostel`.
 
+La elección explícita de idioma guarda `es` o `en` en `localStorage` con la clave `tiki-hostel:language-preference`, sin caducidad programada, hasta que se cambie la elección o se borren los datos del sitio. Si falla esa escritura, utiliza `sessionStorage`. La preferencia evita repetir la sugerencia; no reemplaza el idioma de la URL. Cerrar el diálogo con Escape no guarda una preferencia. La confirmación temporal usa únicamente `sessionStorage` (`tiki-hostel:language-toast-pending`) y se elimina al consumirse; si este almacenamiento no está disponible, la selección sigue funcionando, pero el aviso no se conserva entre páginas. Los indicadores de confirmación persistentes de versiones anteriores se descartan al inicializar la experiencia de idioma.
+
 ## Desarrollo local
 
 Se requiere Node.js `>=22.12.0` y npm. Desde la raíz del repositorio:
@@ -94,6 +96,8 @@ Las pruebas se ejecutan con `node --test tests/*.test.mjs`. La prueba de indexac
 **Implementado en el repositorio:** cuatro páginas por idioma, navegación y cambio de idioma, metadatos SEO básicos, diseño adaptable, carruseles y efectos de aparición. Hay fotografías locales junto con imágenes y textos marcados como provisionales.
 
 **Pendiente de confirmación:** textos y afirmaciones comerciales, parte de la fotografía, datos prácticos y enlaces externos de contacto, mapa, redes sociales y plataformas de reserva. Los componentes y diccionarios muestran marcadores o destinos temporales para estos casos; su presencia no implica aprobación del contenido ni disponibilidad de la acción. Las URL y los datos finales deben confirmarse antes de sustituirlos.
+
+Información práctica utiliza el enlace de Google Maps confirmado para Tiki Hostel Ometepe; los horarios exactos de check-in y check-out y las políticas comerciales siguen pendientes de confirmación. El mapa de Contacto y los demás destinos provisionales conservan su estado pendiente.
 
 ## Instrucciones para agentes
 

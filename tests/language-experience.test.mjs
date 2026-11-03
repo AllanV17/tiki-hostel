@@ -9,7 +9,7 @@ const script = ts.transpileModule(source.match(/<script>([\s\S]*?)<\/script>/)[1
 	compilerOptions: { target: ts.ScriptTarget.ES2022 },
 }).outputText;
 
-function setup({ mobile = false, primary = 'en-US', localChoice, sessionChoice, blockLocal = false, suggestLanguage = true } = {}) {
+function setup({ mobile = false, primary = 'en-US', localChoice, sessionChoice, blockLocal = false, blockSession = false, missingSession = false, suggestLanguage = true, language = 'es' } = {}) {
 	const writes = [];
 	const preferenceKey = 'tiki-hostel:language-preference';
 	const document = new EventTarget();
@@ -32,7 +32,7 @@ function setup({ mobile = false, primary = 'en-US', localChoice, sessionChoice, 
 		};
 	};
 	const localStorage = storage(localChoice, blockLocal, 'local');
-	const sessionStorage = storage(sessionChoice, false, 'session');
+	const sessionStorage = storage(sessionChoice, blockSession, 'session');
 	let page;
 	function makePage(language = 'es') {
 		const english = element({ dataset: { languageChoice: 'en' }, hasAttribute: () => true });
@@ -54,7 +54,7 @@ function setup({ mobile = false, primary = 'en-US', localChoice, sessionChoice, 
 		});
 		return { root, dialog, toast, trigger, mobileTrigger, switcher, english, spanish };
 	}
-	page = makePage();
+	page = makePage(language);
 	document.querySelector = (selector) => ({
 		'[data-language-experience]': page.root,
 		'[data-language-switcher]': page.switcher,
@@ -62,7 +62,7 @@ function setup({ mobile = false, primary = 'en-US', localChoice, sessionChoice, 
 	})[selector];
 	document.querySelectorAll = () => [page.english, page.spanish];
 	vm.runInNewContext(script, {
-		document, window, localStorage, sessionStorage, navigator: { languages: [primary] }, AbortController,
+		document, window, localStorage, ...(missingSession ? {} : { sessionStorage }), navigator: { languages: [primary] }, AbortController,
 	});
 	return {
 		get page() { return page; }, document, writes, localStorage, sessionStorage,
@@ -122,6 +122,14 @@ for (const choice of ['es', 'en']) {
 			assert.equal(app.page.toast.hidden, false);
 		}
 		assert.equal(app.page.dialog.open, false);
+		assert.equal(app.sessionStorage.getItem('tiki-hostel:language-toast-pending'), null);
+		assert.deepEqual(app.writes, [
+			['local', 'tiki-hostel:language-preference', choice],
+			['session', 'tiki-hostel:language-toast-pending', '1'],
+		]);
+		app.visit(choice);
+		app.restore();
+		assert.equal(app.page.toast.hidden, true, 'the confirmation is consumed only once');
 	});
 }
 
@@ -130,4 +138,43 @@ test('choosing a language keeps the session fallback when local storage is block
 	app.page.spanish.dispatchEvent(new Event('click', { cancelable: true }));
 	assert.equal(app.sessionStorage.getItem('tiki-hostel:language-preference'), 'es');
 	assert.equal(app.page.dialog.open, false);
+});
+
+for (const choice of ['es', 'en']) {
+	test(`saved ${choice} survives a new document without overriding the requested language`, () => {
+		const app = setup();
+		(choice === 'es' ? app.page.spanish : app.page.english).dispatchEvent(new Event('click', { cancelable: true }));
+		const requestedLanguage = choice === 'es' ? 'en' : 'es';
+		const reloaded = setup({ localChoice: app.localStorage.getItem('tiki-hostel:language-preference'), language: requestedLanguage });
+		assert.equal(reloaded.localStorage.getItem('tiki-hostel:language-preference'), choice);
+		assert.equal(reloaded.page.root.dataset.language, requestedLanguage);
+		assert.equal(reloaded.page.dialog.open, false);
+		assert.deepEqual(reloaded.writes, []);
+	});
+
+	for (const options of [{ blockSession: true }, { missingSession: true }]) {
+		test(`choosing ${choice} works with session storage ${options.blockSession ? 'blocked' : 'absent'}`, () => {
+			const app = setup(options);
+			const event = new Event('click', { cancelable: true });
+			(choice === 'es' ? app.page.spanish : app.page.english).dispatchEvent(event);
+			assert.equal(app.localStorage.getItem('tiki-hostel:language-preference'), choice);
+			assert.equal(app.page.dialog.open, false);
+			assert.equal(event.defaultPrevented, choice === 'es');
+			assert.equal(app.page.toast.hidden, choice !== 'es');
+			app.visit(choice);
+			assert.equal(app.page.toast.hidden, true);
+			assert.equal(app.page.dialog.open, false);
+			assert.deepEqual(app.writes, [['local', 'tiki-hostel:language-preference', choice]]);
+		});
+	}
+}
+
+test('legacy persistent toast flags are discarded without displaying a confirmation', () => {
+	const app = setup({ localChoice: 'en' });
+	const key = 'tiki-hostel:language-toast-pending';
+	app.localStorage.setItem(key, '1');
+	app.visit('en');
+	assert.equal(app.localStorage.getItem(key), null);
+	assert.equal(app.localStorage.getItem('tiki-hostel:language-preference'), 'en');
+	assert.equal(app.page.toast.hidden, true);
 });

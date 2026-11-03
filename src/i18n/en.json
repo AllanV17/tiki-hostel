@@ -126,7 +126,7 @@
           "title": "Shared Kitchen & Fire Pit",
           "description": "Open spaces to prepare local food, gather around the fire at night, and swap stories about where to go next.",
           "image": "Common space",
-          "imageAlt": "Person holding plates of food in an outdoor dining area"
+          "imageAlt": "Person holding plates of food in a dining area under tropical vegetation, with a fire in the background and a Cocina Comunal sign"
         }
       ]
     },
@@ -182,8 +182,6 @@
     "rooms": {
       "eyebrow": "Rooms & Places to Stay",
       "title": "Find Your Place to Unwind",
-      "firstTitle": "Your Space to Recharge",
-      "firstDescription": "After a day exploring Ometepe, come back, slow down, and enjoy a peaceful moment surrounded by nature.",
       "firstNote": "A simple retreat, close to nature.",
       "firstImages": [
         "Room / main view",
@@ -225,15 +223,26 @@
     },
     "services": {
       "eyebrow": "Services & Amenities",
-      "title": ["The Details Are Still", " Taking Shape"],
-      "status": "Details pending",
+      "title": "The essentials for a comfortable stay",
+      "description": "Little details that make your time on the island more enjoyable.",
       "modules": [
-        "Service details pending",
-        "Amenity details pending",
-        "Service details pending",
-        "Amenity details pending"
-      ],
-      "pending": "Details to be confirmed"
+        {
+          "title": "Shared Spaces",
+          "description": "Places to relax, connect, and enjoy the surroundings."
+        },
+        {
+          "title": "Communal Kitchen",
+          "description": "A space to prepare and share meals."
+        },
+        {
+          "title": "Relaxation Areas",
+          "description": "Peaceful corners to unwind after exploring."
+        },
+        {
+          "title": "Explore with Us",
+          "description": "Discover the wonders of Ometepe through our activities."
+        }
+      ]
     },
     "experience": {
       "eyebrow": "The Tiki Experience",
@@ -248,18 +257,20 @@
       ]
     },
     "practical": {
-      "eyebrow": "Good to Know",
-      "title": ["The Essentials,", " All in One Place"],
-      "description": "We'll add the practical details as soon as the team confirms them.",
+      "eyebrow": "Practical information",
+      "title": "Arrive at your own pace",
+      "description": "Useful information to help you prepare for your stay at Tiki Hostel.",
       "facts": [
-        { "label": "Check-in", "note": "Hours to be confirmed" },
-        { "label": "Check-out", "note": "Hours to be confirmed" },
-        { "label": "Location", "note": "Directions to be confirmed" },
-        { "label": "Policies", "note": "Details to be confirmed" }
-      ],
-      "confirm": "To be confirmed",
-      "closing": "We'll share more as the details are confirmed.",
-      "pending": "Details to be confirmed"
+        {
+          "title": "Flexible hours",
+          "description": "We offer flexible hours. We recommend coordinating your arrival with our team."
+        },
+        {
+          "title": "Find us on Ometepe",
+          "description": "Check our location to plan your arrival.",
+          "link": "View location on Google Maps"
+        }
+      ]
     },
     "contact": {
       "eyebrow": "Questions & Bookings",

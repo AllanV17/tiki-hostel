@@ -126,7 +126,7 @@
           "title": "Cocina & Fogata Comunal",
           "description": "Espacios abiertos donde convergen la preparación de comida local, el fuego nocturno y las conversaciones que trazan nuevas rutas.",
           "image": "Espacio común",
-          "imageAlt": "Persona con platos de comida en un comedor al aire libre"
+          "imageAlt": "Persona con platos de comida en un comedor bajo vegetación tropical, con una fogata al fondo y un letrero de Cocina Comunal"
         }
       ]
     },
@@ -182,8 +182,6 @@
     "rooms": {
       "eyebrow": "Habitaciones y alojamientos",
       "title": "¿Dónde podemos recibirte?",
-      "firstTitle": "Tu espacio para descansar",
-      "firstDescription": "Después de un día explorando Ometepe, encuentra un lugar para bajar el ritmo, descansar y disfrutar de la tranquilidad de la isla.",
       "firstNote": "Un refugio sencillo, rodeado de naturaleza.",
       "firstImages": [
         "Alojamiento / vista principal",
@@ -225,15 +223,26 @@
     },
     "services": {
       "eyebrow": "Servicios y comodidades",
-      "title": ["Una base modular para", " completar después"],
-      "status": "Contenido provisional",
+      "title": "Lo esencial para sentirte a gusto",
+      "description": "Pequeños detalles que acompañan tu estancia en la isla.",
       "modules": [
-        "Servicio por definir",
-        "Comodidad por definir",
-        "Servicio por definir",
-        "Comodidad por definir"
-      ],
-      "pending": "Contenido provisional — por confirmar"
+        {
+          "title": "Espacios compartidos",
+          "description": "Lugares para descansar, conversar y disfrutar del entorno."
+        },
+        {
+          "title": "Cocina comunal",
+          "description": "Un espacio para preparar y compartir alimentos."
+        },
+        {
+          "title": "Áreas de descanso",
+          "description": "Rincones tranquilos para desconectar después de explorar."
+        },
+        {
+          "title": "Explora con nosotros",
+          "description": "Descubre las maravillas de Ometepe a través de nuestras actividades."
+        }
+      ]
     },
     "experience": {
       "eyebrow": "La experiencia Tiki",
@@ -249,17 +258,19 @@
     },
     "practical": {
       "eyebrow": "Información práctica",
-      "title": ["Todo lo necesario, en un", " solo lugar"],
-      "description": "La información se completará cuando el equipo confirme los datos.",
+      "title": "Tu llegada, a tu ritmo",
+      "description": "Información útil para preparar tu estancia en Tiki Hostel.",
       "facts": [
-        { "label": "Check-in", "note": "Horario pendiente" },
-        { "label": "Check-out", "note": "Horario pendiente" },
-        { "label": "Ubicación", "note": "Indicaciones pendientes" },
-        { "label": "Políticas", "note": "Contenido pendiente" }
-      ],
-      "confirm": "Por confirmar",
-      "closing": "Esta sección está preparada para crecer sin perder claridad.",
-      "pending": "Datos por confirmar"
+        {
+          "title": "Horarios flexibles",
+          "description": "Contamos con horarios flexibles. Te recomendamos coordinar tu llegada con nuestro equipo."
+        },
+        {
+          "title": "Encuéntranos en Ometepe",
+          "description": "Consulta nuestra ubicación para planificar tu llegada.",
+          "link": "Ver ubicación en Google Maps"
+        }
+      ]
     },
     "contact": {
       "eyebrow": "Consulta y reserva",

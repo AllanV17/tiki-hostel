@@ -5,9 +5,9 @@ import ranchoPhoto from '../../assets/hostel/espacios-rancho-mesas.webp';
 import catPhoto from '../../assets/hostel/espacios-gato-mesa.jpg';
 import cafePhoto from '../../assets/hostel/espacios-letrero-cafe.webp';
 import sunsetPhoto from '../../assets/hostel/hamaca-palmeras-atardecer.webp';
-import guestsPhoto from '../../assets/hostel/espacios-comensales-rancho.jpg';
+import chickenPhoto from '../../assets/hostel/espacios-persona-gallina.png';
 import dessertPhoto from '../../assets/hostel/espacios-postre-fresa.jpg';
-import chillPhoto from '../../assets/hostel/espacios-zona-descanso.jpg';
+import groupPhoto from '../../assets/hostel/espacios-grupo-rancho.png';
 import type { Language, SiteContent } from '../../i18n';
 interface Props {
 	content: SiteContent;
@@ -21,9 +21,9 @@ const photos = [
 	[catPhoto, 'Gato atigrado sobre una mesa del hostal', 'Tabby cat on a hostel table'],
 	[cafePhoto, 'Letrero de café iluminado entre plantas', 'Cafe sign lit by sunlight among plants'],
 	[sunsetPhoto, 'Hamaca bajo las palmeras con luz de atardecer', 'Hammock beneath palm trees in the evening light'],
-	[guestsPhoto, 'Huéspedes cenando juntos bajo el rancho', 'Guests dining together beneath the rancho'],
+	[chickenPhoto, 'Persona sentada en la arena sosteniendo una gallina, con un columpio al fondo', 'Person sitting on the sand holding a chicken, with a swing in the background'],
 	[dessertPhoto, 'Postre de fresas servido en un plato', 'Strawberry dessert served on a plate'],
-	[chillPhoto, 'Huéspedes sentados en la zona de descanso', 'Guests seated in the chill area'],
+	[groupPhoto, 'Grupo de personas con dos perros frente a una estructura de madera y palma', 'Group of people with two dogs in front of a wooden structure with a palm-thatched roof'],
 ] as const;
 const images = await Promise.all(photos.map(async ([photo, altEs, altEn], index) => ({
 	src: (await getImage({ src: photo, width: Math.min(photo.width, 1200), format: photo.format })).src,

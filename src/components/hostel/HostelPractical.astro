@@ -5,35 +5,41 @@ interface Props {
 	content: SiteContent;
 }
 const facts = content.hostel.practical.facts;
+const icons = [
+	['M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0Z', 'M12 6v6h4'],
+	['M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z', 'M15 10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z'],
+];
 ---
 
+<!-- Exact check-in/check-out times and commercial policies remain pending owner confirmation. -->
 <section class="hostel-practical" aria-labelledby="hostel-practical-title">
 	<div class="hostel-container">
 		<header class="hostel-section-head hostel-practical__heading" data-reveal="up">
 			<div>
 				<p class="hostel-eyebrow">{content.hostel.practical.eyebrow}</p>
 				<h2 id="hostel-practical-title">
-					{content.hostel.practical.title[0]}<br class="desktop-break" />{
-						content.hostel.practical.title[1]
-					}
+					{content.hostel.practical.title}
 				</h2>
 			</div>
 			<p>{content.hostel.practical.description}</p>
 		</header>
-		<dl class="hostel-practical__facts" data-reveal="up">
+		<div class="hostel-practical__facts" data-reveal="up">
 			{
-				facts.map((fact) => (
-					<div>
-						<dt>{fact.label}</dt>
-						<dd>{content.hostel.practical.confirm}</dd>
-						<dd class="hostel-practical__note">{fact.note}</dd>
-					</div>
+				facts.map((fact, index) => (
+					<article>
+						<svg class="hostel-practical__icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+							{icons[index].map((d) => <path d={d} />)}
+						</svg>
+						<h3>{fact.title}</h3>
+						<p>{fact.description}</p>
+						{fact.link && (
+							<a href="https://maps.app.goo.gl/eHD8jfgab4Sm5QQL7" target="_blank" rel="noopener noreferrer">
+								{fact.link}
+							</a>
+						)}
+					</article>
 				))
 			}
-		</dl>
-		<div class="hostel-practical__closing" data-reveal="up">
-			<p>{content.hostel.practical.closing}</p>
-			<span>{content.hostel.practical.pending}</span>
 		</div>
 	</div>
 </section>

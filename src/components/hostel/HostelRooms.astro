@@ -2,10 +2,10 @@
 import { getImage } from 'astro:assets';
 import signPhoto from '../../assets/hostel/habitaciones-letrero-tiki.jpg';
 import hammockPhoto from '../../assets/home/detalle-hostal.webp';
-import pinkBedPhoto from '../../assets/hostel/habitaciones-cama-mosquitero-rosa.jpg';
-import bunkPhoto from '../../assets/hostel/habitaciones-litera.jpg';
-import purpleBedPhoto from '../../assets/hostel/habitaciones-cama-mosquitero-morado.jpg';
-import sunsetPhoto from '../../assets/hostel/hamaca-palmeras-atardecer.webp';
+import redBedPhoto from '../../assets/hostel/habitaciones-cama-mosquitero-rojo.png';
+import bunkPhoto from '../../assets/hostel/habitaciones-litera.png';
+import purpleBedPhoto from '../../assets/hostel/habitaciones-cama-mosquitero-morado.png';
+import catPhoto from '../../assets/hostel/habitaciones-gato-atardecer.png';
 import type { Language, SiteContent } from '../../i18n';
 interface Props {
 	content: SiteContent;
@@ -16,10 +16,10 @@ const { content, language } = Astro.props;
 const photos = [
 	[signPhoto, 'Autobús amarillo junto al letrero de Tiki Hostel', 'Yellow bus beside the Tiki Hostel sign'],
 	[hammockPhoto, 'Hamaca y asientos en un espacio común del hostal', 'Hammock and chairs in a hostel common area'],
-	[pinkBedPhoto, 'Cama doble con mosquitero rosa en una habitación', 'Double bed with a pink mosquito net in a room'],
+	[redBedPhoto, 'Cama doble con mosquitero rojo en una habitación', 'Double bed with a red mosquito net in a room'],
 	[bunkPhoto, 'Litera de madera en una habitación del hostal', 'Wooden bunk bed in a hostel room'],
 	[purpleBedPhoto, 'Cama doble con mosquitero morado en una habitación', 'Double bed with a purple mosquito net in a room'],
-	[sunsetPhoto, 'Hamaca bajo las palmeras con luz de atardecer', 'Hammock beneath palm trees in the evening light'],
+	[catPhoto, 'Gato atigrado sobre una mesa de madera frente a la vegetación al atardecer', 'Tabby cat on a wooden table facing the vegetation at sunset'],
 ] as const;
 const firstImages = await Promise.all(photos.map(async ([photo, altEs, altEn], index) => ({
 	src: (await getImage({ src: photo, width: Math.min(photo.width, 1200), format: photo.format })).src,
@@ -30,39 +30,29 @@ const firstImages = await Promise.all(photos.map(async ([photo, altEs, altEn], i
 
 <section class="hostel-rooms" aria-labelledby="hostel-rooms-title">
 	<div class="hostel-container">
-		<header class="hostel-rooms__heading" data-reveal="up">
-			<p class="hostel-eyebrow">{content.hostel.rooms.eyebrow}</p>
-			<h2 id="hostel-rooms-title">{content.hostel.rooms.title}</h2>
-		</header>
-
-		<article
-			class="hostel-room hostel-room--first"
-			aria-labelledby="hostel-room-first-title"
-		>
+		<div class="hostel-section-head hostel-rooms__heading">
+			<header data-reveal="up">
+				<p class="hostel-eyebrow">{content.hostel.rooms.eyebrow}</p>
+				<h2 id="hostel-rooms-title">{content.hostel.rooms.title}</h2>
+			</header>
 			<div class="hostel-room__intro" data-reveal="up">
-				<div>
-					<h3 id="hostel-room-first-title">
-						{content.hostel.rooms.firstTitle}
-					</h3>
-					<p>{content.hostel.rooms.firstDescription}</p>
-					<p class="hostel-room__note">{content.hostel.rooms.firstNote}</p>
-				</div>
+				<p class="hostel-room__note">{content.hostel.rooms.firstNote}</p>
 			</div>
-			<Carousel
-				reveal="in"
-				images={firstImages}
-				label={content.hostel.rooms.firstCarousel.label}
-				variant="rooms-first"
-				controlsLayout="stacked-center"
-				labels={{
-					previous: content.hostel.rooms.firstCarousel.previous,
-					next: content.hostel.rooms.firstCarousel.next,
-					position: content.hostel.rooms.firstCarousel.position,
-					of: content.hostel.rooms.firstCarousel.of,
-					placeholderSelect: content.shared.placeholder.photoSelect,
-					placeholderPending: content.shared.placeholder.photoToSelect,
-				}}
-			/>
-		</article>
+		</div>
+		<Carousel
+			reveal="in"
+			images={firstImages}
+			label={content.hostel.rooms.firstCarousel.label}
+			variant="spaces"
+			controlsLayout="stacked-center"
+			labels={{
+				previous: content.hostel.rooms.firstCarousel.previous,
+				next: content.hostel.rooms.firstCarousel.next,
+				position: content.hostel.rooms.firstCarousel.position,
+				of: content.hostel.rooms.firstCarousel.of,
+				placeholderSelect: content.shared.placeholder.photoSelect,
+				placeholderPending: content.shared.placeholder.photoToSelect,
+			}}
+		/>
 	</div>
 </section>
