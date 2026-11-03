@@ -1,0 +1,15 @@
+---
+import type { SiteContent } from '../../i18n';
+import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
+interface Props { content: SiteContent; }
+const { content } = Astro.props;
+---
+
+<section class="activities-gallery activities-container" aria-labelledby="activities-gallery-title">
+	<h2 id="activities-gallery-title" data-reveal="up">{content.activities.gallery.title}</h2>
+	<div class="activities-gallery__grid">
+		<ActivityImagePlaceholder />
+		<ActivityImagePlaceholder />
+		<ActivityImagePlaceholder />
+	</div>
+</section>

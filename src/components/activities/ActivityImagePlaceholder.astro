@@ -1,31 +1,14 @@
 ---
-import type { SiteContent } from '../../i18n';
-const { content } = Astro.props;
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 interface Props {
-	content: SiteContent;
-	label: string;
+	src?: ImageMetadata;
+	alt?: string;
 	variant?: 'light' | 'dark';
-	className?: string;
-	reveal?: 'in';
 }
-
-const { label, variant = 'light', className = '', reveal } = Astro.props;
+const { src, alt = '', variant = 'light' } = Astro.props;
 ---
 
-<div
-	class:list={[
-		'activity-image-placeholder',
-		`activity-image-placeholder--${variant}`,
-		className,
-	]}
-	role="img"
-	aria-label={`${label}. ${content.shared.placeholder.imageSelect}`}
-	data-reveal={reveal}
->
-	<span class="activity-image-placeholder__label" aria-hidden="true"
-		>{label}</span
-	>
-	<span class="activity-image-placeholder__pending" aria-hidden="true"
-		>{content.shared.placeholder.imageToSelect}</span
-	>
+<div class:list={['activity-image-placeholder', `activity-image-placeholder--${variant}`]} aria-hidden={src ? undefined : 'true'}>
+	{src && <Image src={src} alt={alt} format="webp" loading="lazy" />}
 </div>

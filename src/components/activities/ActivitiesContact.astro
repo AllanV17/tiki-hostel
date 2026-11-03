@@ -1,32 +1,17 @@
 ---
-import type { SiteContent } from '../../i18n';
-const { content } = Astro.props;
-interface Props {
-	content: SiteContent;
-}
+import type { SiteContent, Language } from '../../i18n';
+import { getLocalizedHref } from '../../i18n/routes';
+interface Props { content: SiteContent; language: Language; }
+const { content, language } = Astro.props;
 ---
 
-<section
-	class="activities-contact"
-	id="consulta-actividades"
-	aria-labelledby="activities-contact-title"
->
+<section class="activities-contact" id="consulta-actividades" aria-labelledby="activities-contact-title">
 	<div class="activities-container">
 		<p class="activities-eyebrow">{content.activities.contact.eyebrow}</p>
-		<h2 id="activities-contact-title" data-reveal="up">
-			{content.activities.contact.title[0]}<br />{
-				content.activities.contact.title[1]
-			}
-		</h2>
+		<h2 id="activities-contact-title" data-reveal="up">{content.activities.contact.title}</h2>
 		<p data-reveal="up">{content.activities.contact.description}</p>
 		<div class="activities-contact__actions">
-			<a
-				class="button"
-				href="#consulta-actividades"
-				data-link-placeholder
-				aria-label={content.activities.contact.buttonLabel}
-				>{content.activities.contact.button}</a
-			>
+			<a class="button" href={getLocalizedHref('contact', language)}>{content.activities.contact.button}</a>
 		</div>
 	</div>
 </section>

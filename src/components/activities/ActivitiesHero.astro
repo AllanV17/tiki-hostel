@@ -1,10 +1,13 @@
 ---
+import { Image, getImage } from 'astro:assets';
+import heroPhoto from '../../assets/activities/activities-hero-desktop.png';
+import mobileHeroPhoto from '../../assets/activities/activities-hero-mobile.png';
 import type { SiteContent } from '../../i18n';
 interface Props {
 	content: SiteContent;
 }
-import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
 const { content } = Astro.props;
+const mobileHero = await getImage({ src: mobileHeroPhoto, format: 'webp' });
 ---
 
 <section
@@ -16,19 +19,27 @@ const { content } = Astro.props;
 			<p class="activities-eyebrow activities-eyebrow--green">
 				{content.activities.hero.eyebrow}
 			</p>
-			<h1 id="activities-title">
-				{content.activities.hero.title[0]}<br />{
-					content.activities.hero.title[1]
-				}
-			</h1>
+			<h1 id="activities-title">{content.activities.hero.title}</h1>
 		</div>
 		<p class="activities-hero__summary">
 			{content.activities.hero.description}
 		</p>
 	</div>
-	<ActivityImagePlaceholder
-		content={content}
-		label={content.activities.hero.image}
-		className="activities-hero__image"
-	/>
+	<picture class="activities-hero__picture">
+		<source
+			media="(max-width: 560px)"
+			srcset={mobileHero.src}
+			type="image/webp"
+			width={mobileHeroPhoto.width}
+			height={mobileHeroPhoto.height}
+		/>
+		<Image
+			src={heroPhoto}
+			alt={content.activities.hero.image}
+			class="activities-hero__image"
+			format="webp"
+			loading="eager"
+			fetchpriority="high"
+		/>
+	</picture>
 </section>

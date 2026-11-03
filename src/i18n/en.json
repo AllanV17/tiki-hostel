@@ -289,135 +289,46 @@
       "description": "Explore ways to experience Ometepe from Tiki Hostel. Routes, conditions, and availability are still being confirmed."
     },
     "hero": {
-      "eyebrow": "Ometepe — explore at the island's pace",
-      "title": ["Days Shaped by Water,", " Earth & Fire"],
-      "description": "A first look at unhurried ways to explore Ometepe. Details are still being confirmed.",
+      "eyebrow": "EXPERIENCES ON OMETEPE",
+      "title": "Explore the island, feel its spirit",
+      "description": "From calm waters and lush trails to volcanic landscapes, discover different ways to connect with Ometepe.",
       "image": "Things to Do / wide island view"
     },
     "routes": {
-      "eyebrow": "Explore Your Way",
-      "title": ["Find Your Pace", " on Ometepe"],
-      "description": "Three ways to explore Ometepe from Tiki. Route details are still being confirmed.",
-      "indexLabel": "Island activity",
-      "kayak": {
-        "title": "Kayaking",
-        "description": "Paddle along the lakeshore, take in the views, and enjoy the peaceful rhythm of the water.",
-        "note": "Route, schedule, and availability — to be confirmed.",
-        "aside": "Moments along the island's shore",
-        "image": "Kayaking / main lake view",
-        "carousel": {
-          "label": "Kayaking photo gallery",
-          "previous": "Previous image",
-          "next": "Next image",
-          "position": "Image",
-          "of": "of",
-          "image": "Kayaking / photo pending"
+      "eyebrow": "ISLAND EXPERIENCES",
+      "title": "Find your way to explore",
+      "description": "Three ways to discover Ometepe’s landscapes and island life, each at its own pace.",
+      "items": [
+        {
+          "category": "WATER",
+          "title": "Kayaking",
+          "description": "Discover Ometepe from its calm waters."
+        },
+        {
+          "category": "LAND",
+          "title": "Horseback riding",
+          "description": "Follow country paths surrounded by nature."
+        },
+        {
+          "category": "VOLCANO",
+          "title": "Volcano hiking",
+          "description": "Explore the island’s trails and volcanic landscapes."
         }
-      },
-      "horse": {
-        "title": ["Horseback", " Riding"],
-        "description": "Take the scenic route on horseback and discover Ometepe's countryside at a slower pace.",
-        "note": "Local route and guide details — to be confirmed.",
-        "image": "Horseback riding / main view",
-        "carousel": {
-          "label": "Horseback riding photo gallery",
-          "previous": "Previous image",
-          "next": "Next image",
-          "position": "Image",
-          "of": "of",
-          "image": "Horseback riding / photo pending"
-        }
-      },
-      "hiking": {
-        "title": ["Volcano", " Hiking"],
-        "description": "Follow the trails and get to know Ometepe's volcanic landscape up close.",
-        "note": "Difficulty, duration, and trail conditions — to be confirmed.",
-        "image": "Volcano hiking / main view",
-        "carousel": {
-          "label": "Volcano hiking photo gallery",
-          "previous": "Previous image",
-          "next": "Next image",
-          "position": "Image",
-          "of": "of",
-          "image": "Volcano hiking / photo pending"
-        }
-      },
-      "nextImage": "Next image"
+      ]
     },
     "sleepover": {
       "eyebrow": "Featured Experience",
       "title": "Maderas Volcano Overnight Adventure",
-      "description": "A proposed overnight experience on Maderas. Full details are still being confirmed.",
-      "image": "Maderas overnight adventure / featured image",
-      "storyEyebrow": "The story",
-      "storyTitle": ["Up the Volcano,", " Into the Night"],
-      "story": "We're still gathering the details of the route, the nighttime atmosphere, and the return to Tiki.",
-      "quote": "“A firsthand story from the mountain will go here.”",
-      "includedTitle": "What's included",
-      "included": "We'll share the full list once it's confirmed.",
-      "includedItems": [
-        "Guide details — to be confirmed",
-        "Sleeping arrangements — to be confirmed",
-        "Food and water — to be confirmed",
-        "Transport — to be confirmed"
-      ],
-      "galleryTitle": "Moments Along the Way",
-      "galleryEyebrow": "Photo Gallery",
-      "galleryImages": [
-        "Maderas gallery / arrival",
-        "Maderas gallery / trail",
-        "Maderas gallery / next view",
-        "Maderas gallery / photo pending 4",
-        "Maderas gallery / photo pending 5",
-        "Maderas gallery / photo pending 6",
-        "Maderas gallery / photo pending 7",
-        "Maderas gallery / photo pending 8"
-      ],
-      "galleryCarousel": {
-        "label": "Moments Along the Way photo gallery",
-        "previous": "Previous image",
-        "next": "Next image",
-        "position": "Image",
-        "of": "of"
-      },
-      "extensionEyebrow": "Keep Exploring",
-      "extensionTitle": "Make More of the Journey",
-      "extension": "An optional add-on experience is being considered. Details are still being confirmed.",
-      "extensionImage": "Additional adventure / photo pending",
-      "practicalEyebrow": "Good to Know",
-      "practicalTitle": "Before You Go",
-      "practical": "We'll share the practical details once they're confirmed.",
-      "facts": [
-        { "label": "Duration", "value": "To be confirmed" },
-        { "label": "Difficulty", "value": "To be confirmed" },
-        { "label": "Meeting point", "value": "To be confirmed" },
-        { "label": "What to bring", "value": "List to be confirmed" }
-      ],
-      "enquiryTitle": "Thinking about a night on Maderas?",
-      "enquiry": "Ask the Tiki team for the latest details and availability."
-    },
-    "rentals": {
-      "eyebrow": "Explore at Your Own Pace",
-      "title": ["See the Island", " Your Way"],
-      "description": "Scooter, ATV, and bicycle rentals for exploring Ometepe on your own. Details are still being confirmed.",
-      "items": [
-        { "name": "Scooter", "image": "Scooter rental" },
-        { "name": "ATV", "image": "ATV rental" },
-        { "name": "Bicycle", "image": "Bicycle rental" }
-      ],
-      "pending": "Rental details — to be confirmed",
-      "ask": "Ask the Tiki Team"
+      "description": "An overnight experience on Maderas Volcano."
     },
     "contact": {
-      "eyebrow": "Plan with Local Insight",
-      "title": ["Ready to Explore", " Ometepe?"],
-      "description": "Ask the team about current activity details and availability.",
-      "buttonLabel": "Ask about availability on WhatsApp; link coming soon",
-      "button": "Ask About Availability"
+      "eyebrow": "PLAN YOUR ADVENTURE",
+      "title": "Your next adventure starts here",
+      "description": "Every experience has its own pace. Ask our team about available activities and plan your next adventure on Ometepe.",
+      "button": "Ask about activities"
     },
-    "footer": {
-      "description": "A wooden retreat on Ometepe Island, Rivas, Nicaragua.",
-      "availability": "Availability to be confirmed"
+    "gallery": {
+      "title": "Moments Along the Way"
     }
   },
   "contact": {

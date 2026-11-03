@@ -102,3 +102,11 @@ Información práctica utiliza el enlace de Google Maps confirmado para Tiki Hos
 ## Instrucciones para agentes
 
 [`AGENTS.md`](AGENTS.md) contiene las reglas de trabajo, los límites de alcance y los criterios de diseño y contenido para Codex. Consúltalo antes de modificar el proyecto.
+
+### Actividades: estructura y pendientes
+
+Actividades ES/EN conserva su hero y utiliza tres tarjetas de experiencias, un bloque destacado de Maderas, una galería estática de tres espacios y un cierre enlazado a Contacto en el idioma actual. No utiliza carruseles ni presenta alquileres o condiciones provisionales.
+
+Los siete espacios pendientes son decorativos: tres tarjetas de proporción 4:5, una imagen de Maderas de 4:3 y tres imágenes de galería de 4:3. `ActivityImagePlaceholder.astro` admite `src` (imagen local importada) y `alt` descriptivo; asignarlos en cada uso conserva las dimensiones y el recorte con `object-fit: cover`. Las tarjetas se generan en el orden kayak, paseo a caballo y senderismo; al elegir sus fotografías, asociarlas a esos elementos en `ActivitiesRoutes.astro`. No se ha seleccionado ni incorporado fotografía en estos espacios.
+
+Pendientes comerciales conservados internamente: rutas, horarios y disponibilidad de kayak; ruta y guía del paseo a caballo; nivel, duración y condiciones del senderismo; relato real de Maderas, guía, preparativos para dormir, comida, agua, transporte, duración, dificultad, punto de encuentro y qué llevar; posible experiencia complementaria; existencia y condiciones de alquiler de scooter, cuatrimoto y bicicleta. Ninguno de estos datos constituye una prestación confirmada. Los destinos externos de contacto siguen pendientes; el CTA de Actividades utiliza la ruta existente de Contacto.

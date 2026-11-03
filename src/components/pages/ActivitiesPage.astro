@@ -4,7 +4,7 @@ import SiteHeader from '../SiteHeader.astro';
 import ActivitiesHero from '../activities/ActivitiesHero.astro';
 import ActivitiesRoutes from '../activities/ActivitiesRoutes.astro';
 import SleepoverExperience from '../activities/SleepoverExperience.astro';
-import ActivitiesRentals from '../activities/ActivitiesRentals.astro';
+import ActivitiesGallery from '../activities/ActivitiesGallery.astro';
 import ActivitiesContact from '../activities/ActivitiesContact.astro';
 import SiteFooter from '../SiteFooter.astro';
 import { getContent, type Language } from '../../i18n';
@@ -31,13 +31,13 @@ const content = getContent(language);
 		variant="light"
 		activePage="activities"
 	/>
-	<!-- Activities content and imagery are pending client confirmation. -->
+	<!-- Activity photography and commercial details remain pending confirmation. -->
 	<main id="main-content" tabindex="-1" class="activities-page" data-content-status="provisional">
 		<ActivitiesHero content={content} />
 		<ActivitiesRoutes content={content} />
 		<SleepoverExperience content={content} />
-		<ActivitiesRentals content={content} />
-		<ActivitiesContact content={content} />
+		<ActivitiesGallery content={content} />
+		<ActivitiesContact content={content} language={language} />
 	</main>
 	<SiteFooter content={content} language={language} activePage="activities" />
 </Layout>

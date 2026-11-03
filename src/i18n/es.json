@@ -289,135 +289,46 @@
       "description": "Explora las actividades propuestas en Ometepe desde Tiki Hostel. Rutas, condiciones y disponibilidad pendientes de confirmación."
     },
     "hero": {
-      "eyebrow": "Ometepe — muévete al ritmo de la isla",
-      "title": ["Días moldeados por el agua,", " la tierra y el fuego"],
-      "description": "Una introducción provisional a las aventuras sin prisa por Ometepe.",
+      "eyebrow": "EXPERIENCIAS EN OMETEPE",
+      "title": "La isla se vive explorando",
+      "description": "Entre aguas tranquilas, senderos verdes y paisajes volcánicos, descubre distintas formas de conectar con Ometepe.",
       "image": "Portada de actividades / paisaje amplio"
     },
     "routes": {
-      "eyebrow": "Formas de explorar",
-      "title": ["Elige tu ritmo y sigue", " el paisaje"],
-      "description": "Tres formas provisionales de vivir Ometepe desde Tiki.",
-      "indexLabel": "Actividad en la isla",
-      "kayak": {
-        "title": "Kayak",
-        "description": "Un recorrido tranquilo junto a la orilla del lago, al ritmo del viento y el agua.",
-        "note": "Ruta, horarios y disponibilidad — por confirmar.",
-        "aside": "Una secuencia de momentos en la isla",
-        "image": "Kayak / paisaje principal",
-        "carousel": {
-          "label": "Galería de kayak",
-          "previous": "Imagen anterior",
-          "next": "Imagen siguiente",
-          "position": "Imagen",
-          "of": "de",
-          "image": "Kayak / imagen provisional"
+      "eyebrow": "EXPERIENCIAS EN LA ISLA",
+      "title": "Encuentra tu manera de explorar",
+      "description": "Tres maneras de descubrir los paisajes y la vida de Ometepe, cada una a su propio ritmo.",
+      "items": [
+        {
+          "category": "AGUA",
+          "title": "Kayak",
+          "description": "Descubre Ometepe desde sus aguas tranquilas."
+        },
+        {
+          "category": "TIERRA",
+          "title": "Paseo a caballo",
+          "description": "Recorre caminos rurales rodeados de naturaleza."
+        },
+        {
+          "category": "VOLCÁN",
+          "title": "Senderismo volcánico",
+          "description": "Explora senderos y paisajes volcánicos de la isla."
         }
-      },
-      "horse": {
-        "title": ["Paseo a", " caballo"],
-        "description": "Una forma más pausada de recorrer los caminos rurales y los espacios abiertos de la isla.",
-        "note": "Detalles de la ruta local y del guía — por confirmar.",
-        "image": "Paseo a caballo / paisaje principal",
-        "carousel": {
-          "label": "Galería de paseo a caballo",
-          "previous": "Imagen anterior",
-          "next": "Imagen siguiente",
-          "position": "Imagen",
-          "of": "de",
-          "image": "Paseo a caballo / imagen provisional"
-        }
-      },
-      "hiking": {
-        "title": ["Senderismo en el", " volcán"],
-        "description": "Un encuentro con el terreno volcánico de Ometepe a través de sus senderos.",
-        "note": "Nivel, duración y condiciones — por confirmar.",
-        "image": "Senderismo en el volcán / paisaje principal",
-        "carousel": {
-          "label": "Galería de senderismo en el volcán",
-          "previous": "Imagen anterior",
-          "next": "Imagen siguiente",
-          "position": "Imagen",
-          "of": "de",
-          "image": "Senderismo en el volcán / imagen provisional"
-        }
-      },
-      "nextImage": "Siguiente imagen"
+      ]
     },
     "sleepover": {
       "eyebrow": "Experiencia destacada",
       "title": "Noche en el volcán Maderas",
-      "description": "Una propuesta inmersiva para pasar la noche. Los detalles completos de la experiencia están pendientes.",
-      "image": "Noche en Maderas / imagen destacada",
-      "storyEyebrow": "La historia",
-      "storyTitle": ["Volcán arriba, hacia la", " noche"],
-      "story": "El texto provisional describirá la ruta, el ambiente nocturno y el regreso a Tiki.",
-      "quote": "“Espacio reservado para un relato de primera mano desde la montaña.”",
-      "includedTitle": "Qué incluye",
-      "included": "Aún no se ha proporcionado la lista definitiva de lo que incluye.",
-      "includedItems": [
-        "Detalles del guía — por confirmar",
-        "Preparativos para dormir — por confirmar",
-        "Comida y agua — por confirmar",
-        "Transporte — por confirmar"
-      ],
-      "galleryTitle": "La ruta en imágenes",
-      "galleryEyebrow": "Galería horizontal",
-      "galleryImages": [
-        "Galería de la noche / llegada",
-        "Galería de la noche / sendero",
-        "Siguiente imagen",
-        "Galería de la noche / imagen provisional 4",
-        "Galería de la noche / imagen provisional 5",
-        "Galería de la noche / imagen provisional 6",
-        "Galería de la noche / imagen provisional 7",
-        "Galería de la noche / imagen provisional 8"
-      ],
-      "galleryCarousel": {
-        "label": "Galería de la ruta en imágenes",
-        "previous": "Imagen anterior",
-        "next": "Imagen siguiente",
-        "position": "Imagen",
-        "of": "de"
-      },
-      "extensionEyebrow": "Añade otra aventura",
-      "extensionTitle": "Prolonga la ruta",
-      "extension": "Espacio para una experiencia complementaria opcional. Detalles por confirmar.",
-      "extensionImage": "Aventura adicional",
-      "practicalEyebrow": "Información práctica",
-      "practicalTitle": "Antes de salir",
-      "practical": "Todos los detalles prácticos siguen siendo provisionales hasta su confirmación.",
-      "facts": [
-        { "label": "Duración", "value": "Por confirmar" },
-        { "label": "Dificultad", "value": "Por confirmar" },
-        { "label": "Punto de encuentro", "value": "Por confirmar" },
-        { "label": "Qué llevar", "value": "Lista pendiente" }
-      ],
-      "enquiryTitle": "¿Te interesa pasar la noche en el volcán?",
-      "enquiry": "Consulta al equipo de Tiki los detalles actuales y la disponibilidad."
-    },
-    "rentals": {
-      "eyebrow": "Explora a tu ritmo",
-      "title": ["Recorre los caminos a tu", " ritmo"],
-      "description": "Alquileres sencillos para recorrer la isla por tu cuenta.",
-      "items": [
-        { "name": "Scooter", "image": "Alquiler de scooter" },
-        { "name": "Cuatrimoto", "image": "Alquiler de cuatrimoto" },
-        { "name": "Bicicleta", "image": "Alquiler de bicicleta" }
-      ],
-      "pending": "Detalles del alquiler — por confirmar",
-      "ask": "Consulta a Tiki"
+      "description": "Una experiencia nocturna en el volcán Maderas."
     },
     "contact": {
-      "eyebrow": "Planea con conocimiento local",
-      "title": ["¿Listo para trazar una ruta por", " Ometepe?"],
-      "description": "Consulta directamente los detalles actuales y la disponibilidad de las actividades.",
-      "buttonLabel": "Consultar por WhatsApp; enlace pendiente de confirmar",
-      "button": "Consultar por WhatsApp"
+      "eyebrow": "PLANIFICA TU AVENTURA",
+      "title": "Tu próxima aventura comienza aquí",
+      "description": "Cada experiencia tiene su propio ritmo. Consulta con nuestro equipo las actividades disponibles y organiza tu próxima aventura en Ometepe.",
+      "button": "Consultar actividades"
     },
-    "footer": {
-      "description": "Un refugio de madera en la Isla de Ometepe, Rivas, Nicaragua.",
-      "availability": "Disponibilidad: Por Confirmar"
+    "gallery": {
+      "title": "Momentos en el camino"
     }
   },
   "contact": {

@@ -1,143 +1,28 @@
 ---
 import type { SiteContent } from '../../i18n';
-interface Props {
-	content: SiteContent;
-}
-import Carousel from '../shared/Carousel.astro';
+import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
+interface Props { content: SiteContent; }
 const { content } = Astro.props;
-const kayakImages = Array.from({ length: 6 }, (_, index) => ({
-	alt: '',
-	placeholderLabel: index === 0
-		? content.activities.routes.kayak.image
-		: `${content.activities.routes.kayak.carousel.image} ${index + 1}`,
-}));
-const horseImages = Array.from({ length: 6 }, (_, index) => ({
-	alt: '',
-	placeholderLabel: index === 0
-		? content.activities.routes.horse.image
-		: `${content.activities.routes.horse.carousel.image} ${index + 1}`,
-}));
-const hikingImages = Array.from({ length: 6 }, (_, index) => ({
-	alt: '',
-	placeholderLabel: index === 0
-		? content.activities.routes.hiking.image
-		: `${content.activities.routes.hiking.carousel.image} ${index + 1}`,
-}));
 ---
 
-<section
-	class="activities-routes activities-container"
-	aria-labelledby="activities-routes-title"
->
-	<div class="activities-section-head activities-routes__heading" data-reveal="up">
+<section class="activities-routes activities-container" aria-labelledby="activities-routes-title">
+	<div class="activities-section-head" data-reveal="up">
 		<div>
 			<p class="activities-eyebrow">{content.activities.routes.eyebrow}</p>
-			<h2 id="activities-routes-title">
-				{content.activities.routes.title[0]}<br />{
-					content.activities.routes.title[1]
-				}
-			</h2>
+			<h2 id="activities-routes-title">{content.activities.routes.title}</h2>
 		</div>
 		<p>{content.activities.routes.description}</p>
 	</div>
-
-	<article class="activity-route activity-route--kayak">
-		<div class="activity-route__top">
-			<div class="activity-route__copy" data-reveal="up">
-				<p class="activity-route__index">
-					<span>01</span><i></i>{content.activities.routes.indexLabel}
-				</p>
-				<h3>{content.activities.routes.kayak.title}</h3>
-				<p class="activity-route__description">
-					{content.activities.routes.kayak.description}
-				</p>
-				<p class="activity-route__note">
-					{content.activities.routes.kayak.note}
-				</p>
-			</div>
-			<p class="activity-route__aside">
-				{content.activities.routes.kayak.aside}
-				<span aria-hidden="true">→</span>
-			</p>
-		</div>
-		<Carousel
-			reveal="in"
-			images={kayakImages}
-			label={content.activities.routes.kayak.carousel.label}
-			variant="wide"
-			labels={{
-				previous: content.activities.routes.kayak.carousel.previous,
-				next: content.activities.routes.kayak.carousel.next,
-				position: content.activities.routes.kayak.carousel.position,
-				of: content.activities.routes.kayak.carousel.of,
-				placeholderSelect: content.shared.placeholder.imageSelect,
-				placeholderPending: content.shared.placeholder.imageToSelect,
-			}}
-		/>
-	</article>
-
-	<article class="activity-route activity-route--split">
-		<div class="activity-route__copy" data-reveal="up">
-			<p class="activity-route__index">
-				<span>02</span><i></i>{content.activities.routes.indexLabel}
-			</p>
-			<h3>
-				{content.activities.routes.horse.title[0]}<br />{
-					content.activities.routes.horse.title[1]
-				}
-			</h3>
-			<p class="activity-route__description">
-				{content.activities.routes.horse.description}
-			</p>
-			<p class="activity-route__note">{content.activities.routes.horse.note}</p>
-		</div>
-		<Carousel
-			reveal="in"
-			images={horseImages}
-			label={content.activities.routes.horse.carousel.label}
-			variant="split"
-			controlsLayout="reversed"
-			labels={{
-				previous: content.activities.routes.horse.carousel.previous,
-				next: content.activities.routes.horse.carousel.next,
-				position: content.activities.routes.horse.carousel.position,
-				of: content.activities.routes.horse.carousel.of,
-				placeholderSelect: content.shared.placeholder.imageSelect,
-				placeholderPending: content.shared.placeholder.imageToSelect,
-			}}
-		/>
-	</article>
-
-	<article class="activity-route activity-route--split activity-route--reverse">
-		<div class="activity-route__copy" data-reveal="up">
-			<p class="activity-route__index">
-				<span>03</span><i></i>{content.activities.routes.indexLabel}
-			</p>
-			<h3>
-				{content.activities.routes.hiking.title[0]}<br />{
-					content.activities.routes.hiking.title[1]
-				}
-			</h3>
-			<p class="activity-route__description">
-				{content.activities.routes.hiking.description}
-			</p>
-			<p class="activity-route__note">
-				{content.activities.routes.hiking.note}
-			</p>
-		</div>
-		<Carousel
-			reveal="in"
-			images={hikingImages}
-			label={content.activities.routes.hiking.carousel.label}
-			variant="split"
-			labels={{
-				previous: content.activities.routes.hiking.carousel.previous,
-				next: content.activities.routes.hiking.carousel.next,
-				position: content.activities.routes.hiking.carousel.position,
-				of: content.activities.routes.hiking.carousel.of,
-				placeholderSelect: content.shared.placeholder.imageSelect,
-				placeholderPending: content.shared.placeholder.imageToSelect,
-			}}
-		/>
-	</article>
+	<div class="activities-routes__grid" data-reveal-stagger>
+		{content.activities.routes.items.map((activity) => (
+			<article class="activity-card" data-reveal="up">
+				<ActivityImagePlaceholder />
+				<div class="activity-card__copy">
+					<p class="activities-eyebrow">{activity.category}</p>
+					<h3>{activity.title}</h3>
+					<p>{activity.description}</p>
+				</div>
+			</article>
+		))}
+	</div>
 </section>
