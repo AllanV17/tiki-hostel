@@ -767,7 +767,9 @@ summary:focus-visible {
 
 .human-experience__photo {
 	min-height: 0;
-	height: 640px;
+	height: auto;
+	aspect-ratio: 1;
+	object-position: 55% center;
 	border-radius: 24px;
 }
 
@@ -1055,9 +1057,6 @@ summary:focus-visible {
 		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
 		gap: 48px;
 	}
-	.human-experience__photo {
-		height: 560px;
-	}
 	.human-experience__body {
 		font-size: 20px;
 	}
@@ -1288,7 +1287,7 @@ summary:focus-visible {
 	}
 	.human-experience__photo {
 		width: min(100%, 560px);
-		height: min(640px, 95vw);
+		aspect-ratio: 6 / 5;
 	}
 	.human-experience__copy {
 		max-width: 700px;
@@ -1491,10 +1490,6 @@ summary:focus-visible {
 	}
 	.human-experience__inner {
 		gap: 32px;
-	}
-	.human-experience__photo {
-		height: auto;
-		aspect-ratio: 0.92;
 	}
 	.human-experience__copy {
 		gap: 24px;

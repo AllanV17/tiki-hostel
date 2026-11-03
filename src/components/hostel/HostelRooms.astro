@@ -5,7 +5,7 @@ import hammockPhoto from '../../assets/home/detalle-hostal.webp';
 import redBedPhoto from '../../assets/hostel/habitaciones-cama-mosquitero-rojo.png';
 import bunkPhoto from '../../assets/hostel/habitaciones-litera.png';
 import purpleBedPhoto from '../../assets/hostel/habitaciones-cama-mosquitero-morado.png';
-import catPhoto from '../../assets/hostel/habitaciones-gato-atardecer.png';
+import volcanoHammockPhoto from '../../assets/hostel/habitaciones-hamaca-volcan.png';
 import type { Language, SiteContent } from '../../i18n';
 interface Props {
 	content: SiteContent;
@@ -19,7 +19,7 @@ const photos = [
 	[redBedPhoto, 'Cama doble con mosquitero rojo en una habitación', 'Double bed with a red mosquito net in a room'],
 	[bunkPhoto, 'Litera de madera en una habitación del hostal', 'Wooden bunk bed in a hostel room'],
 	[purpleBedPhoto, 'Cama doble con mosquitero morado en una habitación', 'Double bed with a purple mosquito net in a room'],
-	[catPhoto, 'Gato atigrado sobre una mesa de madera frente a la vegetación al atardecer', 'Tabby cat on a wooden table facing the vegetation at sunset'],
+	[volcanoHammockPhoto, 'Vista desde una hamaca bajo una estructura de madera y techo de palma, con un volcán al fondo al atardecer', 'View from a hammock beneath a wooden structure and thatched roof, with a volcano in the background at sunset'],
 ] as const;
 const firstImages = await Promise.all(photos.map(async ([photo, altEs, altEn], index) => ({
 	src: (await getImage({ src: photo, width: Math.min(photo.width, 1200), format: photo.format })).src,

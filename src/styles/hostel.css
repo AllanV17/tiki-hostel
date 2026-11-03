@@ -186,7 +186,7 @@
 }
 
 .hostel-rooms .carousel__slide:last-child .carousel__image {
-	object-position: center bottom;
+	object-position: 65% center;
 }
 
 .hostel-spaces .carousel__slide:nth-child(6) .carousel__image {
