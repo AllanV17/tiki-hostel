@@ -85,7 +85,7 @@
     },
     "identity": {
       "label": "Visual identity",
-      "badge": "Design Concept",
+      "badge": "The Essence of Ometepe",
       "description": "Two volcanoes meet the lake's horizon.",
       "symbolLabel": "Symbol of two volcanoes, the horizon, and water"
     },
@@ -302,17 +302,20 @@
         {
           "category": "WATER",
           "title": "Kayaking",
-          "description": "Discover Ometepe from its calm waters."
+          "description": "Discover Ometepe from its calm waters.",
+          "imageAlt": "A person wearing a pink cap paddles a green kayak on the lake, with a volcano in the background."
         },
         {
           "category": "LAND",
           "title": "Horseback riding",
-          "description": "Follow country paths surrounded by nature."
+          "description": "Follow country paths surrounded by nature.",
+          "imageAlt": "Three people on horseback look out over vegetation, a volcano, and the lake."
         },
         {
-          "category": "VOLCANO",
+          "category": "FIRE",
           "title": "Volcano hiking",
-          "description": "Explore the island’s trails and volcanic landscapes."
+          "description": "Explore the island’s trails and volcanic landscapes.",
+          "imageAlt": "A person wearing a bandana and backpack smiles among volcanic rocks under a cloudy sky."
         }
       ]
     },

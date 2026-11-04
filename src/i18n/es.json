@@ -85,7 +85,7 @@
     },
     "identity": {
       "label": "Identidad visual",
-      "badge": "Exploración Conceptual",
+      "badge": "Esencia de Ometepe",
       "description": "La dualidad volcánica alineada con el horizonte del agua.",
       "symbolLabel": "Símbolo de montañas, horizonte y agua"
     },
@@ -302,17 +302,20 @@
         {
           "category": "AGUA",
           "title": "Kayak",
-          "description": "Descubre Ometepe desde sus aguas tranquilas."
+          "description": "Descubre Ometepe desde sus aguas tranquilas.",
+          "imageAlt": "Una persona con gorra rosa rema en un kayak verde en el lago, con un volcán al fondo."
         },
         {
           "category": "TIERRA",
           "title": "Paseo a caballo",
-          "description": "Recorre caminos rurales rodeados de naturaleza."
+          "description": "Recorre caminos rurales rodeados de naturaleza.",
+          "imageAlt": "Tres personas a caballo contemplan un paisaje de vegetación, un volcán y el lago."
         },
         {
-          "category": "VOLCÁN",
+          "category": "FUEGO",
           "title": "Senderismo volcánico",
-          "description": "Explora senderos y paisajes volcánicos de la isla."
+          "description": "Explora senderos y paisajes volcánicos de la isla.",
+          "imageAlt": "Una persona con pañuelo y mochila sonríe entre rocas volcánicas bajo un cielo nublado."
         }
       ]
     },
