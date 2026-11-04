@@ -197,6 +197,33 @@
 	background: #fffcf8;
 }
 
+@media (hover: hover) and (pointer: fine) {
+	.activities-routes .activity-card {
+		outline: 1px solid transparent;
+		outline-offset: -1px;
+	}
+
+	.activities-routes .activity-card:hover {
+		outline-color: #4D8FC7;
+		box-shadow: 0 12px 30px rgb(45 38 29 / 14%);
+	}
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+	.activities-routes .activity-card {
+		/* Preserve the scroll reveal while keeping hover immediate and reversible. */
+		transition:
+			opacity 560ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+			transform 250ms ease,
+			outline-color 250ms ease,
+			box-shadow 250ms ease;
+	}
+
+	.activities-routes .activity-card:hover {
+		transform: translateY(-3px);
+	}
+}
+
 .activity-image-placeholder {
 	position: relative;
 	min-width: 0;
