@@ -403,11 +403,11 @@ summary:focus-visible {
 	object-position: center 32%;
 }
 
-.gallery-grid__item:first-child {
+.gallery-grid__item:first-child .home-photo {
 	object-position: center 72%;
 }
 
-.gallery-grid__item:nth-child(3) {
+.gallery-grid__item:nth-child(3) .home-photo {
 	object-position: 60% center;
 }
 
@@ -734,6 +734,9 @@ summary:focus-visible {
 	overflow: hidden;
 	border-radius: 16px;
 	background: var(--color-paper);
+	/* Draw the border without changing the card or photo dimensions. */
+	outline: 1px solid #e4ddd4;
+	outline-offset: -1px;
 }
 
 .space-card__photo {
@@ -756,6 +759,22 @@ summary:focus-visible {
 	margin-top: 12px;
 	font-size: 14px;
 	line-height: 1.5;
+}
+
+@media (min-width: 821px) {
+	.space-card {
+		display: grid;
+		grid-row: span 3;
+		grid-template-rows: subgrid;
+		row-gap: 0;
+	}
+
+	.space-card__body {
+		display: grid;
+		grid-row: span 2;
+		grid-template-rows: subgrid;
+		row-gap: 0;
+	}
 }
 
 .human-experience__inner {
@@ -805,7 +824,37 @@ summary:focus-visible {
 .gallery-grid__item {
 	min-height: 0;
 	height: 280px;
+	overflow: hidden;
 	border-radius: 12px;
+}
+
+.gallery-grid__item .home-photo {
+	height: 100%;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+	.spaces .space-card {
+		/* Keep the opacity reveal while giving hover an immediate, reversible transition. */
+		transition:
+			opacity 560ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+			transform 250ms ease,
+			outline-color 250ms ease,
+			box-shadow 250ms ease;
+	}
+
+	.spaces .space-card:hover {
+  outline-color: #d37643;
+  box-shadow: 0 12px 30px rgb(45 38 29 / 14%);
+  transform: translateY(-3px);
+}
+
+	.gallery-grid__item .home-photo {
+		transition: transform 280ms ease;
+	}
+
+	.gallery-grid__item:hover .home-photo {
+		transform: scale(1.025);
+	}
 }
 
 .contact-cta {
