@@ -4,19 +4,19 @@ interface Props {
 	content: SiteContent;
 }
 import { Image } from 'astro:assets';
-// Replace this provisional image only after the final hero photography is approved.
-import heroImage from '../assets/hero/hero-provisional.png';
+import heroImage from '../assets/hero/hero.png';
 const { content } = Astro.props;
 ---
 
 <section class="hero" id="inicio" aria-labelledby="hero-title">
 	<div class="hero__media">
+		<!-- Match the width needed by cover at the mobile media height. -->
 		<Image
 			src={heroImage}
 			alt=""
 			class="hero__image"
-			widths={[480, 768, 1024, 1440, 1672]}
-			sizes="100vw"
+			widths={[480, 768, 1024, 1440, heroImage.width]}
+			sizes={`(max-width: 560px) max(100vw, calc(clamp(430px, 68svh, 650px) * ${heroImage.width} / ${heroImage.height})), 100vw`}
 			format="webp"
 			loading="eager"
 			fetchpriority="high"

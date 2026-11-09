@@ -387,7 +387,6 @@ summary:focus-visible {
 	height: 100%;
 	object-fit: cover;
 	object-position: var(--hero-image-position, center 50%);
-	/* The provisional photo uses a neutral crop until final photography is approved. */
 	--hero-image-position: center 50%;
 }
 
@@ -1408,7 +1407,7 @@ summary:focus-visible {
 	}
 	.hero__image {
 		/* The narrow crop keeps the hostel and volcano in frame. */
-		--hero-image-position: 59% center;
+		--hero-image-position: 58% center;
 	}
 	.hero::after {
 		background: linear-gradient(
