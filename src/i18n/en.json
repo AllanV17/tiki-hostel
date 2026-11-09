@@ -49,10 +49,8 @@
       "booking": "Booking",
       "airbnb": "Airbnb",
       "whatsapp": "WhatsApp",
-      "email": "Send Us an Email",
       "instagram": "Instagram",
       "facebook": "Facebook",
-      "tiktok": "TikTok",
       "privacyPolicy": "Privacy Policy",
       "cookies": "Cookies",
       "homeSections": "Sections",
@@ -62,7 +60,6 @@
       "contactReservationLower": "Contact & booking",
       "directLower": "Get in touch",
       "directPending": "Get in touch; contact link coming soon",
-      "emailPending": "Email address coming soon",
       "betweenVolcanoes": "Between two volcanoes",
       "copyright": "© 2026 Tiki Hostel Ometepe. Rivas, Nicaragua."
     },
@@ -354,41 +351,48 @@
     "location": {
       "eyebrow": "On Ometepe",
       "title": "Find Us",
-      "generalLabel": "Where we are",
+      "generalLabel": "In the heart of Ometepe",
       "general": "Ometepe Island, Rivas, Nicaragua.",
-      "addressLabel": "Address",
-      "address": "Exact address to be confirmed.",
-      "arrivalLabel": "Getting Here",
-      "arrival": "Directions are still being confirmed.",
-      "mapLabel": "View on Google Maps; link coming soon",
-      "map": "View on Google Maps"
+      "arrival": "Open our location in Google Maps and plan your arrival.",
+      "mapLabel": "View our location on Google Maps",
+      "map": "View on Google Maps",
+      "surroundings": "Surrounded by nature and volcanic landscapes.",
+      "mapTitle": "Find your way to Tiki"
+    },
+    "connect": {
+      "eyebrow": "SOCIAL & BOOKINGS",
+      "title": "Connect with Tiki",
+      "description": "Follow our island moments or find the best way to plan your next stay."
     },
     "social": {
       "eyebrow": "Social Media",
-      "title": "Follow Along",
+      "title": "Follow us",
       "networks": [
         {
-          "name": "Instagram",
-          "note": "Profile and link to be confirmed."
+          "name": "Instagram"
         },
-        { "name": "Facebook", "note": "Page and link to be confirmed." },
-        { "name": "TikTok", "note": "Profile and link to be confirmed." }
+        {
+          "name": "Facebook"
+        }
       ],
-      "profilePending": "link to be confirmed",
-      "visit": "View Profile"
+      "visit": "View Profile",
+      "description": "Discover the moments and experiences we share on Ometepe."
     },
     "bookings": {
       "eyebrow": "Booking Options",
-      "title": "Book Your Stay",
-      "description": "Booking.com and Airbnb are external options for booking a stay. Their links are still being confirmed.",
-      "bookingLabel": "View on Booking.com; link to be confirmed",
+      "title": "Book your stay",
+      "description": "Get in touch with us or use our booking platform.",
+      "bookingLabel": "View on Booking.com",
       "booking": "View on Booking.com",
       "airbnbLabel": "View on Airbnb; link to be confirmed",
-      "airbnb": "View on Airbnb"
+      "airbnb": "View on Airbnb",
+      "bookingDescription": "Find information and availability on our Booking.com page.",
+      "direct": "Book directly with us"
     },
     "closing": {
       "label": "Closing note",
-      "text": "A final note from Tiki will go here once it's ready."
+      "text": "Your next Ometepe story starts here.",
+      "secondary": "We'd love to welcome you."
     }
   }
 }

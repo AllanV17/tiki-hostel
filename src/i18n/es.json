@@ -49,10 +49,8 @@
       "booking": "Booking",
       "airbnb": "Airbnb",
       "whatsapp": "WhatsApp",
-      "email": "Correo",
       "instagram": "Instagram",
       "facebook": "Facebook",
-      "tiktok": "TikTok",
       "privacyPolicy": "Política de privacidad",
       "cookies": "Cookies",
       "homeSections": "Secciones",
@@ -62,7 +60,6 @@
       "contactReservationLower": "Contacto y reserva",
       "directLower": "Consulta directa",
       "directPending": "Consulta directa, enlace pendiente de configurar",
-      "emailPending": "Correo de contacto pendiente",
       "betweenVolcanoes": "Entre dos volcanes",
       "copyright": "© 2026 Tiki Hostel Ometepe. Rivas, Nicaragua."
     },
@@ -354,44 +351,48 @@
     "location": {
       "eyebrow": "Ubicación",
       "title": "Encuéntranos",
-      "generalLabel": "Ubicación general",
+      "generalLabel": "En el corazón de Ometepe",
       "general": "Isla de Ometepe, Rivas, Nicaragua.",
-      "addressLabel": "Dirección",
-      "address": "Dirección exacta pendiente de confirmar.",
-      "arrivalLabel": "Cómo llegar",
-      "arrival": "Indicaciones de llegada pendientes de confirmar.",
-      "mapLabel": "Ver en Google Maps; enlace pendiente de confirmar",
-      "map": "Ver en Google Maps"
+      "arrival": "Abre nuestra ubicación en Google Maps y planifica tu llegada.",
+      "mapLabel": "Ver ubicación en Google Maps",
+      "map": "Ver en Google Maps",
+      "surroundings": "Un entorno rodeado de naturaleza y paisajes volcánicos.",
+      "mapTitle": "Encuentra el camino a Tiki"
+    },
+    "connect": {
+      "eyebrow": "REDES Y RESERVAS",
+      "title": "Conecta con Tiki",
+      "description": "Sigue nuestros momentos en la isla o encuentra la mejor manera de organizar tu próxima estancia."
     },
     "social": {
       "eyebrow": "Redes sociales",
       "title": "Síguenos",
       "networks": [
         {
-          "name": "Instagram",
-          "note": "Perfil y enlace pendientes de confirmar."
+          "name": "Instagram"
         },
         {
-          "name": "Facebook",
-          "note": "Página y enlace pendientes de confirmar."
-        },
-        { "name": "TikTok", "note": "Perfil y enlace pendientes de confirmar." }
+          "name": "Facebook"
+        }
       ],
-      "profilePending": "enlace pendiente de confirmar",
-      "visit": "Visitar perfil"
+      "visit": "Visitar perfil",
+      "description": "Descubre los momentos y experiencias que compartimos en Ometepe."
     },
     "bookings": {
       "eyebrow": "Plataformas de reserva",
       "title": "Reserva tu estadía",
-      "description": "Estas plataformas son opciones externas para consultar una reserva. Sus enlaces están pendientes de confirmar.",
-      "bookingLabel": "Ver en Booking.com; enlace pendiente de confirmar",
+      "description": "Consulta con nosotros o utiliza nuestra plataforma de reservas.",
+      "bookingLabel": "Ver en Booking.com",
       "booking": "Ver en Booking.com",
       "airbnbLabel": "Ver en Airbnb; enlace pendiente de confirmar",
-      "airbnb": "Ver en Airbnb"
+      "airbnb": "Ver en Airbnb",
+      "bookingDescription": "Consulta información y disponibilidad en nuestra página de Booking.com.",
+      "direct": "Reserva directamente con nosotros"
     },
     "closing": {
       "label": "Cierre de contacto",
-      "text": "Una frase de cierre para esta página está pendiente de definir."
+      "text": "Tu próxima historia en Ometepe comienza aquí.",
+      "secondary": "Nos encantará recibirte."
     }
   }
 }

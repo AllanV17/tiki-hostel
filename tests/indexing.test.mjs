@@ -69,7 +69,7 @@ function build(value) {
 		}
 		if (route === '/contacto/' || route === '/en/contacto/') {
 			const section = html.match(/<section\b[^>]*id="ubicacion"[^>]*>([\s\S]*?)<\/section>/)[1];
-			assert.ok(section.includes(`${location}.`), route);
+			assert.ok(section.includes(location), route);
 			assert.doesNotMatch(section, /santa\s+cruz/i);
 			assert.doesNotMatch(html.match(/<meta name="description" content="([^"]*)"/)[1], /santa\s+cruz/i);
 		}

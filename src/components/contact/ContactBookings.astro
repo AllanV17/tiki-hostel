@@ -4,38 +4,24 @@ interface Props {
 	content: SiteContent;
 }
 const { content } = Astro.props;
+import { bookingUrl } from '../../config/external-links';
 ---
 
-<section
-	class="contact-bookings contact-container"
-	id="reservas"
-	aria-labelledby="contact-bookings-title"
->
-	<div class="contact-section-heading" data-reveal="up">
-		<p class="contact-eyebrow">{content.contact.bookings.eyebrow}</p>
-		<h2 id="contact-bookings-title">{content.contact.bookings.title}</h2>
-		<p>{content.contact.bookings.description}</p>
-	</div>
-	<div class="contact-bookings__list" data-reveal-stagger>
-		<div data-reveal="up">
-			<h3>Booking.com</h3>
-			<!-- Booking.com URL is pending client confirmation. -->
-			<a
-				href="#reservas"
-				data-link-placeholder
-				aria-label={content.contact.bookings.bookingLabel}
-				>{content.contact.bookings.booking} <span aria-hidden="true">↗</span></a
-			>
-		</div>
-		<div data-reveal="up">
-			<h3>Airbnb</h3>
-			<!-- Airbnb URL is pending client confirmation. -->
-			<a
-				href="#reservas"
-				data-link-placeholder
-				aria-label={content.contact.bookings.airbnbLabel}
-				>{content.contact.bookings.airbnb} <span aria-hidden="true">↗</span></a
-			>
-		</div>
-	</div>
-</section>
+<div class="contact-connect__group" id="reservas" data-reveal="up">
+	<h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M7 3v4M17 3v4M3 11h18m-12 5 2 2 4-4" /></svg>{content.contact.bookings.title}</h3>
+	<p>{content.contact.bookings.description}</p>
+	<ul class="contact-connect__links">
+		<li>
+			<span class="contact-connect__pending">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 11.5a8 8 0 0 1-8 8 9 9 0 0 1-3.5-.7L4 20l1.2-4.5a9 9 0 0 1-.7-3.5 8 8 0 0 1 15.5-.5Z M8 11.5h8 M8 15h5" /></svg>
+				<span>{content.contact.bookings.direct}</span>
+			</span>
+		</li>
+		<li>
+			<a href={bookingUrl} target="_blank" rel="noopener noreferrer" aria-label={content.contact.bookings.bookingLabel}>
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 18v3 M21 18v3 M3 18h18v-6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6Z M5 10V5h14v5 M8 8h2 M14 8h2" /></svg>
+				<span>Booking.com</span><span class="contact-connect__arrow" aria-hidden="true">↗</span>
+			</a>
+		</li>
+	</ul>
+</div>

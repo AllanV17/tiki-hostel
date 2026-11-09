@@ -1,0 +1,23 @@
+---
+import type { SiteContent } from '../../i18n';
+interface Props {
+	content: SiteContent;
+}
+const { content } = Astro.props;
+import ContactSocial from './ContactSocial.astro';
+import ContactBookings from './ContactBookings.astro';
+---
+
+<section class="contact-connect" aria-labelledby="contact-connect-title">
+	<div class="contact-container">
+		<div class="contact-section-heading" data-reveal="up">
+			<p class="contact-eyebrow">{content.contact.connect.eyebrow}</p>
+			<h2 id="contact-connect-title">{content.contact.connect.title}</h2>
+			<p>{content.contact.connect.description}</p>
+		</div>
+		<div class="contact-connect__groups" data-reveal-stagger>
+			<ContactSocial content={content} />
+			<ContactBookings content={content} />
+		</div>
+	</div>
+</section>

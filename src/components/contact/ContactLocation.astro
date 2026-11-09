@@ -1,5 +1,6 @@
 ---
 import type { SiteContent } from '../../i18n';
+import { mapsUrl } from '../../config/external-links';
 interface Props {
 	content: SiteContent;
 }
@@ -17,26 +18,38 @@ const { content } = Astro.props;
 	</div>
 	<div class="contact-location__details" data-reveal-stagger>
 		<div data-reveal="up">
-			<h3>{content.contact.location.generalLabel}</h3><p>
-				{content.contact.location.general}
-			</p>
+			<h3 class="contact-location__heading">
+				<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+					<path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z" />
+					<circle cx="12" cy="10" r="3" />
+				</svg>
+				{content.contact.location.generalLabel}
+			</h3>
+			<p>{content.contact.location.general}</p>
+			<p>{content.contact.location.surroundings}</p>
 		</div>
 		<div data-reveal="up">
-			<h3>{content.contact.location.addressLabel}</h3><p>
-				{content.contact.location.address}
-			</p>
+			<a
+				class="contact-location__map"
+				href={mapsUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label={content.contact.location.mapLabel}
+			>
+				<span class="contact-location__map-icon" aria-hidden="true">
+					<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+						<circle cx="12" cy="7" r="3" />
+						<path d="M12 10v9M7 15c-3 1-5 2-5 3.5C2 20.4 6.5 22 12 22s10-1.6 10-3.5c0-1.5-2-2.5-5-3.5" />
+					</svg>
+				</span>
+				<div>
+					<h3>{content.contact.location.mapTitle}</h3>
+					<p>{content.contact.location.arrival}</p>
+				</div>
+				<span class="contact-location__map-action">
+					{content.contact.location.map} <span aria-hidden="true">↗</span>
+				</span>
+			</a>
 		</div>
-		<div data-reveal="up">
-			<h3>{content.contact.location.arrivalLabel}</h3><p>
-				{content.contact.location.arrival}
-			</p>
-		</div>
-		<!-- Map URL is pending client confirmation. -->
-		<a
-			href="#ubicacion"
-			data-link-placeholder
-			aria-label={content.contact.location.mapLabel}
-			>{content.contact.location.map} <span aria-hidden="true">↗</span></a
-		>
 	</div>
 </section>

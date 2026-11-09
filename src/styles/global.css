@@ -974,12 +974,13 @@ summary:focus-visible {
 	text-underline-offset: 6px;
 }
 
-.site-footer__contact {
+:is(.site-footer__contact, .site-footer__reservations) {
+	--footer-icon-size: 19px;
 	align-items: flex-start;
 	gap: 5px;
 }
 
-.site-footer__contact h2 {
+:is(.site-footer__contact, .site-footer__reservations) h2 {
 	margin-bottom: 8px;
 	padding-inline-start: 11px;
 }
@@ -991,7 +992,7 @@ summary:focus-visible {
 	display: contents;
 }
 
-.site-footer__contact .site-footer__contact-button {
+:is(.site-footer__contact, .site-footer__reservations) .site-footer__contact-button {
 	display: inline-flex;
 	width: min(100%, 164px);
 	min-height: 40px;
@@ -1015,9 +1016,28 @@ summary:focus-visible {
 		color 160ms ease;
 }
 
+.site-footer__reservations {
+	--contact-fill: var(--color-terracotta);
+	--contact-ink: #241810;
+}
+
+.site-footer__reservations .site-footer__contact-button {
+	max-width: 100%;
+	white-space: normal;
+}
+
+.site-footer__reservations a.site-footer__contact-button {
+	cursor: pointer;
+}
+
+.site-footer__contact-button--booking {
+	--contact-fill: #2874c6;
+	--contact-ink: #fff;
+}
+
 .site-footer__contact-button svg {
-	width: 19px;
-	height: 19px;
+	width: var(--footer-icon-size);
+	height: var(--footer-icon-size);
 	flex: none;
 }
 
@@ -1036,22 +1056,14 @@ summary:focus-visible {
 	--contact-fill: #1469d0;
 	--contact-ink: #fff;
 }
-.site-footer__contact-button--tiktok {
-	--contact-fill: #25f4ee;
-	--contact-ink: #102525;
-}
-.site-footer__contact-button--email {
-	--contact-fill: var(--color-terracotta);
-	--contact-ink: #241810;
-}
-
-.site-footer__contact .site-footer__contact-button:is(:hover, :focus-visible, :active) {
+.site-footer__contact .site-footer__contact-button:is(:hover, :focus-visible, :active),
+.site-footer__reservations a:is(:hover, :focus-visible, :active) {
 	border-color: var(--contact-fill);
 	background-color: var(--contact-fill);
 	color: var(--contact-ink);
 }
 
-.site-footer__contact .site-footer__contact-button:focus-visible {
+:is(.site-footer__contact, .site-footer__reservations) .site-footer__contact-button:focus-visible {
 	outline: 2px solid #fff;
 	outline-offset: 3px;
 }
@@ -1064,7 +1076,7 @@ summary:focus-visible {
 	opacity: 0.78;
 }
 
-.site-footer__contact .site-footer__contact-button:active {
+:is(.site-footer__contact, .site-footer__reservations) .site-footer__contact-button:active {
 	opacity: 0.75;
 }
 
@@ -1134,7 +1146,7 @@ summary:focus-visible {
 	.site-footer__contact {
 		align-items: flex-start;
 	}
-	.site-footer__contact h2 {
+	:is(.site-footer__contact, .site-footer__reservations) h2 {
 		padding-inline-start: 0;
 		text-align: left;
 	}
@@ -1144,11 +1156,14 @@ summary:focus-visible {
 		max-width: 100%;
 		gap: 5px;
 	}
-	.site-footer__contact .site-footer__contact-button {
+	:is(.site-footer__contact, .site-footer__reservations) .site-footer__contact-button {
 		width: auto;
 		padding-inline: 0;
 		border-width: 0;
 		white-space: nowrap;
+	}
+	.site-footer__reservations .site-footer__contact-button {
+		white-space: normal;
 	}
 	/* Keep the full link hit area while drawing hover color around only icon and label. */
 	.site-footer__contact-content {
@@ -1170,10 +1185,13 @@ summary:focus-visible {
 		transition: background-color 160ms ease;
 	}
 	.site-footer__contact
-		.site-footer__contact-button:is(:hover, :focus-visible, :active) {
+		.site-footer__contact-button:is(:hover, :focus-visible, :active),
+	.site-footer__reservations a:is(:hover, :focus-visible, :active) {
 		background-color: transparent;
 	}
-	.site-footer__contact-button:is(:hover, :focus-visible, :active)
+	.site-footer__contact .site-footer__contact-button:is(:hover, :focus-visible, :active)
+		.site-footer__contact-content::before,
+	.site-footer__reservations a:is(:hover, :focus-visible, :active)
 		.site-footer__contact-content::before {
 		background-color: var(--contact-fill);
 	}
@@ -1596,9 +1614,12 @@ summary:focus-visible {
 		flex-wrap: wrap;
 		gap: 10px;
 	}
-	.site-footer__contact h2 {
+	:is(.site-footer__contact, .site-footer__reservations) h2 {
 		width: 100%;
 		margin-bottom: 8px;
+		padding-inline-start: 11px;
+	}
+	.site-footer__contact h2 {
 		padding-inline-start: 12px;
 	}
 	.site-footer__contact .site-footer__contact-button {
@@ -1609,9 +1630,8 @@ summary:focus-visible {
 		justify-content: center;
 		padding: 0;
 	}
-	.site-footer__contact-button svg {
-		width: 20px;
-		height: 20px;
+	:is(.site-footer__contact, .site-footer__reservations) {
+		--footer-icon-size: 20px;
 	}
 	.site-footer__contact-label {
 		display: none;

@@ -1,4 +1,5 @@
 ---
+import { mapsUrl } from '../../config/external-links';
 import type { SiteContent } from '../../i18n';
 const { content } = Astro.props;
 interface Props {
@@ -33,7 +34,7 @@ const icons = [
 						<h3>{fact.title}</h3>
 						<p>{fact.description}</p>
 						{fact.link && (
-							<a href="https://maps.app.goo.gl/eHD8jfgab4Sm5QQL7" target="_blank" rel="noopener noreferrer">
+							<a href={mapsUrl} target="_blank" rel="noopener noreferrer">
 								{fact.link}
 							</a>
 						)}

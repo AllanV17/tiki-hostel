@@ -1,43 +1,27 @@
 ---
 import type { SiteContent } from '../../i18n';
-const { content } = Astro.props;
 interface Props {
 	content: SiteContent;
 }
-const networks = content.contact.social.networks;
+const { content } = Astro.props;
+import { instagramUrl, facebookUrl } from '../../config/external-links';
 ---
 
-<section
-	class="contact-social"
-	id="redes"
-	aria-labelledby="contact-social-title"
->
-	<div class="contact-container">
-		<div class="contact-section-heading" data-reveal="up">
-			<p class="contact-eyebrow">{content.contact.social.eyebrow}</p>
-			<h2 id="contact-social-title">{content.contact.social.title}</h2>
-		</div>
-		<ul class="contact-social__list" data-reveal-stagger>
-			<!-- Each social profile needs its confirmed external URL. -->
-			{
-				networks.map((network) => (
-					<li data-reveal="up">
-						<div>
-							<>
-								<h3>{network.name}</h3>
-								<p>{network.note}</p>
-							</>
-						</div>
-						<a
-							href="#redes"
-							data-link-placeholder
-							aria-label={`${content.contact.social.visit}: ${network.name}; ${content.contact.social.profilePending}`}
-						>
-							{content.contact.social.visit} <span aria-hidden="true">↗</span>
-						</a>
-					</li>
-				))
-			}
-		</ul>
-	</div>
-</section>
+<div class="contact-connect__group" id="redes" data-reveal="up">
+	<h3><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="7" r="3" /><path d="M2 21v-2a7 7 0 0 1 14 0v2M16 4a3 3 0 0 1 0 6M22 21v-2a7 7 0 0 0-4-6" /></svg>{content.contact.social.title}</h3>
+	<p>{content.contact.social.description}</p>
+	<ul class="contact-connect__links">
+		<li>
+			<a href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label={content.contact.social.visit + ': Instagram'}>
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="2.5" width="19" height="19" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.7" cy="6.3" r="1" fill="currentColor" stroke="none" /></svg>
+				<span>Instagram</span><span class="contact-connect__arrow" aria-hidden="true">↗</span>
+			</a>
+		</li>
+		<li>
+			<a href={facebookUrl} target="_blank" rel="noopener noreferrer" aria-label={content.contact.social.visit + ': Facebook'}>
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 21v-8h3l.5-4H14V7c0-1 .3-2 2-2h2V1h-3c-3 0-5 2-5 5v3H7v4h3v8" /></svg>
+				<span>Facebook</span><span class="contact-connect__arrow" aria-hidden="true">↗</span>
+			</a>
+		</li>
+	</ul>
+</div>
