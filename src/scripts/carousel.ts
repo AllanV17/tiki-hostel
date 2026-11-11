@@ -14,6 +14,7 @@ export function initCarousels() {
 		const previous = root.querySelector<HTMLButtonElement>('[data-carousel-previous]');
 		const next = root.querySelector<HTMLButtonElement>('[data-carousel-next]');
 		const progress = root.querySelector<HTMLElement>('[data-carousel-steps]');
+		const fill = root.querySelector<HTMLElement>('[data-carousel-fill]');
 		if (!track || !slides.length || !previous || !next || !progress) return;
 		root.dataset.carouselInitialized = 'true';
 		const listeners = new AbortController();
@@ -42,7 +43,12 @@ export function initCarousels() {
 			steps.forEach((step, i) => step.classList.toggle('is-active', i === visibleIndex));
 			previous!.disabled = activeIndex === 0;
 			next!.disabled = activeIndex === last;
-			progress!.setAttribute('aria-label', `${progress!.dataset.position} ${visibleIndex + 1} ${progress!.dataset.of} ${slides.length}`);
+			const position = fill ? activeIndex + 1 : visibleIndex + 1;
+			const total = fill ? last + 1 : slides.length;
+			progress!.setAttribute('aria-label', `${progress!.dataset.position} ${position} ${progress!.dataset.of} ${total}`);
+			if (fill) {
+				fill.style.transform = `scaleX(${position / total})`;
+			}
 		}
 
 		function syncFromScroll() {

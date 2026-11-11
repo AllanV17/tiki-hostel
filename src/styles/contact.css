@@ -297,8 +297,8 @@
 }
 
 .contact-closing {
-	padding-block: 70px;
-	background: #f3ece2;
+	padding-block: clamp(56px, 6vw, 70px);
+	background: var(--color-paper);
 	text-align: center;
 }
 
@@ -401,8 +401,5 @@
 	.contact-location__map-icon {
 		width: 40px;
 		height: 40px;
-	}
-	.contact-closing {
-		padding-block: 56px;
 	}
 }

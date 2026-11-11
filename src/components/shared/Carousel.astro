@@ -12,6 +12,7 @@ interface Props {
 	label: string;
 	variant: 'wide' | 'split' | 'gallery' | 'rooms-first' | 'spaces';
 	controlsLayout?: 'reversed' | 'stacked-center';
+	editorialProgress?: boolean;
 	reveal?: 'in';
 	labels: {
 		previous: string;
@@ -23,7 +24,7 @@ interface Props {
 	};
 }
 
-const { images, label, variant, controlsLayout, reveal, labels } = Astro.props;
+const { images, label, variant, controlsLayout, editorialProgress = false, reveal, labels } = Astro.props;
 ---
 
 <div class:list={['carousel', `carousel--${variant}`, { 'carousel--controls-reversed': controlsLayout === 'reversed', 'carousel--controls-stacked-center': controlsLayout === 'stacked-center' }]} role="region" aria-roledescription="carousel" aria-label={label} data-carousel data-reveal={reveal}>
@@ -65,9 +66,11 @@ const { images, label, variant, controlsLayout, reveal, labels } = Astro.props;
 			</div>
 		))}
 	</div>
-	<div class="carousel__controls">
-		<span class="carousel__steps" role="img" aria-label={`${labels.position} 1 ${labels.of} ${images.length}`} data-carousel-steps data-position={labels.position} data-of={labels.of}>
-			{images.map((_, index) => <span class:list={['carousel__step', { 'is-active': index === 0 }]} data-carousel-step aria-hidden="true" />)}
+	<div class:list={['carousel__controls', { 'carousel__controls--editorial': editorialProgress }]}>
+		<span class={editorialProgress ? 'carousel__progress' : 'carousel__steps'} role="img" aria-label={`${labels.position} 1 ${labels.of} ${images.length}`} data-carousel-steps data-position={labels.position} data-of={labels.of}>
+			{editorialProgress ? (
+				<span class="carousel__progress-track" aria-hidden="true"><span class="carousel__progress-fill" data-carousel-fill /></span>
+			) : images.map((_, index) => <span class:list={['carousel__step', { 'is-active': index === 0 }]} data-carousel-step aria-hidden="true" />)}
 		</span>
 		<button class="carousel__button" type="button" aria-label={labels.previous} data-carousel-previous disabled><span aria-hidden="true">←</span></button>
 		<button class="carousel__button" type="button" aria-label={labels.next} data-carousel-next disabled={images.length < 2}><span aria-hidden="true">→</span></button>

@@ -1,7 +1,7 @@
 ---
 import { getImage } from 'astro:assets';
 import lagoonPhoto from '../../assets/hostel/espacios-orilla-laguna.webp';
-import ranchoPhoto from '../../assets/hostel/espacios-rancho-mesas.webp';
+import volcanoHammockPhoto from '../../assets/hostel/espacios-hamaca-volcan.png';
 import catPhoto from '../../assets/hostel/espacios-gato-mesa.jpg';
 import cafePhoto from '../../assets/hostel/espacios-letrero-cafe.webp';
 import sunsetPhoto from '../../assets/hostel/hamaca-palmeras-atardecer.webp';
@@ -17,13 +17,13 @@ import Carousel from '../shared/Carousel.astro';
 const { content, language } = Astro.props;
 const photos = [
 	[lagoonPhoto, 'Viajeros junto a la laguna entre árboles y mesas', 'Travelers beside the lagoon among trees and tables'],
-	[ranchoPhoto, 'Mesas de madera bajo el rancho de techo de palma', 'Wooden tables beneath the palm-roofed rancho'],
 	[catPhoto, 'Gato atigrado sobre una mesa del hostal', 'Tabby cat on a hostel table'],
 	[cafePhoto, 'Letrero de café iluminado entre plantas', 'Cafe sign lit by sunlight among plants'],
 	[sunsetPhoto, 'Hamaca bajo las palmeras con luz de atardecer', 'Hammock beneath palm trees in the evening light'],
 	[chickenPhoto, 'Persona sentada en la arena sosteniendo una gallina, con un columpio al fondo', 'Person sitting on the sand holding a chicken, with a swing in the background'],
 	[dessertPhoto, 'Postre de fresas servido en un plato', 'Strawberry dessert served on a plate'],
 	[groupPhoto, 'Grupo de personas con dos perros frente a una estructura de madera y palma', 'Group of people with two dogs in front of a wooden structure with a palm-thatched roof'],
+	[volcanoHammockPhoto, 'Vista desde una hamaca bajo una estructura de madera y techo de palma, con un volcán al fondo al atardecer', 'View from a hammock beneath a wooden structure and thatched roof, with a volcano in the background at sunset'],
 ] as const;
 const images = await Promise.all(photos.map(async ([photo, altEs, altEn], index) => ({
 	src: (await getImage({ src: photo, width: Math.min(photo.width, 1200), format: photo.format })).src,
@@ -51,6 +51,7 @@ const images = await Promise.all(photos.map(async ([photo, altEs, altEn], index)
 			label={content.hostel.spaces.carousel.label}
 			variant="spaces"
 			controlsLayout="stacked-center"
+			editorialProgress
 			labels={{
 				previous: content.hostel.spaces.carousel.previous,
 				next: content.hostel.spaces.carousel.next,

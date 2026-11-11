@@ -190,6 +190,35 @@
 	background: var(--color-terracotta-text);
 }
 
+.carousel__controls.carousel__controls--editorial {
+	display: grid;
+	grid-template-columns: repeat(2, 44px);
+	justify-content: center;
+	gap: 12px 10px;
+}
+
+.carousel__progress {
+	display: flex;
+	grid-column: 1 / -1;
+	justify-self: center;
+	width: min(260px, 70cqw);
+}
+
+.carousel__progress-track {
+	flex: 1;
+	height: 2px;
+	background: #d4cdc3;
+}
+
+.carousel__progress-fill {
+	display: block;
+	height: 100%;
+	background: var(--color-terracotta-text);
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 240ms ease;
+}
+
 .carousel__button {
 	width: 44px;
 	height: 44px;
@@ -372,7 +401,8 @@
 		scroll-behavior: auto;
 	}
 
-	.carousel__step {
+	.carousel__step,
+	.carousel__progress-fill {
 		transition: none;
 	}
 }

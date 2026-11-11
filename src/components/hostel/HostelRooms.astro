@@ -5,7 +5,7 @@ import hammockPhoto from '../../assets/home/detalle-hostal.webp';
 import redBedPhoto from '../../assets/hostel/habitaciones-cama-mosquitero-rojo.png';
 import bunkPhoto from '../../assets/hostel/habitaciones-litera.png';
 import purpleBedPhoto from '../../assets/hostel/habitaciones-cama-mosquitero-morado.png';
-import volcanoHammockPhoto from '../../assets/hostel/habitaciones-hamaca-volcan.png';
+import ranchoPhoto from '../../assets/hostel/habitaciones-rancho-mesas.webp';
 import type { Language, SiteContent } from '../../i18n';
 interface Props {
 	content: SiteContent;
@@ -15,11 +15,11 @@ import Carousel from '../shared/Carousel.astro';
 const { content, language } = Astro.props;
 const photos = [
 	[signPhoto, 'Autobús amarillo junto al letrero de Tiki Hostel', 'Yellow bus beside the Tiki Hostel sign'],
+	[ranchoPhoto, 'Mesas de madera bajo el rancho de techo de palma', 'Wooden tables beneath the palm-roofed rancho'],
 	[hammockPhoto, 'Hamaca y asientos en un espacio común del hostal', 'Hammock and chairs in a hostel common area'],
 	[redBedPhoto, 'Cama doble con mosquitero rojo en una habitación', 'Double bed with a red mosquito net in a room'],
 	[bunkPhoto, 'Litera de madera en una habitación del hostal', 'Wooden bunk bed in a hostel room'],
 	[purpleBedPhoto, 'Cama doble con mosquitero morado en una habitación', 'Double bed with a purple mosquito net in a room'],
-	[volcanoHammockPhoto, 'Vista desde una hamaca bajo una estructura de madera y techo de palma, con un volcán al fondo al atardecer', 'View from a hammock beneath a wooden structure and thatched roof, with a volcano in the background at sunset'],
 ] as const;
 const firstImages = await Promise.all(photos.map(async ([photo, altEs, altEn], index) => ({
 	src: (await getImage({ src: photo, width: Math.min(photo.width, 1200), format: photo.format })).src,
@@ -45,6 +45,7 @@ const firstImages = await Promise.all(photos.map(async ([photo, altEs, altEn], i
 			label={content.hostel.rooms.firstCarousel.label}
 			variant="spaces"
 			controlsLayout="stacked-center"
+			editorialProgress
 			labels={{
 				previous: content.hostel.rooms.firstCarousel.previous,
 				next: content.hostel.rooms.firstCarousel.next,
