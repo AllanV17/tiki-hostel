@@ -1,7 +1,7 @@
 ---
 import type { SiteContent } from '../../i18n';
 import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
-import kayakImage from '../../assets/activities/tarjeta-kayak.png';
+import kayakImage from '../../assets/activities/tarjeta-kayak-viajero-orilla-arbolada-volcan.png';
 import horsebackImage from '../../assets/activities/tarjeta-paseo-a-caballo.png';
 import hikingImage from '../../assets/activities/tarjeta-senderismo.png';
 interface Props { content: SiteContent; }
@@ -19,7 +19,7 @@ const images = [kayakImage, horsebackImage, hikingImage];
 	</div>
 	<div class="activities-routes__grid" data-reveal-stagger>
 		{content.activities.routes.items.map((activity, index) => (
-			<article class="activity-card" data-reveal="up">
+			<article class:list={['activity-card', { 'activity-card--kayak': index === 0 }]} data-reveal="up">
 				<ActivityImagePlaceholder src={images[index]} alt={activity.imageAlt} />
 				<div class="activity-card__copy">
 					<p class="activities-eyebrow">{activity.category}</p>

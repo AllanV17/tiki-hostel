@@ -1,0 +1,140 @@
+- generic [active] [ref=e1]:
+  - link "Saltar al contenido" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Tiki Hostel Ometepe. Ir al inicio" [ref=e5] [cursor=pointer]:
+        - /url: /tiki-hostel/
+      - navigation "Navegación principal" [ref=e7]:
+        - link "Inicio" [ref=e8] [cursor=pointer]:
+          - /url: /tiki-hostel/
+        - link "Hostal" [ref=e9] [cursor=pointer]:
+          - /url: /tiki-hostel/hostal/
+        - link "Actividades" [ref=e10] [cursor=pointer]:
+          - /url: /tiki-hostel/actividades/
+        - link "Contacto" [ref=e11] [cursor=pointer]:
+          - /url: /tiki-hostel/contacto/
+        - link "Consulta directa, enlace pendiente de configurar" [ref=e12] [cursor=pointer]:
+          - /url: "#contacto"
+          - text: Consulta Directa
+        - generic [ref=e13]:
+          - button "Cambiar idioma" [ref=e14] [cursor=pointer]
+          - text: ✓
+      - text: ✓
+  - main [ref=e18]:
+    - region "Un refugio de madera entre dos volcanes y horizontes infinitos" [ref=e19]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - paragraph [ref=e24]: Isla de Ometepe, Rivas, Nicaragua.
+          - heading "Un refugio de madera entre dos volcanes y horizontes infinitos" [level=1] [ref=e25]
+        - paragraph [ref=e26]: Tiki es un espacio vivo en el corazón rural de Ometepe, donde la arquitectura natural hecha de madera y el ritmo pausado del lago te devuelven a lo esencial.
+    - complementary "Identidad visual" [ref=e27]:
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - generic [ref=e30]: Esencia de Ometepe
+          - paragraph [ref=e31]: La dualidad volcánica alineada con el horizonte del agua.
+        - img "Símbolo de montañas, horizonte y agua" [ref=e32]
+    - region "Un refugio artesanal integrado en el entorno rural" [ref=e36]:
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e39]:
+            - paragraph [ref=e40]: Arquitectura de Madera y Silencio
+            - heading "Un refugio artesanal integrado en el entorno rural" [level=2] [ref=e41]
+          - generic [ref=e42]:
+            - paragraph [ref=e43]: En Tiki, creemos que el verdadero lujo es el descanso, la conexion con la naturaleza y la cercania con otros. Nuestra estructura está diseñada para respirar de forma natural con la brisa del lago Cocibolca.
+            - paragraph [ref=e44]: Aquí, la naturaleza dicta el ritmo. Despierta con el sonido de las aves, comparte comida e historias y descubre la vida rural de la isla.
+          - list "Características mencionadas en el diseño" [ref=e45]:
+            - listitem [ref=e46]: Entorno Rural y Conservación Activa
+            - listitem [ref=e47]: Arquitectura de Madera Abierta a la Brisa
+        - generic [ref=e48]:
+          - img "Fachada de madera y techo de palma del hostal Tiki entre árboles" [ref=e49]
+          - generic [ref=e50]:
+            - blockquote [ref=e51]:
+              - paragraph [ref=e52]: “La madera cruje suavemente por la noche, recordándonos que estamos vivos en medio de la isla.”
+            - img "Detalle de una estructura de madera" [ref=e53]
+    - region "Espacios pensados para el encuentro y el descanso" [ref=e54]:
+      - generic [ref=e55]:
+        - generic [ref=e57]:
+          - paragraph [ref=e58]: Alojamientos y Espacios
+          - heading "Espacios pensados para el encuentro y el descanso" [level=2] [ref=e59]
+        - generic [ref=e60]:
+          - article [ref=e61]:
+            - img "Exterior de una cabaña privada de madera con balcón" [ref=e62]
+            - generic [ref=e63]:
+              - heading "Cabañas Privadas de Madera" [level=3] [ref=e64]
+              - paragraph [ref=e65]: Habitaciones construidas artesanalmente para máxima privacidad y contacto directo con la naturaleza circundante.
+          - article [ref=e66]:
+            - img "Habitación de madera con camas y mosquiteros" [ref=e67]
+            - generic [ref=e68]:
+              - heading "Dormitorios Compartidos" [level=3] [ref=e69]
+              - paragraph [ref=e70]: Literas sólidas de madera nativa con espacio personal y ventilación natural constante para viajeros con alma de bitácora.
+          - article [ref=e71]:
+            - img "Persona con platos de comida en un comedor bajo vegetación tropical, con una fogata al fondo y un letrero de Cocina Comunal" [ref=e72]
+            - generic [ref=e73]:
+              - heading "Cocina & Fogata Comunal" [level=3] [ref=e74]
+              - paragraph [ref=e75]: Espacios abiertos donde convergen la preparación de comida local, el fuego nocturno y las conversaciones que trazan nuevas rutas.
+    - region "Tu aventura empieza aquí" [ref=e76]:
+      - generic [ref=e77]:
+        - img "Grupo de cinco personas frente a Tiki Hostel, con su rótulo y un volcán al fondo" [ref=e78]
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - paragraph [ref=e81]: EXPLORA OMETEPE
+            - heading "Tu aventura empieza aquí" [level=2] [ref=e82]
+          - generic [ref=e83]:
+            - paragraph [ref=e84]: En Tiki, el plan del día puede empezar con una mirada al volcán. Desde aquí puedes salir temprano a remar, buscar un sendero entre la vegetación o recorrer los caminos de la isla con tiempo para detenerte donde te dé curiosidad.
+            - paragraph [ref=e85]: Si viajas por tu cuenta, una conversación antes de salir puede darte una idea para el día o alguien con quien compartir la ruta. A veces, lo mejor de Ometepe es ese desvío que no tenías pensado.
+    - region "Momentos de la Bitácora" [ref=e86]:
+      - generic [ref=e87]:
+        - generic [ref=e88]:
+          - heading "Momentos de la Bitácora" [level=2] [ref=e89]
+          - paragraph [ref=e90]: "#TikiHostelOmetepe"
+        - generic "Galería de fotografías" [ref=e91]:
+          - img "Cuatro personas junto a un lago y montañas verdes" [ref=e93]
+          - img "Hamaca y sillas de madera en un espacio del hostal" [ref=e95]
+          - img "Silueta de un volcán de Ometepe al atardecer" [ref=e97]
+          - img "Sendero rodeado de bosque tropical" [ref=e99]
+    - region "¿Quieres trazar tu próxima ruta con nosotros?" [ref=e100]:
+      - generic [ref=e101]:
+        - heading "¿Quieres trazar tu próxima ruta con nosotros?" [level=2] [ref=e102]
+        - paragraph [ref=e103]: Por favor, envíanos tu consulta de forma directa. No gestionamos reservas automáticas para asegurar que la disponibilidad esté sincronizada y respetemos la capacidad de carga del hostal.
+        - link "Consultar por WhatsApp, enlace pendiente de configurar" [ref=e105] [cursor=pointer]:
+          - /url: "#contacto"
+          - text: Consultar por WhatsApp
+  - contentinfo [ref=e106]:
+    - generic [ref=e107]:
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - link [ref=e110] [cursor=pointer]:
+            - /url: /tiki-hostel/
+            - img "Tiki Hostel" [ref=e112]
+          - paragraph [ref=e113]: Tu refugio de madera y contemplación en la Isla de Ometepe, Rivas, Nicaragua.
+          - paragraph [ref=e114]: Isla de Ometepe, Rivas, Nicaragua
+        - navigation "Secciones del sitio" [ref=e115]:
+          - heading "Navegación" [level=2] [ref=e116]
+          - link "Inicio" [ref=e117] [cursor=pointer]:
+            - /url: /tiki-hostel/
+          - link "Hostal" [ref=e118] [cursor=pointer]:
+            - /url: /tiki-hostel/hostal/
+          - link "Actividades" [ref=e119] [cursor=pointer]:
+            - /url: /tiki-hostel/actividades/
+          - link "Contacto" [ref=e120] [cursor=pointer]:
+            - /url: /tiki-hostel/contacto/
+        - generic [ref=e121]:
+          - heading "Reservas" [level=2] [ref=e122]
+          - generic [ref=e123]: Airbnb
+          - link "Booking" [ref=e128] [cursor=pointer]:
+            - /url: https://www.booking.com/hotel/ni/playa-tiki-hostel-ometepe.html?label=gen173nr-10CAsoqAFCGXBsYXlhLXRpa2ktaG9zdGVsLW9tZXRlcGVIClgEaKgBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALv9sjXBsACAdICJGExMGZmYWVlLWE1OTQtNGM4MS05YmI1LWRjNTk1NWMyNjI3YdgCAeACAQ&sid=dcb7ff595b51e8e36cb0e3e47c3e25f9&dist=0&keep_landing=1&sb_price_type=total&type=total&chal_t=1794259824105&force_referer=
+          - generic [ref=e133]: Reserva directa
+        - generic [ref=e138]:
+          - heading "Contacto" [level=2] [ref=e139]
+          - generic [ref=e140]:
+            - button "WhatsApp" [disabled] [ref=e141]
+            - link "Instagram" [ref=e147]:
+              - /url: https://www.instagram.com/tiki_hostel_ometepe/
+            - link "Facebook" [ref=e154]:
+              - /url: https://www.facebook.com/share/1KAQdk6iKj/
+      - generic [ref=e159]:
+        - paragraph [ref=e160]: © 2026 Tiki Hostel Ometepe. Rivas, Nicaragua.
+        - group "Información legal provisional" [ref=e161]:
+          - generic [ref=e162]: Política de privacidad
+          - generic [ref=e163]: Cookies

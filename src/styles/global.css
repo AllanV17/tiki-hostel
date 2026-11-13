@@ -401,10 +401,14 @@ summary:focus-visible {
 }
 
 .gallery-grid__item:first-child .home-photo {
-	object-position: center 72%;
+	object-position: 30% center;
 }
 
 .gallery-grid__item:nth-child(3) .home-photo {
+	object-position: center 72%;
+}
+
+.gallery-grid__item:nth-child(4) .home-photo {
 	object-position: 60% center;
 }
 
@@ -781,12 +785,16 @@ summary:focus-visible {
 	gap: 80px;
 }
 
-.human-experience__photo {
+.human-experience__media {
 	min-height: 0;
-	height: auto;
 	aspect-ratio: 1;
-	object-position: 55% center;
+	overflow: hidden;
 	border-radius: 24px;
+}
+
+.human-experience__photo {
+	height: 100%;
+	object-position: 55% center;
 }
 
 .human-experience__copy {
@@ -845,11 +853,13 @@ summary:focus-visible {
   transform: translateY(-3px);
 }
 
-	.gallery-grid__item .home-photo {
+	.gallery-grid__item .home-photo,
+	.human-experience__media .home-photo {
 		transition: transform 280ms ease;
 	}
 
-	.gallery-grid__item:hover .home-photo {
+	.gallery-grid__item:hover .home-photo,
+	.human-experience__media:hover .home-photo {
 		transform: scale(1.025);
 	}
 }
@@ -1095,6 +1105,13 @@ summary:focus-visible {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 12px 24px;
+}
+
+@media (min-width: 821px) and (max-width: 1100px) {
+	.gallery-grid__item:first-child .home-photo {
+		/* Keep both people, the swing seat and the summit in narrow four-column cards. */
+		object-fit: contain;
+	}
 }
 
 @media (max-width: 1100px) {
@@ -1349,7 +1366,7 @@ summary:focus-visible {
 	.space-card:last-child {
 		grid-column: 1 / -1;
 	}
-	.human-experience__photo {
+	.human-experience__media {
 		width: min(100%, 560px);
 		aspect-ratio: 6 / 5;
 	}

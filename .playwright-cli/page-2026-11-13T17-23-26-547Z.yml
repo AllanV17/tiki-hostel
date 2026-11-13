@@ -1,0 +1,124 @@
+- generic [active] [ref=f2e1]:
+  - link "Saltar al contenido" [ref=f2e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f2e3]:
+    - generic [ref=f2e4]:
+      - link "Tiki Hostel Ometepe. Ir al inicio" [ref=f2e5] [cursor=pointer]:
+        - /url: /tiki-hostel/
+      - navigation "Navegación principal" [ref=f2e7]:
+        - link "Inicio" [ref=f2e8] [cursor=pointer]:
+          - /url: /tiki-hostel/
+        - link "Hostal" [ref=f2e9] [cursor=pointer]:
+          - /url: /tiki-hostel/hostal/
+        - link "Actividades" [ref=f2e10] [cursor=pointer]:
+          - /url: /tiki-hostel/actividades/
+        - link "Contacto" [ref=f2e11] [cursor=pointer]:
+          - /url: /tiki-hostel/contacto/
+        - link "Consulta Directa" [ref=f2e12] [cursor=pointer]:
+          - /url: "#consulta-actividades"
+        - generic [ref=f2e13]:
+          - button "Cambiar idioma" [ref=f2e14] [cursor=pointer]
+          - text: ✓
+      - text: ✓
+  - main [ref=f2e18]:
+    - region "La isla se vive explorando" [ref=f2e19]:
+      - generic [ref=f2e20]:
+        - generic [ref=f2e21]:
+          - paragraph [ref=f2e22]: EXPERIENCIAS EN OMETEPE
+          - heading "La isla se vive explorando" [level=1] [ref=f2e23]
+        - paragraph [ref=f2e24]: Entre aguas tranquilas, senderos verdes y paisajes volcánicos, descubre distintas formas de conectar con Ometepe.
+      - img "Portada de actividades / paisaje amplio" [ref=f2e26]
+    - region "Encuentra tu manera de explorar" [ref=f2e27]:
+      - generic [ref=f2e28]:
+        - generic [ref=f2e29]:
+          - paragraph [ref=f2e30]: EXPERIENCIAS EN LA ISLA
+          - heading "Encuentra tu manera de explorar" [level=2] [ref=f2e31]
+        - paragraph [ref=f2e32]: Tres maneras de descubrir los paisajes y la vida de Ometepe, cada una a su propio ritmo.
+      - generic [ref=f2e33]:
+        - article [ref=f2e34]:
+          - img "Una persona de espaldas, con sombrero y chaleco salvavidas, rema en kayak junto a una orilla arbolada, con un volcán al fondo del lago." [ref=f2e36]
+          - generic [ref=f2e37]:
+            - paragraph [ref=f2e38]: AGUA
+            - heading "Kayak" [level=3] [ref=f2e39]
+            - paragraph [ref=f2e40]: Descubre Ometepe desde sus aguas tranquilas.
+        - article [ref=f2e41]:
+          - img "Tres personas a caballo contemplan un paisaje de vegetación, un volcán y el lago." [ref=f2e43]
+          - generic [ref=f2e44]:
+            - paragraph [ref=f2e45]: TIERRA
+            - heading "Paseo a caballo" [level=3] [ref=f2e46]
+            - paragraph [ref=f2e47]: Recorre caminos rurales rodeados de naturaleza.
+        - article [ref=f2e48]:
+          - img "Una persona con pañuelo y mochila sonríe entre rocas volcánicas bajo un cielo nublado." [ref=f2e50]
+          - generic [ref=f2e51]:
+            - paragraph [ref=f2e52]: FUEGO
+            - heading "Senderismo volcánico" [level=3] [ref=f2e53]
+            - paragraph [ref=f2e54]: Explora senderos y paisajes volcánicos de la isla.
+    - region "Explora el volcán Maderas" [ref=f2e55]:
+      - generic [ref=f2e56]:
+        - generic [ref=f2e57]:
+          - paragraph [ref=f2e58]: NATURALEZA EN OMETEPE
+          - heading "Explora el volcán Maderas" [level=2] [ref=f2e59]
+          - paragraph [ref=f2e60]: Entre las laderas cubiertas de bosque, la laguna del cráter revela otra cara de Ometepe. Los senderos de Maderas invitan a recorrer ese paisaje a pie, entre árboles y nubes.
+        - img "Vista aérea de la laguna del cráter de Maderas, rodeada de bosque, con un volcán al fondo." [ref=f2e62]
+    - region "Postales de Ometepe" [ref=f2e63]:
+      - heading "Postales de Ometepe" [level=2] [ref=f2e64]
+      - region "Postales de Ometepe" [ref=f2e65]:
+        - generic "Postales de Ometepe" [ref=f2e66]:
+          - img "Grupo con remos y kayaks junto al lago, con un volcán al fondo" [ref=f2e67]
+          - img "Persona junto a una cascada con un arcoíris sobre el agua" [ref=f2e68]
+          - img "Senderista con mochila sentada entre rocas frente a un relieve volcánico" [ref=f2e69]
+          - img "Atardecer visto desde una terraza de madera, entre postes, una barandilla y hojas de plátano" [ref=f2e70]
+          - img "Fachada de madera iluminada por el sol entre árboles y vegetación" [ref=f2e71]
+          - img "Persona usando un portátil en una mesa de madera, frente a una pared con hojas pintadas y una pizarra de menú" [ref=f2e72]
+          - img "Viajera con casco sobre un scooter junto al lago y unos letreros de colores" [ref=f2e73]
+          - img "Dos personas y un perro en un sendero con una laguna rodeada de vegetación al fondo" [ref=f2e74]
+          - img "Silueta de un volcán bajo un cielo rosado y violeta al atardecer" [ref=f2e75]
+        - generic [ref=f2e76]:
+          - progressbar "Progreso de la galería" [ref=f2e77]
+          - button "Imagen anterior" [disabled] [ref=f2e79]: ←
+          - button "Imagen siguiente" [ref=f2e80] [cursor=pointer]: →
+    - region "Tu próxima aventura comienza aquí" [ref=f2e81]:
+      - generic [ref=f2e82]:
+        - paragraph [ref=f2e83]: PLANIFICA TU AVENTURA
+        - heading "Tu próxima aventura comienza aquí" [level=2] [ref=f2e84]
+        - paragraph [ref=f2e85]: Cada experiencia tiene su propio ritmo. Consulta con nuestro equipo las actividades disponibles y organiza tu próxima aventura en Ometepe.
+        - link "Consultar actividades" [ref=f2e87] [cursor=pointer]:
+          - /url: /tiki-hostel/contacto/
+  - contentinfo [ref=f2e88]:
+    - generic [ref=f2e89]:
+      - generic [ref=f2e90]:
+        - generic [ref=f2e91]:
+          - link [ref=f2e92] [cursor=pointer]:
+            - /url: /tiki-hostel/
+            - img "Tiki Hostel" [ref=f2e94]
+          - paragraph [ref=f2e95]: Tu refugio de madera y contemplación en la Isla de Ometepe, Rivas, Nicaragua.
+          - paragraph [ref=f2e96]: Isla de Ometepe, Rivas, Nicaragua
+        - navigation "Secciones del sitio" [ref=f2e97]:
+          - heading "Navegación" [level=2] [ref=f2e98]
+          - link "Inicio" [ref=f2e99] [cursor=pointer]:
+            - /url: /tiki-hostel/
+          - link "Hostal" [ref=f2e100] [cursor=pointer]:
+            - /url: /tiki-hostel/hostal/
+          - link "Actividades" [ref=f2e101] [cursor=pointer]:
+            - /url: /tiki-hostel/actividades/
+          - link "Contacto" [ref=f2e102] [cursor=pointer]:
+            - /url: /tiki-hostel/contacto/
+        - generic [ref=f2e103]:
+          - heading "Reservas" [level=2] [ref=f2e104]
+          - generic [ref=f2e105]: Airbnb
+          - link "Booking" [ref=f2e110] [cursor=pointer]:
+            - /url: https://www.booking.com/hotel/ni/playa-tiki-hostel-ometepe.html?label=gen173nr-10CAsoqAFCGXBsYXlhLXRpa2ktaG9zdGVsLW9tZXRlcGVIClgEaKgBiAEBmAEzuAEXyAEM2AED6AEB-AEBiAIBqAIBuALv9sjXBsACAdICJGExMGZmYWVlLWE1OTQtNGM4MS05YmI1LWRjNTk1NWMyNjI3YdgCAeACAQ&sid=dcb7ff595b51e8e36cb0e3e47c3e25f9&dist=0&keep_landing=1&sb_price_type=total&type=total&chal_t=1794259824105&force_referer=
+          - generic [ref=f2e115]: Reserva directa
+        - generic [ref=f2e120]:
+          - heading "Contacto" [level=2] [ref=f2e121]
+          - generic [ref=f2e122]:
+            - button "WhatsApp" [disabled] [ref=f2e123]
+            - link "Instagram" [ref=f2e129]:
+              - /url: https://www.instagram.com/tiki_hostel_ometepe/
+            - link "Facebook" [ref=f2e136]:
+              - /url: https://www.facebook.com/share/1KAQdk6iKj/
+      - generic [ref=f2e141]:
+        - paragraph [ref=f2e142]: © 2026 Tiki Hostel Ometepe. Rivas, Nicaragua.
+        - group "Información legal provisional" [ref=f2e143]:
+          - generic [ref=f2e144]: Política de privacidad
+          - generic [ref=f2e145]: Cookies

@@ -1,0 +1,2 @@
+[   34970ms] [WARNING] [transitions]: all view transition animations, including fallback animation, are disabled as this device has the prefer-reduced-motion setting enabled. @ http://localhost:4321/node_modules/astro/components/ClientRouter.astro?astro&type=script&index=0&lang.ts:19
+[   36264ms] [WARNING] [transitions]: all view transition animations, including fallback animation, are disabled as this device has the prefer-reduced-motion setting enabled. @ http://localhost:4321/node_modules/astro/components/ClientRouter.astro?astro&type=script&index=0&lang.ts:19

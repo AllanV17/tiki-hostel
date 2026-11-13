@@ -130,11 +130,11 @@
     "experience": {
       "image": "Momento de hospitalidad",
       "imageAlt": "Grupo de cinco personas frente a Tiki Hostel, con su rótulo y un volcán al fondo",
-      "eyebrow": "La Experiencia Humana",
-      "title": "Nuestra esencia está en las manos que te reciben",
+      "eyebrow": "EXPLORA OMETEPE",
+      "title": "Tu aventura empieza aquí",
       "paragraphs": [
-        "Tiki no es solo un punto en el mapa; es un hogar temporal gestionado por personas que aman la isla. Creemos en una hospitalidad cercana, horizontal y genuina.",
-        "Aquí no encontrarás pulseras de plástico ni formalidades corporativas. Encontrarás café recién colado por las mañanas, consejos sinceros sobre cómo recorrer los senderos volcánicos locales y un respeto absoluto por la calma del entorno."
+        "En Tiki, el plan del día puede empezar con una mirada al volcán. Desde aquí puedes salir temprano a remar, buscar un sendero entre la vegetación o recorrer los caminos de la isla con tiempo para detenerte donde te dé curiosidad.",
+        "Si viajas por tu cuenta, una conversación antes de salir puede darte una idea para el día o alguien con quien compartir la ruta. A veces, lo mejor de Ometepe es ese desvío que no tenías pensado."
       ]
     },
     "gallery": {
@@ -142,16 +142,16 @@
       "hashtag": "#TikiHostelOmetepe",
       "label": "Galería de fotografías",
       "moments": [
-        "Vida compartida",
-        "Detalle del hostal",
-        "Paisaje de Ometepe",
-        "Encuentro al aire libre"
+        "Columpio sobre el lago",
+        "Bosque tropical",
+        "Grupo frente a la laguna",
+        "Atardecer con el volcán"
       ],
       "imageAlts": [
+        "Dos chicas sobre la tabla de un columpio junto al lago, con un volcán al fondo",
+        "Sendero rodeado de bosque tropical",
         "Cuatro personas junto a un lago y montañas verdes",
-        "Hamaca y sillas de madera en un espacio del hostal",
-        "Silueta de un volcán de Ometepe al atardecer",
-        "Sendero rodeado de bosque tropical"
+        "Silueta de un volcán de Ometepe al atardecer"
       ]
     },
     "contact": {
@@ -242,16 +242,9 @@
       ]
     },
     "experience": {
-      "eyebrow": "La experiencia Tiki",
-      "title": ["Quedarse también es parte", " del viaje"],
-      "description": "Un relato íntimo sobre la vida cotidiana alrededor del hostal.",
-      "image": "Experiencia Tiki / momento protagonista",
-      "editorialEyebrow": "LA EXPERIENCIA TIKI",
-      "editorialTitle": "Hay momentos que no necesitan planes.",
-      "editorialParagraphs": [
-        "Una tarde frente al lago, una conversación que se alarga, el silencio de la isla al caer el sol.",
-        "En Tiki, también se viene a disfrutar de las cosas sencillas."
-      ]
+      "eyebrow": "LA EXPERIENCIA TIKI",
+      "title": "Hay momentos que no necesitan planes",
+      "description": "Una tarde frente al lago, una conversación que se alarga y el sol que cae detrás del volcán. En Ometepe, esos ratos también son parte del viaje."
     },
     "practical": {
       "eyebrow": "Información práctica",
@@ -300,7 +293,7 @@
           "category": "AGUA",
           "title": "Kayak",
           "description": "Descubre Ometepe desde sus aguas tranquilas.",
-          "imageAlt": "Una persona con gorra rosa rema en un kayak verde en el lago, con un volcán al fondo."
+          "imageAlt": "Una persona de espaldas, con sombrero y chaleco salvavidas, rema en kayak junto a una orilla arbolada, con un volcán al fondo del lago."
         },
         {
           "category": "TIERRA",
@@ -317,9 +310,10 @@
       ]
     },
     "sleepover": {
-      "eyebrow": "Experiencia destacada",
-      "title": "Noche en el volcán Maderas",
-      "description": "Una experiencia nocturna en el volcán Maderas."
+      "eyebrow": "NATURALEZA EN OMETEPE",
+      "title": "Explora el volcán Maderas",
+      "description": "Entre las laderas cubiertas de bosque, la laguna del cráter revela otra cara de Ometepe. Los senderos de Maderas invitan a recorrer ese paisaje a pie, entre árboles y nubes.",
+      "imageAlt": "Vista aérea de la laguna del cráter de Maderas, rodeada de bosque, con un volcán al fondo."
     },
     "contact": {
       "eyebrow": "PLANIFICA TU AVENTURA",
@@ -328,7 +322,10 @@
       "button": "Consultar actividades"
     },
     "gallery": {
-      "title": "Momentos en el camino"
+      "title": "Postales de Ometepe",
+      "previous": "Imagen anterior",
+      "next": "Imagen siguiente",
+      "progress": "Progreso de la galería"
     }
   },
   "contact": {

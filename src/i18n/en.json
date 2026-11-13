@@ -130,11 +130,11 @@
     "experience": {
       "image": "Moment of hospitality",
       "imageAlt": "Group of five people outside Tiki Hostel, with its sign and a volcano in the background",
-      "eyebrow": "The People Behind Tiki",
-      "title": "The people who welcome you make Tiki what it is",
+      "eyebrow": "EXPLORE OMETEPE",
+      "title": "Your adventure starts here",
       "paragraphs": [
-        "Tiki is more than a stop on the map. It's a home away from home, cared for by people who love the island. We believe in warm, open, down-to-earth hospitality.",
-        "Here, you won't find plastic wristbands or corporate formalities. You'll find freshly brewed coffee in the morning, honest tips for exploring local volcanic trails, and plenty of respect for the quiet around us."
+        "At Tiki, the day’s plans might start with a look at the volcano. Head out early for a paddle, find a trail through the forest, or take the island roads at your own pace and stop wherever something catches your eye.",
+        "If you’re traveling solo, a quick chat before heading out might give you an idea for the day or someone to explore with. Sometimes the best part of Ometepe is the detour you didn’t plan."
       ]
     },
     "gallery": {
@@ -142,16 +142,16 @@
       "hashtag": "#TikiHostelOmetepe",
       "label": "Photo gallery",
       "moments": [
-        "Shared moments",
-        "Hostel detail",
-        "Ometepe landscape",
-        "Gathering outdoors"
+        "Swing by the lake",
+        "Tropical forest",
+        "Group by the lagoon",
+        "Volcano at sunset"
       ],
       "imageAlts": [
+        "Two women on the wooden seat of a swing by the lake, with a volcano in the background",
+        "Path through tropical forest",
         "Four people beside a lake and green mountains",
-        "Hammock and wooden chairs in a hostel space",
-        "Silhouette of an Ometepe volcano at sunset",
-        "Path through tropical forest"
+        "Silhouette of an Ometepe volcano at sunset"
       ]
     },
     "contact": {
@@ -242,16 +242,9 @@
       ]
     },
     "experience": {
-      "eyebrow": "The Tiki Experience",
-      "title": ["The Stay Is Part", " of the Journey"],
-      "description": "A glimpse of everyday life at Tiki.",
-      "image": "The Tiki experience / featured moment",
-      "editorialEyebrow": "THE TIKI EXPERIENCE",
-      "editorialTitle": "Some moments don't need a plan.",
-      "editorialParagraphs": [
-        "An afternoon by the lake, a conversation that goes on a little longer, the quiet of the island as the sun sets.",
-        "At Tiki, the simplest moments are part of the experience."
-      ]
+      "eyebrow": "THE TIKI EXPERIENCE",
+      "title": "Some moments don’t need a plan",
+      "description": "An afternoon by the lake, a conversation that keeps going, and the sun setting behind the volcano. On Ometepe, those moments are part of the trip too."
     },
     "practical": {
       "eyebrow": "Practical information",
@@ -300,7 +293,7 @@
           "category": "WATER",
           "title": "Kayaking",
           "description": "Discover Ometepe from its calm waters.",
-          "imageAlt": "A person wearing a pink cap paddles a green kayak on the lake, with a volcano in the background."
+          "imageAlt": "A person seen from behind, wearing a hat and life jacket, paddles a kayak beside a tree-lined shore, with a volcano across the lake."
         },
         {
           "category": "LAND",
@@ -317,9 +310,10 @@
       ]
     },
     "sleepover": {
-      "eyebrow": "Featured Experience",
-      "title": "Maderas Volcano Overnight Adventure",
-      "description": "An overnight experience on Maderas Volcano."
+      "eyebrow": "NATURE ON OMETEPE",
+      "title": "Explore Maderas Volcano",
+      "description": "A crater lake tucked into forested slopes shows another side of Ometepe. The trails on Maderas take you into that landscape on foot, through trees and drifting clouds.",
+      "imageAlt": "Aerial view of the forested crater lake on Maderas, with a volcano in the distance."
     },
     "contact": {
       "eyebrow": "PLAN YOUR ADVENTURE",
@@ -328,7 +322,10 @@
       "button": "Ask about activities"
     },
     "gallery": {
-      "title": "Moments Along the Way"
+      "title": "Postcards from Ometepe",
+      "previous": "Previous image",
+      "next": "Next image",
+      "progress": "Gallery progress"
     }
   },
   "contact": {

@@ -250,6 +250,10 @@
 	border-radius: 0;
 }
 
+.activity-card--kayak .activity-image-placeholder img {
+	object-position: 50% center;
+}
+
 .activity-card__copy {
 	padding: 28px;
 }
@@ -374,6 +378,10 @@
 
 	.sleepover__copy {
 		max-width: 600px;
+	}
+
+	.sleepover .activity-image-placeholder {
+		aspect-ratio: 16 / 9;
 	}
 
 	.activities-routes, .activities-gallery, .sleepover, .activities-contact {

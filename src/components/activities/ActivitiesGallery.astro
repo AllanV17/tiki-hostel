@@ -1,15 +1,124 @@
 ---
-import type { SiteContent } from '../../i18n';
-import ActivityImagePlaceholder from './ActivityImagePlaceholder.astro';
-interface Props { content: SiteContent; }
-const { content } = Astro.props;
+import { Image } from 'astro:assets';
+import type { Language, SiteContent } from '../../i18n';
+import kayak from '../../assets/activities/moments/momentos-kayak-grupo.jpg';
+import waterfall from '../../assets/activities/moments/momentos-cascada-arcoiris.jpg';
+import exterior from '../../assets/activities/moments/momentos-exterior-madera.webp';
+import hiker from '../../assets/activities/moments/momentos-senderista-crater.jpg';
+import terrace from '../../assets/activities/moments/momentos-terraza-atardecer.jpg';
+import laptop from '../../assets/activities/moments/momentos-viajera-portatil.jpg';
+import scooter from '../../assets/activities/moments/momentos-viajera-scooter.webp';
+import lagoon from '../../assets/activities/moments/momentos-senderistas-laguna.jpg';
+import sunset from '../../assets/activities/moments/momentos-volcan-atardecer.jpg';
+import '../../styles/carousel.css';
+
+interface Props { content: SiteContent; language: Language; }
+const { content, language } = Astro.props;
+const labels = content.activities.gallery;
+const photos = [
+	[kayak, 'Grupo con remos y kayaks junto al lago, con un volcán al fondo', 'Group with paddles and kayaks beside the lake, with a volcano in the background'],
+	[waterfall, 'Persona junto a una cascada con un arcoíris sobre el agua', 'Person beside a waterfall with a rainbow above the water'],
+	[hiker, 'Senderista con mochila sentada entre rocas frente a un relieve volcánico', 'Hiker with a backpack sitting among rocks in a volcanic landscape'],
+	[terrace, 'Atardecer visto desde una terraza de madera, entre postes, una barandilla y hojas de plátano', 'Sunset viewed from a wooden terrace, framed by posts, a railing and banana leaves'],
+	[exterior, 'Fachada de madera iluminada por el sol entre árboles y vegetación', 'Sunlit wooden building among trees and foliage'],
+	[laptop, 'Persona usando un portátil en una mesa de madera, frente a una pared con hojas pintadas y una pizarra de menú', 'Person using a laptop at a wooden table, facing a wall with painted leaves and a chalkboard menu'],
+	[scooter, 'Viajera con casco sobre un scooter junto al lago y unos letreros de colores', 'Traveler wearing a helmet on a scooter beside the lake and colorful signs'],
+	[lagoon, 'Dos personas y un perro en un sendero con una laguna rodeada de vegetación al fondo', 'Two people and a dog on a trail overlooking a lagoon surrounded by vegetation'],
+	[sunset, 'Silueta de un volcán bajo un cielo rosado y violeta al atardecer', 'Volcano silhouette beneath a pink and violet sunset sky'],
+] as const;
 ---
 
 <section class="activities-gallery activities-container" aria-labelledby="activities-gallery-title">
 	<h2 id="activities-gallery-title" data-reveal="up">{content.activities.gallery.title}</h2>
-	<div class="activities-gallery__grid">
-		<ActivityImagePlaceholder />
-		<ActivityImagePlaceholder />
-		<ActivityImagePlaceholder />
+	<div class="moments" data-moments role="region" aria-roledescription={language === 'es' ? 'carrusel' : 'carousel'} aria-labelledby="activities-gallery-title">
+		<div id="activities-gallery-track" class="moments__track carousel__track" tabindex="0" aria-label={labels.title}>
+			{photos.map(([photo, altEs, altEn]) => {
+				const ratio = photo.width / photo.height;
+				return <Image
+					src={photo}
+					alt={language === 'es' ? altEs : altEn}
+					format="webp"
+					widths={[...new Set([320, ...[340, 680, 840].map((height) => Math.round(height * ratio))])].sort((a, b) => a - b)}
+					sizes={`(max-width: 560px) min(${340 * ratio}px, calc(65svh * ${ratio}), calc(100vw - 72px)), (max-width: 1100px) ${340 * ratio}px, ${420 * ratio}px`}
+					loading="lazy"
+					decoding="async"
+					style={`--photo-ratio: ${ratio}`}
+				/>;
+			})}
+		</div>
+		<div class="moments__controls carousel__controls carousel__controls--editorial">
+			<div class="carousel__progress" role="progressbar" aria-label={labels.progress} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+				<span class="carousel__progress-track"><span class="carousel__progress-fill"></span></span>
+			</div>
+			<button class="carousel__button" type="button" aria-label={labels.previous} aria-controls="activities-gallery-track" data-moments-previous disabled><span aria-hidden="true">←</span></button>
+			<button class="carousel__button" type="button" aria-label={labels.next} aria-controls="activities-gallery-track" data-moments-next><span aria-hidden="true">→</span></button>
+		</div>
 	</div>
 </section>
+
+<style>
+	.moments {
+		container-type: inline-size;
+		--moments-height: 420px;
+		--carousel-gap: 24px;
+	}
+
+	.moments__track {
+		align-items: center;
+	}
+
+	.moments__track > img {
+		display: block;
+		flex: 0 0 auto;
+		width: min(calc(var(--moments-height) * var(--photo-ratio)), calc(100cqw - 28px));
+		height: auto;
+		border-radius: 16px;
+		scroll-snap-align: start;
+		object-fit: contain;
+	}
+
+	.moments .carousel__progress-fill {
+		transition: none;
+	}
+
+	.moments__controls {
+		margin-top: 14px;
+	}
+
+	@media (min-width: 1101px) {
+		.moments__track > img:nth-child(5) {
+			order: 2;
+		}
+		.moments__track > img:nth-child(6) {
+			order: 1;
+		}
+		.moments__track > img:nth-child(n + 7) {
+			order: 3;
+		}
+	}
+
+	@media (max-width: 1100px) {
+		.moments {
+			--moments-height: 340px;
+			--carousel-gap: 20px;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.moments {
+			--moments-height: min(340px, 65svh);
+			--carousel-gap: 12px;
+		}
+
+		.moments [data-moments-previous] span {
+			transform: rotate(180deg);
+		}
+	}
+</style>
+
+<script>
+	import { cleanupActivitiesGallery, initActivitiesGallery } from '../../scripts/activities-gallery';
+	document.addEventListener('astro:before-swap', cleanupActivitiesGallery);
+	document.addEventListener('astro:page-load', initActivitiesGallery);
+	initActivitiesGallery();
+</script>

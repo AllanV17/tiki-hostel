@@ -10,32 +10,19 @@ const { content, language } = Astro.props;
 ---
 
 <section class="hostel-experience" aria-labelledby="hostel-experience-title">
-	<div class="hostel-container">
-		<header class="hostel-section-head hostel-experience__heading" data-reveal="up">
-			<div>
-				<p class="hostel-eyebrow">{content.hostel.experience.eyebrow}</p>
-				<h2 id="hostel-experience-title">
-					{content.hostel.experience.title[0]}<br class="desktop-break" />{
-						content.hostel.experience.title[1]
-					}
-				</h2>
-			</div>
-			<p>{content.hostel.experience.description}</p>
+	<div class="hostel-container hostel-experience__composition">
+		<header class="hostel-experience__heading" data-reveal="up">
+			<p class="hostel-eyebrow">{content.hostel.experience.eyebrow}</p>
+			<h2 id="hostel-experience-title">{content.hostel.experience.title}</h2>
 		</header>
-		<div class="hostel-experience__composition">
-			<Image
-				src={experiencePhoto}
-				alt={language === 'es' ? 'Grupo de viajeros reunido junto al agua al atardecer' : 'Group of travelers gathered by the water at sunset'}
-				class="hostel-experience__image"
-				format="jpeg"
-				loading="lazy"
-				data-reveal="in"
-			/>
-			<div class="hostel-experience__editorial" data-reveal="up">
-				<p class="hostel-eyebrow">{content.hostel.experience.editorialEyebrow}</p>
-				<h3>{content.hostel.experience.editorialTitle}</h3>
-				{content.hostel.experience.editorialParagraphs.map((paragraph) => <p>{paragraph}</p>)}
-			</div>
-		</div>
+		<Image
+			src={experiencePhoto}
+			alt={language === 'es' ? 'Grupo de viajeros reunido junto al agua al atardecer' : 'Group of travelers gathered by the water at sunset'}
+			class="hostel-experience__image"
+			format="jpeg"
+			loading="lazy"
+			data-reveal="in"
+		/>
+		<p class="hostel-experience__body" data-reveal="up">{content.hostel.experience.description}</p>
 	</div>
 </section>
